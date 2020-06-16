@@ -1,0 +1,52 @@
+
+@media (max-width:629px) {
+    div#search {
+      display: none;
+    }
+  }
+body{
+  background: #f2f2f2;
+}
+
+.search {
+  width: 80%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 1px solid;
+  border-right: none;
+  padding: 5px;
+  height: 30px;
+  border-radius: 0 0 0 0;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #435034;
+}
+
+.searchButton {
+  width: 65px;
+  height: 30px;
+  border: 1px solid #435034;
+  background: #435034;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0 0 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: -17%;
+  margin-top: -1.2%;
+}
