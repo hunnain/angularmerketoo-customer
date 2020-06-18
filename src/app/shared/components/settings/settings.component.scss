@@ -1,0 +1,11 @@
+@media (min-width:629px) {
+    li#search {
+      display: none;
+    }
+  }
+
+  @media (max-width:629px) {
+    li#hide {
+      display: none;
+    }
+  }

@@ -13,11 +13,13 @@ import { Product } from "../../classes/product";
 export class SettingsComponent implements OnInit {
 
   public products: Product[] = []
-  
+  public text = { openshop: "Open Shop" }
+  public lan: boolean;
+
   public languages = [{
     name: 'Chinese',
     code: 'zh-Hant'
-  },{ 
+  }, {
     name: 'English',
     code: 'en'
   }];
@@ -47,9 +49,16 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.lan = true;
   }
-
-  changeLanguage(code){
+  changelan() {
+    if (this.lan == false) {
+      this.lan = true;
+    } else {
+      this.lan = false
+    }
+  }
+  changeLanguage(code) {
     if (isPlatformBrowser(this.platformId)) {
       this.translate.use(code)
     }
