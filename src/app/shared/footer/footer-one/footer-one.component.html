@@ -2,29 +2,33 @@
 <footer [class]="class">
 	<div class="light-layout" *ngIf="newsletter">
 		<div class="container">
-			<section class="small-section border-section border-top-0">
+			<section>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="subscribe">
 							<div>
-								<h4>KNOW IT ALL FIRST!</h4>
-								<p>Never Miss Anything From Multikart By Signing Up To Our Newsletter. </p>
+								<h4>{{ 'new-marketoo' | translate }}</h4>
+								<p>{{ 'newsletter' | translate }}</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<form class="form-inline subscribe-form" action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda" target="_blank" method="post">
+						<form class="subscribe-form"
+							action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+							target="_blank" method="post">
 							<div class="form-group mx-sm-3">
-								<input type="email" #name name="EMAIL" id="mce-EMAIL" class="form-control" placeholder="Enter your email">
+								<input style="height: 40px;" type="email" #name name="EMAIL" id="mce-EMAIL"
+									class="form-control" placeholder="{{ 'entermail' | translate }}">
 							</div>
-							<button type="submit" class="btn btn-solid">subscribe</button>
+							<button style="padding: 7px 17px;" type="submit"
+								class="btn btn-solid">{{ 'subscribe' | translate }}</button>
 						</form>
 					</div>
 				</div>
 			</section>
 		</div>
 	</div>
-	<section class="section-b-space light-layout">
+	<section style="padding-bottom: 2px;" class="section-b-space light-layout">
 		<div class="container">
 			<div class="row footer-theme partition-f">
 				<div class="col-lg-4 col-md-6">
@@ -32,75 +36,95 @@
 						<h4>about</h4>
 					</div>
 					<div class="footer-contant">
-						<div class="footer-logo">
+						<!-- <div class="footer-logo">
 							<img [src]="themeLogo" alt="logo">
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+						</div> -->
+						<p>{{ 'follow' | translate }}</p>
 						<div class="footer-social">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-google-plus" aria-hidden="true"></i></a>                 
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="fa fa-rss" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+							<ul>
+								<li>
+									<a href="javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+								</li>
+								<!-- <li>
+									<a href="javascript:void(0)"><i class="fa fa-google-plus"
+											aria-hidden="true"></i></a>
+								</li> -->
+								<!-- <li>
+									<a href="javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+								</li> -->
+								<li>
+									<a href="javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+								</li>
+								<!-- <li>
+									<a href="javascript:void(0)"><i class="fa fa-rss" aria-hidden="true"></i></a>
+								</li> -->
+							</ul>
+						</div>
+						<div class="footer-social">
+							<ul>
+								<button type="button" class="btn btn-solid btn-circle btn-xl"><i
+										style="color: white;font-size: 24px;" class="fa fa-gift"></i>
+								</button><button type="button" class="btn btn-primary">Get Rewarded</button>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="col offset-xl-1">
 					<div class="sub-title">
 						<div class="footer-title">
-                            <h4>Categories</h4>
-                        </div>
-                        <div class="footer-contant">
-                            <ul>
-                                <li><a href="javascript:void(0)">Womens Fashion</a></li>
-                                <li><a href="javascript:void(0)">Mens Fashion</a></li>
-                                <li><a href="javascript:void(0)">Kids Fashion</a></li>
-                                <li><a href="javascript:void(0)">Featured</a></li>
-                            </ul>
-                        </div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="sub-title">
-						<div class="footer-title">
-                            <h4>why we choose</h4>
-                        </div>
-                        <div class="footer-contant">
-                            <ul>
-                                <li><a href="javascript:void(0)">shipping & return</a></li>
-                                <li><a href="javascript:void(0)">secure shopping</a></li>
-                                <li><a href="javascript:void(0)">gallary</a></li>
-                                <li><a href="javascript:void(0)">affiliates</a></li>
-                                <li><a href="javascript:void(0)">contacts</a></li>
-                            </ul>
-                        </div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="sub-title">
-						<div class="footer-title">
-						    <h4>store information</h4>
+							<h4>{{ 'about' | translate }}</h4>
 						</div>
 						<div class="footer-contant">
-						    <ul class="contact-list">
-						        <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store
-						            India 345-659</li>
-						        <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-						        <li><i class="fa fa-envelope-o"></i>Email Us: <a>Support@Fiot.com</a></li>
-						        <li><i class="fa fa-fax"></i>Fax: 123456</li>
-						    </ul>
+							<ul>
+								<li><a href="javascript:void(0)">{{ 'aboutus' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'weekend' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'promotions' | translate }}s</a></li>
+								<li><a href="javascript:void(0)">{{ 'termsconditions' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'privacy' | translate }}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="sub-title">
+						<div class="footer-title">
+							<h4>{{ 'customer' | translate }}</h4>
+						</div>
+						<div class="footer-contant">
+							<ul>
+								<li><a href="javascript:void(0)">{{ 'myaccount' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'faq' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'privacy' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'trackorder' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'sellatmarketoo' | translate }}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="sub-title">
+						<div class="footer-title">
+							<h4>{{ 'contactus' | translate }}</h4>
+						</div>
+						<div class="footer-contant">
+							<ul class="contact-list">
+								<li><i class="fa fa-map-marker"></i>Sample Location
+									HK 345-659</li>
+								<li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
+								<li><i class="fa fa-envelope-o"></i>Email:<a>xxxxx@marketoo.hk</a></li>
+								<li>Currency: <a>HK$</a></li>
+								<!-- <li>{{ 'language' | translate }}: <a href="javascript:void(0)">{{ 'sellatmarketoo' | translate }}</a></li> -->
+								<!-- <li><i class="fa fa-fax"></i>Fax: 123456</li> -->
+								<li class="onhover-div mobile-setting" [hidden]="!lan">
+									<button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+									font-weight: 200;;background-color: white;" (click)="changelan();changeLanguage('zh-Hant')" type="button"
+										class="btn btn-outline-primary">繁體中文</button>
+								</li>
+								<li class="onhover-div mobile-setting" [hidden]="lan">
+									<button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+									font-weight: 200;;background-color: white;" (click)="changelan();changeLanguage('en')" type="button"
+										class="btn btn-outline-primary">English</button>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -108,15 +132,21 @@
 		</div>
 	</section>
 	<div class="sub-footer">
-		<div class="container">
+		<div style="border-top: 1px solid #ab9898;" class="container ">
 			<div class="row">
-                <div class="col-xl-6 col-md-6 col-sm-12">
-                  <div class="footer-end">
-                    <p><i class="fa fa-copyright" aria-hidden="true"></i> {{ today | date:'y'}} theme forest powered by pixelstrap</p>
-                  </div>
-                </div>
-                <div class="col-xl-6 col-md-6 col-sm-12">
-                  <div class="payment-card-bottom">
+				<div class="col-xl-6 col-md-6 col-sm-6">
+					<div class="footer-logo">
+						<img style=" margin-top: 3%;
+							width: 21%;" [src]="themeLogo" alt="logo">
+					</div>
+				</div>
+				<div class="col-xl-6 col-md-6 col-sm-6">
+					<div class="footer-end">
+						<p><i class="fa fa-copyright" aria-hidden="true"></i> {{ today | date:'y'}} Marketoo. All Rights
+							Reserved.</p>
+
+					</div>
+					<!-- <div class="payment-card-bottom">
                     <ul>
                       <li>
                         <a><img src="assets/images/icon/visa.png" alt=""></a>
@@ -134,9 +164,9 @@
                         <a><img src="assets/images/icon/discover.png" alt=""></a>
                       </li>
                     </ul>
-                  </div>
-                </div>
-            </div>
+                  </div> -->
+				</div>
+			</div>
 		</div>
 	</div>
 </footer>

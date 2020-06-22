@@ -1659,6 +1659,7 @@ header {
 .classic-effect {
     position: relative;
     overflow: hidden;
+    //height: 250px;
     &:before,
     &:after {
         background: var(--theme-deafult);
@@ -2498,19 +2499,33 @@ header {
         }
         .lable-block {
             .lable3 {
-                border-radius: 100%;
+               // border-radius: 100%;
                 background-color: var(--theme-deafult);
                 text-align: center;
-                font-size: 13px;
+                font-size: 9px;
                 font-weight: 700;
                 position: absolute;
-                padding: 9px 4px;
+                padding: 5px 4px;
                 text-transform: uppercase;
                 color: $white;
-                top: 7px;
-                left: 7px;
+               // top: 7px;
+              //  left: 7px;
                 z-index: 1;
             }
+            .lable77 {
+                // border-radius: 100%;
+                 background-color: #2e90b7;
+                 text-align: center;
+                 font-size: 9px;
+                 font-weight: 700;
+                 position: absolute;
+                 padding: 5px 4px;
+                 text-transform: uppercase;
+                 color: $white;
+                // top: 7px;
+               //  left: 7px;
+                 z-index: 1;
+             }
             .lable4 {
                 position: absolute;
                 font-size: 14px;
@@ -5000,7 +5015,7 @@ footer {
     display: none;
     color: #fff;
     text-align: center;
-    background: var(--theme-deafult);
+    background: #435034;
     border: none;
     font-size: 22px;
     padding: 7px;

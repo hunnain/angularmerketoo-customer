@@ -2,13 +2,13 @@
   <ul>
     <li id="hide">
       <button style="color: black;text-transform:capitalize;font-family: Helvetica,Arial,Heiti TCsans-serif;
-      font-weight: 200" type="button" class="btn btn-link">{{ text.openshop | translate }}</button>
+      font-weight: 200" type="button" class="btn btn-link">{{ 'openshop' | translate }}</button>
     </li>
     <li id="hide">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
-      font-weight: 200;;background-color: white;" type="button" class="btn btn-outline-primary">Login/Register</button>
+      font-weight: 200;;background-color: white;" type="button" class="btn btn-outline-primary">{{ 'login/register' | translate }}</button>
     </li>
-    <li class="onhover-div mobile-setting" [hidden]="!lan">
+    <!-- <li class="onhover-div mobile-setting" [hidden]="!lan">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200;;background-color: white;" (click)="changelan();changeLanguage('zh-Hant')" type="button"
         class="btn btn-outline-primary">繁體中文</button>
@@ -16,8 +16,8 @@
     <li class="onhover-div mobile-setting" [hidden]="lan">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200;;background-color: white;" (click)="changelan();changeLanguage('en')" type="button"
-        class="btn btn-outline-primary">Eng</button>
-    </li>
+        class="btn btn-outline-primary">English</button>
+    </li> -->
     <li class="onhover-div mobile-search search-widgets" id="search">
       <div>
         <img src="assets/images/icon/search.png" class="img-fluid" alt="">

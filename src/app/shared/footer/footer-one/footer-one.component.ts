@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,PLATFORM_ID, Input,Inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-footer-one',
@@ -8,14 +10,28 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FooterOneComponent implements OnInit {
 
   @Input() class: string = 'footer-light' // Default class 
-  @Input() themeLogo: string = 'assets/images/icon/logo.png' // Default Logo
+  @Input() themeLogo: string = 'assets/Marketoo.png' // Default Logo
   @Input() newsletter: boolean = true; // Default True
 
   public today: number = Date.now();
-
-  constructor() { }
-
-  ngOnInit(): void {
+  public lan: boolean;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,
+    private translate: TranslateService) {
   }
 
+  ngOnInit(): void {
+    this.lan = true;
+  }
+  changelan() {
+    if (this.lan == false) {
+      this.lan = true;
+    } else {
+      this.lan = false
+    }
+  }
+  changeLanguage(code) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.translate.use(code)
+    }
+  }
 }
