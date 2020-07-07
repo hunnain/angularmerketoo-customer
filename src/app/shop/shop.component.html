@@ -1,3 +1,5 @@
-<app-header-one [sticky]="true"></app-header-one>
+<app-header-one *ngIf="!router.url.includes('cart')" [sticky]="true"></app-header-one>
+<app-header-two *ngIf="router.url.includes('cart')" [sticky]="true"></app-header-two>
 <router-outlet></router-outlet>
-<app-footer-one></app-footer-one>
+<app-footer-one *ngIf="!router.url.includes('cart')"></app-footer-one>
+<app-footer-two *ngIf="router.url.includes('cart')"></app-footer-two>

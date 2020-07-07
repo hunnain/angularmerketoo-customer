@@ -8,10 +8,10 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 export class HeaderTwoComponent implements OnInit {
 
   @Input() class: string;
-  @Input() themeLogo: string = 'assets/images/icon/logo.png'; // Default Logo
+  @Input() themeLogo: string = 'assets/Marketoo.png'; // Default Logo
   @Input() topbar: boolean = true; // Default True
   @Input() sticky: boolean = false; // Default false
-  
+
   public stick: boolean = false;
 
   constructor() { }
@@ -23,7 +23,7 @@ export class HeaderTwoComponent implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (number >= 300 && window.innerWidth > 400) { 
+    if (number >= 300 && window.innerWidth > 400) {
       this.stick = true;
     } else {
       this.stick = false;

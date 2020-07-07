@@ -6,7 +6,8 @@
     </li>
     <li id="hide">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
-      font-weight: 200;;background-color: white;" type="button" class="btn btn-outline-primary">{{ 'login/register' | translate }}</button>
+      font-weight: 200;;background-color: white;" data-toggle="modal" data-target="#AddNewBattery" type="button"
+        (click)="login(content)" class="btn btn-outline-primary">{{ 'login/register' | translate }}</button>
     </li>
     <!-- <li class="onhover-div mobile-setting" [hidden]="!lan">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
@@ -35,3 +36,33 @@
     </li>
   </ul>
 </div>
+<div>
+
+  <ng-template #content let-modal style="width: 560px;">
+    <div class="modal-header">
+      <a id="loginLogo">
+        <img [src]="loginLogo" class="img-fluid" alt="logo">
+      </a>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: center;">Continue with one of the accounts below</p>
+      <div id="social"><a class="facebookBtn smGlobalBtn" href="#">
+          <a href="#"></a>
+        </a>
+        <a style="    margin-left: 7%;" class="googleBtn smGlobalBtn" href="#"></a>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: center;">Or use your Marketoo account</p>
+    </div>
+
+    <div class="modal-footer">
+      <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+      font-weight: 200;;background-color: white;width: 115px;" data-toggle="modal" data-target="#AddNewBattery"
+        type="button" class="btn btn-outline-primary">Login</button>
+      <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+         font-weight: 200;;background-color: white;width: 115px;    margin-right: 107px;" data-toggle="modal"
+        data-target="#AddNewBattery" type="button" class="btn btn-outline-primary">Register</button>
+    </div>
+
+  </ng-template>

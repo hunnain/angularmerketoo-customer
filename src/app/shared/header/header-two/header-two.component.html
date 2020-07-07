@@ -1,71 +1,51 @@
-<!-- header start -->
-<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
+<header class="sticky" [ngClass]="class">
     <div class="mobile-fix-option"></div>
-    <div class="top-header top-header-dark2" *ngIf="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="header-contact">
-                        <ul>
-                            <li>Welcome to Our store Multikart</li>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-right">
-                    <ul class="header-dropdown">
-                        <li class="compare">
-                            <a [routerLink]="['/shop/compare']"><i class="fa fa-random" aria-hidden="true"></i>Compare</a>
-                        </li>
-                        <li class="mobile-wishlist">
-                            <a [routerLink]="['/shop/wishlist']"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a>
-                        </li>
-                        <li class="onhover-dropdown mobile-account">
-                            <i class="fa fa-user" aria-hidden="true"></i> My Account
-                            <ul class="onhover-show-div">
-                                <li>
-                                    <a data-lng="en">
-                    Login
-                  </a>
-                                </li>
-                                <li>
-                                    <a data-lng="es">
-                    Logout
-                  </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container">
+        <div class="row" style="margin-top: 0.5%">
+            <div class="col-sm-1">
             </div>
-        </div>
-    </div>
-    <div class="container layout3-menu">
-        <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
                 <div class="main-menu">
-                    <div class="menu-left around-border">
-                        <div class="main-menu-right">
-                            <app-menu></app-menu>
-                        </div>
-                    </div>
-                    <div class="absolute-logo">
-                        <div class="brand-logo">
-                            <a [routerLink]="['/home/fashion']">
-                                <img [src]="themeLogo" alt="logo">
+                    <div class="menu-left">
+                        <div class="brand-logo" style="padding-top: 20px;
+                        padding-bottom: 20px;">
+                            <a routerLink="/home/fashion" id="headerlogo">
+                                <img [src]="themeLogo" class="img-fluid" alt="logo">
                             </a>
                         </div>
                     </div>
-                    <div class="">
-                        <div class="menu-right pull-right">
-                            <div>
-                                <app-settings></app-settings>
-                            </div>
-                        </div>
-                    </div>
+                    <h4>{{'Shopping Cart' | translate }}:</h4>
+                    <span style="margin-right: -4%;" class="fa-stack">
+                        <!-- The icon that will wrap the number -->
+                        <span style="color: #435034;" class="fa fa-circle fa-stack-2x"></span>
+                        <!-- a strong element with the custom content, in this case a number -->
+                        <a style="color: #ffffff;" class="fa-stack-1x">
+                            1
+                        </a>
+                    </span>
+                    <h4>{{'Select Shop' | translate }}</h4>
+                    <hr style="width:20%;margin-left: -4%;
+                    margin-right: -4%;height:2px;border-width:0;color:gray;background-color:gray">
+                    <span style="margin-right: -4%;" class="fa-stack">
+                        <!-- The icon that will wrap the number -->
+                        <span style="color: gray;" class="fa fa-circle fa-stack-2x"></span>
+                        <!-- a strong element with the custom content, in this case a number -->
+                        <a style="color: #ffffff;" class="fa-stack-1x">
+                            2
+                        </a>
+                    </span>
+                    <h4>{{'Address And Payment' | translate }}</h4>
+                </div>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+        <div style="margin-top: -2.5%; margin-bottom: -1.7%;" class="row">
+
+            <div class="col-sm-12">
+                <div class="main-menu" style="height: 62px;">
                 </div>
             </div>
         </div>
     </div>
 </header>
-<!-- header end -->

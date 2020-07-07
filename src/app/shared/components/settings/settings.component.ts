@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../classes/product";
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+declare var $: any;
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -15,7 +16,9 @@ export class SettingsComponent implements OnInit {
   public products: Product[] = []
   public text = { openshop: "Open Shop" }
   public lan: boolean;
-
+  public loginDialog: string = "AddNewBattery";
+  themeLogo: string = 'assets/Marketoo.png';
+  loginLogo: string = 'assets/images/login.jpg';
   public languages = [{
     name: 'Chinese',
     code: 'zh-Hant'
@@ -44,6 +47,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
+    private modalService: NgbModal,
     public productService: ProductService) {
     this.productService.cartItems.subscribe(response => this.products = response);
   }
@@ -57,6 +61,10 @@ export class SettingsComponent implements OnInit {
     } else {
       this.lan = false
     }
+  }
+
+  login(content) {
+    this.modalService.open(content, { centered: true });
   }
   changeLanguage(code) {
     if (isPlatformBrowser(this.platformId)) {

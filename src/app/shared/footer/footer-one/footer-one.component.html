@@ -10,9 +10,10 @@
 								<h4>{{ 'new-marketoo' | translate }}</h4>
 								<p>{{ 'newsletter' | translate }}</p>
 							</div>
+
 						</div>
 					</div>
-					<div class="col-lg-6">
+					<!-- <div class="col-lg-6">
 						<form class="subscribe-form"
 							action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
 							target="_blank" method="post">
@@ -23,12 +24,14 @@
 							<button style="padding: 7px 17px;" type="submit"
 								class="btn btn-solid">{{ 'subscribe' | translate }}</button>
 						</form>
-					</div>
+					</div> -->
+
 				</div>
 			</section>
 		</div>
 	</div>
-	<section style="padding-bottom: 2px;" class="section-b-space light-layout">
+	<section style="padding-bottom: 2px;padding-top: 32px;" class="section-b-space light-layout">
+
 		<div class="container">
 			<div class="row footer-theme partition-f">
 				<div class="col-lg-4 col-md-6">
@@ -39,7 +42,18 @@
 						<!-- <div class="footer-logo">
 							<img [src]="themeLogo" alt="logo">
 						</div> -->
-						<p>{{ 'follow' | translate }}</p>
+						<form class="subscribe-form"
+							action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+							target="_blank" method="post">
+							<div class="form-group mx-sm-3">
+								<input style="height: 40px;" type="email" #name name="EMAIL" id="mce-EMAIL"
+									class="form-control" placeholder="{{ 'entermail' | translate }}">
+							</div>
+							<button style="padding: 7px 17px;margin-right: 9%;" type="submit"
+								class="btn btn-solid">{{ 'subscribe' | translate }}</button>
+						</form>
+						<p style="    margin-top: 4%;
+						margin-bottom: -6%;">{{ 'follow' | translate }}</p>
 						<div class="footer-social">
 							<ul>
 								<li>
@@ -94,9 +108,9 @@
 							<ul>
 								<li><a href="javascript:void(0)">{{ 'myaccount' | translate }}</a></li>
 								<li><a href="javascript:void(0)">{{ 'faq' | translate }}</a></li>
-								<li><a href="javascript:void(0)">{{ 'privacy' | translate }}</a></li>
+								<!-- <li><a href="javascript:void(0)">{{ 'privacy' | translate }}</a></li> -->
 								<li><a href="javascript:void(0)">{{ 'trackorder' | translate }}</a></li>
-								<li><a href="javascript:void(0)">{{ 'sellatmarketoo' | translate }}</a></li>
+								<li><a href="javascript:void(0)">{{ 'openshop' | translate }}</a></li>
 							</ul>
 						</div>
 					</div>
