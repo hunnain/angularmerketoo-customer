@@ -11,6 +11,8 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { ContactComponent } from './account/contact/contact.component';
 import { CheckoutComponent } from './account/checkout/checkout.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SellerSignUpComponent } from './seller-signup/seller-signup.component';
+import { SellerContentComponent } from './seller-content/seller-content.component';
 import { SearchComponent } from './search/search.component';
 import { TypographyComponent } from './typography/typography.component';
 import { ReviewComponent } from './review/review.component';
@@ -33,135 +35,153 @@ import { MasonryGridTwoComponent } from './portfolio/masonry-grid-two/masonry-gr
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
 const routes: Routes = [
-  { 
-    path: 'wishlist', 
-    component: WishlistComponent 
+  {
+    path: 'wishlist',
+    component: WishlistComponent
   },
-  { 
-    path: 'cart', 
-    component: CartComponent 
+  {
+    path: 'cart',
+    component: CartComponent
   },
-  { 
-    path: 'dashboard', 
-    component: DashboardComponent 
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
-  { 
-    path: 'login', 
-    component: LoginComponent 
+  {
+    path: 'login',
+    component: LoginComponent
   },
-  { 
-    path: 'register', 
-    component: RegisterComponent 
+  {
+    path: 'register',
+    component: RegisterComponent
   },
-  { 
-    path: 'forget/password', 
-    component: ForgetPasswordComponent 
+  {
+    path: 'forget/password',
+    component: ForgetPasswordComponent
   },
-  { 
-    path: 'profile', 
-    component: ProfileComponent 
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
-  { 
-    path: 'contact', 
-    component: ContactComponent 
+  {
+    path: 'contact',
+    component: ContactComponent
   },
-  { 
-    path: 'checkout', 
-    component: CheckoutComponent 
+  {
+    path: 'checkout',
+    component: CheckoutComponent
   },
-  { 
-    path: 'aboutus', 
-    component: AboutUsComponent 
+  {
+    path: 'aboutus',
+    component: AboutUsComponent
   },
-  { 
-    path: 'search', 
-    component: SearchComponent 
+  {
+    path: 'seller-signup',
+    component: SellerSignUpComponent
   },
-  { 
-    path: 'typography', 
-    component: TypographyComponent 
+  {
+    path: 'store-intro',
+    component: SellerContentComponent
   },
-  { 
-    path: 'review', 
-    component: ReviewComponent 
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent
   },
-  { 
-    path: 'order/success', 
-    component: OrderSuccessComponent 
+  {
+    path: 'terms-conditions',
+    component: TermsConditionsComponent
   },
-  { 
-    path: 'compare/one', 
-    component: CompareOneComponent 
+  {
+    path: 'search',
+    component: SearchComponent
   },
-  { 
-    path: 'compare/two', 
-    component: CompareTwoComponent 
+  {
+    path: 'typography',
+    component: TypographyComponent
   },
-  { 
-    path: 'collection', 
-    component: CollectionComponent 
+  {
+    path: 'review',
+    component: ReviewComponent
   },
-  { 
-    path: 'lookbook', 
-    component: LookbookComponent 
+  {
+    path: 'order/success',
+    component: OrderSuccessComponent
   },
-  { 
-    path: '404', 
-    component: ErrorComponent 
+  {
+    path: 'compare/one',
+    component: CompareOneComponent
   },
-  { 
-    path: 'comingsoon', 
-    component: ComingSoonComponent 
+  {
+    path: 'compare/two',
+    component: CompareTwoComponent
   },
-  { 
-    path: 'faq', 
-    component: FaqComponent 
+  {
+    path: 'collection',
+    component: CollectionComponent
   },
-  { 
-    path: 'blog/left/sidebar', 
-    component: BlogLeftSidebarComponent 
+  {
+    path: 'lookbook',
+    component: LookbookComponent
   },
-  { 
-    path: 'blog/right/sidebar', 
-    component: BlogRightSidebarComponent 
+  {
+    path: '404',
+    component: ErrorComponent
   },
-  { 
-    path: 'blog/no/sidebar', 
-    component: BlogNoSidebarComponent 
+  {
+    path: 'comingsoon',
+    component: ComingSoonComponent
   },
-  { 
-    path: 'blog/details', 
-    component: BlogDetailsComponent 
+  {
+    path: 'faq',
+    component: FaqComponent
   },
-  { 
-    path: 'portfolio/grid/two', 
-    component: GridTwoComponent 
+  {
+    path: 'blog/left/sidebar',
+    component: BlogLeftSidebarComponent
   },
-  { 
-    path: 'portfolio/grid/three', 
-    component: GridThreeComponent 
+  {
+    path: 'blog/right/sidebar',
+    component: BlogRightSidebarComponent
   },
-  { 
-    path: 'portfolio/grid/four', 
-    component: GridFourComponent 
+  {
+    path: 'blog/no/sidebar',
+    component: BlogNoSidebarComponent
   },
-  { 
-    path: 'portfolio/masonry/grid/two', 
-    component: MasonryGridTwoComponent 
+  {
+    path: 'blog/details',
+    component: BlogDetailsComponent
   },
-  { 
-    path: 'portfolio/masonry/grid/three', 
-    component: MasonryGridThreeComponent 
+  {
+    path: 'portfolio/grid/two',
+    component: GridTwoComponent
   },
-  { 
-    path: 'portfolio/masonry/grid/four', 
-    component: MasonryGridFourComponent 
+  {
+    path: 'portfolio/grid/three',
+    component: GridThreeComponent
   },
-  { 
-    path: 'portfolio/masonry/full-width', 
-    component: MasonryFullWidthComponent 
+  {
+    path: 'portfolio/grid/four',
+    component: GridFourComponent
+  },
+  {
+    path: 'portfolio/masonry/grid/two',
+    component: MasonryGridTwoComponent
+  },
+  {
+    path: 'portfolio/masonry/grid/three',
+    component: MasonryGridThreeComponent
+  },
+  {
+    path: 'portfolio/masonry/grid/four',
+    component: MasonryGridFourComponent
+  },
+  {
+    path: 'portfolio/masonry/full-width',
+    component: MasonryFullWidthComponent
   }
 ];
 

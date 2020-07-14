@@ -1,0 +1,24 @@
+p {
+    color: black;
+    text-indent: 30px;
+    font-weight: 200;
+  
+  }
+.bullet {
+  display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside;
+    margin-left: 14px;
+
+}
+  button {
+      
+    border: 1px solid #435034;
+    background: #435034;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 0 0;
+    cursor: pointer;
+    font-size: 13px;
+    width: 30%;
+  }

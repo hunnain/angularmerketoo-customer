@@ -119,10 +119,10 @@ export class NavService {
 				},
 				{
 					title: 'email-template', type: 'sub', active: false, children: [
-						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-order-success.html', title: 'order-success', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-order-success-two.html', title: 'order-success-2', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-template.html', title: 'email-template', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-template-two.html', title: 'email-template-2', type: 'extTabLink' }
+						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-order-success.html', title: 'order-success', type: 'extTabLink' },
+						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-order-success-two.html', title: 'order-success-2', type: 'extTabLink' },
+						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-template.html', title: 'email-template', type: 'extTabLink' },
+						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-template-two.html', title: 'email-template-2', type: 'extTabLink' }
 					]
 				}
 			]

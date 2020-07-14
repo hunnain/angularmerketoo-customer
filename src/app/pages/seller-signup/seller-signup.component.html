@@ -1,0 +1,538 @@
+<section class="about-page  section-b-space" style="border-top: 1px solid #ab9898;
+margin-top: 6px;">
+    <div class="container" style="width: 60%;">
+        <a [routerLink]="['/shop/collection/left/sidebar']">
+            <img src="assets/images/seller-sign.jpg" class="img-fluid center" alt="">
+        </a>
+        <h2 style="    margin-top: 12px;">{{'ss-title' | translate }}</h2>
+        <div class="modal-header">
+            <h3 class="modal-title" id="AddNewBatteryModelTitle">{{'ss-title-label' | translate }}</h3>
+            <h5 class="modal-title" style="color: red;" id="AddNewBatteryModelTitle">{{'ss-title-label-*' | translate }}
+            </h5>
+
+        </div>
+        <div class="modal-body modal-body_custom">
+            <form [formGroup]="addBatteryForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control">{{'ss-h1' | translate }}
+                        </label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f1' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f2' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label margin_0 login_font ">{{'ss-h1-f3' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f4' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'male' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'female' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f5' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'hongkong' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'macau' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'taiwan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'japan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'china' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'singapore' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'southkorea' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'thailand' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'malaysia' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f6' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f7' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h1-f8' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'ss-h1-f8-05' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h1-f8-02' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h1-f8-03' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h1-f8-04' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-12">
+                        <label class="control">{{'ss-h3' | translate }}</label>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h2-f1' | translate }}</label>
+                            <p>{{'ss-h2-f1-p' | translate }}</p>
+                            <input style="width: 50%;" type="text" aria-label="SerialNumber"
+                                placeholder="https://marketoo.hk/" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h2-f2' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'ss-h2-f2-01' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h2-f2-02' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female"> {{'ss-h2-f2-03' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-12">
+                        <label class="control">{{'ss-h3' | translate }}
+                        </label>
+                        <p>{{'ss-h3-p' | translate }}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f1' | translate }}</label>
+                            <input style="height: 39px!important;width: 50%;" type="file" aria-label="SerialNumber"
+                                class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" />
+                            <input style="height: 39px!important;width: 50%;" type="file" aria-label="SerialNumber"
+                                class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" /> <input
+                                style="height: 39px!important;width: 50%;" type="file" aria-label="SerialNumber"
+                                class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" /> <input
+                                style="height: 39px!important;width: 50%;" type="file" aria-label="SerialNumber"
+                                class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" /> <input
+                                style="height: 39px!important;width: 50%;" type="file" aria-label="SerialNumber"
+                                class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f2' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-12">
+                        <label class="control-label margin_0 login_font required">{{'ss-h3-f3' | translate }}</label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label margin_0 login_font">Facebook</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label margin_0 login_font">Instagram</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f4' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">&#60;HK$100</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">HK$100-300</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female"> HK$300-500</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">HK$500-1000</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">&#62;HK$1000</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f5' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'hongkong' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'macau' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'taiwan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'japan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'china' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'singapore' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'southkorea' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f6' | translate }}</label>
+                            <div class="custom-control custom-radio">
+                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'hongkong' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'macau' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'taiwan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'japan' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'china' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'singapore' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'southkorea' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'thailand' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'malaysia' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f7' | translate }}</label>
+                            <div class="custom-control custom-checkbox">
+                                <input id="male" type="checkbox" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'ss-h3-f7-01' | translate }}</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f7-02' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f7-03' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f7-04' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f7-05' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f7-06' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h3-f8' | translate }}</label>
+                            <div class="custom-control custom-checkbox">
+                                <input id="male" type="checkbox" class="custom-control-input" value="male" name="gender"
+                                    formControlName="gender">
+                                <label class="custom-control-label" for="male">{{'ss-h3-f8-01' | translate }}
+                                </label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f8-02' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f8-03' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f8-04' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f8-05' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'ss-h3-f8-06' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="female" type="checkbox" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'other' | translate }}</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label margin_0 login_font">{{'ss-h3-f9' | translate }}</label>
+                            <input type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-solid">{{'submit' | translate }}</button>
+        </div>
+    </div>
+</section>

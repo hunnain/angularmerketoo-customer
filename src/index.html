@@ -7,7 +7,29 @@
 	<base href="/">
 	<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA8R0AJvrlt7tJPnV9TZ9sPjhNx63eypSc",
+    authDomain: "user-management-7d8ab.firebaseapp.com",
+    databaseURL: "https://user-management-7d8ab.firebaseio.com",
+    projectId: "user-management-7d8ab",
+    storageBucket: "user-management-7d8ab.appspot.com",
+    messagingSenderId: "459621037360",
+    appId: "1:459621037360:web:f3270abbed9201f6a604f5",
+    measurementId: "G-GVVM7F8N4L"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </head>
 
 <body class="ltr">
@@ -25,7 +47,8 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-
+   <script src="https://surveyjs.azureedge.net/1.7.19/survey.angular.js"></script>
+   <link href="https://surveyjs.azureedge.net/1.7.19/modern.css" type="text/css" rel="stylesheet"/>
 	<!-- Your customer chat code -->
 	<div id="fb-chat" class="fb-customerchat" attribution=setup_tool page_id="2123438804574660" theme_color="#f2917e"
 		logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"

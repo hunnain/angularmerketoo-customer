@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "multikart": {
+    "marketoo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/multikart/browser",
+            "outputPath": "dist/marketoo/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -30,10 +30,19 @@
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
               "src/assets/scss/app.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/survey-angular/survey.css",
+              "node_modules/survey-creator/survey-creator.css"
+       
             ],
             "scripts": [
-              "node_modules/isotope-layout/dist/isotope.pkgd.min.js"
+              "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery-ui/ui/widgets/datepicker.js",
+              "node_modules/select2/dist/js/select2.js",
+              "node_modules/jquery-bar-rating/dist/jquery.barrating.min.js",
+              "node_modules/ckeditor/ckeditor.js",
+              "node_modules/emotion-ratings/dist/emotion-ratings.js"
             ]
           },
           "configurations": {
@@ -70,18 +79,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "multikart:build"
+            "browserTarget": "marketoo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "multikart:build:production"
+              "browserTarget": "marketoo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "multikart:build"
+            "browserTarget": "marketoo:build"
           }
         },
         "test": {
@@ -118,18 +127,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "multikart:serve"
+            "devServerTarget": "marketoo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "multikart:serve:production"
+              "devServerTarget": "marketoo:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/multikart/server",
+            "outputPath": "dist/marketoo/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -150,21 +159,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "multikart:build",
-            "serverTarget": "multikart:server"
+            "browserTarget": "marketoo:build",
+            "serverTarget": "marketoo:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "multikart:build:production",
-              "serverTarget": "multikart:server:production"
+              "browserTarget": "marketoo:build:production",
+              "serverTarget": "marketoo:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "multikart:build:production",
-            "serverTarget": "multikart:server:production",
+            "browserTarget": "marketoo:build:production",
+            "serverTarget": "marketoo:server:production",
             "routes": [
               "/"
             ]
@@ -176,7 +185,7 @@
       }
     }
   },
-  "defaultProject": "multikart",
+  "defaultProject": "marketoo",
   "cli": {
     "analytics": false
   }

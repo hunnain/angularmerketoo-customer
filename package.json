@@ -1,5 +1,5 @@
 {
-  "name": "multikart",
+  "name": "marketoo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,10 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run multikart:serve-ssr",
-    "serve:ssr": "node dist/multikart/server/main.js",
-    "build:ssr": "ng build --prod && ng run multikart:server:production",
-    "prerender": "ng run multikart:prerender"
+    "dev:ssr": "ng run marketoo:serve-ssr",
+    "serve:ssr": "node dist/marketoo/server/main.js",
+    "build:ssr": "ng build --prod && ng run marketoo:server:production",
+    "prerender": "ng run marketoo:prerender"
   },
   "private": true,
   "dependencies": {
@@ -38,8 +38,10 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
+    "ckeditor": "^4.11.4",
     "domino": "^2.1.5",
     "express": "^4.15.2",
+    "firebase": "^5.9.4",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "hammerjs": "^2.0.8",
@@ -64,6 +66,9 @@
     "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
+    "survey-angular": "^1.7.19",
+    "survey-creator": "^1.7.19",
+    "surveyjs-widgets": "^1.7.19",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

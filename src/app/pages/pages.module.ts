@@ -15,6 +15,7 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { ContactComponent } from './account/contact/contact.component';
 import { CheckoutComponent } from './account/checkout/checkout.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SellerContentComponent } from './seller-content/seller-content.component';
 import { SearchComponent } from './search/search.component';
 import { TypographyComponent } from './typography/typography.component';
 import { ReviewComponent } from './review/review.component';
@@ -39,6 +40,11 @@ import { MasonryGridTwoComponent } from './portfolio/masonry-grid-two/masonry-gr
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { SellerSignUpComponent } from './seller-signup/seller-signup.component';
+import { SurveyComponent } from '../components/survey.component';
+import { SurveyCreatorComponent } from '../components/survey.creator.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +58,10 @@ import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonr
     ContactComponent,
     CheckoutComponent,
     AboutUsComponent,
+    SellerSignUpComponent,
+    SellerContentComponent,
+    TermsConditionsComponent,
+    PrivacyPolicyComponent,
     SearchComponent,
     TypographyComponent,
     ReviewComponent,
@@ -73,7 +83,9 @@ import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonr
     MasonryGridTwoComponent,
     MasonryGridThreeComponent,
     MasonryGridFourComponent,
-    MasonryFullWidthComponent
+    MasonryFullWidthComponent,
+    SurveyComponent,
+    SurveyCreatorComponent
   ],
   imports: [
     CommonModule,

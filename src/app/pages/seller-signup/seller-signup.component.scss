@@ -1,0 +1,16 @@
+button {
+    padding: 7px 17px;
+}
+.form-control {
+    height:32px!important
+}
+.control-label.required:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top: 0px;
+  }
+  .control {
+    font-size: 22px;
+  }
