@@ -197,7 +197,14 @@ margin-top: 6px;">
                         <div class="form-group">
                             <label
                                 class="control-label margin_0 login_font required">{{'ss-h2-f1' | translate }}</label>
-                            <p>{{'ss-h2-f1-p' | translate }}</p>
+                            <input style="width: 50%;" type="text" aria-label="SerialNumber" class="form-control"
+                                [formControl]="addBatteryForm.controls['SerialNumber']" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label
+                                class="control-label margin_0 login_font required">{{'ss-h2-f1-p' | translate }}</label>
                             <input style="width: 50%;" type="text" aria-label="SerialNumber"
                                 placeholder="https://marketoo.hk/" class="form-control"
                                 [formControl]="addBatteryForm.controls['SerialNumber']" />
@@ -254,19 +261,19 @@ margin-top: 6px;">
                                 class="form-control" [formControl]="addBatteryForm.controls['SerialNumber']" />
                         </div>
                     </div>
+
+                    <div class="col-md-12">
+                        <label class="control-label margin_0 login_font required">{{'ss-h3-f3' | translate }}</label>
+
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label
-                                class="control-label margin_0 login_font required">{{'ss-h3-f2' | translate }}</label>
+                            <label class="control-label margin_0 login_font ">{{'ss-h3-f2' | translate }}</label>
                             <input type="text" aria-label="SerialNumber" class="form-control"
                                 [formControl]="addBatteryForm.controls['SerialNumber']" />
                         </div>
                     </div>
                     <div class="col-md-6">
-
-                    </div>
-                    <div class="col-md-12">
-                        <label class="control-label margin_0 login_font required">{{'ss-h3-f3' | translate }}</label>
 
                     </div>
                     <div class="col-md-6">
@@ -361,6 +368,16 @@ margin-top: 6px;">
                                 <input id="female" type="radio" class="custom-control-input" value="female"
                                     name="gender" formControlName="gender">
                                 <label class="custom-control-label" for="female">{{'southkorea' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'thailand' | translate }}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="female" type="radio" class="custom-control-input" value="female"
+                                    name="gender" formControlName="gender">
+                                <label class="custom-control-label" for="female">{{'malaysia' | translate }}</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="female" type="radio" class="custom-control-input" value="female"

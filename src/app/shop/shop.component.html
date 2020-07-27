@@ -1,5 +1,5 @@
-<app-header-one *ngIf="!router.url.includes('cart')" [sticky]="true"></app-header-one>
-<app-header-two *ngIf="router.url.includes('cart')" [sticky]="true"></app-header-two>
+<app-header-one *ngIf="!router.url.includes('checkout')" [sticky]="true"></app-header-one>
+<app-header-two *ngIf="router.url.includes('checkout')" [sticky]="true"></app-header-two>
 <router-outlet></router-outlet>
-<app-footer-one *ngIf="!router.url.includes('cart')"></app-footer-one>
-<app-footer-two *ngIf="router.url.includes('cart')"></app-footer-two>
+<app-footer-one *ngIf="!router.url.includes('checkout')"></app-footer-one>
+<app-footer-two *ngIf="router.url.includes('checkout')"></app-footer-two>

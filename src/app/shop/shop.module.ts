@@ -39,6 +39,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './checkout/success/success.component';
+import { DesignerPageComponent } from './collection/designer-page/designer-page.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SuccessComponent } from './checkout/success/success.component';
     StockInventoryComponent,
     RelatedProductComponent,
     CollectionLeftSidebarComponent,
+    DesignerPageComponent,
     CollectionRightSidebarComponent,
     CollectionNoSidebarComponent,
     GridComponent,
