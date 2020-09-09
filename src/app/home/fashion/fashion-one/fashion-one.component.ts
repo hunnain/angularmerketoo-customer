@@ -16,7 +16,7 @@ export class FashionOneComponent implements OnInit {
 
   constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe(response => {
-      this.products = response.filter(item => item.type == 'accessories');
+      this.products = response
       // Get Product Collection
       this.products.filter((item) => {
         item.collection.filter((collection) => {

@@ -1,0 +1,48 @@
+.list-side-by-side {
+    width: 60%;
+  
+    dt {
+      float: left;
+      max-width: 40%;
+      font-weight: bold;
+    }
+    
+    dd {
+      color: grey;
+      margin-left: 50%;
+      margin-bottom: .5em;
+    }
+    
+    dd::after {
+      content: " ";
+      display: block;
+      clear: left;
+    }  
+  }
+  
+  
+.searchButton {
+    width: 140px;
+    height: 33px;
+    border: 1px solid #435034;
+    background: #435034;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 0 0;
+    cursor: pointer;
+    font-size: 13px;
+  }
+.reddy {
+    color: #f2917e;
+    padding-left : 4%;
+}
+
+.policytext{
+    display: inline-block;
+  }
+  .left{
+  float:left;
+  }
+  .right{
+  float:right;
+  }

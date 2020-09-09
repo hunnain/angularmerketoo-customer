@@ -21,6 +21,9 @@ import { SuccessComponent } from './checkout/success/success.component';
 
 import { Resolver } from '../shared/services/resolver.service';
 import { DesignerPageComponent } from './collection/designer-page/designer-page.component';
+import { MailboxComponent } from './collection/mailbox/mailbox.component';
+import { NotificationComponent } from './collection/notification/notification.component';
+import { MyProfileComponent } from './collection/myprofile/myprofile.component';
 
 const routes: Routes = [
   {
@@ -91,6 +94,18 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'mail',
+    component: MailboxComponent
+  },
+  {
+    path: 'profile',
+    component: MyProfileComponent
+  },
+  {
+    path: 'notification',
+    component: NotificationComponent
   },
   {
     path: 'wishlist',

@@ -1,10 +1,21 @@
-<app-breadcrumb [title]="product?.title" [breadcrumb]="'Product'"></app-breadcrumb>
+<!-- <app-breadcrumb [title]="product?.title" [breadcrumb]="'Product'"></app-breadcrumb> -->
 <!-- section start -->
-<section class="section-b-space">
+<section class="section-b-space" style="border-top: 1px solid #ab9898;
+margin-top: 6px;padding-top: 0px;">
   <div class="collection-wrapper">
     <div class="container">
+      <div style="width: 70%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 1.5%;
+      padding-top: 1.5%;" class="top-banner-wrapper ">
+        <a [routerLink]="['/shop/collection/left/sidebar']">
+          <img src="assets/images/collection-banner.jpg" class="img-fluid center" alt="">
+        </a>
+      </div>
       <div class="row">
-        <div class="col-lg-9 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
           <div class="container-fluid">
             <div class="row">
               <div class="col-xl-12">
@@ -17,62 +28,62 @@
             </div>
             <div class="row">
               <div class="col-lg-6">
-                <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar  class="product-slick">
-                    <ng-container *ngFor="let image of product.images; index as i">
-                        <ng-template carouselSlide [id]="i">
-                            <div>
-                              <img [defaultImage]="'assets/images/product/placeholder.jpg'" 
-                                   [lazyLoad]="image.src" 
-                                   [alt]="image.alt" class="img-fluid" [src]="image.src">
-                            </div>
-                        </ng-template>
-                    </ng-container>
+                <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar class="product-slick">
+                  <ng-container *ngFor="let image of product.images; index as i">
+                    <ng-template carouselSlide [id]="i">
+                      <div>
+                        <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src"
+                          [alt]="image.alt" class="img-fluid" [src]="image.src">
+                      </div>
+                    </ng-template>
+                  </ng-container>
                 </owl-carousel-o>
-                <div class="col-12 p-0">
-                    <div class="slider-nav">
-                        <owl-carousel-o [options]="ProductDetailsThumbConfig" class="product-slick">
-                            <ng-container *ngFor="let image of product.images; index as i">
-                                <ng-template carouselSlide [id]="i">
-                                    <div class="owl-thumb" [class.active]="i == activeSlide">
-                                      <img [defaultImage]="'assets/images/product/placeholder.jpg'" 
-                                           [lazyLoad]="image.src" 
-                                           [alt]="image.alt" class="img-fluid" [src]="image.src" (click)="owlCar.to(activeSlide = i.toString())">
-                                    </div>
-                                </ng-template>
-                            </ng-container>
-                        </owl-carousel-o>
-                    </div>
+                <div style="margin-top: -34%!important;" class="col-12 p-0">
+                  <div class="slider-nav">
+                    <owl-carousel-o [options]="ProductDetailsThumbConfig" class="product-slick">
+                      <ng-container *ngFor="let image of product.images; index as i">
+                        <ng-template carouselSlide [id]="i">
+                          <div class="owl-thumb" [class.active]="i == activeSlide">
+                            <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src"
+                              [alt]="image.alt" class="img-fluid" [src]="image.src"
+                              (click)="owlCar.to(activeSlide = i.toString())">
+                          </div>
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
                   <h2>{{ product?.title }}</h2>
                   <h4>
-                      <del *ngIf="product?.discount">{{ product?.price * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}</del>
-                      <span>{{ product?.discount }}% off</span>
+                    <del
+                      *ngIf="product?.discount">{{ product?.price * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}</del>
+                    <span>{{ product?.discount }}% off</span>
                   </h4>
                   <h3>
-                      {{ (product?.price | discount:product) * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}
+                    {{ (product?.price | discount:product) * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}
                   </h3>
-                  <ul class="color-variant" *ngIf="Color(product?.variants).length">
+                  <!-- <ul class="color-variant" *ngIf="Color(product?.variants).length">
                     <li [class]="color" [class.active]="activeSlide == i.toString()" *ngFor="let color of Color(product?.variants); index as i" 
                         [ngStyle]="{'background-color': color}"
                         (click)="owlCar.to(activeSlide = i.toString())">
                     </li>
-                  </ul>
-                  <app-stock-inventory [stock]="product.stock"></app-stock-inventory>
+                  </ul> -->
+                  <!-- <app-stock-inventory [stock]="product.stock"></app-stock-inventory> -->
                   <div class="product-description border-product">
                     <h6 class="product-title size-text" *ngIf="Size(product.variants).length">
-                        select size
-                        <span>
-                          <a href="javascrip:void(0)" (click)="SizeChart.openModal()">size chart</a>
-                        </span>
+                      select size
+                      <span>
+                        <a href="javascrip:void(0)" (click)="SizeChart.openModal()">size chart</a>
+                      </span>
                     </h6>
                     <div class="size-box" *ngIf="Size(product.variants).length">
                       <ul>
-                          <li [class.active]="selectedSize == size" *ngFor="let size of Size(product.variants)">
-                              <a href="javascript:void(0)" (click)="selectSize(size)">{{ size | titlecase }}</a>
-                          </li>
+                        <li [class.active]="selectedSize == size" *ngFor="let size of Size(product.variants)">
+                          <a href="javascript:void(0)" (click)="selectSize(size)">{{ size | titlecase }}</a>
+                        </li>
                       </ul>
                     </div>
                     <h5 class="avalibility" *ngIf="counter <= product.stock"><span>In Stock</span></h5>
@@ -85,7 +96,8 @@
                             <i class="ti-angle-left"></i>
                           </button>
                         </span>
-                        <input type="text" name="quantity" class="form-control input-number" [value]="counter" disabled/>
+                        <input type="text" name="quantity" class="form-control input-number" [value]="counter"
+                          disabled />
                         <span class="input-group-prepend">
                           <button type="button" class="btn quantity-right-plus" data-type="plus" (click)="increment()">
                             <i class="ti-angle-right"></i>
@@ -95,12 +107,73 @@
                     </div>
                   </div>
                   <div class="product-buttons">
-                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock" (click)="addToCart(product)">add to cart</a>
-                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock" (click)="buyNow(product)">buy now</a>
+                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock"
+                      (click)="addToCart(product)">add to cart</a>
+                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock"
+                      (click)="buyNow(product)">buy now</a>
                   </div>
                   <div class="border-product">
-                    <h6 class="product-title">product details</h6>
-                    <p>{{ product.description.substring(0, 200)+'...' }}</p>
+                    <h5 class="product-title">product Information</h5>
+                    <div style="margin-top: 10px;" class="list-side-by-side">
+                      <dl>
+                        <dt>Material</dt>
+                        <dd>Cotton</dd>
+                        <dt>Manufacturing method</dt>
+                        <dd>Machine manufacturing</dd>
+                        <dt>Commodity origin</dt>
+                        <dd>China Mainland</dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <div class="border-product">
+                    <h5 class="product-title">About Design Shop</h5>
+                    <div style="margin-top: 15px;" class="row">
+                      <div class="column">
+                        <img style="    width: 60%;
+                          padding-left: 17px;" src="assets/images/vs.jpg" alt="">
+
+                      </div>
+                      <div style="margin-left: 0%;" class="column">
+                        <h3 style="font-weight: 600;
+                          color: black;">Vitamin Sea</h3>
+                        <ul>
+                          <li>
+                            <p> <i class="fa fa-map-marker"></i> Japan</p>
+                          </li>
+
+                        </ul>
+                        <ul>
+                          <li style="width: 122px;margin-bottom: 10px;    margin-left: 6px;
+                          ">
+                            <i class="fa fa-heart reddy"></i><i class="fa fa-heart reddy"></i><i
+                              class="fa fa-heart reddy"></i><i class="fa fa-heart reddy"></i><i
+                              class="fa fa-heart reddy"></i>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div style="margin-left: 23%; " class="column">
+                        <button type="submit" class="searchButton"><i style="color: white;" class="fa fa-plus"></i>
+                          Follow Designer
+                        </button>
+                      </div>
+                      <!-- <div style="margin-left: 9%;" class="column">
+                        <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+                          font-weight: 200;;background-color: white;width: 160px;     margin-left: 58%;
+      margin-bottom: 8%;" data-toggle="modal" data-target="#AddNewBattery" type="button"
+                          class="btn btn-outline-primary"><i class="fa fa-address-card"></i> Contact Designer</button>
+                      </div> -->
+                    </div>
+                    <div style="margin-top: 10px;" class="list-side-by-side">
+                      <dl>
+                        <dt>Response rate: </dt>
+                        <dd>95%</dd>
+                        <dt>Response speed:</dt>
+                        <dd>Within 1 day</dd>
+                        <dt>Average shipment speed:</dt>
+                        <dd>1～3 days</dd>
+                      </dl>
+                    </div>
                   </div>
                   <div class="border-product">
                     <h6 class="product-title">share it</h6>
@@ -114,9 +187,9 @@
                       </form>
                     </div>
                   </div>
-                  <div class="border-product">
+                  <!-- <div class="border-product">
                     <app-countdown [date]="'Apr 21 2021'"></app-countdown>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -125,68 +198,60 @@
             <div class="row">
               <div class="col-sm-12 col-lg-12">
                 <ngb-tabset [type]="'tabs'" class="nav-material">
-                    <ngb-tab>
-                        <ng-template ngbTabTitle>Description</ng-template>
-                        <ng-template ngbTabContent>
-                          <p>{{ product.description }}</p>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab>
-                        <ng-template ngbTabTitle>Video</ng-template>
-                        <ng-template ngbTabContent>
-                          <div class="mt-3 text-center">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                          </div>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab>
-                        <ng-template ngbTabTitle>Write Review</ng-template>
-                        <ng-template ngbTabContent>
-                          <form class="theme-form">
-                            <div class="form-row">
-                              <div class="col-md-12 ">
-                                <div class="media">
-                                  <label>Rating</label>
-                                  <div class="media-body ml-3">
-                                    <div class="rating three-star">
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter Your name" required>
-                              </div>
-                              <div class="col-md-6">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="Email" required>
-                              </div>
-                              <div class="col-md-12">
-                                <label for="review">Review Title</label>
-                                <input type="text" class="form-control" id="review" placeholder="Enter your Review Subjects" required>
-                              </div>
-                              <div class="col-md-12">
-                                <label for="review">Review Title</label>
-                                <textarea class="form-control" placeholder="Wrire Your Testimonial Here" id="exampleFormControlTextarea1" rows="6"></textarea>
-                              </div>
-                              <div class="col-md-12">
-                                <button class="btn btn-solid" type="submit">Submit YOur Review</button>
-                              </div>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Product Description</ng-template>
+                    <ng-template ngbTabContent>
+                      <p>[Notes on Real-Name Certification for Imports from Taiwan]
+                        Hello, I am glad to see you visiting the store. Buyers from Taiwan need to pay attention!
+                        Because Taiwan Customs strictly implements real-name certification for import customs clearance
+                        to prevent imposing declarations of express goods imports and protect people’s personal assets,
+                        SF Express now requires real-name certification for parcels sent to Taiwan. If you place an
+                        order to purchase packages, you also need to download the real-name certification APP of the
+                        customs. "EZway Yili Committee", after completing the mobile phone registration and
+                        authentication, you will receive a SMS or email notification after the authentication is
+                        successful, let us know if you succeed! As long as the certification is successful and we inform
+                        us, the package can be shipped immediately (because Taiwan customs now requires such
+                        certification for all imported products to be released, I hope you understand) ~ For
+                        real-name certification questions, you can consult us or pinkoi customer service.
+                        For APP registration and certification operations, please check here
+                        pinkoi.zendesk.com/hc/zh-tw/article...</p>
+                      <p>* Buyers must read the purchase instructions before taking the goods. Once
+                        all goods are sold, except for quality problems ( Dropped hardware, off-line, damaged leather),
+                        any return or exchange due to subjective reasons, you need to pay the round-trip postage
+                        yourself, please consciously deduct the postage sent when refunding.</p>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Product Reviews</ng-template>
+                    <ng-template ngbTabContent>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="column">
+                              <img style="    width: 10%;
+                              padding-left: 17px;" src="assets/images/vs.jpg" alt="">
+                              <div class="policytext">Chen Abby week ago to this product
+                                shopping evaluation of left
+                                Scared me, just received it! So fast to arrive 👍The
+                                actual product is better than I thought~~ Just like the photo, I must repurchase again
+                                if
+                                I
+                                have
+                                the opportunity. I
+                                also like the small gifts I sent~~</div>
                             </div>
-                          </form>
-                        </ng-template>
-                    </ngb-tab>
+                          </div>
+                        </li>
+                      </ul>
+
+                    </ng-template>
+                  </ngb-tab>
                 </ngb-tabset>
               </div>
             </div>
           </section>
         </div>
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
           <div class="collection-filter" [class.openFilterbar]="mobileSidebar">
               <div class="collection-filter-block">
                   <div class="collection-mobile-back" (click)="toggleMobileSidebar()">
@@ -204,7 +269,7 @@
                     [type]="product?.type">
                   </app-product-box-vertical-slider>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

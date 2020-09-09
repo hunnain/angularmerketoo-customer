@@ -1,0 +1,96 @@
+<!-- <app-breadcrumb [title]="'Collection'" [breadcrumb]="'Collection'"></app-breadcrumb> -->
+<!-- section start -->
+<section class="section-b-space" style="border-top: 1px solid #ab9898;
+margin-top: 6px;padding-top: 0px;">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div style="width: 70%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 1.5%;
+            padding-top: 1.5%;" class="top-banner-wrapper ">
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="collection-filter" [class.openFilterbar]="mobileSidebar">
+                        <!-- side-bar colleps block stat -->
+                        <div style="padding: 30px;" class="collection-filter-block">
+                            <div class="collection-mobile-back" (click)="toggleMobileSidebar()">
+                                <span class="filter-back">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i> back
+                                </span>
+                            </div>
+                            <!-- Category filter start -->
+                            <!-- <app-categories></app-categories> -->
+                            <h4>Notifiction Center</h4>
+                            <ul style="padding-top: 8px;color: #435034;">
+                                <li>
+                                    <a>
+                                        Notification Center
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul style="padding-top: 8px;">
+                                <li>
+                                    <a>
+                                        Announcement
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul style="padding-top: 8px;">
+                                <li>
+                                    <a>
+                                        Notification
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-content col">
+                    <div class="page-main-content">
+                        <div class="row">
+                            <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
+                                <!-- <h5>There are 2/2 letters from</h5> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="border-bottom: 1px solid #eeeeef;" class="col-sm-12">
+                                <a [routerLink]="['/shop/collection/left/sidebar']">
+                                    <img style="  width: 82%;" src="assets/images/notification.jpg" class="img-fluid center"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="border-bottom: 1px solid #eeeeef;" class="col-sm-12">
+                                <a [routerLink]="['/shop/collection/left/sidebar']">
+                                    <img style="  width: 82%;" src="assets/images/notification.jpg" class="img-fluid center"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="border-bottom: 1px solid #eeeeef;" class="col-sm-12">
+                                <a [routerLink]="['/shop/collection/left/sidebar']">
+                                    <img style="  width: 82%;" src="assets/images/notification.jpg" class="img-fluid center"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="border-bottom: 1px solid #eeeeef;" class="col-sm-12">
+                                <a [routerLink]="['/shop/collection/left/sidebar']">
+                                    <img style="  width: 82%;" src="assets/images/notification.jpg" class="img-fluid center"
+                                        alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section End -->

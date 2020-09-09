@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../classes/product";
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, Params } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/core/auth.service'
+
 declare var $: any;
 @Component({
   selector: 'app-settings',
@@ -16,6 +19,11 @@ export class SettingsComponent implements OnInit {
   public products: Product[] = []
   public text = { openshop: "Open Shop" }
   public lan: boolean;
+  public register: boolean = true;
+  public menu: boolean = true;
+  private modalRef: NgbModalRef;
+  public logi: boolean = true;
+  public default: boolean = true;
   public loginDialog: string = "AddNewBattery";
   themeLogo: string = 'assets/Marketoo.png';
   loginLogo: string = 'assets/images/login.jpg';
@@ -48,6 +56,8 @@ export class SettingsComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
     private modalService: NgbModal,
+    public authService: AuthService,
+    private router: Router,
     public productService: ProductService) {
     this.productService.cartItems.subscribe(response => this.products = response);
   }
@@ -64,7 +74,8 @@ export class SettingsComponent implements OnInit {
   }
 
   login(content) {
-    this.modalService.open(content, { centered: true });
+    this.default = false
+    this.modalRef = this.modalService.open(content, { centered: true });
   }
   changeLanguage(code) {
     if (isPlatformBrowser(this.platformId)) {
@@ -83,5 +94,30 @@ export class SettingsComponent implements OnInit {
   changeCurrency(currency: any) {
     this.productService.Currency = currency
   }
-
+  tryGoogleLogin() {
+    this.authService.doGoogleLogin()
+      .then(res => {
+        console.log(res)
+        this.menu = false
+        this.modalRef.close();
+        this.router.navigate(['/user']);
+      })
+  }
+  tryFacebookLogin() {
+    this.authService.doFacebookLogin()
+      .then(res => {
+        this.menu = false
+        this.modalRef.close();
+        this.menu = false
+        this.router.navigate(['/user']);
+      })
+  }
+  tryLogin(value) {
+    this.authService.doLogin(value)
+      .then(res => {
+        this.router.navigate(['/user']);
+      }, err => {
+        console.log(err);
+      })
+  }
 }

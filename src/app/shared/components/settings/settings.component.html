@@ -4,11 +4,26 @@
       <button style="color: black;text-transform:capitalize;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200" type="button" class="btn btn-link">{{ 'openshop' | translate }}</button>
     </li>
-    <li id="hide">
+    <li [hidden]="!menu" id="hide">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200;;background-color: white;" data-toggle="modal" data-target="#AddNewBattery" type="button"
         (click)="login(content)"
         class="btn btn-outline-primary">{{ 'login' | translate }}/{{ 'register' | translate }}</button>
+    </li>
+    <li [hidden]="menu" class="onhover-div mobile-cart">
+      <div>
+        <img src="assets/images/icon/profile.png" class="img-fluid" alt="">
+      </div>
+    </li>
+    <li [hidden]="menu" class="onhover-div mobile-cart">
+      <div>
+        <img src="assets/images/icon/bell.png" class="img-fluid" alt="">
+      </div>
+    </li>
+    <li [hidden]="menu" class="onhover-div mobile-cart">
+      <div>
+        <img src="assets/images/icon/heart.png" class="img-fluid" alt="">
+      </div>
     </li>
     <!-- <li class="onhover-div mobile-setting" [hidden]="!lan">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
@@ -40,30 +55,99 @@
 <div>
 
   <ng-template #content let-modal style="width: 560px;">
-    <div class="modal-header">
-      <a id="loginLogo">
-        <img [src]="loginLogo" class="img-fluid" alt="logo">
-      </a>
-    </div>
-    <div class="modal-body">
-      <p style="text-align: center;">{{'login-ln-1' | translate}}</p>
-      <div id="social"><a class="facebookBtn smGlobalBtn" href="#">
-          <a href="#"></a>
+    <div [hidden]="default">
+      <div class="modal-header">
+        <a id="loginLogo">
+          <img [src]="loginLogo" class="img-fluid" alt="logo">
         </a>
-        <a style="    margin-left: 7%;" class="googleBtn smGlobalBtn" href="#"></a>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;">{{'login-ln-1' | translate}}</p>
+        <div id="social"><a (click)="tryFacebookLogin()" class="facebookBtn smGlobalBtn">
+            <a href="#"></a>
+          </a>
+          <a (click)="tryGoogleLogin()" style="margin-left: 7%;" class="googleBtn smGlobalBtn"></a>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;">{{'login-ln-2' | translate}}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+      font-weight: 200;;background-color: white;width: 115px;" data-toggle="modal" data-target="#AddNewBattery"
+          type="button" (click)="default = true;logi = false"
+          class="btn btn-outline-primary">{{'login' | translate}}</button>
+        <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
+         font-weight: 200;;background-color: white;width: 115px;    margin-right: 107px;" data-toggle="modal"
+          data-target="#AddNewBattery" type="button" (click)="default = true;register = false"
+          class="btn btn-outline-primary">{{'register' | translate}}</button>
       </div>
     </div>
-    <div class="modal-body">
-      <p style="text-align: center;">{{'login-ln-2' | translate}}</p>
-    </div>
+    <div [hidden]="logi">
+      <div class="col-lg-12">
+        <a id="themeLogo">
+          <img style="    margin-left: 26%;    margin-bottom: 7%;
+          margin-top: 15%;
+            width: 40%;" [src]="themeLogo" class="img-fluid" alt="logo">
+        </a>
+        <h3 style="text-align: center;">Log in with Marketoo account</h3>
+        <div class="modal-body">
+          <div class="theme-card">
+            <form class="theme-form">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Email" required="">
+              </div>
+              <div class="form-group">
+                <label for="review">Password</label>
+                <input type="password" class="form-control" id="review" placeholder="Enter your password" required="">
+              </div>
+              <a style="    cursor: pointer;
+              padding-left: 31%;
+              color: blue;" (click)="default = false;logi = true">Back to previous page</a>
+              <button style="width: 46%;
+              margin-left: 25%;margin-bottom: 12%;
+              margin-top: 10%;" class="btn btn-solid">Login</button>
+            </form>
+          </div>
+        </div>
 
-    <div class="modal-footer">
-      <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
-      font-weight: 200;;background-color: white;width: 115px;" data-toggle="modal" data-target="#AddNewBattery"
-        type="button" class="btn btn-outline-primary">{{'login' | translate}}</button>
-      <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
-         font-weight: 200;;background-color: white;width: 115px;    margin-right: 107px;" data-toggle="modal"
-        data-target="#AddNewBattery" type="button" class="btn btn-outline-primary">{{'register' | translate}}</button>
+      </div>
     </div>
+    <div [hidden]="register">
+      <div class="col-lg-12">
+        <a id="themeLogo">
+          <img style="    margin-left: 26%;    margin-bottom: 7%;
+          margin-top: 5%;
+            width: 40%;" [src]="themeLogo" class="img-fluid" alt="logo">
+        </a>
+        <h3 style="text-align: center;">Sign up for a Marketoo account</h3>
+        <div class="modal-body">
+          <div class="theme-card">
+            <form class="theme-form">
+              <div class="form-group">
+                <label for="email">Marketoo account</label>
+                <input type="text" class="form-control" id="email" placeholder="Name" required="">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Email" required="">
+              </div>
+              <div class="form-group">
+                <label for="review">Password</label>
+                <input type="password" class="form-control" id="review" placeholder="Enter your password" required="">
+              </div>
+              <a style="    cursor: pointer;
+              padding-left: 31%;
+              color: blue;" (click)="default = false;register = true">Back to previous page</a>
+              <button style="width: 46%;
+              margin-left: 25%;
+              margin-top: 10%;" class="btn btn-solid">Register</button>
+            </form>
+          </div>
+        </div>
 
+      </div>
+    </div>
   </ng-template>

@@ -40,6 +40,9 @@ import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './checkout/success/success.component';
 import { DesignerPageComponent } from './collection/designer-page/designer-page.component';
+import { MailboxComponent } from './collection/mailbox/mailbox.component';
+import { MyProfileComponent } from './collection/myprofile/myprofile.component';
+import { NotificationComponent } from './collection/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { DesignerPageComponent } from './collection/designer-page/designer-page.
     DesignerPageComponent,
     CollectionRightSidebarComponent,
     CollectionNoSidebarComponent,
+    MailboxComponent,
+    MyProfileComponent,
+    NotificationComponent,
     GridComponent,
     PaginationComponent,
     BrandsComponent,
