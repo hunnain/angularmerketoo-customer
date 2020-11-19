@@ -1,10 +1,10 @@
 <div class="icon-nav">
   <ul>
     <li id="hide">
-      <button style="color: black;text-transform:capitalize;font-family: Helvetica,Arial,Heiti TCsans-serif;
+      <button id="open"style="color: black;text-transform:capitalize;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200" type="button" class="btn btn-link">{{ 'openshop' | translate }}</button>
     </li>
-    <li [hidden]="!menu" id="hide">
+    <li [hidden]="!menu" id="hide" class="loreg">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
       font-weight: 200;;background-color: white;" data-toggle="modal" data-target="#AddNewBattery" type="button"
         (click)="login(content)"

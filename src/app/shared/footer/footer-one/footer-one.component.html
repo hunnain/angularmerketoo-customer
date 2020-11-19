@@ -41,18 +41,21 @@
 					<div class="footer-contant">
 						<!-- <div class="footer-logo">
 							<img [src]="themeLogo" alt="logo">
-						</div> -->
-						<form class="subscribe-form"
+						</div> --> 
+						<form class="subscribe-form" id="hq"
 							action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
 							target="_blank" method="post">
-							<div class="form-group mx-sm-3">
-								<input style="height: 40px;" type="email" #name name="EMAIL" id="mce-EMAIL"
+							<div class="form-group mx-sm-3" >
+								<input style="height: 40px;position: relative;
+								width: 106%;
+								right: 6%;
+								border-radius: 4%;" type="email" #name name="EMAIL" id="mce-EMAIL"
 									class="form-control" placeholder="{{ 'entermail' | translate }}">
 							</div>
 							<button style="padding: 7px 17px;margin-right: 9%;" type="submit"
 								class="btn btn-solid">{{ 'subscribe' | translate }}</button>
 						</form>
-						<p style="    margin-top: 4%;
+						<p id="follow"style="    margin-top: 4%;
 						margin-bottom: -6%;">{{ 'follow' | translate }}</p>
 						<div class="footer-social">
 							<ul>
@@ -74,13 +77,13 @@
 								</li> -->
 							</ul>
 						</div>
-						<div class="footer-social">
+						<!-- <div class="footer-social">
 							<ul>
 								<button type="button" class="btn btn-solid btn-circle btn-xl"><i
 										style="color: white;font-size: 24px;" class="fa fa-gift"></i>
-								</button><button type="button" class="btn btn-primary">Get Rewarded</button>
+								</button><button id="get_r"type="button" class="btn btn-primary">Get Rewarded</button>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="col offset-xl-1">
@@ -150,13 +153,13 @@
 			<div class="row">
 				<div class="col-xl-6 col-md-6 col-sm-6">
 					<div class="footer-logo">
-						<img style=" margin-top: 3%;
+						<img id="l-img"style=" margin-top: 3%;
 							width: 21%;" [src]="themeLogo" alt="logo">
 					</div>
 				</div>
 				<div class="col-xl-6 col-md-6 col-sm-6">
 					<div class="footer-end">
-						<p><i class="fa fa-copyright" aria-hidden="true"></i> {{ today | date:'y'}} Marketoo. All Rights
+						<p id="con"><i class="fa fa-copyright" aria-hidden="true"></i> {{ today | date:'y'}} Marketoo. All Rights
 							Reserved.</p>
 					</div>
 					<!-- <div class="payment-card-bottom">

@@ -14,3 +14,15 @@ button {
   .control {
     font-size: 22px;
   }
+  
+@media (max-width: 1430px) {
+  .mar-img{
+    width: 106%;
+    right: 3%;
+    position: relative;
+    max-width: 2000%;
+  }
+  .ssup{
+    width: 100%!important;
+  }
+}

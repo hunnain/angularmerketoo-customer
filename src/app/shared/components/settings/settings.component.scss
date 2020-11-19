@@ -5,10 +5,14 @@
   }
 
   @media (max-width:629px) {
-    li#hide {
+    #open {
       display: none;
     }
-  }
+    .loreg{
+          position: relative;
+          bottom: -20px;
+    }
+  } 
 
   //@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
