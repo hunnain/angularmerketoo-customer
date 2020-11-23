@@ -47,7 +47,7 @@ margin-top: 6px;padding-top: 0px;">
                             </ul>
                             <ul style="padding-top: 8px;">
                                 <li>
-                                    <a>
+                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=true">
                                         Coupon
                                     </a>
                                 </li>
@@ -70,7 +70,7 @@ margin-top: 6px;padding-top: 0px;">
                             <ul style="padding-top: 8px;font-size: 13px;
                             padding-left: 4px;color: #435034;">
                                 <li>
-                                    <a>
+                                    <a style="cursor: pointer;" (click)="aboutme = true;address=false;coupons=false">
                                         About Me
                                     </a>
                                 </li>
@@ -86,7 +86,7 @@ margin-top: 6px;padding-top: 0px;">
                             <ul style="padding-top: 8px;font-size: 13px;
                             padding-left: 4px;">
                                 <li>
-                                    <a>
+                                    <a style="cursor: pointer;" (click)="aboutme = false;address=true;coupons=false">
                                         Common address book
                                     </a>
                                 </li>
@@ -102,151 +102,151 @@ margin-top: 6px;padding-top: 0px;">
                         </div>
                     </div>
                 </div>
-                <!-- <div class="collection-content col">
-                    <div class="page-main-content">
-                        <div class="row">
-                            <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
-                                <h5 style="font-weight: bold;">About Me</h5>
+                    <div class="collection-content col" *ngIf="aboutme">
+                        <div class="page-main-content">
+                            <div class="row">
+                                <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
+                                    <h5 style="font-weight: bold;">About Me</h5>
+                                </div>
                             </div>
-                        </div>
-                        <div style="border-bottom: 1px solid #eeeeef;" class="row">
-                            <form class="theme-form">
-                                <div style="padding-top: 17px;" class="col-sm-12">
-                                </div>
-                                <div class="form-row">
-                                    <h5 style="font-weight: bold;">Let friends know you</h5>
-
-                                    <div class="col-md-12">
-                                        <label for="name">What kind of person are you</label>
-                                        <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
+                            <div style="border-bottom: 1px solid #eeeeef;" class="row">
+                                <form class="theme-form">
+                                    <div style="padding-top: 17px;" class="col-sm-12">
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Blogs</label>
-                                        <input type="text" class="form-control" id="name" placeholder="" required="">
+                                    <div class="form-row">
+                                        <h5 style="font-weight: bold;">Let friends know you</h5>
+    
+                                        <div class="col-md-12">
+                                            <label for="name">What kind of person are you</label>
+                                            <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Blogs</label>
+                                            <input type="text" class="form-control" id="name" placeholder="" required="">
+                                        </div>
+                                        <div style="margin-bottom: 24px;" class="col-md-12">
+                                            <label for="name">Personal website</label>
+                                            <input type="text" class="form-control" id="name" placeholder="" required="">
+                                        </div>
                                     </div>
-                                    <div style="margin-bottom: 24px;" class="col-md-12">
-                                        <label for="name">Personal website</label>
-                                        <input type="text" class="form-control" id="name" placeholder="" required="">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div style="margin-bottom: 24px;" class="row">
-                            <form class="theme-form">
-                                <div style="padding-top: 17px;" class="col-sm-12">
-                                </div>
-                                <div class="form-row">
-                                    <h5 style="font-weight: bold;">How do you live your life</h5>
-                                    <div class="col-md-12">
-                                        <label for="name">What do you usually buy</label>
-                                        <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Markets, designers, and old houses that love to go
-                                            shopping</label>
-                                        <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-solid">Update</button>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="collection-content col">
-                    <div class="page-main-content">
-                        <div class="row">
-                            <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
-                                <h5 style="font-weight: bold;">My Address Book</h5>
+                                </form>
                             </div>
-                        </div>
-                        <div style="margin-bottom: 24px;" class="row">
-                            <form class="theme-form">
-                                <div style="padding-top: 17px;" class="col-sm-12">
-                                </div>
-                                <div class="form-row">
-                                    <h5 style="font-weight: bold;">The following is your usual address, you can manage
-                                        all used purchase addresses here</h5>
-
-                                    <div class="col-md-12">
-                                        <label for="name">Name</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
+                            <div style="margin-bottom: 24px;" class="row">
+                                <form class="theme-form">
+                                    <div style="padding-top: 17px;" class="col-sm-12">
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Phone</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
+                                    <div class="form-row">
+                                        <h5 style="font-weight: bold;">How do you live your life</h5>
+                                        <div class="col-md-12">
+                                            <label for="name">What do you usually buy</label>
+                                            <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Markets, designers, and old houses that love to go
+                                                shopping</label>
+                                            <textarea class="form-control mb-0" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+    
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Address line 1</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Address line 2</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="name">City</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="name">State / Province / Region</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="name">Zip code / Postal code</label>
-                                        <input style="width: 40%;
-                                        height: 40px;" type="text" class="form-control" id="name" placeholder=""
-                                            required="">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-solid">Update</button>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="collection-content col">
-                    <div class="page-main-content">
-                        <h5 style="font-weight: bold;">Coupons</h5>
-
-                        <div class="row">
-                            <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
-                                <h5>There are 2 Coupons left</h5>
+                                </form>
+    
                             </div>
-                        </div>
-                        <div class="row">
-                            <div  class="col-sm-6">
-                                <a [routerLink]="['/shop/collection/left/sidebar']">
-                                    <img style="width: 70%;    margin-top: 30px;" src="assets/images/coupon2.jpg"
-                                        class="img-fluid center" alt="">
-                                </a>
-                                <a [routerLink]="['/shop/collection/left/sidebar']">
-                                    <img style="width: 70%;    margin-top: 30px;" src="assets/images/coupon1.jpg"
-                                        class="img-fluid center" alt="">
-                                </a>
+                            <div class="row">
+                                <button type="button" class="btn btn-solid">Update</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="collection-content col" *ngIf="address">
+                        <div class="page-main-content">
+                            <div class="row">
+                                <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
+                                    <h5 style="font-weight: bold;">My Address Book</h5>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 24px;" class="row">
+                                <form class="theme-form">
+                                    <div style="padding-top: 17px;" class="col-sm-12">
+                                    </div>
+                                    <div class="form-row">
+                                        <h5 style="font-weight: bold;">The following is your usual address, you can manage
+                                            all used purchase addresses here</h5>
+    
+                                        <div class="col-md-12">
+                                            <label for="name">Name</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Phone</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Address line 1</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Address line 2</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">City</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">State / Province / Region</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="name">Zip code / Postal code</label>
+                                            <input style="width: 40%;
+                                            height: 40px;" type="text" class="form-control" id="name" placeholder=""
+                                                required="">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-solid">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collection-content col" *ngIf="coupons">
+                        <div class="page-main-content">
+                            <h5 style="font-weight: bold;">Coupons</h5>
+    
+                            <div class="row">
+                                <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
+                                    <h5>There are 2 Coupons left</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div  class="col-sm-6">
+                                    <a [routerLink]="['/shop/collection/left/sidebar']">
+                                        <img style="width: 70%;    margin-top: 30px;" src="assets/images/coupon2.jpg"
+                                            class="img-fluid center" alt="">
+                                    </a>
+                                    <a [routerLink]="['/shop/collection/left/sidebar']">
+                                        <img style="width: 70%;    margin-top: 30px;" src="assets/images/coupon1.jpg"
+                                            class="img-fluid center" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -112,12 +112,15 @@ export class SettingsComponent implements OnInit {
         this.router.navigate(['/user']);
       })
   }
-  tryLogin(value) {
-    this.authService.doLogin(value)
-      .then(res => {
-        this.router.navigate(['/user']);
-      }, err => {
-        console.log(err);
-      })
+  tryLogin() {
+    // this.authService.doLogin(value)
+    //   .then(res => {
+    //     this.router.navigate(['/user']);
+    //   }, err => {
+    //     console.log(err);
+    //   })
+    this.modalRef.close();
+    this.menu = false
+    // this.router.navigate(['/user']);
   }
 }

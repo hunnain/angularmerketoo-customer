@@ -26,6 +26,9 @@ export class MyProfileComponent implements OnInit {
   public sortBy: string; // Sorting Order
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
+  public aboutme: boolean = false;
+  public address: boolean = false;
+  public coupons: boolean = true;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {   
