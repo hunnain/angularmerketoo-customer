@@ -135,6 +135,10 @@
             }
           }
         },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
+        },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
