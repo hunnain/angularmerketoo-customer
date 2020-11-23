@@ -2,7 +2,7 @@
   <ul>
     <li id="hide">
       <button id="open"style="color: black;text-transform:capitalize;font-family: Helvetica,Arial,Heiti TCsans-serif;
-      font-weight: 200" type="button" class="btn btn-link">{{ 'openshop' | translate }}</button>
+      font-weight: 200" type="button" class="btn btn-link" routerLink="/pages/seller-signup">{{ 'openshop' | translate }}</button>
     </li>
     <li [hidden]="!menu" id="hide" class="loreg">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;
@@ -108,7 +108,7 @@
               color: blue;" (click)="default = false;logi = true">Back to previous page</a>
               <button style="width: 46%;
               margin-left: 25%;margin-bottom: 12%;
-              margin-top: 10%;" class="btn btn-solid">Login</button>
+              margin-top: 10%;" class="btn btn-solid" (click)="tryLogin()">Login</button>
             </form>
           </div>
         </div>
