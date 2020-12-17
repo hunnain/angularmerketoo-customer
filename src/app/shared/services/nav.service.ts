@@ -19,7 +19,7 @@ export interface Menu {
 })
 
 export class NavService {
-
+	
 	constructor() { }
 
 	public screenWidth: any;
@@ -36,46 +36,125 @@ export class NavService {
 		{
 			title: 'accessories', megaMenu: true, type: 'sub', active: false, children: [
 				{
-					title: 'clothing', type: 'sub', active: false, children: [
-						{ path: '/home/fashion', title: 'fashion-01', type: 'link' },
-						{ path: '/home/fashion-2', title: 'fashion-02', type: 'link' },
-						{ path: '/home/fashion-3', title: 'fashion-03', type: 'link' }
+					title: 'womens-accessories', type: 'sub', active: false, children: [
+						{ path: '/home/fashion', title: 'jewellery', type: 'link' },
+						{ path: '/home/fashion-2', title: 'hair-accessories', type: 'link' },
+						{ path: '/home/fashion-3', title: 'scraves-shawl', type: 'link' },
+						{ path: '/home/fashion-3', title: 'watches', type: 'link' },
+						{ path: '/home/fashion-3', title: 'glasses', type: 'link' },
+						{ path: '/home/fashion-3', title: 'other', type: 'link' }
 					]
 				},
-				{ path: '/home/vegetable', title: 'vegetable', type: 'link' },
-				{ path: '/home/watch', title: 'watch', type: 'link' },
-				{ path: '/home/furniture', title: 'furniture', type: 'link' },
-				{ path: '/home/flower', title: 'flower', type: 'link' },
-				{ path: '/home/beauty', title: 'beauty', type: 'link' },
-				{ path: '/home/electronics', title: 'electronics', type: 'link' },
-				{ path: '/home/pets', title: 'pets', type: 'link' },
-				{ path: '/home/gym', title: 'gym', type: 'link' },
-				{ path: '/home/tools', title: 'tools', type: 'link' },
-				{ path: '/home/shoes', title: 'shoes', type: 'link' },
-				{ path: '/home/bags', title: 'bags', type: 'link' },
-				{ path: '/home/marijuana', title: 'marijuana', type: 'link' }
+				{  title: 'mens-accessories', type: 'sub', active:false,  children: [
+					{ path: '/home/fashion', title: 'ties', type: 'link' },
+					{ path: '/home/fashion-3', title: 'watches', type: 'link' },
+					{ path: '/home/fashion-3', title: 'glasses', type: 'link' },
+					{ path: '/home/fashion-2', title: 'belt', type: 'link' },
+					{ path: '/home/fashion-3', title: 'hats', type: 'link' },
+					{ path: '/home/fashion-3', title: 'jewellery', type: 'link' },
+					{ path: '/home/fashion-3', title: 'scraves-shawl', type: 'link' },
+					{ path: '/home/fashion-3', title: 'other', type: 'link' }
+				]},
+				{ path: '/home/watch', title: 'couple-accessories', type: 'link' },
+				{ title: 'masks-eye-masks',  type: 'sub', active:false,  children: [
+					{ path: '/home/fashion', title: 'masks', type: 'link' },
+					{ path: '/home/fashion-3', title: 'eye-masks', type: 'link' }
+				] },
+				{ path: '/home/flower', title: 'view-all', type: 'link' },
+				// { path: '/home/beauty', title: 'beauty', type: 'link' },
+				// { path: '/home/electronics', title: 'electronics', type: 'link' },
+				// { path: '/home/pets', title: 'pets', type: 'link' },
+				// { path: '/home/gym', title: 'gym', type: 'link' },
+				// { path: '/home/tools', title: 'tools', type: 'link' },
+				// { path: '/home/shoes', title: 'shoes', type: 'link' },
+				// { path: '/home/bags', title: 'bags', type: 'link' },
+				// { path: '/home/marijuana', title: 'marijuana', type: 'link' }
 			]
 		},
 		{
+			
 			title: 'clothing',  megaMenu: true, type: 'sub', active: false, children: [
-				{ path: '/shop/collection/left/sidebar', title: 'left-sidebar', type: 'link' },
-				{ path: '/shop/collection/right/sidebar', title: 'right-sidebar', type: 'link' },
-				{ path: '/shop/collection/no/sidebar', title: 'no-sidebar', type: 'link' }
+				// { path: '/shop/collection/left/sidebar', title: 'left-sidebar', type: 'link' },
+				// { path: '/shop/collection/right/sidebar', title: 'right-sidebar', type: 'link' },
+				// { path: '/shop/collection/no/sidebar', title: 'no-sidebar', type: 'link' }
+				{
+					title: 'womensear', type: 'sub', active: false, children: [
+						{ path: '/home/fashion', title: 'blouse', type: 'link' },
+						{ path: '/home/fashion-2', title: 'skirts', type: 'link' },
+						{ path: '/home/fashion-3', title: 'trousers', type: 'link' },
+						{ path: '/home/fashion-3', title: 'knitwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'jacket', type: 'link' },
+						{ path: '/home/fashion-3', title: 'lingerie', type: 'link' },
+						{ path: '/home/fashion-3', title: 'homewear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'sportwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'swimwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'socks', type: 'link' },
+						{ path: '/home/fashion-3', title: 'shoes', type: 'link' },
+						{ path: '/home/fashion-3', title: 'other', type: 'link' }
+					]
+				},
+				{
+					title: 'menswear', type: 'sub', active: false, children: [
+						{ path: '/home/fashion', title: 'blouse', type: 'link' },
+						{ path: '/home/fashion-3', title: 'trousers', type: 'link' },
+						{ path: '/home/fashion-3', title: 'knitwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'jacket', type: 'link' },
+						{ path: '/home/fashion-3', title: 'underwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'homewear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'sportwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'swimwear', type: 'link' },
+						{ path: '/home/fashion-3', title: 'socks', type: 'link' },
+						{ path: '/home/fashion-3', title: 'shoes', type: 'link' },
+						{ path: '/home/fashion-3', title: 'other', type: 'link' }
+					]
+				},
+				{
+					path: '/home/fashion',title: 'couple-clothing', type: 'link',
+				},
+				{ path: '/home/flower', title: 'view-all', type: 'link' },
 			]
 		},
 		{
-			title: 'Stationery',  megaMenu: true, type: 'sub', active: false, children: [
+			title: 'stationery',  megaMenu: true, type: 'sub', active: false, children: [
+				// {
+				// 	title: 'sidebar', type: 'sub', active: false, children: [
+				// 		{ path: '/shop/product/left/sidebar/trim-dress', title: 'left-sidebar', type: 'link' },
+				// 		{ path: '/shop/product/right/sidebar/trim-dress', title: 'right-sidebar', type: 'link' },
+				// 		{ path: '/shop/product/no/sidebar/trim-dress', title: 'no-sidebar', type: 'link' }
+				// 	]
+				// },
+				// { path: '/shop/product/three/column/trim-dress', title: 'three-column', type: 'link' },
+				// { path: '/shop/product/four/image/belted-dress', title: 'four-image', type: 'link' },
+				// { path: '/shop/product/bundle/trim-dress', title: 'bundle-product', type: 'link' },
+				// { path: '/shop/product/image/outside/trim-dress', title: 'image-outside', type: 'link' }
 				{
-					title: 'sidebar', type: 'sub', active: false, children: [
-						{ path: '/shop/product/left/sidebar/trim-dress', title: 'left-sidebar', type: 'link' },
-						{ path: '/shop/product/right/sidebar/trim-dress', title: 'right-sidebar', type: 'link' },
-						{ path: '/shop/product/no/sidebar/trim-dress', title: 'no-sidebar', type: 'link' }
+					title: 'paper-products', type: 'sub', active: false, children: [
+						{ path: '/home/fashion', title: 'post-cards', type: 'link' },
+						{ path: '/home/fashion-2', title: 'stickers', type: 'link' },
+						{ path: '/home/fashion-3', title: 'tapes', type: 'link' },
+						{ path: '/home/fashion-3', title: 'postage', type: 'link' },
+						{ path: '/home/fashion-3', title: 'envelopes-writing-papers', type: 'link' },
+						{ path: '/home/fashion-3', title: 'red-pockets-red-banners', type: 'link' },
+						{ path: '/home/fashion-3', title: 'paper-boxes-package-boxes', type: 'link' },
+						{ path: '/home/fashion-3', title: 'notebooks', type: 'link' },
+						{ path: '/home/fashion-3', title: 'albums', type: 'link' },
+						{ path: '/home/fashion-3', title: 'calenders', type: 'link' },
+						{ path: '/home/fashion-3', title: 'other', type: 'link' }
 					]
 				},
-				{ path: '/shop/product/three/column/trim-dress', title: 'three-column', type: 'link' },
-				{ path: '/shop/product/four/image/belted-dress', title: 'four-image', type: 'link' },
-				{ path: '/shop/product/bundle/trim-dress', title: 'bundle-product', type: 'link' },
-				{ path: '/shop/product/image/outside/trim-dress', title: 'image-outside', type: 'link' }
+				{
+					title: 'stationery', type: 'sub', active: false, children: [
+						{ path: '/home/fashion', title: 'pens', type: 'link' },
+						{ path: '/home/fashion-3', title: 'pen-cases', type: 'link' },
+						{ path: '/home/fashion-3', title: 'pen-stands', type: 'link' },
+						{ path: '/home/fashion-3', title: 'folders', type: 'link' },
+						{ path: '/home/fashion-3', title: 'stamps', type: 'link' },
+						{ path: '/home/fashion-3', title: 'bookmarks', type: 'link' },
+						{ path: '/home/fashion-3', title: 'slipcases', type: 'link' },
+						{ path: '/home/fashion-3', title: 'other', type: 'link' }
+					]
+				},
+				{ path: '/home/flower', title: 'view-all', type: 'link' },
 			]
 		},
 		{

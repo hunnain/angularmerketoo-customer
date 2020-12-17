@@ -29,6 +29,7 @@ export class MyProfileComponent implements OnInit {
   public aboutme: boolean = false;
   public address: boolean = false;
   public coupons: boolean = true;
+  public newsletter: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {   

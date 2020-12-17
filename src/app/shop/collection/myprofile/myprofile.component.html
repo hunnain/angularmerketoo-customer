@@ -47,8 +47,8 @@ margin-top: 6px;padding-top: 0px;">
                             </ul>
                             <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=true">
-                                        Coupon
+                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=true;newsletter=false">
+                                        Store Credit
                                     </a>
                                 </li>
                             </ul>
@@ -70,7 +70,7 @@ margin-top: 6px;padding-top: 0px;">
                             <ul style="padding-top: 8px;font-size: 13px;
                             padding-left: 4px;color: #435034;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = true;address=false;coupons=false">
+                                    <a style="cursor: pointer;" (click)="aboutme = true;address=false;coupons=false;newsletter=false">
                                         About Me
                                     </a>
                                 </li>
@@ -86,7 +86,7 @@ margin-top: 6px;padding-top: 0px;">
                             <ul style="padding-top: 8px;font-size: 13px;
                             padding-left: 4px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=true;coupons=false">
+                                    <a style="cursor: pointer;" (click)="aboutme = false;address=true;coupons=false;newsletter=false">
                                         Common address book
                                     </a>
                                 </li>
@@ -96,6 +96,14 @@ margin-top: 6px;padding-top: 0px;">
                                 <li>
                                     <a>
                                         Notification settings
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul style="padding-top: 8px;font-size: 13px;
+                            padding-left: 4px;">
+                                <li>
+                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=false;newsletter=true">
+                                        Newsletter Subscription
                                     </a>
                                 </li>
                             </ul>
@@ -244,6 +252,32 @@ margin-top: 6px;padding-top: 0px;">
                                             class="img-fluid center" alt="">
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collection-content col" *ngIf="newsletter">
+                        <div class="page-main-content">
+                            <h5 style="font-weight: bold;">Subscriptions</h5>
+    
+                            <div class="row">
+                                <div style="background-color: #eeeeef;" class="col-sm-12 p-2">
+                                    <h5 class="text-success">Reminder</h5>
+                                    <p>Email preferences can be changed anytime</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h5 class="mt-3">Manage Subscriptions</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label mt-0" for="defaultCheck1">
+                                            Unsubscribe
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <button type="button" class="btn btn-solid ml-3">Save</button>
                             </div>
                         </div>
                     </div>
