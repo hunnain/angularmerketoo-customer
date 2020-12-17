@@ -23,6 +23,7 @@
   "aboutus": "About Us",
   "weekend": "Weekend Market",
   "promotions": "Promotions & Discounts",
+  "magazine": "Magazine",
   "termsconditions": "Terms & Conditions",
   "privacy": "Privacy Statement",
   "myaccount": "My Account",
@@ -372,6 +373,62 @@
   "ss-h3-f8-04" : "Newspapers/ Magazines",
   "ss-h3-f8-05" : "Facebook/Instagram",
   "ss-h3-f8-06" : "Introduced by family/ friends",
-  "ss-h3-f9" : "Your referee’s URL (If any)"
+  "ss-h3-f9" : "Your referee’s URL (If any)",
+
+  "womens-accessories":"Womens Accessories",
+  "jewellery":"Jewellery",
+  "hair-accessories":"Hair Accessories",
+  "scraves-shawl":"Scraves/ Shawl",
+  "watches":"Watches",
+  "glasses":"Glasses",
+  "mens-accessories":"Mens Accessories",
+  "ties":"Ties",
+  "belt":"Belt",
+  "hats":"Hats",
+  "couple-accessories":"Couple Accessories",
+  "masks-eye-masks":"Masks/ Eye Masks",
+  "masks":"Masks",
+  "eye-masks":"Eye Masks",
+  "view-all":"View All",
+
+  "womensear":"Womensear",
+  "blouse":"Blouse",
+  "skirts":"Skirts",
+  "trousers":"Trousers",
+  "knitwear":"Knitwear",
+  "jacket":"Jacket",
+  "lingerie":"Lingerie",
+  "homewear":"Homewear",
+  "sportwear":"Sportwear",
+  "swimwear":"Swimwear",
+  "socks":"Socks",
+  "menswear":"Menswear",
+  "underwear":"Underwear",
+  "couple-clothing":"Couple Clothing",
+  
+  "stationery":"Stationery",
+  "paper-products":"Paper Products",
+  "post-cards":"Post Cards",
+  "stickers":"Stickers",
+  "tapes":"Tapes",
+  "postage":"Postage",
+  "envelopes-writing-papers":"Envelopes/ Writing Papers",
+  "red-pockets-red-banners":"Red Pockets/ Red Banners",
+  "paper-boxes-package-boxes":"Paper Boxes/ Package Boxes",
+  "notebooks":"Notebooks",
+  "albums":"Albums",
+  "calenders":"Calenders",
+  "pens":"Pens",
+  "pen-cases":"Pen Cases/ Pen Bags",
+  "pen-stands":"Pen Stands/ Pen Vases",
+  "folders":"Folders",
+  "stamps":"Stamps/ Stamp Pads",
+  "bookmarks":"Bookmarks",
+  "slipcases":"Slipcases"
+
+
+
+
+
 
 }

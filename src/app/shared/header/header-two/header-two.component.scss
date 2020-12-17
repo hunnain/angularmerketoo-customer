@@ -1,15 +1,14 @@
-
-@media (max-width:629px) {
-    div#search {
-      display: none;
-    }
+@media (max-width: 629px) {
+  div#search {
+    display: none;
   }
-  @media (min-width:629px) {
-    div#hide {
-      display: none;
-    }
+}
+@media (min-width: 629px) {
+  div#hide {
+    display: none;
   }
-body{
+}
+body {
   background: #f2f2f2;
 }
 
@@ -27,10 +26,10 @@ body{
   height: 30px;
   border-radius: 0 0 0 0;
   outline: none;
-  color: #9DBFAF;
+  color: #9dbfaf;
 }
 
-.searchTerm:focus{
+.searchTerm:focus {
   color: #435034;
 }
 
@@ -46,7 +45,7 @@ body{
   font-size: 13px;
 }
 /*Resize the wrap to see the search bar change!*/
-.wrap{
+.wrap {
   width: 30%;
   position: absolute;
   top: 50%;
@@ -54,4 +53,22 @@ body{
   transform: translate(-50%, -50%);
   margin-left: -17%;
   margin-top: -1.2%;
+}
+
+@media only screen and (max-width: 768px) {
+  .cart-nav {
+    flex-direction: column;
+  }
+  .first-heading {
+    margin-top: 45px;
+  }
+  .fa-stack {
+    margin-right: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cart-hr {
+    width: 13% !important;
+  }
 }
