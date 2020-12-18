@@ -160,100 +160,140 @@ export class NavService {
 		{
 			title: 'Daily Necessities', type: 'sub', megaMenu: true, badge: false, badgeText: '*', active: false, children: [
 				{
-					title: 'portfolio', type: 'sub', active: false, children: [
-						{ path: '/pages/portfolio/grid/two', title: 'portfolio-grid-2', type: 'link' },
-						{ path: '/pages/portfolio/grid/three', title: 'portfolio-grid-3', type: 'link' },
-						{ path: '/pages/portfolio/grid/four', title: 'portfolio-grid-4', type: 'link' },
-						{ path: '/pages/portfolio/masonry/grid/two', title: 'mesonary-grid-2', type: 'link' },
-						{ path: '/pages/portfolio/masonry/grid/three', title: 'mesonary-grid-3', type: 'link' },
-						{ path: '/pages/portfolio/masonry/grid/four', title: 'mesonary-grid-4', type: 'link' },
-						{ path: '/pages/portfolio/masonry/full-width', title: 'mesonary-Full-Width', type: 'link' }
+					title: 'home-decoration', type: 'sub', active: false, children: [
+						{ path: '/pages/portfolio/grid/two', title: 'furnish-and-decorate', type: 'link' },
+						{ path: '/pages/portfolio/grid/three', title: 'candles-scents', type: 'link' },
+						{ path: '/pages/portfolio/grid/four', title: 'plants', type: 'link' },
+						{ path: '/pages/portfolio/masonry/grid/two', title: 'vases-china', type: 'link' },
+						{ path: '/pages/portfolio/masonry/grid/three', title: 'posters', type: 'link' },
+						{ path: '/pages/portfolio/masonry/grid/four', title: 'portrait-customisation', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'wallpapers', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'photo-frames', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'dolls-figures', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'storage-sets', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'furniture-beddings', type: 'link' },
+						{ path: '/pages/portfolio/masonry/full-width', title: 'other', type: 'link' }
 					]
 				},
 				{
-					title: 'add-to-cart', type: 'sub', active: false, children: [
-						{ path: '/home/vegetable', title: 'cart-right', type: 'link' },
-						{ path: '/home/watch', title: 'cart-left', type: 'link' },
-						{ path: '/home/furniture', title: 'cart-top', type: 'link' },
-						{ path: '/home/flower', title: 'cart-bottom', type: 'link' },
-						{ path: '/home/fashion', title: 'cart-model-popup', type: 'link' }
+					title: 'kitchen-utensils', type: 'sub', active: false, children: [
+						{ path: '/home/vegetable', title: 'cups', type: 'link' },
+						{ path: '/home/watch', title: 'cutleries', type: 'link' },
+						{ path: '/home/furniture', title: 'kitchenware', type: 'link' },
+						{ path: '/home/flower', title: 'other', type: 'link' },
 					]
 				},
 				{
-					title: 'theme-elements', type: 'sub', active: false, children: [
-						{ path: '/elements/theme/title', title: 'title', type: 'link' },
-						{ path: '/elements/theme/collection-banner', title: 'collection-banner', type: 'link' },
-						{ path: '/elements/theme/home-slider', title: 'home-slider', type: 'link' },
-						{ path: '/elements/theme/category', title: 'category', type: 'link' },
-						{ path: '/elements/theme/services', title: 'services', type: 'link' }
+					title: 'food', type: 'sub', active: false, children: [
+						{ path: '/elements/theme/title', title: 'beverage', type: 'link' },
+						{ path: '/elements/theme/collection-banner', title: 'bakeries', type: 'link' },
+						{ path: '/elements/theme/home-slider', title: 'snacks', type: 'link' },
+						{ path: '/elements/theme/category', title: 'seasonings', type: 'link' },
+						{ path: '/elements/theme/services', title: 'other', type: 'link' }
 					]
 				},
 				{
-					title: 'product-elements', type: 'sub', active: false, children: [
-						{ path: '/elements/product/slider', title: 'product-slider', type: 'link' },
-						{ path: '/elements/product/banners', title: 'banners', type: 'link' },
-						{ path: '/elements/product/tabs', title: 'product-tabs', type: 'link' },
-						{ path: '/elements/product/multi-slider', title: 'multi-slider', type: 'link' }
+					title: 'other', type: 'sub', active: false, children: [
+						{ path: '/elements/product/slider', title: 'pet-supplies', type: 'link' },
+						{ path: '/elements/product/banners', title: 'gear', type: 'link' },
+						{ path: '/elements/product/tabs', title: 'technology', type: 'link' },
+						{ path: '/elements/product/multi-slider', title: 'DIY-materials', type: 'link' },
+						{ path: '/elements/product/multi-slider', title: 'other', type: 'link' }
 					]
 				},
-				{
-					title: 'email-template', type: 'sub', active: false, children: [
-						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-order-success.html', title: 'order-success', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-order-success-two.html', title: 'order-success-2', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-template.html', title: 'email-template', type: 'extTabLink' },
-						{ path: 'http://themes.pixelstrap.com/marketoo/front-end/email-template-two.html', title: 'email-template-2', type: 'extTabLink' }
-					]
-				}
+				{ path: '/home/flower', title: 'view-all', type: 'link' },
 			]
 		},
 		{
-			title: 'Handbag/RugSack', type: 'sub', active: false, children: [
+			title: 'handbag',megaMenu: true, type: 'sub', active: false, children: [
 				{
-					title: 'account', type: 'sub', active: false, children: [
-						{ path: '/pages/wishlist', title: 'wishlist', type: 'link' },
-						{ path: '/pages/cart', title: 'cart', type: 'link' },
-						{ path: '/pages/dashboard', title: 'dashboard', type: 'link' },
-						{ path: '/pages/login', title: 'login', type: 'link' },
-						{ path: '/pages/register', title: 'register', type: 'link' },
-						{ path: '/pages/contact', title: 'contact', type: 'link' },
-						{ path: '/pages/forget/password', title: 'forget-password', type: 'link' },
-						{ path: '/pages/profile', title: 'profile', type: 'link' },
-						{ path: '/pages/checkout', title: 'checkout', type: 'link' },
+					title: 'ladies', type: 'sub', active: false, children: [
+						{ path: '/pages/wishlist', title: 'clutches', type: 'link' },
+						{ path: '/pages/cart', title: 'crossbody-bags', type: 'link' },
+						{ path: '/pages/dashboard', title: 'shoulder-bags', type: 'link' },
+						{ path: '/pages/login', title: 'cosmetic-bag', type: 'link' },
+						{ path: '/pages/register', title: 'wallet', type: 'link' },
+						{ path: '/pages/contact', title: 'rucksacks', type: 'link' },
+						{ path: '/pages/forget/password', title: 'other', type: 'link' }
 					]
 				},
-				{ path: '/pages/aboutus', title: 'about-us', type: 'link' },
-				{ path: '/pages/search', title: 'search', type: 'link' },
-				{ path: '/pages/typography', title: 'typography', type: 'link', badge: true, badgeText: 'new' },
-				{ path: '/pages/review', title: 'review', type: 'link', badge: true, badgeText: 'new' },
-				{ path: '/pages/order/success', title: 'order-success', type: 'link' },
-					{ 
-						title: 'compare', type: 'sub', active: false, children: [
-							{ path: '/pages/compare/one', title: 'compare-1', type: 'link' },
-							{ path: '/pages/compare/two', title: 'compare-2', type: 'link', badge: true, badgeText: 'new' }
-						]
-					},
-				{ path: '/pages/collection', title: 'collection', type: 'link' },
-				{ path: '/pages/lookbook', title: 'lookbook', type: 'link' },
-				{ path: '/pages/404', title: '404', type: 'link' },
-				{ path: '/pages/comingsoon', title: 'coming-soon', type: 'link', badge: true, badgeText: 'new' },
-				{ path: '/pages/faq', title: 'faq', type: 'link' }
+				{
+					title: 'mens', type: 'sub', active: false, children: [
+						{ path: '/pages/dashboard', title: 'shoulder-bags', type: 'link' },
+						{ path: '/pages/wishlist', title: 'messenger-bags', type: 'link' },
+						{ path: '/pages/contact', title: 'rucksacks', type: 'link' },
+						{ path: '/pages/login', title: 'briefcases', type: 'link' },
+						{ path: '/pages/register', title: 'wallet', type: 'link' },
+						{ path: '/pages/forget/password', title: 'other', type: 'link' }
+					]
+				},
+				{
+					title: 'other', type: 'sub', active: false, children: [
+						{ path: '/pages/wishlist', title: 'laptop-pouch', type: 'link' },
+						{ path: '/pages/cart', title: 'travel-bags', type: 'link' },
+						{ path: '/pages/dashboard', title: 'gadget-bags', type: 'link' },
+						{ path: '/pages/login', title: 'other', type: 'link' }
+					]
+				},
+				
+				{ path: '/pages/collection', title: 'view-all', type: 'link' },
 			]
 		},
 		{
-			title: 'Skin Care', type: 'sub', active: false, children: [
-				{ path: '/pages/blog/left/sidebar', title: 'left-sidebar', type: 'link' },
-				{ path: '/pages/blog/right/sidebar', title: 'right-sidebar', type: 'link' },
-				{ path: '/pages/blog/no/sidebar', title: 'no-sidebar', type: 'link' },
-				{ path: '/pages/blog/details', title: 'blog-details', type: 'link' }
+			title: 'skin-care', type: 'sub',megaMenu: true, active: false, children: [
+				{
+					title: 'womens', type: 'sub', active: false, children: [
+						{ path: '/pages/wishlist', title: 'cosmetic-products', type: 'link' },
+						{ path: '/pages/cart', title: 'skincare-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'body-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'hair-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'beauty-tools', type: 'link' },
+						{ path: '/pages/dashboard', title: 'nail-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'fragrance', type: 'link' },
+						{ path: '/pages/login', title: 'other', type: 'link' }
+					]
+				},
+				{
+					title: 'Mens', type: 'sub', active: false, children: [
+						{ path: '/pages/dashboard', title: 'body-products', type: 'link' },
+						{ path: '/pages/cart', title: 'skincare-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'hair-products', type: 'link' },
+						{ path: '/pages/dashboard', title: 'fragrance', type: 'link' },
+						{ path: '/pages/dashboard', title: 'beard-products', type: 'link' },
+						{ path: '/pages/login', title: 'other', type: 'link' }
+					]
+				},
+				
+				{ path: '/pages/collection', title: 'view-all', type: 'link' },
 			]
 		}
 		,
 		{
-			title: 'Leisure Experience', type: 'sub', active: false, children: [
-				{ path: '/pages/blog/left/sidebar', title: 'left-sidebar', type: 'link' },
-				{ path: '/pages/blog/right/sidebar', title: 'right-sidebar', type: 'link' },
-				{ path: '/pages/blog/no/sidebar', title: 'no-sidebar', type: 'link' },
-				{ path: '/pages/blog/details', title: 'blog-details', type: 'link' }
+			title: 'Leisure Experience',megaMenu: true, type: 'sub', active: false, children: [
+				{
+					title: 'handicraft', type: 'sub', active: false, children: [
+						{ path: '/pages/dashboard', title: 'accessories', type: 'link' },
+						{ path: '/pages/dashboard', title: 'candles-aromatherapy', type: 'link' },
+						{ path: '/pages/cart', title: 'planting', type: 'link' },
+						{ path: '/pages/dashboard', title: 'gourmet', type: 'link' },
+						{ path: '/pages/dashboard', title: 'illustration', type: 'link' },
+						{ path: '/pages/dashboard', title: 'leathercrafting', type: 'link' },
+						{ path: '/pages/dashboard', title: 'carpentry', type: 'link' },
+						{ path: '/pages/dashboard', title: 'pottery', type: 'link' },
+						{ path: '/pages/dashboard', title: 'knitting', type: 'link' },
+						{ path: '/pages/login', title: 'other', type: 'link' }
+					]
+				},
+				{
+					title: 'other', type: 'sub', active: false, children: [
+						{ path: '/pages/dashboard', title: 'outdoor-activities', type: 'link' },
+						{ path: '/pages/cart', title: 'indoor-activities', type: 'link' },
+						{ path: '/pages/dashboard', title: 'casual-seminar', type: 'link' },
+						{ path: '/pages/login', title: 'other', type: 'link' }
+					]
+				},
+				
+				{ path: '/pages/collection', title: 'view-all', type: 'link' },
 			]
 		}
 	];
