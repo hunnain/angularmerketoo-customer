@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.maxLength(50)]],
-      country: ['', Validators.required],
+      country: ['hk', Validators.required],
       town: ['', Validators.required],
       state: ['', Validators.required],
       postalcode: ['', Validators.required]

@@ -9,51 +9,85 @@
 <div class="button-images">
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Accessories</a>
+      <a href="#"></a>
       <img src="assets\images\product\fashion\10.jpg" />
     </div>
-    <!-- <span style="display: block;text-align: center;">Accessories</span> -->
+    <!-- <a href="#">Accessories</a> -->
+    <span style="display: block;text-align: center;" href="#" class="categoriesBubbles">Accessories</span>
   </div>
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Clothing</a>
+      <a href="#"></a>
       <img src="assets\images\product\fashion\11.jpg" />
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Clothing</a>
   </div>
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Stationery</a>
+      <a href="#"></a>
       <div class="button-image"> <img src="assets\images\product\fashion\14.jpg" /></div>
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Stationery</a>
   </div>
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Daily Necessities</a>
+      <a href="#"></a>
       <div class="button-image"> <img src="assets\images\product\fashion\16.jpg" /></div>
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Daily Necessities</a>
   </div>
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Handbag/RugSack</a>
+      <a href="#"></a>
       <div class="button-image"> <img src="assets\images\product\fashion\17.jpg" /></div>
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Handbag/RuckSack</a>
   </div>
   <div class="one_sixth">
     <div class="button-container">
-      <a href="#">Skin Care</a>
+      <a href="#"></a>
       <div class="button-image"> <img src="assets\images\product\fashion\18.jpg" /></div>
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Skin Care</a>
   </div>
   <div class="one_sixth last">
     <div class="button-container">
-      <a href="#">Leisure Experience</a>
+      <a href="#"></a>
       <img src="assets\images\product\fashion\25.jpg" />
     </div>
+    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Leisure Experience</a>
   </div>
 
   <div class="clearboth"></div>
 </div>
 <!-- Product slider start-->
+<!-- ADS -->
+<div>
+  <h4 style="padding-left: 6%;
+  margin-top: 6%;
+  margin-bottom: 1.5%;
+  font-weight: 500;
+  font-size: 22px;">{{ 'homepage-ads' | translate }}</h4>
+</div>
+<section class="section-b-space p-t-0">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <owl-carousel-o class="product-m owl-dots" [options]="ProductSliderConfig">
+          <ng-container *ngFor="let product of products | slice:0:16">
+            <ng-template carouselSlide>
+              <div class="product-box">
+                <app-product-box-one [product]="product" [currency]="productService?.Currency" [cartModal]="true">
+                </app-product-box-one>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div>
   <h4 style="padding-left: 6%;
   margin-top: 6%;

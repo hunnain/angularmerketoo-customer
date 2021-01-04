@@ -66,12 +66,13 @@ margin-top: 6px;">
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <div class="field-label">Country</div>
-                                    <select name="country" [formControl]="checkoutForm.controls['country']">
-                                        <option value="" selected>Select Country</option>
+                                    <select name="country" [formControl]="checkoutForm.controls['country']" id="country">
+                                        <option value="hk" selected>Hong Kong</option>
                                         <option value="India">India</option>
                                         <option value="USA">USA</option>
                                         <option value="Australia">Australia</option>
                                     </select>
+                                    
                                     <div *ngIf="checkoutForm.controls.country.touched && checkoutForm.controls.country.errors?.required"
                                         class="text text-danger">
                                         Country is required
@@ -244,8 +245,14 @@ margin-top: 6px;">
                                                         FPS Account<br>FPS: 12345678<br>Li Hiu Fung</p><br>
                                                     <p>&nbsp;</p>
                                                 </li>
+                                                <li style="margin-bottom: 0px;">
+                                                    <div class="form-group">
+                                                        <p class="field-label">Please Enter FPS Reference Number</p>
+                                                        <input type="text" name="field-name" value="" placeholder="Reference Number">
+                                                      </div>
+                                                </li>
                                                 <li>
-                                                    <a style="text-decoration:underline" href="default.asp"
+                                                    <a style="text-decoration:underline" href="https://fps.hkicl.com.hk/eng/fps/consumers/overview.php"
                                                         target="_blank">How to use FPS payment?</a>
                                                 </li>
                                                 <li>
@@ -262,8 +269,14 @@ margin-top: 6px;">
                                                         to the following
                                                         Payme Account<br>PayMe: 12345678<br>Li Hiu Fung</p><br>
                                                 </li>
+                                                <li style="margin-bottom: 0px;">
+                                                    <div class="form-group">
+                                                        <p class="field-label">Please Enter Mobile Number</p>
+                                                        <input type="text" name="field-name" value="" placeholder="Phone Number">
+                                                      </div>
+                                                </li>
                                                 <li>
-                                                    <a style="text-decoration:underline" href="default.asp"
+                                                    <a style="text-decoration:underline" href="https://payme.hsbc.com.hk/en/personal"
                                                         target="_blank">How to use PayMe payment?</a>
                                                 </li>
                                             </ul>

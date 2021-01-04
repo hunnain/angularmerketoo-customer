@@ -35,7 +35,7 @@
       <a href="javascript:void(0)" title="Add to Wishlist" (click)="addToWishlist(product)">
         <i class="ti-heart" aria-hidden="true"></i>
       </a>
-      <a href="javascript:void(0)" title="Quick View" (click)="QuickView.openModal()">
+      <a href="javascript:void(0)" title="Quick Views" (click)="QuickView.openModal()">
         <i class="ti-search" aria-hidden="true"></i>
       </a>
       <a href="javascript:void(0)" title="Compare" (click)="addToCompare(product)">
@@ -50,6 +50,10 @@
         <h6>{{ product?.title | titlecase }}</h6>
       </a>
       <p>{{ product?.description }}</p>
+           
+      <div style="margin-bottom: 4%; font-weight: bold;">
+      <span class="ads-style" >AD . Chris John</span>
+      </div>
       <h4>
         {{ product?.price * currency?.price | discount:product | currency:currency?.currency:'symbol' }}
         <del *ngIf="product?.discount"><span class="money">

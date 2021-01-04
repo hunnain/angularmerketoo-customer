@@ -49,6 +49,13 @@ body {
     text-decoration: none;
     text-transform:uppercase;
   }
+
+  .categoriesBubbles{
+    padding-top: 15%;
+    color: #474747;
+    font-size: 1.125em; 
+    font-weight: 700; 
+  }
   
   .button-container A:hover {
     background:#f2917e;
@@ -94,6 +101,9 @@ body {
   .one_sixth {
     width: 9%;
     left: 6%;
+  }
+  .one_sixth :hover{
+    cursor: pointer;
   }
   
   .three_sixth {

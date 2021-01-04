@@ -59,12 +59,12 @@ export class FashionOneComponent implements OnInit {
   public blog = [{
     image: 'assets/images/blog/1.jpg',
     date: '25 January 2018',
-    title: 'Get to know the latest ',
-    by: 'John Dio'
+    title: 'Magazine ',
+    by: 'Marketoo'
   }, {
     image: 'assets/images/blog/2.jpg',
     date: '26 January 2018',
-    title: 'Get to know the latest ',
+    title: 'Magazine ',
     by: 'John Dio'
   }];
 

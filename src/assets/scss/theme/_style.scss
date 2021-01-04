@@ -7360,14 +7360,14 @@ footer {
             border: none;
             i {
                 border-left: 1px solid $round-border;
-                font-size: 18px;
+                font-size: 22px;
                 padding-left: 10px;
                 margin-left: 5px;
                 transition: all 0.5s ease;
             }
             span {
                 padding-left: 10px;
-                font-size: 18px;
+                font-size: 22px;
             }
             &:hover {
                 i {
@@ -7376,6 +7376,9 @@ footer {
                 }
             }
         }
+    }
+    .title-font{
+        // font-size: 35px;
     }
     .payment-card-bottom {
         margin-top: 10px;

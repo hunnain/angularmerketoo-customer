@@ -122,6 +122,7 @@
                     <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock" (click)="addToCart(product)">add to cart</a>
                     <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock" (click)="buyNow(product)">buy now</a>
                   </div>
+                  <p>After payment, it will take approximately 3 business days to prepare an ship this item (excluding holidays).</p>
                   <div class="border-product">
                     <h6 class="product-title">product details</h6>
                     <p>{{ product.description.substring(0, 200)+'...' }}</p>
