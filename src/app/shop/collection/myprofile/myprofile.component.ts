@@ -26,10 +26,14 @@ export class MyProfileComponent implements OnInit {
   public sortBy: string; // Sorting Order
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
-  public aboutme: boolean = false;
-  public address: boolean = false;
-  public coupons: boolean = true;
-  public newsletter: boolean = false;
+  public components:Object = {
+    newsletter:false,
+    coupons:false,
+    address:false,
+    aboutme:false,
+    myMessages:true
+
+  }
 
   constructor(private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {   
@@ -160,6 +164,17 @@ export class MyProfileComponent implements OnInit {
   // Mobile sidebar
   toggleMobileSidebar() {
     this.mobileSidebar = !this.mobileSidebar;
+  }
+
+
+  openComponent(component){
+    for (var key in this.components){
+      if(component === key) {
+        this.components[key]= true
+      }else{ 
+        this.components[key]= false
+      }
+    }
   }
 
 }
