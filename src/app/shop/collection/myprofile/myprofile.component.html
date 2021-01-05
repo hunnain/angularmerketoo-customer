@@ -41,14 +41,14 @@ margin-top: 6px;padding-top: 0px;">
                             <ul style="padding-top: 8px;">
                                 <li>
                                     <a>
-                                        Points
+                                        Store Credit
                                     </a>
                                 </li>
                             </ul>
                             <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=true;newsletter=false">
-                                        Store Credit
+                                    <a style="cursor: pointer;" (click)="openComponent('coupons')">
+                                        Coupons
                                     </a>
                                 </li>
                             </ul>
@@ -59,66 +59,66 @@ margin-top: 6px;padding-top: 0px;">
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
                                     <a>
                                         Basic Settings
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;color: #435034;">
+                            <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = true;address=false;coupons=false;newsletter=false">
+                                    <a style="cursor: pointer;" (click)="openComponent('aboutme')">
                                         About Me
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
                                     <a>
                                         Credit card management
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=true;coupons=false;newsletter=false">
+                                    <a style="cursor: pointer;" (click)="openComponent('address')">
                                         Common address book
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
                                     <a>
                                         Notification settings
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=false;newsletter=true">
+                                    <a style="cursor: pointer;" (click)="openComponent('newsletter')">
                                         Newsletter Subscription
                                     </a>
                                 </li>
                             </ul>
-                            <ul style="padding-top: 8px;font-size: 13px;
-                            padding-left: 4px;">
+                            <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="aboutme = false;address=false;coupons=false;newsletter=true">
+                                    <a style="cursor: pointer;" (click)="openComponent('newsletter')">
                                         Invite friends
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul style="padding-top: 8px;">
+                                <li>
+                                    <a style="cursor: pointer;" (click)="openComponent('myMessages')">
+                                        My Messages
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                    <div class="collection-content col" *ngIf="aboutme">
+                    <div class="collection-content col" *ngIf="components.aboutme">
                         <div class="page-main-content">
                             <div class="row">
                                 <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
@@ -175,7 +175,7 @@ margin-top: 6px;padding-top: 0px;">
                             </div>
                         </div>
                     </div>
-                    <div class="collection-content col" *ngIf="address">
+                    <div class="collection-content col" *ngIf="components.address">
                         <div class="page-main-content">
                             <div class="row">
                                 <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
@@ -240,7 +240,7 @@ margin-top: 6px;padding-top: 0px;">
                             </div>
                         </div>
                     </div>
-                    <div class="collection-content col" *ngIf="coupons">
+                    <div class="collection-content col" *ngIf="components.coupons">
                         <div class="page-main-content">
                             <h5 style="font-weight: bold;">Coupons</h5>
     
@@ -263,7 +263,7 @@ margin-top: 6px;padding-top: 0px;">
                             </div>
                         </div>
                     </div>
-                    <div class="collection-content col" *ngIf="newsletter">
+                    <div class="collection-content col" *ngIf="components.newsletter">
                         <div class="page-main-content">
                             <h5 style="font-weight: bold;">Subscriptions</h5>
     
@@ -286,6 +286,41 @@ margin-top: 6px;padding-top: 0px;">
                             </div>
                             <div class="row mt-4">
                                 <button type="button" class="btn btn-solid ml-3">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collection-content col" *ngIf="components.myMessages">
+                        <div class="page-main-content">
+                            <div class="row">
+                                <div style="border-bottom: 4px solid #eeeeef;" class="col-sm-12">
+                                    <!-- <h5>There are 2/2 letters from</h5> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="border-bottom: 1px solid #eeeeef;cursor: pointer;" class="col-sm-12">
+                                    <p class="mb-2 mt-2">22/12/2020</p>
+                                    <span>
+                                        <img style="width: 30px;" src="assets/images/empty-wishlist.png" alt="avatar" class="img-fluid center" />
+                                        <span class="mb-1 ml-2">User Name</span>
+                                    </span>
+                                    <p class="mb-2 mt-2">Keep calm and wait for your order to deliver</p>
+                                </div>
+                                <div style="border-bottom: 1px solid #eeeeef;cursor: pointer;" class="col-sm-12">
+                                    <p class="mb-2 mt-2">22/12/2020</p>
+                                    <span>
+                                        <img style="width: 30px;" src="assets/images/empty-wishlist.png" alt="avatar" class="img-fluid center" />
+                                        <span class="mb-1 ml-2">User Name</span>
+                                    </span>
+                                    <p class="mb-2 mt-2">Keep calm and wait for your order to deliver</p>
+                                </div>
+                                <div style="border-bottom: 1px solid #eeeeef;cursor: pointer;" class="col-sm-12">
+                                    <p class="mb-2 mt-2">22/12/2020</p>
+                                    <span>
+                                        <img style="width: 30px;" src="assets/images/empty-wishlist.png" alt="avatar" class="img-fluid center" />
+                                        <span class="mb-1 ml-2">User Name</span>
+                                    </span>
+                                    <p class="mb-2 mt-2">Keep calm and wait for your order to deliver</p>
+                                </div>
                             </div>
                         </div>
                     </div>
