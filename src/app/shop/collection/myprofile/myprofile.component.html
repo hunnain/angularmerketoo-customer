@@ -103,7 +103,7 @@ margin-top: 6px;padding-top: 0px;">
                             </ul>
                             <ul style="padding-top: 8px;">
                                 <li>
-                                    <a style="cursor: pointer;" (click)="openComponent('newsletter')">
+                                    <a style="cursor: pointer;" (click)="openComponent('invitefriends')">
                                         Invite friends
                                     </a>
                                 </li>
@@ -289,6 +289,272 @@ margin-top: 6px;padding-top: 0px;">
                             </div>
                         </div>
                     </div>
+                    <div class="collection-content col" *ngIf="components.invitefriends">
+                        <div class="row">
+                          <div class="col-xl-6" style="padding-right: 0%">
+                            <img
+                              src="assets/images/refral-image.jpg"
+                              alt=""
+                              class="img-fluid blur-up full-width"
+                            />
+                          </div>
+                          <div class="col-xl-6" style="padding-left: 0%">
+                            <div class="" style="background: white">
+                              <div class="card-body">
+                                <form [formGroup]="userForm">
+                                  <ngb-tabset class="tab-coupon profile-tabs" justify="justified">
+                                    <ngb-tab class="asdfgg">
+                                      <ng-template ngbTabTitle>
+                                          <h4>Email</h4>
+                                        <!-- <app-feather-icons [icon]="'mail'"></app-feather-icons> -->
+                                      </ng-template>
+                                      <ng-template ngbTabContent>
+                                        <div
+                                          class="tab-pane fade show active"
+                                          id="top-profile"
+                                          role="tabpanel"
+                                          aria-labelledby="top-profile-tab"
+                                        >
+                                          <input
+                                            class="form-control field-margin"
+                                            [formControl]="userForm.controls['email']"
+                                            placeholder="{{ 'ref_other_email' | translate }}"
+                                            id="email"
+                                            type="email"
+                                            required=""
+                                          />
+                                          <!-- <div class="form-group "> -->
+                                          <div
+                                            style="color: tomato; text-align: right; font-size: 16px"
+                                          >
+                                            {{ "ref_email" | translate }}
+                                          </div>
+                                          <!-- <editor (sendData)="getEmails($event)"></editor> -->
+                                          <!-- <textarea
+                                            class="form-control field-margin"
+                                            placeholder="Enter upto 10 Friends' emails"
+                                            rows="4"
+                                          ></textarea> -->
+                                          <!-- </div> -->
+                                          <!-- <div class="form-group field-margin"> -->
+                                          <textarea
+                                            class="form-control field-margin"
+                                            placeholder="{{ 'ref_desc' | translate }}"
+                                            rows="6"
+                                          ></textarea>
+                                          <!-- </div> -->
+                                          <div style="margin-top: 20px">
+                                            <button type="button" class="btn btn-primary full-width">
+                                              {{ "ref_send_email" | translate }}
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </ng-template>
+                                    </ngb-tab>
+                                    <ngb-tab>
+                                      <ng-template
+                                        style="width: 100px; text-align: center"
+                                        ngbTabTitle
+                                      >
+                                        <!-- <app-feather-icons [icon]="'facebook'"></app-feather-icons> -->
+                                        <h4>facebook</h4>
+                                        <i data-feather="facebook"></i>
+                                      </ng-template>
+                                      <ng-template ngbTabContent>
+                                        <div class="account-setting"></div>
+                                      </ng-template>
+                                    </ngb-tab>
+                                    <ngb-tab>
+                                      <ng-template ngbTabTitle>
+                                        <!-- <app-feather-icons [icon]="'twitter'"></app-feather-icons> -->
+                                        <!-- <i data-feather="facebook"></i> -->
+                                        <h4>twitter</h4>
+                                      </ng-template>
+                                      <ng-template ngbTabContent>
+                                        <div class="account-setting"></div>
+                                      </ng-template>
+                                    </ngb-tab>
+                                  </ngb-tabset>
+                                </form>
+                              </div>
+                            </div>
+                            <div style="text-align: center; margin: 10px">
+                              <span
+                                style="color: #808000; cursor: pointer"
+                                data-toggle="modal"
+
+                              >
+                                <span>{{ "ref_how_it" | translate }}</span>
+                              </span>
+                              | {{ "ref_powered_by" | translate }}
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Container-fluid Ends-->
+                      </div>    
+                         <!-- Invite friend How it works -->
+                         <ng-template #Document let-modal class="modal-xl">
+                            <div class="modal-header" style="background: #f88379">
+                              <h5 class="modal-title" id="exampleModalLabel" style="color: white">
+                                How It Works
+                              </h5>
+                              <button
+                                type="button"
+                                class="close"
+                                aria-label="Close"
+                                (click)="modal.dismiss('Cross click')"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="main-container" style="padding: 10px 30px">
+                                <p>Shop Owner Referral Program</p>
+                                <p>&nbsp;</p>
+                                <ul>
+                                  <li>
+                                    店主每成功邀請一位新店主註冊並且上架商品後，即可獲得HK$20，可用於減免成交管理費，並扣除於當月管理費中。
+                                  </li>
+                                  <li>
+                                    After the shop owner successfully invites a new shop owner to register
+                                    and list the products on Marketoo, shop owner will get HK$20 in which
+                                    shop owner can use to reduce transaction management fee and deduct it
+                                    from transaction of the current month.
+                                  </li>
+                                </ul>
+                                <p>&nbsp;</p>
+                                <ul>
+                                  <li>
+                                    每月可減免成交管理費金額上限為 HK$500（相當於邀請25個新店主或以上）,
+                                    減免額不可超過每月成交管理費。
+                                  </li>
+                                  <li>
+                                    The maximum amount of monthly transaction management fee exemption is
+                                    HK$500 (equivalent to inviting 25 new shop owners or more), and the
+                                    deduction cannot exceed the monthly transaction management fee.
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    減免金額與當月收入同樣於當月月底結算，由Marketoo
+                                    系統每月自動減免成交管理費，若可減免的金額比成交管理費多，扣除可減免金額後，差額不可累積或兌換其他優惠。
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    The deduction amount will be settled at the end of the same month as
+                                    the income of the current month. Marketoo system will automatically
+                                    deduct the transaction management fee every month. If the deduction
+                                    amount is more than the transaction management fee, after deducting
+                                    the deduction amount, the difference cannot be accumulated or
+                                    exchanged for other offers.
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    例子1：本月收入HK$2000，成交管理費為 HK$100，店主可拿到
+                                    HK$1900。而若有可減免的金額為 HK$150，最終店主可拿到的金額是
+                                    HK$2000（因減免額不可超過每月成交管理費, 最多可扣除HK$100）。
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    Example 1: The income of this month is HK$2000, the transaction
+                                    management fee is HK$100, and the shop owner can get HK$1900. And if
+                                    there is a deduction of HK$150, the final amount that the shop owner
+                                    can get is HK$2000 (because the deduction cannot exceed the monthly
+                                    transaction management fee, a maximum of HK$100 can be deducted).
+                                  </li>
+                                </ul>
+                                <p>&nbsp;</p>
+                                <p>最終匯款金額</p>
+                                <p>=HK$2000(收入)-HK$100(成交管理費)+HK$100(減免金額)</p>
+                                <p>=HK$2000</p>
+                                <p>Final remittance amount</p>
+                                <p>
+                                  =HK$2000 (income) - HK$100 (transaction management fee) + HK$100
+                                  (reduction amount)
+                                </p>
+                                <p>=HK$2000</p>
+                                <p>&nbsp;</p>
+                                <p>
+                                  例子2：本月收入HK$2000，成交管理費為 HK$100，店主可拿到
+                                  HK$1900。而若有可減免的金額為 HK$50，最終店主可拿到的金額是 HK$1950。
+                                </p>
+                                <p>
+                                  Example 2: This month's income is HK$2000, transaction management fee is
+                                  HK$100, and the shop owner can get HK$1900. And if there is a deductible
+                                  amount of HK$50, the final amount the shop owner can get is HK$1950.
+                                </p>
+                                <p>&nbsp;</p>
+                                <p>最終匯款金額</p>
+                                <p>=HK$2000(收入)-HK$100(成交管理費)+HK$50(減免金額)</p>
+                                <p>=HK$1950</p>
+                                <p>Final remittance amount</p>
+                                <p>
+                                  =HK$2000(收入)-HK$100(transaction management fee)+HK$50(reduction
+                                  amount)
+                                </p>
+                                <p>=HK$1950</p>
+                                <p>&nbsp;</p>
+                          
+                                <ul>
+                                  <li>
+                                    系統根據新店主上架商品日期，利用月結形式，自動減免當月成交管理費。例如：推薦後,
+                                    新店主於1月 31日成功上架商品，將納入
+                                    1月減免金額中，支付金額於次月二十號(遇假日順延)扣除相關費用後,
+                                    匯至店主指定帳戶。
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    The system automatically reduces or exempts the transaction management
+                                    fee of the month based on the date when the new store owner puts the
+                                    product on the shelf. For example: After the recommendation, the new
+                                    store owner successfully listed the product on January 31st, and it
+                                    will be included in the January deduction amount. The payment amount
+                                    will be remitted to the store owner's designated account on the 20th
+                                    of the following month (postponed on holidays) after deducting the
+                                    relevant expenses.
+                                  </li>
+                                </ul>
+                                <p><em>&nbsp;</em></p>
+                                <p>&nbsp;</p>
+                                <ul>
+                                  <li>
+                                    當月收入未達<a href="https://www.pinkoi.com/faq/shop?question=monthly"
+                                      >匯款標準</a
+                                    >(月結金額不足HK$500)，但店主也成功邀請會員，系統亦會自動以月結形式折抵成交管理費，待累積達匯款<a
+                                      href="https://www.pinkoi.com/faq/shop?question=monthly"
+                                      >標準</a
+                                    >後一併匯款。
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    例如：1 月營收 HK$500，成交管理費 HK$50，可減免 HK$20，可拿金額為
+                                    HK$470；因 HK$470 未達匯款標準，故將累積至下月收入，待合共超過 HK$500
+                                    時進行匯款。
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    The monthly income does not meet the remittance standard (monthly
+                                    settlement amount is less than HK$500), but the shop owner also
+                                    successfully invites members, the system will automatically deduct the
+                                    transaction management fee in the form of monthly settlement, and the
+                                    remittance will be sent together after the accumulation reaches the
+                                    remittance standard.
+                                  </li>
+                                  <li></li>
+                                  <li>
+                                    For example: January revenue is HK$500, transaction management fee is
+                                    HK$50, HK$20 can be deducted, and the available amount is HK$470; as
+                                    HK$470 is not up to the remittance standard, it will accumulate to the
+                                    next month's income, and it will be done when the total exceeds HK$500
+                                    money transfer.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <!-- <div class="action">
+                                    <button class="btn btn-primary" type="button" (click)="updateStatus()">Update</button>
+                                </div> -->
+                          </ng-template>
+                          
                     <div class="collection-content col" *ngIf="components.myMessages">
                         <div class="page-main-content">
                             <div class="row">

@@ -219,6 +219,12 @@ margin-top: 6px;">
                                         <div class="payment-options">
                                             <ul>
                                                 <li>
+                                                    <div class="form-group">
+                                                    <p class="field-label">Write any additional notes to seller</p>
+                                                    <input type="text" name="field-name" value="" placeholder="Write a Note to seller">
+                                                    </div>
+                                                </li>
+                                                <li>
                                                     <div class="radio-option">
                                                         <input type="radio" [(ngModel)]="payment" [value]="'Stripe'"
                                                             name="payment-group" id="payment-2"> <label

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 interface Components {
   newsletter: boolean;
@@ -10,6 +12,7 @@ interface Components {
   address: boolean;
   aboutme: boolean;
   myMessages: boolean;
+  invitefriends: boolean;
 }
 
 @Component({
@@ -34,16 +37,19 @@ export class MyProfileComponent implements OnInit {
   public sortBy: string; // Sorting Order
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
+  public userForm: FormGroup;
+  public closeResult: string;
   public components: Components = {
     newsletter: false,
     coupons: false,
     address: false,
     aboutme: false,
-    myMessages: true
-
+    myMessages: true,
+    invitefriends: false,
+    
   }
 
-  constructor(private route: ActivatedRoute, private router: Router,
+  constructor(private route: ActivatedRoute, private router: Router,  private fb: FormBuilder, private modalService: NgbModal,
     private viewScroller: ViewportScroller, public productService: ProductService) {
     // Get Query params..
     this.route.queryParams.subscribe(params => {
@@ -73,9 +79,49 @@ export class MyProfileComponent implements OnInit {
         this.products = this.products.slice(this.paginate.startIndex, this.paginate.endIndex + 1); // get current page of items
       })
     })
+
+    // Refer friend
+    this.userForm = this.fb.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$'),
+        ],
+      ],
+      description_1: [''],
+      description_2: [''],
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  // Invite freind
+  open(content) {
+    this.modalService
+      .open(content, {
+        size: 'xl',
+        backdrop: 'static',
+        ariaLabelledBy: 'modal-basic-title',
+      })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 
