@@ -497,7 +497,20 @@
   "knitting":"Knitting",
   "outdoor-activities":"Outdoor Activities",
   "indoor-activities":"Indoor Activities",
-  "casual-seminar":"Casual Seminar"
+  "casual-seminar":"Casual Seminar",
+
+
+  "email": "Email",
+  "email_req": "Email is Required",
+  "email_invalid": "Enter Valid Email",
+  "password_req": "Password is Required",
+  "username": "Username",
+  "username_req":"Username is required",
+  "password": "Password",
+  "Login": "Login",
+  "Register":"Register",
+  "Marketoo account":"Marketoo account"
+
 
 
 

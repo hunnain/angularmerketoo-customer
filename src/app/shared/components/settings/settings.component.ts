@@ -7,6 +7,7 @@ import { Product } from "../../classes/product";
 import { Router, Params } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/auth.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
 @Component({
@@ -15,6 +16,9 @@ declare var $: any;
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+
+  public loginForm: FormGroup;
+  public signupForm: FormGroup;
 
   public products: Product[] = []
   public text = { openshop: "Open Shop" }
@@ -55,16 +59,36 @@ export class SettingsComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
+    private formBuilder: FormBuilder,
     private modalService: NgbModal,
     public authService: AuthService,
     private router: Router,
-    public productService: ProductService) {
+    public productService: ProductService
+  ) {
+    this.createLoginForm();
+    this.createSignupForm();
     this.productService.cartItems.subscribe(response => this.products = response);
   }
 
   ngOnInit(): void {
     this.lan = true;
   }
+
+  createLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}')]],
+      password: ['', Validators.required],
+    });
+  }
+
+  createSignupForm() {
+    this.signupForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}')]],
+      password: ['', Validators.required],
+    });
+  }
+
   changelan() {
     if (this.lan == false) {
       this.lan = true;
@@ -113,14 +137,55 @@ export class SettingsComponent implements OnInit {
       })
   }
   tryLogin() {
-    // this.authService.doLogin(value)
-    //   .then(res => {
-    //     this.router.navigate(['/user']);
-    //   }, err => {
-    //     console.log(err);
-    //   })
-    this.modalRef.close();
-    this.menu = false
-    // this.router.navigate(['/user']);
+    console.log(this.loginForm.value);
+    // this.loading = true;
+    this.authService.login(this.loginForm.value).subscribe(
+      (res) => {
+        // this.cs.isLoading.next(false)
+        // this.loading = false;
+        console.log(res, 'success');
+        this.router.navigate(['/user']);
+        this.modalRef.close();
+        this.menu = false
+        localStorage.setItem('userInfo', JSON.stringify(res));
+        localStorage.setItem('accessToken', res['accessToken']);
+        localStorage.setItem('refreshToken', res['refreshToken']);
+      }, err => {
+        console.log('error---', err)
+      }
+    )
+  }
+
+
+  createCustomer() {
+    // console.log('seller info',this.sellerForm.value)
+    // console.log('brand info',this.brandForm.value)
+    // console.log('byteImages',this.imgs)
+
+    let data = {
+      ...this.signupForm.value,
+    }
+    // this.loading = true;
+    this.default = false;
+    this.register = true
+    console.log("signup form--", this.signupForm.value);
+    this.authService.signUp(data).subscribe(
+      (res) => {
+        if (res) {
+          console.log(res, 'response');
+          // this.cs.isLoading.next(false)
+          // this.loading = false;
+          // this.router.navigate(['/login'])
+          this.default = true;
+          this.logi = false;
+          this.register = true;
+        }
+      }
+      ,
+      (error) => {
+        console.log(error, 'error');
+        // this.loading = false;
+      }
+    );
   }
 }

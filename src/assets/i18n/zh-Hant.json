@@ -409,5 +409,19 @@
   "knitting":"編織",
   "outdoor-activities":"戶外活動",
   "indoor-activities":"室外運動",
-  "casual-seminar":"休閒講座"
+  "casual-seminar":"休閒講座",
+
+
+  "email": "電郵",
+  "email_req": "必須填寫聯絡電郵",
+  "email_invalid": "输入有效邮件地址",
+  "password_req": "密码是必需的",
+  "username": "帳戶名稱",
+  "username_req":"用戶名為必填項",
+  "password": "密碼",
+  "Login": "登入",
+  "Marketoo account":"Marketoo帳戶"
+
+  
+
 }
