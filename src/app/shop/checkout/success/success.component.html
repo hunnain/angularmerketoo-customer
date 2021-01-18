@@ -1,9 +1,9 @@
 <!-- breadcrumb start -->
-<app-breadcrumb [title]="'404 page'" [breadcrumb]="'404 page'" *ngIf="!orderDetails"></app-breadcrumb>
+<app-breadcrumb [title]="'404 page'" [breadcrumb]="'404 page'" *ngIf="!orderDetails && !loading"></app-breadcrumb>
 <!-- breadcrumb End -->
 
 <!-- section start -->
-<section class="p-0" *ngIf="!orderDetails">
+<section class="p-0" *ngIf="!orderDetails && !loading">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -26,8 +26,9 @@
                 <div class="success-text">
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>thank you</h2>
-                    <p>Payment is has been received Order Placed Successfully</p>
+                    <p>Order Placed Successfully</p>
                     <p>Transaction ID:{{ orderDetails.orderId }}</p>
+                    <a [routerLink]="'/home/fashion'" class="btn btn-solid">Continue Shopping</a>
                 </div>
             </div>
         </div>
@@ -42,20 +43,20 @@
             <div class="col-lg-6">
                 <div class="product-order">
                     <h3>your order details</h3>
-                    <div class="row product-order-detail" *ngFor="let product of orderDetails.product">
+                    <div class="row product-order-detail" *ngFor="let product of orderDetails.orderedProductDetails">
                         <div class="col-3">
-                            <img [src]="product.images[0].src" alt="" class="img-fluid">
+                            <img [src]="product.images ? product.images[0].src:'assets/images/product/placeholder.jpg'" alt="" class="img-fluid">
                         </div>
                         <div class="col-3 order_detail">
                             <div>
                                 <h4>product name</h4>
-                                <h5>{{ product.title }}</h5>
+                                <h5>{{ product.name }}</h5>
                             </div>
                         </div>
                         <div class="col-3 order_detail">
                             <div>
                                 <h4>quantity</h4>
-                                <h5>{{ product.quantity }}</h5>
+                                <h5>{{ product?.quantity }}</h5>
                             </div>
                         </div>
                         <div class="col-3 order_detail">
@@ -67,13 +68,13 @@
                     </div>
                     <div class="total-sec">
                         <ul>
-                            <li>Subtotal <span>{{ orderDetails.totalAmount | currency:productService?.Currency.currency:'symbol' }}</span></li>
+                            <li>Subtotal <span>{{ orderDetails?.total | currency:productService?.Currency.currency:'symbol' }}</span></li>
                             <li>Shipping <span>$00.00</span></li>
                             <li>Tax <span>$00.00</span></li>
                         </ul>
                     </div>
                     <div class="final-total">
-                        <h3>total <span>{{ orderDetails.totalAmount | currency:productService?.Currency.currency:'symbol' }}</span></h3>
+                        <h3>total <span>{{ orderDetails?.total | currency:productService?.Currency.currency:'symbol' }}</span></h3>
                     </div>
                 </div>
             </div>
@@ -83,17 +84,17 @@
                         <h4>summery</h4>
                         <ul class="order-detail">
                             <li>order ID: {{ orderDetails.orderId }}</li>
-                            <li>Order Date: October 22, 2021</li>
-                            <li>Order Total: {{ orderDetails.totalAmount | currency:productService?.Currency.currency:'symbol' }}</li>
+                            <li>Order Date: {{getDate(orderDetails.creationDate)}}</li>
+                            <li>Order Total: {{ orderDetails?.total | currency:productService?.Currency.currency:'symbol' }}</li>
                         </ul>
                     </div>
                     <div class="col-sm-6">
                         <h4>shipping address</h4>
                         <ul class="order-detail">
-                            <li>{{ orderDetails.shippingDetails.address }}</li>
-                            <li>{{ orderDetails.shippingDetails.state }}</li>
-                            <li>{{ orderDetails.shippingDetails.country }}, {{ orderDetails.shippingDetails.postalcode }}</li>
-                            <li>Contact No. {{ orderDetails.shippingDetails.phone }}</li>
+                            <li>{{ orderDetails?.address }}</li>
+                            <li>{{ orderDetails?.state }}</li>
+                            <li>{{ orderDetails?.country }}, {{ orderDetails?.postalcode }}</li>
+                            <li>Contact No. {{ orderDetails?.phone }}</li>
                         </ul>
                     </div>
 

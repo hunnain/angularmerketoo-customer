@@ -1,16 +1,96 @@
 <!-- tap to top -->
 <div class="row">
-<div class="tap-top top-cls col-lg-6" (click)="tapToTop()" 
-	[ngStyle]="{ 'display': show ? 'block' : 'none' }">
-    
-      <i class="fa fa-angle-double-up"></i>
+  <div
+    class="tap-top top-cls col-lg-6"
+    (click)="tapToTop()"
+    [ngStyle]="{ display: show ? 'block' : 'none' }"
+  >
+    <i class="fa fa-angle-double-up"></i>
+  </div>
+  <div
+    class="tap-top top-cls col-lg-6"
+    style="right: 6%; background-color: #f2917e"
+    id="gift"
+    [ngStyle]="{ display: show ? 'block' : 'none' }"
+    (click)="openGiftModal(gift)"
+  >
+    <!-- <i class="fa fa-angle-double-up"></i> -->
+    <i style="color: white; font-size: 24px" class="fa fa-gift"></i>
+  </div>
 </div>
-<div class="tap-top top-cls col-lg-6" style="right: 6%;background-color: #f2917e;" id="gift" 
-	[ngStyle]="{ 'display': show ? 'block' : 'none' }">
-    
-      <!-- <i class="fa fa-angle-double-up"></i> -->
-      <i style="color: white;font-size: 24px;" class="fa fa-gift"></i>
-</div> 
-</div> 
 
 <!-- tap to top -->
+
+<!-- gift popup -->
+<ng-template #gift let-modal style="width: 560px">
+  <div>
+    <div class="modal-header">
+      <a id="loginLogo" style="text-align: center">
+        <img
+          [src]="lang === 'en' ? giftEnglish : giftChinese"
+          class="img-fluid"
+          alt="logo"
+          style="max-width: 80%"
+        />
+      </a>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: center">{{ "gift_description" | translate }}</p>
+      <p style="text-align: center">
+        <a
+          (click)="showTerms = !showTerms"
+          *ngIf="!showTerms"
+          class="link-text"
+          >{{ "gift_link" | translate }}</a
+        >
+        <a
+          (click)="showTerms = !showTerms"
+          *ngIf="showTerms"
+          class="link-text"
+          >{{ "gift_link_hide" | translate }}</a
+        >
+      </p>
+      <ul *ngIf="showTerms" class="gift-ul">
+        <li>
+          <p>{{ "gift_offer_term_policy_1" | translate }}</p>
+        </li>
+        <li>
+          <p>{{ "gift_offer_term_policy_2" | translate }}</p>
+        </li>
+        <li>
+          <p>{{ "gift_offer_term_policy_3" | translate }}</p>
+        </li>
+        <li>
+          <p>{{ "gift_offer_term_policy_4" | translate }}</p>
+        </li>
+        <li>
+          <p>{{ "gift_offer_term_policy_5" | translate }}</p>
+        </li>
+        <li>
+          <p>{{ "gift_offer_term_policy_6" | translate }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="modal-footer" style="justify-content: center">
+      <button
+        style="
+          color: black;
+          text-transform: capitalize;
+          border-color: black;
+          font-family: Helvetica, Arial, Heiti TCsans-serif;
+          font-weight: 200;
+          background-color: white;
+          width: 115px;
+        "
+        data-toggle="modal"
+        data-target="#AddNewBattery"
+        type="button"
+        class="btn btn-outline-primary"
+      >
+        {{ "gift_button" | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<!-- gift popup end -->

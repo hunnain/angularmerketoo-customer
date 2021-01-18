@@ -7,13 +7,13 @@ import { Options } from 'ng5-slider';
   styleUrls: ['./price.component.scss']
 })
 export class PriceComponent implements OnInit {
-  
+
   // Using Output EventEmitter
-  @Output() priceFilter : EventEmitter<any> = new EventEmitter<any>();
-	
+  @Output() priceFilter: EventEmitter<any> = new EventEmitter<any>();
+
   // define min, max and range
-  @Input() min: number;
-  @Input() max: number;
+  @Input() min: number = 0;
+  @Input() max: number = 0;
 
   public collapse: boolean = true;
 
@@ -21,16 +21,16 @@ export class PriceComponent implements OnInit {
     floor: 0,
     ceil: 1000
   };
-  
-  price = { 
-    minPrice: this.min, 
-    maxPrice: this.max 
+
+  price = {
+    minPrice: this.min,
+    maxPrice: this.max
   };
 
-  constructor() { 
+  constructor() {
   }
-  
-  ngOnInit(): void {  }
+
+  ngOnInit(): void { }
 
   // Range Changed
   appliedFilter(event: any) {

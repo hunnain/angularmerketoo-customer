@@ -1,13 +1,18 @@
 // Products
 export interface Product {
     id?: number;
+    productId?: number,
+    colour?: string;
+    size?: string;
     title?: string;
+    name?: string;
     description?: string;
     type?: string;
     brand?: string;
     collection?: any[];
     category?: string;
     price?: number;
+    unitAmount?: number;
     sale?: boolean;
     discount?: number;
     stock?: number;

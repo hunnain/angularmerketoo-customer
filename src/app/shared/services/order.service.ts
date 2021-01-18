@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CommonService } from './common.service';
 
 const state = {
   checkoutItems: JSON.parse(localStorage['checkoutItems'] || '[]')
@@ -11,7 +12,7 @@ const state = {
 })
 export class OrderService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cs: CommonService) { }
 
   // Get Checkout Items
   public get checkoutItems(): Observable<any> {
@@ -25,15 +26,24 @@ export class OrderService {
   // Create order
   public createOrder(product: any, details: any, orderId: any, amount: any) {
     var item = {
-        shippingDetails: details,
-        product: product,
-        orderId: orderId,
-        totalAmount: amount
+      shippingDetails: details,
+      product: product,
+      orderId: orderId,
+      totalAmount: amount
     };
     state.checkoutItems = item;
     localStorage.setItem("checkoutItems", JSON.stringify(item));
     localStorage.removeItem("cartItems");
     this.router.navigate(['/shop/checkout/success', orderId]);
   }
-  
+
+
+  stripeCheckout(order) {
+    return this.cs.post('CheckoutApi/create-checkout-session', order)
+  }
+
+  fetchOrderBySessionId(session_id) {
+    return this.cs.get(`order/GetOrdersBySessionId/${session_id}`);
+  }
+
 }

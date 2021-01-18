@@ -1,9 +1,25 @@
-import { Product } from './product';
+// import { Product } from './product';
 
-// Order
+
+export interface OrderedProductDetail {
+    productId?: string;
+    name?: string;
+}
+
 export interface Order {
-    shippingDetails?: any;
-    product?: Product;
-    orderId?: any;
-    totalAmount?: any;
+    orderId?: number;
+    customerId?: string;
+    total?: number;
+    currency?: string;
+    orderStatus?: string;
+    paymentStatus?: string;
+    paymentService?: string;
+    creationDate?: Date;
+    phone?: number;
+    country?: string;
+    city?: string;
+    state?: string;
+    address?: string;
+    postalcode?: string;
+    orderedProductDetails?: OrderedProductDetail[];
 }

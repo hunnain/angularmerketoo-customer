@@ -53,6 +53,7 @@
     "localstorage-polyfill": "^1.0.1",
     "masonry-layout": "^4.2.2",
     "merge-images": "^2.0.0",
+    "moment": "^2.29.1",
     "mousetrap": "^1.6.5",
     "ng-animate": "^0.3.4",
     "ng-lazyload-image": "^7.1.0",

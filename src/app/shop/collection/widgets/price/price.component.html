@@ -1,16 +1,47 @@
 <!-- price filter start here -->
 <div class="collection-collapse-block border-0" [class.open]="collapse">
-    <h3 class="collapse-block-title" (click)="collapse = !collapse">{{ 'price' | translate }}</h3>
-    <div class="collection-collapse-block-content">
-        <div class="collection-brand-filter">
-            <div class="mt-2">
-                <ng5-slider 
+  <h3 class="collapse-block-title" (click)="collapse = !collapse">
+    {{ "price" | translate }}
+  </h3>
+  <div class="collection-collapse-block-content">
+    <div class="collection-brand-filter">
+      <div class="mt-2">
+        <!-- <ng5-slider 
                     [(value)]="min" 
                     [(highValue)]="max" 
                     [options]="options" 
                     (userChangeEnd)="appliedFilter($event)">
-                </ng5-slider>
-            </div>
+                </ng5-slider> -->
+        <div class="mb-1">HK$</div>
+        <div class="form-row align-items-center">
+          <div class="col-4">
+            <input
+              type="text"
+              class="form-control rounded"
+              style="height: 32px"
+              placeholder="0"
+            />
+          </div>
+          <div class="col-1">-</div>
+          <div class="col-4">
+            <input
+              type="text"
+              class="form-control rounded"
+              style="height: 32px"
+              placeholder="0"
+            />
+          </div>
+          <div class="col-3">
+            <button
+              type="button"
+              class="btn btn-primary rounded"
+              style="height: 32px"
+            >
+              >
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

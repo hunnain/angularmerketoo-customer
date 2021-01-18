@@ -109,6 +109,29 @@ export class CommonService {
             })
     }
 
+    externalGet(url: string): Observable<any> {
+        this.isLoading.next(true)
+        // this.error.clearError();
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Methods': '*'
+            // "X-Pagination": "application/json",
+            // "abc": "application/json"
+            // 'Authorization': 'Bearer '  + this.auth.acquireTokenRedirect.toString
+        });
+        // return this.http
+        //   .get(this.base_url + url, { headers: headers })
+        //   .map((response: any) => {
+        //     return response;
+        //   });
+        return this.http
+            .get<any>(url, {
+                // headers: new HttpHeaders().set('X-Pagination', ''),
+                observe: 'response',
+                headers: headers
+            })
+    }
+
     delete(url: string): Observable<Response> {
         this.isLoading.next(true)
         // this.error.clearError();

@@ -509,7 +509,18 @@
   "password": "Password",
   "Login": "Login",
   "Register":"Register",
-  "Marketoo account":"Marketoo account"
+  "Marketoo account":"Marketoo account",
+
+  "gift_description":"Register as a member for 5% off (validation: 3 days)",
+  "gift_link":"Read more about 'Offer Terms'",
+  "gift_link_hide":"Hide Offer Terms",
+  "gift_offer_term_policy_1":"New member discount",
+  "gift_offer_term_policy_2":"After registering as a Marketoo member, you will enjoy a 5% off discount for your first purchase.",
+  "gift_offer_term_policy_3":"The validity period is 3 days.",
+  "gift_offer_term_policy_4":"Cannot be used in conjunction with promotion codes.",
+  "gift_offer_term_policy_5":"After the order is cancelled or fully refunded, you can still enjoy the new member discount within 3 days of member registration.",
+  "gift_offer_term_policy_6":"If both the event discount and the Designer Promotion Terms are met, the usage rules should be based on the latter.",
+  "gift_button":"Sign Up Now"
 
 
 

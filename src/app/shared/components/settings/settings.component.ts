@@ -100,6 +100,12 @@ export class SettingsComponent implements OnInit {
   login(content) {
     this.default = false
     this.modalRef = this.modalService.open(content, { centered: true });
+    this.modalRef.result.then(res => console.log(res), (reason) => {
+      console.log(reason)
+      this.default = true;
+      this.logi = true;
+      this.register = true;
+    })
   }
   changeLanguage(code) {
     if (isPlatformBrowser(this.platformId)) {
