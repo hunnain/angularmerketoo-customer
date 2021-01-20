@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (!request.url.includes('api.instagram.com')) {
-      console.log(request.url.includes('api.instagram.com'))
+      // console.log(request.url.includes('api.instagram.com'))
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.commonService.getAccessToken()}`,

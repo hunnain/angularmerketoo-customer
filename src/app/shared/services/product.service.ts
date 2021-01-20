@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith, delay } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../classes/product';
+import { CommonService } from './common.service';
 
 const state = {
   products: JSON.parse(localStorage['products'] || '[]'),
@@ -22,7 +23,8 @@ export class ProductService {
   public Products
 
   constructor(private http: HttpClient,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private cs: CommonService) { }
 
   /*
     ---------------------------------------------
@@ -32,9 +34,17 @@ export class ProductService {
 
   // Product
   private get products(): Observable<Product[]> {
-    this.Products = this.http.get<Product[]>('assets/data/products.json').pipe(map(data => data));
-    this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
-    return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+    this.Products = this.cs.get('product').pipe(map(data => data));
+    // this.Products.subscribe(next => {
+    //   if (next.body) {
+    //     localStorage['products'] = JSON.stringify(next.body)
+    //   }
+    // });
+    // return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+    return this.Products;
+    // this.Products = this.http.get<Product[]>('assets/data/products.json').pipe(map(data => data));
+    // this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
+    // return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
   }
 
   // Get Products
@@ -44,11 +54,12 @@ export class ProductService {
 
   // Get Products By Slug
   public getProductBySlug(slug: string): Observable<Product> {
-    return this.products.pipe(map(items => {
-      return items.find((item: any) => {
-        return item.title.replace(' ', '-') === slug;
-      });
-    }));
+    return this.cs.get(`product/GetProductById/${slug}`);
+    // return this.products.pipe(map(items => {
+    //   return items.find((item: any) => {
+    //     return item.name.replace(' ', '-') === slug;
+    //   });
+    // }));
   }
 
 

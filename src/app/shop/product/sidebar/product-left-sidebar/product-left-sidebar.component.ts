@@ -4,6 +4,7 @@ import { ProductDetailsMainSlider, ProductDetailsThumbSlider } from '../../../..
 import { Product } from '../../../../shared/classes/product';
 import { ProductService } from '../../../../shared/services/product.service';
 import { SizeModalComponent } from "../../../../shared/components/modal/size-modal/size-modal.component";
+import { AddBase64InImg } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -19,14 +20,16 @@ export class ProductLeftSidebarComponent implements OnInit {
   public mobileSidebar: boolean = false;
 
   @ViewChild("sizeChart") SizeChart: SizeModalComponent;
-  
+
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    public productService: ProductService) { 
-      this.route.data.subscribe(response => this.product = response.data );
-    }
+    public productService: ProductService) {
+    this.route.data.subscribe(response => {
+      this.product = response.data
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -56,22 +59,24 @@ export class ProductLeftSidebarComponent implements OnInit {
   selectSize(size) {
     this.selectedSize = size;
   }
-  
+
   // Increament
   increment() {
-    this.counter++ ;
+    if (this.counter < this.product.quantity) {
+      this.counter++;
+    }
   }
 
   // Decrement
   decrement() {
-    if (this.counter > 1) this.counter-- ;
+    if (this.counter > 1) this.counter--;
   }
 
   // Add to cart
   async addToCart(product: any) {
     product.quantity = this.counter || 1;
     const status = await this.productService.addToCart(product);
-    if(status)
+    if (status)
       this.router.navigate(['/shop/cart']);
   }
 
@@ -79,7 +84,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   async buyNow(product: any) {
     product.quantity = this.counter || 1;
     const status = await this.productService.addToCart(product);
-    if(status)
+    if (status)
       this.router.navigate(['/shop/checkout']);
   }
 
@@ -91,6 +96,10 @@ export class ProductLeftSidebarComponent implements OnInit {
   // Toggle Mobile Sidebar
   toggleMobileSidebar() {
     this.mobileSidebar = !this.mobileSidebar;
+  }
+
+  formatImage(img) {
+    return AddBase64InImg(img)
   }
 
 }

@@ -48,7 +48,6 @@ export class TapToTopComponent implements OnInit {
   }
 
   openGiftModal(content) {
-    console.log("open gift")
     this.modalRef = this.modalService.open(content, { centered: true });
     this.modalRef.result.then(res => console.log(res), (reason) => {
       console.log(reason)

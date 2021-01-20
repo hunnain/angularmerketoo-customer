@@ -2,7 +2,11 @@
 
 <!-- Home slider start-->
 <section class="p-0">
-  <app-slider [sliders]="sliders" [textClass]="'text-center'" [category]="'fashion'">
+  <app-slider
+    [sliders]="sliders"
+    [textClass]="'text-center'"
+    [category]="'fashion'"
+  >
   </app-slider>
 </section>
 <!-- Home slider End -->
@@ -13,49 +17,92 @@
       <img src="assets\images\product\fashion\10.jpg" />
     </div>
     <!-- <a href="#">Accessories</a> -->
-    <span style="display: block;text-align: center;" href="#" class="categoriesBubbles">Accessories</span>
+    <span
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Accessories</span
+    >
   </div>
   <div class="one_sixth">
     <div class="button-container">
       <a href="#"></a>
       <img src="assets\images\product\fashion\11.jpg" />
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Clothing</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Clothing</a
+    >
   </div>
   <div class="one_sixth">
     <div class="button-container">
       <a href="#"></a>
-      <div class="button-image"> <img src="assets\images\product\fashion\14.jpg" /></div>
+      <div class="button-image">
+        <img src="assets\images\product\fashion\14.jpg" />
+      </div>
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Stationery</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Stationery</a
+    >
   </div>
   <div class="one_sixth">
     <div class="button-container">
       <a href="#"></a>
-      <div class="button-image"> <img src="assets\images\product\fashion\16.jpg" /></div>
+      <div class="button-image">
+        <img src="assets\images\product\fashion\16.jpg" />
+      </div>
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Daily Necessities</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Daily Necessities</a
+    >
   </div>
   <div class="one_sixth">
     <div class="button-container">
       <a href="#"></a>
-      <div class="button-image"> <img src="assets\images\product\fashion\17.jpg" /></div>
+      <div class="button-image">
+        <img src="assets\images\product\fashion\17.jpg" />
+      </div>
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Handbag/RuckSack</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Handbag/RuckSack</a
+    >
   </div>
   <div class="one_sixth">
     <div class="button-container">
       <a href="#"></a>
-      <div class="button-image"> <img src="assets\images\product\fashion\18.jpg" /></div>
+      <div class="button-image">
+        <img src="assets\images\product\fashion\18.jpg" />
+      </div>
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Skin Care</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Skin Care</a
+    >
   </div>
   <div class="one_sixth last">
     <div class="button-container">
       <a href="#"></a>
       <img src="assets\images\product\fashion\25.jpg" />
     </div>
-    <a style="display: block;text-align: center;" href="#" class="categoriesBubbles">Leisure Experience</a>
+    <a
+      style="display: block; text-align: center"
+      href="#"
+      class="categoriesBubbles"
+      >Leisure Experience</a
+    >
   </div>
 
   <div class="clearboth"></div>
@@ -63,21 +110,35 @@
 <!-- Product slider start-->
 <!-- ADS -->
 <div>
-  <h4 style="padding-left: 6%;
-  margin-top: 6%;
-  margin-bottom: 1.5%;
-  font-weight: 500;
-  font-size: 22px;">{{ 'homepage-ads' | translate }}</h4>
+  <h4
+    style="
+      padding-left: 6%;
+      margin-top: 6%;
+      margin-bottom: 1.5%;
+      font-weight: 500;
+      font-size: 22px;
+    "
+  >
+    {{ "homepage-ads" | translate }}
+  </h4>
 </div>
 <section class="section-b-space p-t-0">
   <div class="container">
     <div class="row">
       <div class="col">
-        <owl-carousel-o class="product-m owl-dots" [options]="ProductSliderConfig">
-          <ng-container *ngFor="let product of products | slice:0:16">
+        <owl-carousel-o
+          class="product-m owl-dots"
+          [options]="ProductSliderConfig"
+        >
+          <ng-container *ngFor="let product of products | slice: 0:16">
             <ng-template carouselSlide>
               <div class="product-box">
-                <app-product-box-one [product]="product" [currency]="productService?.Currency" [cartModal]="true">
+                <app-product-box-one
+                  [product]="product"
+                  [currency]="productService?.Currency"
+                  [cartModal]="true"
+                  [loader]="true"
+                >
                 </app-product-box-one>
               </div>
             </ng-template>
@@ -89,21 +150,35 @@
 </section>
 
 <div>
-  <h4 style="padding-left: 6%;
-  margin-top: 6%;
-  margin-bottom: 1.5%;
-  font-weight: 500;
-  font-size: 22px;">{{ 'editors-choice' | translate }}</h4>
+  <h4
+    style="
+      padding-left: 6%;
+      margin-top: 6%;
+      margin-bottom: 1.5%;
+      font-weight: 500;
+      font-size: 22px;
+    "
+  >
+    {{ "editors-choice" | translate }}
+  </h4>
 </div>
 <section class="section-b-space p-t-0">
   <div class="container">
     <div class="row">
       <div class="col">
-        <owl-carousel-o class="product-m owl-dots" [options]="ProductSliderConfig">
-          <ng-container *ngFor="let product of products | slice:0:16">
+        <owl-carousel-o
+          class="product-m owl-dots"
+          [options]="ProductSliderConfig"
+        >
+          <ng-container *ngFor="let product of products | slice: 0:16">
             <ng-template carouselSlide>
               <div class="product-box">
-                <app-product-box-one [product]="product" [currency]="productService?.Currency" [cartModal]="true">
+                <app-product-box-one
+                  [product]="product"
+                  [currency]="productService?.Currency"
+                  [cartModal]="true"
+                  [loader]="true"
+                >
                 </app-product-box-one>
               </div>
             </ng-template>
@@ -116,20 +191,34 @@
 <!-- Product slider End -->
 <!-- Product slider start-->
 <div>
-  <h4 style="padding-left: 6%;
-  margin-bottom: 1.5%;
-  font-weight: 500;
-  font-size: 22px;">{{ 'recently-popular' | translate }}</h4>
+  <h4
+    style="
+      padding-left: 6%;
+      margin-bottom: 1.5%;
+      font-weight: 500;
+      font-size: 22px;
+    "
+  >
+    {{ "recently-popular" | translate }}
+  </h4>
 </div>
 <section class="section-b-space p-t-0">
   <div class="container">
     <div class="row">
       <div class="col">
-        <owl-carousel-o class="product-m owl-dots" [options]="ProductSliderConfig">
-          <ng-container *ngFor="let product of products | slice:0:16">
+        <owl-carousel-o
+          class="product-m owl-dots"
+          [options]="ProductSliderConfig"
+        >
+          <ng-container *ngFor="let product of products | slice: 0:16">
             <ng-template carouselSlide>
               <div class="product-box">
-                <app-product-box-one [product]="product" [currency]="productService?.Currency" [cartModal]="true">
+                <app-product-box-one
+                  [product]="product"
+                  [currency]="productService?.Currency"
+                  [cartModal]="true"
+                  [loader]="true"
+                >
                 </app-product-box-one>
               </div>
             </ng-template>
@@ -190,14 +279,11 @@
 </section> -->
 <!-- Tab product End -->
 
-
-
 <!-- blog section start-->
 <section class="blog p-t-0">
   <div class="container">
     <div class="row">
-      <div class="col">
-      </div>
+      <div class="col"></div>
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -208,20 +294,29 @@
 </section>
 <!-- blog section End -->
 <div>
-  <h4 style="padding-left: 6%;
-  margin-top: 6%;
-  font-weight: 500;
-  font-size: 22px;">{{ 'new-products' | translate }}</h4>
+  <h4
+    style="padding-left: 6%; margin-top: 6%; font-weight: 500; font-size: 22px"
+  >
+    {{ "new-products" | translate }}
+  </h4>
 </div>
 <section class="section-b-space p-t-0">
   <div class="container">
     <div class="row">
       <div class="col">
-        <owl-carousel-o class="product-m owl-dots" [options]="ProductSliderConfig">
-          <ng-container *ngFor="let product of products | slice:0:16">
+        <owl-carousel-o
+          class="product-m owl-dots"
+          [options]="ProductSliderConfig"
+        >
+          <ng-container *ngFor="let product of products | slice: 0:16">
             <ng-template carouselSlide>
               <div class="product-box">
-                <app-product-box-one [product]="product" [currency]="productService?.Currency" [cartModal]="true">
+                <app-product-box-one
+                  [product]="product"
+                  [currency]="productService?.Currency"
+                  [cartModal]="true"
+                  [loader]="true"
+                >
                 </app-product-box-one>
               </div>
             </ng-template>
@@ -234,7 +329,7 @@
 <!-- Product slider End -->
 <!-- Instagram section -->
 <section class="instagram">
-  <div class="container-fluid ">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 p-0">
         <h2 class="title-borderless"># instagram</h2>

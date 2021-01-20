@@ -16,14 +16,17 @@ export class FashionOneComponent implements OnInit {
 
   constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe(response => {
-      this.products = response
+      if (response['body']) {
+        this.products = response['body']
+
+      }
       // Get Product Collection
-      this.products.filter((item) => {
-        item.collection.filter((collection) => {
-          const index = this.productCollections.indexOf(collection);
-          if (index === -1) this.productCollections.push(collection);
-        })
-      })
+      // this.products.filter((item) => {
+      //   item.collection.filter((collection) => {
+      //     const index = this.productCollections.indexOf(collection);
+      //     if (index === -1) this.productCollections.push(collection);
+      //   })
+      // })
     });
   }
 
