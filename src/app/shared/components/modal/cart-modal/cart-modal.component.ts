@@ -1,9 +1,12 @@
-import { Component, OnInit, OnDestroy, ViewChild, TemplateRef, Input, AfterViewInit,
-  Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, ViewChild, TemplateRef, Input, AfterViewInit,
+  Injectable, PLATFORM_ID, Inject
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from "../../../services/product.service";
 import { Product } from "../../../classes/product";
+import { AddBase64InImg } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-cart-modal',
@@ -13,8 +16,8 @@ import { Product } from "../../../classes/product";
 export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() product: Product;
-  @Input() currency : any;
-  
+  @Input() currency: any;
+
   @ViewChild("cartModal", { static: false }) CartModal: TemplateRef<any>;
 
   public closeResult: string;
@@ -33,13 +36,13 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async openModal(product) {
-    await this.productService.getProducts.subscribe(response => this.products = response);
+    await this.productService.getProducts.subscribe(response => { if (response['body']) { this.products = response } });
     this.products = await this.products.filter(items => items.category == product.category && items.id != product.id);
     const status = await this.productService.addToCart(product);
-    if(status) {
+    if (status) {
       this.modalOpen = true;
       if (isPlatformBrowser(this.platformId)) { // For SSR 
-        this.modalService.open(this.CartModal, { 
+        this.modalService.open(this.CartModal, {
           size: 'lg',
           ariaLabelledBy: 'Cart-Modal',
           centered: true,
@@ -64,9 +67,13 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.modalOpen){
+    if (this.modalOpen) {
       this.modalService.dismissAll();
     }
+  }
+
+  formatImage(img) {
+    return AddBase64InImg(img);
   }
 
 }

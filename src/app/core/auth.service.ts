@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { map } from 'rxjs/operators';
 
@@ -9,6 +9,7 @@ import { CommonService } from "../shared/services/common.service";
 @Injectable()
 export class AuthService {
 
+  public openLoginModal: EventEmitter<any> = new EventEmitter(false);
   constructor(
     public afAuth: AngularFireAuth,
     private commonService: CommonService
@@ -86,6 +87,17 @@ export class AuthService {
         reject();
       }
     });
+  }
+
+  checkUserLoggedIn() {
+    let token = this.commonService.getAccessToken()
+    if (token) {
+      this.openLoginModal.next(false);
+      return true;
+    } else {
+      this.openLoginModal.next(true);
+      return false;
+    }
   }
 
 

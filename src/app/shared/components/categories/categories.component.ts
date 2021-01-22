@@ -12,7 +12,7 @@ export class CategoriesComponent implements OnInit {
   public products: Product[] = [];
   public collapse: boolean = true;
 
-  constructor(public productService: ProductService) { 
+  constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe(product => this.products = product);
   }
 
@@ -20,7 +20,8 @@ export class CategoriesComponent implements OnInit {
   }
 
   get filterbyCategory() {
-    const category = [...new Set(this.products.map(product => product.type))]
+    // const category = [...new Set(this.products.map(product => product.type))]
+    const category = ['Accessories', 'Clothing', 'Stationery', 'Daily Necessities', 'Handbag/ Rucksack', 'Skin Care', 'Leisure Experience']
     return category
   }
 

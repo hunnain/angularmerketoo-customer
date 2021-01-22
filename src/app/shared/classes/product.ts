@@ -2,6 +2,7 @@
 export interface Product {
     id?: number;
     productId?: number,
+    productUuid?: number,
     colour?: string;
     size?: string;
     title?: string;
@@ -19,8 +20,11 @@ export interface Product {
     new?: boolean;
     quantity?: number;
     tags?: any[];
+    availableSizes?: any[];
+    availableColours?: any[];
     variants?: Variants[];
     images?: Images[];
+    image?: string;
 }
 
 export interface Variants {

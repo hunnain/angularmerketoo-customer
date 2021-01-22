@@ -1,6 +1,7 @@
-import { Component, OnInit,PLATFORM_ID, Input,Inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Input, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
+import { UserService } from 'src/app/core/user.service';
 
 @Component({
   selector: 'app-footer-one',
@@ -15,8 +16,13 @@ export class FooterOneComponent implements OnInit {
 
   public today: number = Date.now();
   public lan: boolean;
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,
-    private translate: TranslateService) {
+  public email: string = "";
+  public loading: boolean = false;
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private translate: TranslateService,
+    private userService: UserService
+  ) {
   }
 
   ngOnInit(): void {
@@ -33,5 +39,16 @@ export class FooterOneComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.translate.use(code)
     }
+  }
+
+  subscribe() {
+    this.loading = true;
+    this.userService.subscribeUser(this.email).subscribe(res => {
+      // if (res) {
+      console.log("subscribe success", res);
+      this.email = "";
+      this.loading = false;
+      // }
+    })
   }
 }

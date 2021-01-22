@@ -59,22 +59,32 @@
                     border-radius: 4%;
                   "
                   type="email"
-                  #name
-                  name="EMAIL"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"
+                  #emailValidation="ngModel"
+                  name="email"
                   id="mce-EMAIL"
+                  [(ngModel)]="email"
                   class="form-control"
                   placeholder="{{ 'entermail' | translate }}"
                 />
+                <span
+                  *ngIf="emailValidation.errors?.pattern"
+                  style="color: red; position: absolute"
+                >
+                  {{ "email_invalid" | translate }}
+                </span>
               </div>
               <button
                 style="padding: 7px 17px; margin-right: 9%"
                 type="submit"
                 class="btn btn-solid"
+                (click)="subscribe()"
+                [disabled]="!email || emailValidation.invalid"
               >
                 {{ "subscribe" | translate }}
               </button>
             </form>
-            <p id="follow" style="margin-top: 4%; margin-bottom: -6%">
+            <p id="follow" style="margin-top: 5%; margin-bottom: -6%">
               {{ "follow" | translate }}
             </p>
             <div class="footer-social">

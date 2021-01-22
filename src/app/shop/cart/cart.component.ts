@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductService } from "../../shared/services/product.service";
 import { Product } from "../../shared/classes/product";
+import { AddBase64InImg } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +36,10 @@ export class CartComponent implements OnInit {
 
   public removeItem(product: any) {
     this.productService.removeCartItem(product);
+  }
+
+  formatImage(img) {
+    return AddBase64InImg(img);
   }
 
 }

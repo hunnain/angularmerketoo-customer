@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,6 +16,7 @@ declare var $: any;
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  @ViewChild('content') content: ElementRef;
 
   public loginForm: FormGroup;
   public signupForm: FormGroup;
@@ -65,6 +66,12 @@ export class SettingsComponent implements OnInit {
     private router: Router,
     public productService: ProductService
   ) {
+    this.authService.openLoginModal.subscribe(isopen => {
+      if (isopen) {
+        this.login(this.content);
+        this.authService.openLoginModal.next(false);
+      }
+    })
     this.createLoginForm();
     this.createSignupForm();
     this.productService.cartItems.subscribe(response => this.products = response);

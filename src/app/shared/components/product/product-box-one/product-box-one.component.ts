@@ -4,6 +4,7 @@ import { CartModalComponent } from "../../modal/cart-modal/cart-modal.component"
 import { Product } from "../../../classes/product";
 import { ProductService } from "../../../services/product.service";
 import { AddBase64InImg } from 'src/app/shared/utilities';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-product-box-one',
@@ -24,7 +25,10 @@ export class ProductBoxOneComponent implements OnInit {
 
   public ImageSrc: string
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     if (this.loader) {
@@ -61,8 +65,16 @@ export class ProductBoxOneComponent implements OnInit {
     this.ImageSrc = src;
   }
 
+  openCartModal(product) {
+    if (this.authService.checkUserLoggedIn()) {
+      this.CartModal.openModal(product)
+    }
+  }
+
   addToCart(product: any) {
-    this.productService.addToCart(product);
+    if (this.authService.checkUserLoggedIn()) {
+      this.productService.addToCart(product);
+    }
   }
 
   addToWishlist(product: any) {

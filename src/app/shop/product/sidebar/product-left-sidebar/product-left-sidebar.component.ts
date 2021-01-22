@@ -5,6 +5,7 @@ import { Product } from '../../../../shared/classes/product';
 import { ProductService } from '../../../../shared/services/product.service';
 import { SizeModalComponent } from "../../../../shared/components/modal/size-modal/size-modal.component";
 import { AddBase64InImg } from 'src/app/shared/utilities';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -24,8 +25,12 @@ export class ProductLeftSidebarComponent implements OnInit {
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    public productService: ProductService) {
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public productService: ProductService
+  ) {
     this.route.data.subscribe(response => {
       this.product = response.data
     });
@@ -74,18 +79,22 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   // Add to cart
   async addToCart(product: any) {
-    product.quantity = this.counter || 1;
-    const status = await this.productService.addToCart(product);
-    if (status)
-      this.router.navigate(['/shop/cart']);
+    if (this.authService.checkUserLoggedIn()) {
+      product.quantity = this.counter || 1;
+      const status = await this.productService.addToCart(product);
+      if (status)
+        this.router.navigate(['/shop/cart']);
+    }
   }
 
   // Buy Now
   async buyNow(product: any) {
-    product.quantity = this.counter || 1;
-    const status = await this.productService.addToCart(product);
-    if (status)
-      this.router.navigate(['/shop/checkout']);
+    if (this.authService.checkUserLoggedIn()) {
+      product.quantity = this.counter || 1;
+      const status = await this.productService.addToCart(product);
+      if (status)
+        this.router.navigate(['/shop/checkout']);
+    }
   }
 
   // Add to Wishlist
