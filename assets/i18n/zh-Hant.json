@@ -409,5 +409,30 @@
   "knitting":"編織",
   "outdoor-activities":"戶外活動",
   "indoor-activities":"室外運動",
-  "casual-seminar":"休閒講座"
+  "casual-seminar":"休閒講座",
+
+
+  "email": "電郵",
+  "email_req": "必須填寫聯絡電郵",
+  "email_invalid": "输入有效邮件地址",
+  "password_req": "密码是必需的",
+  "username": "帳戶名稱",
+  "username_req":"用戶名為必填項",
+  "password": "密碼",
+  "Login": "登入",
+  "Marketoo account":"Marketoo帳戶",
+
+  "gift_description":"登記成為新會員即享95折優惠! (有效期為3天)",
+  "gift_link":"詳情請參閱優惠條款",
+  "gift_link_hide":"隱藏優惠條款",
+  "gift_offer_term_policy_1":"新會員優惠 ",
+  "gift_offer_term_policy_2":"註冊Marketoo會員後，⾸次購物將享有95折優惠。",
+  "gift_offer_term_policy_3":"有效期為3天。",
+  "gift_offer_term_policy_4":"不能和優惠碼同時使⽤。",
+  "gift_offer_term_policy_5":"訂單取消或全額退款後，若還在會員註冊後3天內，仍可享有新會員優惠。",
+  "gift_offer_term_policy_6":"如果同時符合活動優惠、店主優惠條件，使⽤規則請依照後者為主。",
+  "gift_button":"立即註冊"
+
+  
+
 }
