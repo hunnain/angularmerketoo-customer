@@ -23,11 +23,11 @@
             <div class="collection-filter-block">
               <app-services></app-services>
             </div>
-            <app-product-box-vertical-slider
+            <!-- <app-product-box-vertical-slider
               [title]="'New product'"
               [type]="product?.type"
             >
-            </app-product-box-vertical-slider>
+            </app-product-box-vertical-slider> -->
           </div>
         </div>
         <div class="col-lg-9 col-sm-12 col-xs-12">
@@ -118,14 +118,29 @@
                   >
                     <li
                       [class]="color"
-                      [class.active]="activeSlide == i.toString()"
+                      [class.active]="selectedColor == color"
                       *ngFor="
                         let color of product?.availableColours;
                         index as i
                       "
                       [ngStyle]="{ 'background-color': color }"
-                      (click)="owlCar.to((activeSlide = i.toString()))"
+                      (click)="selectColor(color)"
                     ></li>
+                  </ul>
+                  <ul
+                    class="color-variant custom-color-container"
+                    *ngIf="product?.customColours.length"
+                  >
+                    <span>Custom Colours</span
+                    ><br />
+                    <li
+                      [class]="color"
+                      [class.active]="selectedColor == color"
+                      *ngFor="let color of product?.customColours"
+                      (click)="selectColor(color)"
+                    >
+                      {{ color | titlecase }}
+                    </li>
                   </ul>
                   <app-stock-inventory
                     [stock]="product?.stock"
@@ -133,7 +148,9 @@
                   <div class="product-description border-product">
                     <h6
                       class="product-title size-text"
-                      *ngIf="product.availableSizes.length"
+                      *ngIf="
+                        product.availableSizes.length || product.customSize
+                      "
                     >
                       select size
                       <span>
@@ -144,7 +161,12 @@
                         >
                       </span>
                     </h6>
-                    <div class="size-box" *ngIf="product.availableSizes.length">
+                    <div
+                      class="size-box"
+                      *ngIf="
+                        product.availableSizes.length || product.customSize
+                      "
+                    >
                       <ul>
                         <li
                           [class.active]="selectedSize == size"
@@ -155,6 +177,18 @@
                             (click)="selectSize(size)"
                           >
                             {{ size | titlecase }}
+                          </a>
+                        </li>
+                      </ul>
+                      <ul *ngIf="product.customSize">
+                        Custom Size
+                        <br />
+                        <li [class.active]="selectedSize == product.customSize">
+                          <a
+                            href="javascript:void(0)"
+                            (click)="selectSize(product.customSize)"
+                          >
+                            {{ product.customSize | titlecase }}
                           </a>
                         </li>
                       </ul>
@@ -312,17 +346,14 @@
                             <div class="media">
                               <label>Rating</label>
                               <div class="media-body ml-3">
-                                <div class="rating three-star">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                </div>
+                                <app-rating
+                                  [rating]="rating"
+                                  (rateChange)="onRateChange($event)"
+                                ></app-rating>
                               </div>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <!-- <div class="col-md-6">
                             <label for="name">Name</label>
                             <input
                               type="text"
@@ -341,7 +372,7 @@
                               placeholder="Email"
                               required
                             />
-                          </div>
+                          </div> -->
                           <div class="col-md-12">
                             <label for="review">Review Title</label>
                             <input
@@ -349,20 +380,28 @@
                               class="form-control"
                               id="review"
                               placeholder="Enter your Review Subjects"
+                              [(ngModel)]="reviewTitle"
+                              name="reviewTitle"
                               required
                             />
                           </div>
                           <div class="col-md-12">
-                            <label for="review">Review Title</label>
+                            <label for="review">Review Description</label>
                             <textarea
                               class="form-control"
                               placeholder="Wrire Your Testimonial Here"
                               id="exampleFormControlTextarea1"
                               rows="6"
+                              [(ngModel)]="review"
+                              name="review"
                             ></textarea>
                           </div>
                           <div class="col-md-12">
-                            <button class="btn btn-solid" type="submit">
+                            <button
+                              class="btn btn-solid"
+                              type="submit"
+                              (click)="submitReview()"
+                            >
                               Submit YOur Review
                             </button>
                           </div>
@@ -378,7 +417,7 @@
       </div>
     </div>
   </div>
-  <app-related-product [type]="product?.type"></app-related-product>
+  <!-- <app-related-product [type]="product?.type"></app-related-product> -->
 </section>
 <app-size-modal #sizeChart [product]="product"></app-size-modal>
 <!-- Section ends -->

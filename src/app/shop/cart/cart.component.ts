@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from "../../shared/services/product.service";
 import { Product } from "../../shared/classes/product";
 import { AddBase64InImg } from 'src/app/shared/utilities';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,10 @@ export class CartComponent implements OnInit {
 
   public products: Product[] = [];
 
-  constructor(public productService: ProductService) {
+  constructor(
+    public productService: ProductService,
+    private router: Router
+  ) {
     this.productService.cartItems.subscribe(response => this.products = response);
   }
 
@@ -40,6 +44,24 @@ export class CartComponent implements OnInit {
 
   formatImage(img) {
     return AddBase64InImg(img);
+  }
+
+  addToCart() {
+    console.log('💻 cart items--', this.products);
+    let data = this.products.map(item => {
+      if (item.images) {
+        delete item.images;
+      } else if (item.image) {
+        delete item.image;
+      }
+
+      return item;
+    })
+    this.productService.addCartToServer(data).subscribe(res => {
+      if (res && res['body']) {
+        this.router.navigate(['/shop/checkout'])
+      }
+    });
   }
 
 }

@@ -33,7 +33,11 @@
                   ]"
                 >
                   <img
-                    [src]="formatImage(product.image)"
+                    [src]="
+                      formatImage(
+                        product.images ? product.images[0] : product.image
+                      )
+                    "
                     [alt]="product.name"
                   />
                 </a>
@@ -121,11 +125,7 @@
                 </div>
               </td>
               <td>
-                <a
-                  href="javascript:void(0)"
-                  (click)="removeItem(product)"
-                  class="icon"
-                >
+                <a (click)="removeItem(product)" class="icon">
                   <i class="ti-close"></i>
                 </a>
               </td>
@@ -165,9 +165,9 @@
         <!-- <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a> -->
       </div>
       <div class="col-6">
-        <a [routerLink]="['/shop/checkout']" class="btn btn-solid">{{
-          "Checkout" | translate
-        }}</a>
+        <button type="button" class="btn btn-solid" (click)="addToCart()">
+          {{ "Checkout" | translate }}
+        </button>
       </div>
     </div>
   </div>

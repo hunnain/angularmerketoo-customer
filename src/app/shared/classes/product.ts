@@ -22,6 +22,8 @@ export interface Product {
     tags?: any[];
     availableSizes?: any[];
     availableColours?: any[];
+    customColours?: string;
+    customSize?: string;
     variants?: Variants[];
     images?: Images[];
     image?: string;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailsMainSlider, ProductDetailsThumbSlider } from '../../../../shared/data/slider';
 import { Product } from '../../../../shared/classes/product';
@@ -13,12 +13,18 @@ import { AuthService } from 'src/app/core/auth.service';
   styleUrls: ['./product-left-sidebar.component.scss']
 })
 export class ProductLeftSidebarComponent implements OnInit {
+  // @ViewChild('owlCar') owlCar;
 
   public product: Product = {};
   public counter: number = 1;
   public activeSlide: any = 0;
   public selectedSize: any;
+  public selectedColor: any;
   public mobileSidebar: boolean = false;
+
+  public reviewTitle: string = "";
+  public review: string = "";
+  public rating: number = 0;
 
   @ViewChild("sizeChart") SizeChart: SizeModalComponent;
 
@@ -32,7 +38,7 @@ export class ProductLeftSidebarComponent implements OnInit {
     public productService: ProductService
   ) {
     this.route.data.subscribe(response => {
-      this.product = response.data
+      this.product = response.data;
     });
   }
 
@@ -65,6 +71,11 @@ export class ProductLeftSidebarComponent implements OnInit {
     this.selectedSize = size;
   }
 
+  selectColor(color) {
+    this.selectedColor = color;
+    // this.owlCar.to((this.activeSlide = ind.toString()))
+  }
+
   // Increament
   increment() {
     if (this.counter < this.product.quantity) {
@@ -81,6 +92,8 @@ export class ProductLeftSidebarComponent implements OnInit {
   async addToCart(product: any) {
     if (this.authService.checkUserLoggedIn()) {
       product.quantity = this.counter || 1;
+      product.size = this.selectedSize;
+      product.color = this.selectedColor;
       const status = await this.productService.addToCart(product);
       if (status)
         this.router.navigate(['/shop/cart']);
@@ -91,6 +104,8 @@ export class ProductLeftSidebarComponent implements OnInit {
   async buyNow(product: any) {
     if (this.authService.checkUserLoggedIn()) {
       product.quantity = this.counter || 1;
+      product.size = this.selectedSize;
+      product.color = this.selectedColor;
       const status = await this.productService.addToCart(product);
       if (status)
         this.router.navigate(['/shop/checkout']);
@@ -109,6 +124,17 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   formatImage(img) {
     return AddBase64InImg(img)
+  }
+
+
+  onRateChange(rate) {
+    this.rating = rate;
+  }
+
+  submitReview() {
+    console.log('💻', this.reviewTitle);
+    console.log('💻', this.review);
+    console.log('💻', this.rating);
   }
 
 }

@@ -74,11 +74,21 @@ export class SettingsComponent implements OnInit {
     })
     this.createLoginForm();
     this.createSignupForm();
+    this.checkLoggedIn();
     this.productService.cartItems.subscribe(response => this.products = response);
   }
 
   ngOnInit(): void {
     this.lan = true;
+  }
+
+  checkLoggedIn() {
+    let isLoggedIn = this.authService.checkUserLoggedIn();
+    if (isLoggedIn) {
+      this.menu = false;
+    } else {
+      this.menu = true;
+    }
   }
 
   createLoginForm() {
@@ -157,7 +167,7 @@ export class SettingsComponent implements OnInit {
         // this.cs.isLoading.next(false)
         // this.loading = false;
         console.log(res, 'success');
-        this.router.navigate(['/user']);
+        // this.router.navigate(['/user']);
         this.modalRef.close();
         this.menu = false
         localStorage.setItem('userInfo', JSON.stringify(res));

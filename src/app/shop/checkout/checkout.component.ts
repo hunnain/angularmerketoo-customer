@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   public payment: string = 'Stripe';
   public amount: any;
   public isOtherCountry: boolean = false;
+  public IsInternationalShipping: boolean = false;
 
   public stripe = Stripe(environment.stripe_token)
   constructor(private fb: FormBuilder,
@@ -140,12 +141,13 @@ export class CheckoutComponent implements OnInit {
 
 
   createOrderWithStripe() {
-    let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
+    let prods = this.products.map(({ productUuid, quantity, colour, size }) => ({ productUuid, quantity, colour, size }))
     let data = {
       ...this.checkoutForm.value,
       paymentMethodType: "card",
       mode: "payment",
       productDetails: prods,
+      IsInternationalShipping: this.IsInternationalShipping
     }
     console.log("createding order data", data)
     // console.log("stripe", this.stripe)

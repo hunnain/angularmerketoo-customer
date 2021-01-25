@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
+import { ExtendedCategories } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-collection-left-sidebar',
@@ -17,8 +18,9 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public brands: any[] = [];
   public colors: any[] = [];
   public size: any[] = [];
-  public minPrice: number = 0;
-  public maxPrice: number = 1200;
+  public label: any[] = [];
+  public startPrice: number = 0;
+  public endPrice: number = 1200;
   public tags: any[] = [];
   public category: string;
   public extendedsubcategory: string;
@@ -38,28 +40,44 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.brands = params.brand ? params.brand.split(",") : [];
       this.colors = params.color ? params.color.split(",") : [];
       this.size = params.size ? params.size.split(",") : [];
-      this.minPrice = params.minPrice ? params.minPrice : this.minPrice;
-      this.maxPrice = params.maxPrice ? params.maxPrice : this.maxPrice;
-      this.tags = [...this.brands, ...this.colors, ...this.size]; // All Tags Array
+      this.label = params.label ? params.label.split(",") : [];
+      this.startPrice = params.startPrice ? params.startPrice : this.startPrice;
+      this.endPrice = params.endPrice ? params.endPrice : this.endPrice;
+      this.tags = [...this.brands, ...this.colors, ...this.size, ...this.label]; // All Tags Array
 
       this.category = params.category ? params.category : null;
-      this.extendedsubcategory = params.extendedsubcategory ? params.extendedsubcategory : null;
+      this.extendedsubcategory = params.extendedsubcategory ? ExtendedCategories[params.extendedsubcategory] : null;
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
       this.pageNo = params.page ? params.page : this.pageNo;
 
-      console.log('💻', 'params', params, this.tags);
-      let filters = {};
+      // console.log('💻', 'params', params, this.pageNo);
+      let filters = {
+        colors: this.colors,
+        size: this.size,
+        label: this.label,
+        startPrice: this.startPrice,
+        endprice: this.endPrice,
+        sortBy: this.sortBy,
+        category: this.category,
+        extendedsubcategory: this.extendedsubcategory,
+        pageNumber: this.pageNo
+      };
       let query = '';
-      if (this.extendedsubcategory) {
-        filters['extendedsubcategory'] = this.extendedsubcategory;
-        query = `extendedsubcategory=${this.extendedsubcategory}`
+      for (let item in filters) {
+        if (filters[item] instanceof Array && filters[item].length > 0 || typeof filters[item] !== 'object' && filters[item]) {
+          query = `${query}&${[item]}=${filters[item]}`
+        }
       }
 
       // Get Filtered Products..
       this.productService.filterProducts(query).subscribe(response => {
         console.log('💻', 'response', response);
         if (response && response['body']) {
+          let paginate = JSON.parse(response['headers'].get('X-Pagination'));
           this.products = response['body'];
+          this.loader = false;
+          console.log('💻', 'pagination', paginate);
+          this.paginate = paginate;
         }
         // // Sorting Filter
         // this.products = this.productService.sortProducts(response, this.sortBy);
@@ -67,7 +85,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
         // if (params.category)
         //   this.products = this.products.filter(item => item.type == this.category);
         // // Price Filter
-        // this.products = this.products.filter(item => item.price >= this.minPrice && item.price <= this.maxPrice)
+        // this.products = this.products.filter(item => item.price >= this.startPrice && item.price <= this.endPrice)
         // // Paginate Products
         // this.paginate = this.productService.getPager(this.products.length, +this.pageNo);     // get paginate object from service
         // this.products = this.products.slice(this.paginate.startIndex, this.paginate.endIndex + 1); // get current page of items
@@ -112,11 +130,13 @@ export class CollectionLeftSidebarComponent implements OnInit {
     this.brands = this.brands.filter(val => val !== tag);
     this.colors = this.colors.filter(val => val !== tag);
     this.size = this.size.filter(val => val !== tag);
+    this.label = this.label.filter(val => val !== tag);
 
     let params = {
       brand: this.brands.length ? this.brands.join(",") : null,
       color: this.colors.length ? this.colors.join(",") : null,
-      size: this.size.length ? this.size.join(",") : null
+      size: this.size.length ? this.size.join(",") : null,
+      label: this.label.length ? this.label.join(",") : null
     }
 
     this.router.navigate([], {

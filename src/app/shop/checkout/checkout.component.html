@@ -327,22 +327,25 @@
                         <div class="shopping-option">
                           <input
                             type="radio"
-                            name="shipping"
-                            checked="checked"
+                            [value]="false"
+                            name="IsInternationalShipping"
+                            [(ngModel)]="IsInternationalShipping"
                             id="free-shipping"
                           />
                           <label style="font-size: 14px" for="free-shipping"
-                            >Shipping</label
+                            >Local</label
                           >
                         </div>
                         <div class="shopping-option">
                           <input
                             type="radio"
-                            name="shipping"
+                            name="IsInternationalShipping"
                             id="local-pickup"
+                            [value]="true"
+                            [(ngModel)]="IsInternationalShipping"
                           />
                           <label style="font-size: 14px" for="local-pickup"
-                            >International Shipping</label
+                            >International</label
                           >
                         </div>
                       </div>

@@ -520,7 +520,10 @@
   "gift_offer_term_policy_4":"Cannot be used in conjunction with promotion codes.",
   "gift_offer_term_policy_5":"After the order is cancelled or fully refunded, you can still enjoy the new member discount within 3 days of member registration.",
   "gift_offer_term_policy_6":"If both the event discount and the Designer Promotion Terms are met, the usage rules should be based on the latter.",
-  "gift_button":"Sign Up Now"
+  "gift_button":"Sign Up Now",
+
+  "invalid":"Invalid",
+  "label":"Label"
 
 
 

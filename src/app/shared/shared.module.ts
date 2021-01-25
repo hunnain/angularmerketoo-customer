@@ -32,6 +32,7 @@ import { ProductBoxFourComponent } from './components/product/product-box-four/p
 import { ProductBoxFiveComponent } from './components/product/product-box-five/product-box-five.component';
 import { ProductBoxVerticalComponent } from './components/product/product-box-vertical/product-box-vertical.component';
 import { ProductBoxVerticalSliderComponent } from './components/product/product-box-vertical-slider/product-box-vertical-slider.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 // Modals Components
 import { NewsletterComponent } from './components/modal/newsletter/newsletter.component';
@@ -86,7 +87,8 @@ import { DiscountPipe } from './pipes/discount.pipe';
     SkeletonProductBoxComponent,
     LayoutBoxComponent,
     TapToTopComponent,
-    DiscountPipe
+    DiscountPipe,
+    RatingComponent
   ],
   imports: [
     CommonModule,
@@ -139,7 +141,8 @@ import { DiscountPipe } from './pipes/discount.pipe';
     SkeletonProductBoxComponent,
     LayoutBoxComponent,
     TapToTopComponent,
-    DiscountPipe
+    DiscountPipe,
+    RatingComponent
   ]
 })
 export class SharedModule { }

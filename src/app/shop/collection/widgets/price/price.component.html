@@ -19,8 +19,18 @@
               type="text"
               class="form-control rounded"
               style="height: 32px"
+              name="min"
+              [pattern]="'^[0-9]*$'"
+              [(ngModel)]="min"
               placeholder="0"
+              #minPrice="ngModel"
             />
+            <span
+              *ngIf="minPrice.errors?.pattern"
+              style="color: red; position: absolute"
+            >
+              {{ "invalid" | translate }}
+            </span>
           </div>
           <div class="col-1">-</div>
           <div class="col-4">
@@ -28,14 +38,26 @@
               type="text"
               class="form-control rounded"
               style="height: 32px"
+              name="max"
+              [pattern]="'^[0-9]*$'"
+              [(ngModel)]="max"
               placeholder="0"
+              #maxPrice="ngModel"
             />
+            <span
+              *ngIf="maxPrice.errors?.pattern"
+              style="color: red; position: absolute"
+            >
+              {{ "invalid" | translate }}
+            </span>
           </div>
           <div class="col-3">
             <button
               type="button"
               class="btn btn-primary rounded"
               style="height: 32px"
+              [disabled]="minPrice.invalid || maxPrice.invalid"
+              (click)="saveFilter()"
             >
               >
             </button>

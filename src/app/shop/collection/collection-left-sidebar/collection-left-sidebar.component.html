@@ -61,10 +61,13 @@
                 (sizeFilter)="updateFilter($event)"
               >
               </app-size>
+              <!-- label filter start here -->
+              <app-label [label]="label" (labelFilter)="updateFilter($event)">
+              </app-label>
               <!-- price filter start here -->
               <app-price
-                [min]="minPrice"
-                [max]="maxPrice"
+                [min]="startPrice"
+                [max]="endPrice"
                 (priceFilter)="updateFilter($event)"
               >
               </app-price>
@@ -147,7 +150,7 @@
                       </div>
                       <div
                         class="col-sm-12 text-center section-b-space mt-5 no-found"
-                        *ngIf="!products.length"
+                        *ngIf="!loader && !products.length"
                       >
                         <img
                           src="assets/images/empty-search.jpg"
@@ -169,12 +172,13 @@
                       </div>
                     </div>
                   </div>
-                  <app-pagination
-                    [products]="products"
-                    [paginate]="paginate"
-                    (setPage)="setPage($event)"
-                  >
-                  </app-pagination>
+                  <div *ngIf="products.length">
+                    <app-pagination
+                      [paginate]="paginate"
+                      (setPage)="setPage($event)"
+                    >
+                    </app-pagination>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,9 +1,17 @@
-.product-title{
-    font-size: 20px;
+.product-title {
+  font-size: 20px;
 }
 
-.productadminpormotion{
-    font-weight: bold;
-    // color: #E56051;
-    padding-bottom: 10px;
+.productadminpormotion {
+  font-weight: bold;
+  // color: #E56051;
+  padding-bottom: 10px;
+}
+
+.custom-color-container li {
+  height: initial !important;
+  width: initial !important;
+}
+.custom-color-container .active {
+  border-radius: unset !important;
 }

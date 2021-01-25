@@ -23,8 +23,8 @@ export class PriceComponent implements OnInit {
   };
 
   price = {
-    minPrice: this.min,
-    maxPrice: this.max
+    startPrice: this.min,
+    endPrice: this.max
   };
 
   constructor() {
@@ -34,7 +34,13 @@ export class PriceComponent implements OnInit {
 
   // Range Changed
   appliedFilter(event: any) {
-    this.price = { minPrice: event.value, maxPrice: event.highValue };
+    this.price = { startPrice: event.value, endPrice: event.highValue };
+    this.priceFilter.emit(this.price);
+  }
+
+  // Save start and end price
+  saveFilter() {
+    this.price = { startPrice: this.min, endPrice: this.max };
     this.priceFilter.emit(this.price);
   }
 
