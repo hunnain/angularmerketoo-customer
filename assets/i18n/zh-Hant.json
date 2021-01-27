@@ -431,7 +431,10 @@
   "gift_offer_term_policy_4":"不能和優惠碼同時使⽤。",
   "gift_offer_term_policy_5":"訂單取消或全額退款後，若還在會員註冊後3天內，仍可享有新會員優惠。",
   "gift_offer_term_policy_6":"如果同時符合活動優惠、店主優惠條件，使⽤規則請依照後者為主。",
-  "gift_button":"立即註冊"
+  "gift_button":"立即註冊",
+
+  "invalid":"無效",
+  "label":"標籤"
 
   
 
