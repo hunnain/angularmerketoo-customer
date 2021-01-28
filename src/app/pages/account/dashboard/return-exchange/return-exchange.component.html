@@ -9,18 +9,38 @@
         <a href="javascript:void(0)">Shipping</a>
       </div>
       <!-- <br /> -->
+
       <!-- reason -->
       <div class="row-data-style">
         <div>
           <h4>Reason</h4>
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-            ipsa facere, nemo modi nihil excepturi ullam quaerat culpa
-            blanditiis excepturi, reiciendis iste!
-          </div>
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
         </div>
         <div>
           <app-feather-icons [icon]="'chevron-right'"></app-feather-icons>
+        </div>
+      </div>
+
+      <div class="row-data-style">
+        <div
+          style="
+            display: grid;
+            width: -webkit-fill-available;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            grid-gap: 10px;
+          "
+        >
+          <div *ngFor="let img of imgs">
+            <img
+              style="width: 50px; border-radius: 5px"
+              [src]="img"
+              alt="image"
+            />
+          </div>
+          <div class="box-input-file">
+            <input class="upload" type="file" (change)="readUrl($event)" />
+            <img class="imgUpload" alt="" src="assets/images/add_icons.png" />
+          </div>
         </div>
       </div>
       <br />
