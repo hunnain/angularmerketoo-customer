@@ -21,81 +21,142 @@
               <li class="active">
                 <a href="javascript:void(0)">Account Info</a>
               </li>
-              <li><a href="javascript:void(0)">Address Book</a></li>
-              <li><a href="javascript:void(0)">My Orders</a></li>
-              <li><a href="javascript:void(0)">My Wishlist</a></li>
-              <li><a href="javascript:void(0)">Newsletter</a></li>
-              <li><a href="javascript:void(0)">My Account</a></li>
-              <li><a href="javascript:void(0)">Change Password</a></li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  (click)="selectMenu('address_book')"
+                  >Address Book</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="selectMenu('my_orders')"
+                  >My Orders</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="selectMenu('my_wishList')"
+                  >My Wishlist</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="selectMenu('news_letter')"
+                  >Newsletter</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="selectMenu('my_account')"
+                  >My Account</a
+                >
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  (click)="selectMenu('return_exchange')"
+                  >Return & Exchange</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" (click)="selectMenu('change_pass')"
+                  >Change Password</a
+                >
+              </li>
               <li class="last"><a (click)="signOut()">Log Out</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="dashboard-right">
+        <div class="row">
+          <div class="col-lg-6" *ngIf="selectedMenu === 'return_exchange'">
+            <app-return-exchange></app-return-exchange>
+          </div>
+          <div class="col-lg-6" *ngIf="selectedMenu === 'return_exchange'">
+            <div class="dashboard-right">
+              <div class="dashboard">
+                <div style="display: flex">
+                  <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
+                  <h4 style="padding-left: 20px">Select Solution</h4>
+                </div>
+                <div class="block-content">
+                  <ul >
+                    <li><a>Return & Refund</a></li>
+                    <li><a>Refund Only</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-right" *ngIf="selectedMenu !== 'return_exchange'">
           <div class="dashboard">
-            <div class="page-title">
-              <h2>My Dashboard</h2>
-            </div>
-            <div class="welcome-msg">
-              <p>Hello, MARK JECNO !</p>
-              <p>
-                From your My Account Dashboard you have the ability to view a
-                snapshot of your recent account activity and update your account
-                information. Select a link below to view or edit information.
-              </p>
-            </div>
-            <div class="box-account box-info">
-              <div class="box-head">
-                <h2>Account Information</h2>
+            <div>
+              <div class="page-title">
+                <h2>My Dashboard</h2>
               </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="box">
-                    <div class="box-title">
-                      <h3>Contact Information</h3>
-                      <a href="javascript:void(0)">Edit</a>
+              <div class="welcome-msg">
+                <p>Hello, MARK JECNO !</p>
+                <p>
+                  From your My Account Dashboard you have the ability to view a
+                  snapshot of your recent account activity and update your
+                  account information. Select a link below to view or edit
+                  information.
+                </p>
+              </div>
+              <div class="box-account box-info">
+                <div class="box-head">
+                  <h2>Account Information</h2>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="box">
+                      <div class="box-title">
+                        <h3>Contact Information</h3>
+                        <a href="javascript:void(0)">Edit</a>
+                      </div>
+                      <div class="box-content">
+                        <h6>MARK JECNO</h6>
+                        <h6>MARk-JECNO@gmail.com</h6>
+                        <h6>
+                          <a href="javascript:void(0)">Change Password</a>
+                        </h6>
+                      </div>
                     </div>
-                    <div class="box-content">
-                      <h6>MARK JECNO</h6>
-                      <h6>MARk-JECNO@gmail.com</h6>
-                      <h6><a href="javascript:void(0)">Change Password</a></h6>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="box">
+                      <div class="box-title">
+                        <h3>Newsletters</h3>
+                        <a href="javascript:void(0)">Edit</a>
+                      </div>
+                      <div class="box-content">
+                        <p>
+                          You are currently not subscribed to any newsletter.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <div class="box">
                     <div class="box-title">
-                      <h3>Newsletters</h3>
-                      <a href="javascript:void(0)">Edit</a>
+                      <h3>Address Book</h3>
+                      <a href="javascript:void(0)">Manage Addresses</a>
                     </div>
-                    <div class="box-content">
-                      <p>You are currently not subscribed to any newsletter.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="box">
-                  <div class="box-title">
-                    <h3>Address Book</h3>
-                    <a href="javascript:void(0)">Manage Addresses</a>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h6>Default Billing Address</h6>
-                      <address>
-                        You have not set a default billing address.<br />
-                        <a href="javascript:void(0)">Edit Address</a>
-                      </address>
-                    </div>
-                    <div class="col-sm-6">
-                      <h6>Default Shipping Address</h6>
-                      <address>
-                        You have not set a default shipping address.<br />
-                        <a href="javascript:void(0)">Edit Address</a>
-                      </address>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6>Default Billing Address</h6>
+                        <address>
+                          You have not set a default billing address.<br />
+                          <a href="javascript:void(0)">Edit Address</a>
+                        </address>
+                      </div>
+                      <div class="col-sm-6">
+                        <h6>Default Shipping Address</h6>
+                        <address>
+                          You have not set a default shipping address.<br />
+                          <a href="javascript:void(0)">Edit Address</a>
+                        </address>
+                      </div>
                     </div>
                   </div>
                 </div>

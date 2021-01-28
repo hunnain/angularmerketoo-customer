@@ -45,6 +45,7 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { SellerSignUpComponent } from './seller-signup/seller-signup.component';
 import { SurveyComponent } from '../components/survey.component';
 import { SurveyCreatorComponent } from '../components/survey.creator.component';
+import { ReturnExchangeComponent } from './account/dashboard/return-exchange/return-exchange.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { SurveyCreatorComponent } from '../components/survey.creator.component';
     MasonryGridFourComponent,
     MasonryFullWidthComponent,
     SurveyComponent,
-    SurveyCreatorComponent
+    SurveyCreatorComponent,
+    ReturnExchangeComponent
   ],
   imports: [
     CommonModule,
