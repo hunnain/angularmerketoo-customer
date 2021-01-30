@@ -1,84 +1,108 @@
-<div class="dashboard-right">
-  <div class="dashboard">
-    <div class="page-title">
-      <h2>Return and Exchange</h2>
+<div class="page-title">
+  <h2>{{ "Return and Exchange" | translate }}</h2>
+</div>
+<div class="box">
+  <div class="box-title">
+    <h3>{{ "Parcel" | translate }}</h3>
+    <a href="javascript:void(0)">Shipping</a>
+  </div>
+  <!-- <br /> -->
+
+  <!-- reason -->
+  <div class="mb-2">
+    <div>
+      <h4>{{ "Reason" | translate }}</h4>
+      <select
+        class="form-control"
+        id="refund_reason"
+        [(ngModel)]="refund_reason"
+        name="refund_reason"
+      >
+        <option value="faulty">
+          {{ "Mismatched items" | translate }}
+        </option>
+        <option value="faulty">{{ "Faulty items" | translate }}</option>
+        <option value="faulty">{{ "Wrong size" | translate }}</option>
+      </select>
     </div>
-    <div class="box">
-      <div class="box-title">
-        <h3>Parcel</h3>
-        <a href="javascript:void(0)">Shipping</a>
-      </div>
-      <!-- <br /> -->
-
-      <!-- reason -->
-      <div class="row-data-style">
-        <div>
-          <h4>Reason</h4>
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-        <div>
-          <app-feather-icons [icon]="'chevron-right'"></app-feather-icons>
-        </div>
-      </div>
-
-      <div class="row-data-style">
-        <div
-          style="
-            display: grid;
-            width: -webkit-fill-available;
-            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-            grid-gap: 10px;
-          "
-        >
-          <div *ngFor="let img of imgs">
-            <img
-              style="width: 50px; border-radius: 5px"
-              [src]="img"
-              alt="image"
-            />
-          </div>
-          <div class="box-input-file">
-            <input class="upload" type="file" (change)="readUrl($event)" />
-            <img class="imgUpload" alt="" src="assets/images/add_icons.png" />
-          </div>
-        </div>
-      </div>
-      <br />
-      <!-- description -->
-      <div class="row-data-style">
-        <div>
-          <h4>Description</h4>
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-        <!-- <div>
-        <app-feather-icons [icon]="'chevron-right'"></app-feather-icons>
-      </div> -->
-      </div>
-      <br />
-      <!-- Solution -->
-      <div class="row-data-style">
-        <div>
-          <h4>Solution</h4>
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-        <div>
-          <app-feather-icons [icon]="'chevron-right'"></app-feather-icons>
-        </div>
-      </div>
-      <br />
-      <!-- Return & Exchange -->
-      <div class="row-data-style">
-        <div>
-          <h4>Return & Exchange</h4>
-          <div>refunf Amount $ 250</div>
-        </div>
-        <a href="javascript:void(0)" style="text-align: end"
-          >Enter Refund Amount</a
-        >
-        <!-- <div>
-        <app-feather-icons [icon]="'chevron-right'"></app-feather-icons>
-      </div> -->
+  </div>
+  <!-- description -->
+  <div>
+    <div>
+      <h4>{{ "Description" | translate }}</h4>
+      <div style="width: 100%">
+        <textarea
+          class="form-control"
+          placeholder="{{
+            'Refund and Return/Refun Reason (optional)' | translate
+          }}"
+          id="exampleFormControlTextarea1"
+          rows="6"
+          [(ngModel)]="description"
+          name="description"
+        ></textarea>
       </div>
     </div>
+  </div>
+  <br />
+
+  <div class="row-data-style">
+    <div
+      style="
+        display: grid;
+        width: -webkit-fill-available;
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        grid-gap: 10px;
+      "
+    >
+      <div *ngFor="let img of imgs">
+        <img style="width: 50px; border-radius: 5px" [src]="img" alt="image" />
+      </div>
+      <div class="box-input-file">
+        <input class="upload" type="file" (change)="readUrl($event)" />
+        <img class="imgUpload" alt="" src="assets/images/add-image-icon.png" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <!-- Solution -->
+  <div>
+    <div>
+      <h4>{{ "Solution" | translate }}</h4>
+      <div style="display: flex; align-items: center">
+        <select
+          class="form-control"
+          id="solution"
+          [(ngModel)]="solution"
+          name="solution"
+        >
+          <option value="faulty" disabled selected>
+            {{ "solution_note" | translate }}
+          </option>
+          <option value="faulty">
+            {{ "Return & Refund" | translate }}
+          </option>
+          <option value="faulty">
+            {{ "Refund Only" | translate }}
+          </option>
+        </select>
+        <span
+          class="ml-2"
+          placement="top"
+          ngbTooltip="{{ 'refund_note' | translate }}"
+        >
+          <app-feather-icons [icon]="'alert-circle'"></app-feather-icons>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br />
+  <!-- Return & Exchange -->
+  <div class="row-data-style">
+    <div>
+      <h4>{{ "Return & Exchange" | translate }}</h4>
+      <div>refunf Amount $ 250</div>
+    </div>
+    <a href="javascript:void(0)" style="text-align: end">Enter Refund Amount</a>
   </div>
 </div>

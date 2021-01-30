@@ -80,7 +80,7 @@ export class ProductService {
 
   // Add to Wishlist
   public addToWishlist(product): any {
-    const wishlistItem = state.wishlist.find(item => item.id === product.id)
+    const wishlistItem = state.wishlist.find(item => item.productUuid === product.productUuid)
     if (!wishlistItem) {
       state.wishlist.push({
         ...product

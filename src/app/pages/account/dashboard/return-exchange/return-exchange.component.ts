@@ -6,9 +6,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./return-exchange.component.scss"],
 })
 export class ReturnExchangeComponent implements OnInit {
-  constructor() {}
   imgs = [];
-  ngOnInit(): void {}
+  refund_reason = ''
+  description = ''
+  solution = "";
+  constructor() { }
+  ngOnInit(): void { }
 
   readUrl(event: any) {
     if (event.target.files.length === 0) return;

@@ -46,6 +46,8 @@ import { SellerSignUpComponent } from './seller-signup/seller-signup.component';
 import { SurveyComponent } from '../components/survey.component';
 import { SurveyCreatorComponent } from '../components/survey.creator.component';
 import { ReturnExchangeComponent } from './account/dashboard/return-exchange/return-exchange.component';
+import { OrderlistComponent } from './account/dashboard/order-list/order-list.component';
+import { MyWishlistComponent } from './account/dashboard/my-wishlist/my-wishlist.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { ReturnExchangeComponent } from './account/dashboard/return-exchange/ret
     MasonryFullWidthComponent,
     SurveyComponent,
     SurveyCreatorComponent,
-    ReturnExchangeComponent
+    ReturnExchangeComponent,
+    OrderlistComponent,
+    MyWishlistComponent
   ],
   imports: [
     CommonModule,

@@ -22,6 +22,7 @@ export class SettingsComponent implements OnInit {
   public signupForm: FormGroup;
 
   public products: Product[] = []
+  public wishlists: any[] = []
   public text = { openshop: "Open Shop" }
   public lan: boolean;
   public register: boolean = true;
@@ -76,6 +77,7 @@ export class SettingsComponent implements OnInit {
     this.createSignupForm();
     this.checkLoggedIn();
     this.productService.cartItems.subscribe(response => this.products = response);
+    this.productService.wishlistItems.subscribe(response => this.wishlists = response);
   }
 
   ngOnInit(): void {

@@ -523,7 +523,21 @@
   "gift_button":"Sign Up Now",
 
   "invalid":"Invalid",
-  "label":"Label"
+  "label":"Label",
+
+  "Reason":"Reason",
+  "Mismatched items": "Mismatched items",
+  "Faulty items": "Faulty items",
+  "Wrong size": "Wrong size",
+
+  "Return and Exchange":"Return and Exchange",
+  "Parcel":"Parcel",
+  "Description":"Description",
+  "Refund and Return/Refun Reason (optional)":"Refund and Return/Refun Reason (optional)",
+  "Solution":"Solution",
+  "Return & Exchange":"Return & Exchange",
+  "dashboard_description":"From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.",
+  "refund_note":"Please select a preferred solution and wait for seller to approve. Seller might propose another to you. Please discuss with the seller to reach an agreement."
 
 
 

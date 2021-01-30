@@ -38,19 +38,36 @@
     <li [hidden]="menu" class="onhover-div mobile-cart">
       <div>
         <a href="javascript:void(0)" routerLink="/pages/dashboard"
-          ><img src="assets/images/icon/profile.png" class="img-fluid" alt=""
+          ><img
+            src="assets/images/icon/profile.png"
+            class="img-fluid"
+            alt="dashboard"
         /></a>
       </div>
     </li>
     <li [hidden]="menu" class="onhover-div mobile-cart">
       <div>
-        <img src="assets/images/icon/bell.png" class="img-fluid" alt="" />
+        <a href="javascript:void(0)" routerLink="/shop/notification">
+          <img
+            src="assets/images/icon/bell.png"
+            class="img-fluid"
+            alt="notification"
+          />
+        </a>
       </div>
+      <span class="cart_qty_cls">{{ products.length }}</span>
     </li>
     <li [hidden]="menu" class="onhover-div mobile-cart">
       <div>
-        <img src="assets/images/icon/heart.png" class="img-fluid" alt="" />
+        <a href="javascript:void(0" routerLink="/shop/wishlist">
+          <img
+            src="assets/images/icon/heart.png"
+            class="img-fluid"
+            alt="wishlist"
+          />
+        </a>
       </div>
+      <span class="cart_qty_cls">{{ wishlists.length }}</span>
     </li>
     <!-- <li class="onhover-div mobile-setting" [hidden]="!lan">
       <button style="color: black;text-transform:capitalize;border-color: black;font-family: Helvetica,Arial,Heiti TCsans-serif;

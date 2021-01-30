@@ -10,9 +10,10 @@ import { AuthService } from "src/app/core/auth.service";
 export class DashboardComponent implements OnInit {
   public openDashboard: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  public selectedMenu: string = 'account_info';
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ToggleDashboard() {
     this.openDashboard = !this.openDashboard;
@@ -26,7 +27,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  selectedMenu = null;
   selectMenu(key) {
     console.log(key);
     this.selectedMenu = key;
