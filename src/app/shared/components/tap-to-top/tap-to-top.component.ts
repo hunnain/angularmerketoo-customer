@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-tap-to-top',
@@ -18,6 +19,7 @@ export class TapToTopComponent implements OnInit {
   public lang: string = 'en';
   public showTerms: boolean = false;
   constructor(
+    private authService: AuthService,
     private translateService: TranslateService,
     private viewScroller: ViewportScroller,
     private modalService: NgbModal
@@ -51,8 +53,16 @@ export class TapToTopComponent implements OnInit {
     this.modalRef = this.modalService.open(content, { centered: true });
     this.modalRef.result.then(res => console.log(res), (reason) => {
       console.log(reason)
-
     })
+  }
+
+  openSignUpModel() {
+    this.modalRef.close()
+    this.authService.checkUserLoggedIn();
+  }
+
+  get userLoggedIn() {
+    return this.authService.checkUserLoggedIn(false)
   }
 
 }

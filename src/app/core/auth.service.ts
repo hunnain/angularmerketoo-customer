@@ -89,13 +89,13 @@ export class AuthService {
     });
   }
 
-  checkUserLoggedIn() {
+  checkUserLoggedIn(isOpenModel = true) {
     let token = this.commonService.getAccessToken()
     if (token) {
       this.openLoginModal.next(false);
       return true;
     } else {
-      this.openLoginModal.next(true);
+      this.openLoginModal.next(isOpenModel);
       return false;
     }
   }

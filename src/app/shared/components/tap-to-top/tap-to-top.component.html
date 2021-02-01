@@ -13,6 +13,7 @@
     id="gift"
     [ngStyle]="{ display: show ? 'block' : 'none' }"
     (click)="openGiftModal(gift)"
+    *ngIf="!userLoggedIn"
   >
     <!-- <i class="fa fa-angle-double-up"></i> -->
     <i style="color: white; font-size: 24px" class="fa fa-gift"></i>
@@ -87,6 +88,7 @@
         data-target="#AddNewBattery"
         type="button"
         class="btn btn-outline-primary"
+        (click)="openSignUpModel()"
       >
         {{ "gift_button" | translate }}
       </button>

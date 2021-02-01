@@ -80,7 +80,7 @@ export class ProductService {
 
   // Add to Wishlist
   public addToWishlist(product): any {
-    const wishlistItem = state.wishlist.find(item => item.productUuid === product.productUuid)
+    const wishlistItem = state.wishlist.find(item => item.productId === product.productId)
     if (!wishlistItem) {
       state.wishlist.push({
         ...product
@@ -153,8 +153,8 @@ export class ProductService {
   // Add to Cart
   public addToCart(product): any {
     console.log("product--", product)
-    const { productUuid, name, size, color, price } = product;
-    const cartItem = state.cart.find(item => item.productUuid === productUuid);
+    const { productId, name, size, color, price } = product;
+    const cartItem = state.cart.find(item => item.productId === productId);
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
     const stock = this.calculateStockCounts(items, qty);
@@ -166,7 +166,7 @@ export class ProductService {
     } else {
       state.cart.push({
         // ...product,
-        productUuid,
+        productId,
         quantity: qty,
         name, size, color, price,
         image: product.images ? product.images[0] : product.image

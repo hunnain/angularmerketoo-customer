@@ -85,7 +85,7 @@ export class SettingsComponent implements OnInit {
   }
 
   checkLoggedIn() {
-    let isLoggedIn = this.authService.checkUserLoggedIn();
+    let isLoggedIn = this.authService.checkUserLoggedIn(false);
     if (isLoggedIn) {
       this.menu = false;
     } else {

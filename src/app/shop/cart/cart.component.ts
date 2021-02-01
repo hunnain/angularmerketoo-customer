@@ -48,7 +48,8 @@ export class CartComponent implements OnInit {
 
   addToCart() {
     console.log('💻 cart items--', this.products);
-    let data = this.products.map(item => {
+    let prods = JSON.parse(JSON.stringify(this.products));
+    let data = prods.map(item => {
       if (item.images) {
         delete item.images;
       } else if (item.image) {

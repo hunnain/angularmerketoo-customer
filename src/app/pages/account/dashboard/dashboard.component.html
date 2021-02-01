@@ -104,7 +104,9 @@
                 >
               </li>
               <li class="last">
-                <a (click)="signOut()">{{ "Log Out" | translate }}</a>
+                <a href="javascript:void(0)" (click)="signOut()">{{
+                  "Log Out" | translate
+                }}</a>
               </li>
             </ul>
           </div>
@@ -142,23 +144,41 @@
                     <h5 class="mt-3">
                       {{ "Manage Subscriptions" | translate }}
                     </h5>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="defaultCheck1"
-                      />
-                      <label class="form-check-label mt-0" for="defaultCheck1">
-                        {{ "Unsubscribe" | translate }}
-                      </label>
+                    <div *ngIf="userInfo?.isSubscribed">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="defaultCheck1"
+                        />
+                        <label
+                          class="form-check-label mt-0"
+                          for="defaultCheck1"
+                        >
+                          {{ "Unsubscribe" | translate }}
+                        </label>
+                      </div>
+                      <div class="mt-4">
+                        <button
+                          type="button"
+                          class="btn btn-solid"
+                          (click)="unsubscribe()"
+                        >
+                          {{ "Save" | translate }}
+                        </button>
+                      </div>
+                    </div>
+                    <div *ngIf="!userInfo?.isSubscribed">
+                      <button
+                        type="button"
+                        class="btn btn-solid"
+                        (click)="subscribe()"
+                      >
+                        {{ "subscribe" | translate }}
+                      </button>
                     </div>
                   </div>
-                </div>
-                <div class="row mt-4">
-                  <button type="button" class="btn btn-solid ml-3">
-                    {{ "Save" | translate }}
-                  </button>
                 </div>
               </div>
             </div>
@@ -200,9 +220,11 @@
                     <div class="box">
                       <div class="box-title">
                         <h3>{{ "Newsletter" | translate }}</h3>
-                        <a href="javascript:void(0)">{{
-                          "Edit" | translate
-                        }}</a>
+                        <a
+                          href="javascript:void(0)"
+                          (click)="selectMenu('news_letter')"
+                          >{{ "Edit" | translate }}</a
+                        >
                       </div>
                       <div class="box-content">
                         <p>
@@ -219,9 +241,11 @@
                   <div class="box">
                     <div class="box-title">
                       <h3>{{ "Address Book" | translate }}</h3>
-                      <a href="javascript:void(0)">{{
-                        "Manage Addresses" | translate
-                      }}</a>
+                      <a
+                        href="javascript:void(0)"
+                        (click)="selectMenu('address_book')"
+                        >{{ "Manage Addresses" | translate }}</a
+                      >
                     </div>
                     <div class="row">
                       <div class="col-sm-6">

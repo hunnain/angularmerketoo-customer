@@ -2,7 +2,6 @@
 export interface Product {
     id?: number;
     productId?: number,
-    productUuid?: number,
     colour?: string;
     size?: string;
     title?: string;
@@ -21,7 +20,7 @@ export interface Product {
     quantity?: number;
     tags?: any[];
     availableSizes?: any[];
-    availableColours?: any[];
+    availableColors?: any[];
     customColours?: string;
     customSize?: string;
     variants?: Variants[];

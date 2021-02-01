@@ -7,10 +7,7 @@
         <div>
           <div class="media" *ngFor="let product of products | slice: 0:3">
             <a
-              [routerLink]="[
-                '/shop/product/left/sidebar/',
-                product.productUuid
-              ]"
+              [routerLink]="['/shop/product/left/sidebar/', product.productId]"
             >
               <img
                 class="img-fluid w-auto"
@@ -24,7 +21,7 @@
               <a
                 [routerLink]="[
                   '/shop/product/left/sidebar/',
-                  product.productUuid
+                  product.productId
                 ]"
               >
                 <h6>{{ product.name | titlecase }}</h6></a
@@ -52,10 +49,7 @@
         <div>
           <div class="media" *ngFor="let product of products | slice: 3:6">
             <a
-              [routerLink]="[
-                '/shop/product/left/sidebar/',
-                product.productUuid
-              ]"
+              [routerLink]="['/shop/product/left/sidebar/', product.productId]"
             >
               <img
                 class="img-fluid w-auto"
@@ -69,7 +63,7 @@
               <a
                 [routerLink]="[
                   '/shop/product/left/sidebar/',
-                  product.productUuid
+                  product.productId
                 ]"
               >
                 <h6>{{ product.name | titlecase }}</h6></a

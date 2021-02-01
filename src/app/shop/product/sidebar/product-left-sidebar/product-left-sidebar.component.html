@@ -114,22 +114,19 @@
                   </h3>
                   <ul
                     class="color-variant"
-                    *ngIf="product?.availableColours.length"
+                    *ngIf="product?.availableColors.length"
                   >
                     <li
                       [class]="color"
                       [class.active]="selectedColor == color"
-                      *ngFor="
-                        let color of product?.availableColours;
-                        index as i
-                      "
+                      *ngFor="let color of product?.availableColors; index as i"
                       [ngStyle]="{ 'background-color': color }"
                       (click)="selectColor(color)"
                     ></li>
                   </ul>
                   <ul
                     class="color-variant custom-color-container"
-                    *ngIf="product?.customColours.length"
+                    *ngIf="product?.customColours?.length"
                   >
                     <span>Custom Colours</span
                     ><br />
