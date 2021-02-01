@@ -5721,6 +5721,17 @@ footer {
       transition-duration: 0.5s;
       transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
     }
+    .collapse-block-title {
+      &:after {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: -3px;
+        content: "\f0d8";
+        font-family: $font-awesome;
+        color: lighten($black, 26.5%);
+      }
+    }
   }
   .collection-collapse-block-content {
     max-height: 0;

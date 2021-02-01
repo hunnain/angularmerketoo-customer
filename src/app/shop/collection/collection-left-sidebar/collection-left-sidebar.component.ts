@@ -70,6 +70,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
       }
 
       // Get Filtered Products..
+      this.products = [];
+      this.loader = true;
       this.productService.filterProducts(query).subscribe(response => {
         console.log('💻', 'response', response);
         if (response && response['body']) {
@@ -78,6 +80,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
           this.loader = false;
           console.log('💻', 'pagination', paginate);
           this.paginate = paginate;
+        } else {
+          this.loader = false
         }
         // // Sorting Filter
         // this.products = this.productService.sortProducts(response, this.sortBy);
