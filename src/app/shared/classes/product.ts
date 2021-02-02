@@ -23,6 +23,7 @@ export interface Product {
     availableColors?: any[];
     customColours?: string;
     customSize?: string;
+    isValidForFeedback?: boolean;
     variants?: Variants[];
     images?: Images[];
     image?: string;

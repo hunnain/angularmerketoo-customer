@@ -146,7 +146,7 @@ export class CheckoutComponent implements OnInit {
       ...this.checkoutForm.value,
       paymentMethodType: "card",
       mode: "payment",
-      productDetails: prods,
+      cartItems: prods,
       IsInternationalShipping: this.IsInternationalShipping
     }
     console.log("createding order data", data)

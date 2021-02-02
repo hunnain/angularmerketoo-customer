@@ -6,6 +6,7 @@ import { ProductService } from '../../../../shared/services/product.service';
 import { SizeModalComponent } from "../../../../shared/components/modal/size-modal/size-modal.component";
 import { AddBase64InImg } from 'src/app/shared/utilities';
 import { AuthService } from 'src/app/core/auth.service';
+import { FeedbackService } from 'src/app/shared/services/feedback.service';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -35,10 +36,15 @@ export class ProductLeftSidebarComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    public productService: ProductService
+    public productService: ProductService,
+    private feedbackService: FeedbackService
   ) {
     this.route.data.subscribe(response => {
       this.product = response.data;
+      if (this.product && Object.keys(this.product).length) {
+        this.selectColor(this.product.availableColors[0])
+        this.selectSize(this.product.availableSizes[0])
+      }
     });
   }
 
@@ -132,9 +138,33 @@ export class ProductLeftSidebarComponent implements OnInit {
   }
 
   submitReview() {
-    console.log('💻', this.reviewTitle);
-    console.log('💻', this.review);
-    console.log('💻', this.rating);
+    let data = {
+      reviewTitle: this.reviewTitle,
+      review: this.review,
+      rating: this.rating,
+      productId: this.product.productId
+    }
+    console.log('💻', data);
+
+    this.feedbackService.addFeedback(data).subscribe(res => {
+      console.log('💻 res--', res);
+      this.review = "";
+      this.reviewTitle = "";
+      this.rating = 0;
+    })
+    // this.refreshPage()
   }
+
+  // refreshPage() {
+  //   this.router.navigate([], {
+  //     relativeTo: this.route,
+  //     // queryParams: {},
+  //     queryParamsHandling: 'merge', // preserve the existing query params in the route
+  //     skipLocationChange: false  // do trigger navigation
+  //   })
+  //     .finally(() => {
+  //       console.log('💻', 'refresh url-- ');
+  //     });
+  // }
 
 }

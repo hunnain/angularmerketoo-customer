@@ -47,22 +47,23 @@ export class CartComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('💻 cart items--', this.products);
-    let prods = JSON.parse(JSON.stringify(this.products));
-    let data = prods.map(item => {
-      if (item.images) {
-        delete item.images;
-      } else if (item.image) {
-        delete item.image;
-      }
+    // console.log('💻 cart items--', this.products);
+    this.router.navigate(['/shop/checkout'])
+    // let prods = JSON.parse(JSON.stringify(this.products));
+    // let data = prods.map(item => {
+    //   if (item.images) {
+    //     delete item.images;
+    //   } else if (item.image) {
+    //     delete item.image;
+    //   }
 
-      return item;
-    })
-    this.productService.addCartToServer(data).subscribe(res => {
-      if (res && res['body']) {
-        this.router.navigate(['/shop/checkout'])
-      }
-    });
+    //   return item;
+    // })
+    // this.productService.addCartToServer(data).subscribe(res => {
+    //   if (res && res['body']) {
+    //     this.router.navigate(['/shop/checkout'])
+    //   }
+    // });
   }
 
 }

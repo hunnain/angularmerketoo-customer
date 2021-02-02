@@ -248,6 +248,13 @@
                       >buy now</a
                     >
                   </div>
+                  <div class="product-buttons" *ngIf="product?.labels">
+                    <span
+                      class="badge badge-pill badge-secondary ml-1"
+                      *ngFor="let label of product.labels"
+                      >{{ label | titlecase }}</span
+                    >
+                  </div>
                   <p>
                     After payment, it will take approximately 3 business days to
                     prepare an ship this item (excluding holidays).
@@ -335,13 +342,19 @@
                     </ng-template>
                   </ngb-tab>
                   <ngb-tab>
-                    <ng-template ngbTabTitle>Write Review</ng-template>
+                    <ng-template ngbTabTitle>Review</ng-template>
                     <ng-template ngbTabContent>
-                      <form class="theme-form">
+                      <form
+                        class="theme-form"
+                        *ngIf="product?.isValidForFeedback"
+                      >
                         <div class="form-row">
+                          <div>
+                            <h5>Write Review</h5>
+                          </div>
                           <div class="col-md-12">
-                            <div class="media">
-                              <label>Rating</label>
+                            <div class="media align-items-center">
+                              <label class="mb-0">Rating</label>
                               <div class="media-body ml-3">
                                 <app-rating
                                   [rating]="rating"
@@ -350,26 +363,6 @@
                               </div>
                             </div>
                           </div>
-                          <!-- <div class="col-md-6">
-                            <label for="name">Name</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="name"
-                              placeholder="Enter Your name"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="email">Email</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="email"
-                              placeholder="Email"
-                              required
-                            />
-                          </div> -->
                           <div class="col-md-12">
                             <label for="review">Review Title</label>
                             <input
@@ -397,6 +390,7 @@
                             <button
                               class="btn btn-solid"
                               type="submit"
+                              [disabled]="!rating || !reviewTitle || !review"
                               (click)="submitReview()"
                             >
                               Submit YOur Review

@@ -24,6 +24,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     this.route.queryParams.subscribe(params => {
       this.queryParam = params['session_id'];
       if (this.queryParam) {
+        localStorage.removeItem('cartItems')
         this.getOrder(this.queryParam);
       }
     });
