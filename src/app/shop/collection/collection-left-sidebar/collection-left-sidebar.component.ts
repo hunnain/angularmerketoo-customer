@@ -24,6 +24,10 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public tags: any[] = [];
   public category: string;
   public extendedsubcategory: string;
+  public name: string;
+  public isInternationalShipping: boolean = null;
+  public isLocalShipping: boolean = null;
+  public isFreeShipping: boolean = null;
   public pageNo: number = 1;
   public paginate: any = {}; // Pagination use only
   public sortBy: string; // Sorting Order
@@ -47,6 +51,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
 
       this.category = params.category ? params.category : null;
       this.extendedsubcategory = params.extendedsubcategory ? ExtendedCategories[params.extendedsubcategory] : null;
+      this.name = params.name ? params.name : null;
+      this.isInternationalShipping = params.isInternationalShipping ? params.isInternationalShipping : null;
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
       this.pageNo = params.page ? params.page : this.pageNo;
 
@@ -55,6 +61,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
         colors: this.colors,
         size: this.size,
         label: this.label,
+        name: this.name,
+        isInternationalShipping: this.isInternationalShipping,
         startPrice: this.startPrice,
         endprice: this.endPrice,
         sortBy: this.sortBy,
@@ -177,6 +185,21 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.viewScroller.setOffset([120, 120]);
       this.viewScroller.scrollToAnchor('products'); // Anchore Link
     });
+  }
+
+  setShippingFilter(ev, type) {
+    let val = ev.target.checked;
+    this[type] = val;
+    console.log('💻', type, this[type], val);
+    // this.router.navigate([], {
+    //   relativeTo: this.route,
+    //   queryParams: { isInternationalShipping: this.isInternationalShipping },
+    //   queryParamsHandling: 'merge', // preserve the existing query params in the route
+    //   skipLocationChange: false  // do trigger navigation
+    // }).finally(() => {
+    //   this.viewScroller.setOffset([120, 120]);
+    //   this.viewScroller.scrollToAnchor('products'); // Anchore Link
+    // });
   }
 
   // Change Grid Layout

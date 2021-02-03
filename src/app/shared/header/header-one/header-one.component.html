@@ -46,19 +46,25 @@
           <div class="menu-left">
             <div class="brand-logo">
               <a routerLink="/home/fashion" id="headerlogo">
-                <img [src]="themeLogo" class="img-fluid" alt="logo">
+                <img [src]="themeLogo" class="img-fluid" alt="logo" />
               </a>
             </div>
             <div id="search" class="wrap">
               <div class="search">
-                <input type="text" class="searchTerm" placeholder="{{ 'search' | translate }}">
-                <button type="submit" class="searchButton">{{ 'search' | translate }}
+                <input
+                  type="text"
+                  class="searchTerm"
+                  [(ngModel)]="search"
+                  placeholder="{{ 'search' | translate }}"
+                />
+                <button type="button" class="searchButton" (click)="onSearch()">
+                  {{ "search" | translate }}
                 </button>
                 <!-- <span>search</span> -->
               </div>
             </div>
           </div>
-          <div style="margin-top: -1.5%;" class="menu-right pull-right">
+          <div style="margin-top: -1.5%" class="menu-right pull-right">
             <div>
               <app-settings></app-settings>
             </div>
@@ -66,10 +72,9 @@
         </div>
       </div>
     </div>
-    <div style="margin-top: -2.5%; margin-bottom: -1.7%;" class="row">
-
+    <div style="margin-top: -2.5%; margin-bottom: -1.7%" class="row">
       <div class="col-sm-12">
-        <div class="main-menu" style="height: 62px;">
+        <div class="main-menu" style="height: 62px">
           <div class="menu-right pull-right">
             <div>
               <app-menu></app-menu>

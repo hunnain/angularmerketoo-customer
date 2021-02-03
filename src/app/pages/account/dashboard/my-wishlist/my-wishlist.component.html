@@ -14,115 +14,127 @@
   </h3>
   <h4>{{ "Explore more shortlist some items" | translate }}.</h4>
 </div>
-<div class="row" *ngIf="products.length">
-  <div class="col-sm-12">
-    <table class="table cart-table table-responsive-xs">
-      <thead>
-        <tr class="table-head">
-          <th scope="col">{{ "Image" | translate }}</th>
-          <th scope="col">{{ "Product Name" | translate }}</th>
-          <th scope="col">{{ "Price" | translate }}</th>
-          <th scope="col">{{ "Availability" | translate }}</th>
-          <th scope="col">{{ "Action" | translate }}</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let product of products">
-        <tr>
-          <td>
-            <a
-              [routerLink]="[
-                '/shop/product/left/sidebar/',
-                product.title.replace(' ', '-')
-              ]"
-            >
-              <img
-                [src]="product.images[0].src"
-                [alt]="product.images[0].alt"
-              />
-            </a>
-          </td>
-          <td>
-            <a
-              [routerLink]="[
-                '/shop/product/left/sidebar/',
-                product.title.replace(' ', '-')
-              ]"
-              >{{ product.title | titlecase }}</a
-            >
-            <div class="mobile-cart-content row">
-              <div class="col-xs-3">
-                <p>{{ product.stock > 0 ? "in stock" : "out of stock" }}</p>
-              </div>
-              <div class="col-xs-3">
-                <h2 class="td-color">
+<section class="wishlist-section section-b-space">
+  <div class="container">
+    <div class="row" *ngIf="products.length">
+      <div class="col-sm-12">
+        <table class="table cart-table table-responsive-xs">
+          <thead>
+            <tr class="table-head">
+              <th scope="col">{{ "Image" | translate }}</th>
+              <th scope="col">{{ "Product Name" | translate }}</th>
+              <th scope="col">{{ "Price" | translate }}</th>
+              <th scope="col">{{ "Availability" | translate }}</th>
+              <th scope="col">{{ "Action" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let product of products">
+            <tr>
+              <td>
+                <a
+                  [routerLink]="[
+                    '/shop/product/left/sidebar/',
+                    product.productId
+                  ]"
+                >
+                  <img
+                    [src]="
+                      formatImage(
+                        product.images ? product.images[0] : product.image
+                      )
+                    "
+                    [alt]="product.name"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  [routerLink]="[
+                    '/shop/product/left/sidebar/',
+                    product.productId
+                  ]"
+                  >{{ product.name | titlecase }}</a
+                >
+                <div class="mobile-cart-content row">
+                  <div class="col-xs-3">
+                    <p>
+                      {{ product.quantity > 0 ? "in stock" : "out of stock" }}
+                    </p>
+                  </div>
+                  <div class="col-xs-3">
+                    <h2 class="td-color">
+                      {{
+                        (product.price | discount: product) *
+                          productService?.Currency.price
+                          | currency: productService?.Currency.currency:"symbol"
+                      }}
+                    </h2>
+                  </div>
+                  <div class="col-xs-3">
+                    <h2 class="td-color">
+                      <a
+                        href="javascript:void(0)"
+                        (click)="removeItem(product)"
+                        class="icon mr-1"
+                      >
+                        <i class="ti-close"></i>
+                      </a>
+                      <a
+                        [routerLink]="['/shop/cart']"
+                        (click)="addToCart(product)"
+                        class="cart"
+                      >
+                        <i class="ti-shopping-cart"></i>
+                      </a>
+                    </h2>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h2>
                   {{
                     (product.price | discount: product) *
                       productService?.Currency.price
                       | currency: productService?.Currency.currency:"symbol"
                   }}
                 </h2>
-              </div>
-              <div class="col-xs-3">
-                <h2 class="td-color">
-                  <a
-                    href="javascript:void(0)"
-                    (click)="removeItem(product)"
-                    class="icon mr-1"
-                  >
-                    <i class="ti-close"></i>
-                  </a>
-                  <a
-                    [routerLink]="['/shop/cart']"
-                    (click)="addToCart(product)"
-                    class="cart"
-                  >
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </h2>
-              </div>
-            </div>
-          </td>
-          <td>
-            <h2>
-              {{
-                (product.price | discount: product) *
-                  productService?.Currency.price
-                  | currency: productService?.Currency.currency:"symbol"
-              }}
-            </h2>
-          </td>
-          <td>
-            <p>{{ product.stock > 0 ? "in stock" : "out of stock" }}</p>
-          </td>
-          <td>
-            <a
-              href="javascript:void(0)"
-              (click)="removeItem(product)"
-              class="icon mr-3"
-            >
-              <i class="ti-close"></i>
-            </a>
-            <a
-              href="javascript:void(0)"
-              (click)="addToCart(product)"
-              class="cart"
-            >
-              <i class="ti-shopping-cart"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </td>
+              <td>
+                <p>{{ product.quantity > 0 ? "in stock" : "out of stock" }}</p>
+              </td>
+              <td>
+                <a
+                  href="javascript:void(0)"
+                  (click)="removeItem(product)"
+                  class="icon mr-3"
+                >
+                  <i class="ti-close"></i>
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  (click)="addToCart(product)"
+                  class="cart"
+                >
+                  <i class="ti-shopping-cart"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row wishlist-buttons" *ngIf="products.length">
+      <div class="col-12">
+        <a
+          [routerLink]="['/shop/collection/left/sidebar']"
+          class="btn btn-solid"
+          >{{ "Continue Shopping" | translate }}</a
+        >
+        <a [routerLink]="['/shop/checkout']" class="btn btn-solid">{{
+          "Check Out" | translate
+        }}</a>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row wishlist-buttons" *ngIf="products.length">
-  <div class="col-12">
-    <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">{{
-      "Continue Shopping" | translate
-    }}</a>
-    <a [routerLink]="['/shop/checkout']" class="btn btn-solid">{{
-      "Check Out" | translate
-    }}</a>
-  </div>
-</div>
+</section>
 <!--section end-->

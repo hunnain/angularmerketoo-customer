@@ -19,6 +19,7 @@ export interface Product {
     new?: boolean;
     quantity?: number;
     tags?: any[];
+    labels?: any[];
     availableSizes?: any[];
     availableColors?: any[];
     customColours?: string;

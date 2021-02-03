@@ -64,6 +64,65 @@
               <!-- label filter start here -->
               <app-label [label]="label" (labelFilter)="updateFilter($event)">
               </app-label>
+              <!-- shipping filter start here -->
+              <div>
+                <div
+                  style="
+                    position: relative;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    color: #444444;
+                    font-weight: 600;
+                    margin: 30px 0 0 0;
+                  "
+                >
+                  Shipping
+                </div>
+                <div
+                  class="custom-control custom-checkbox collection-filter-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    [checked]="isInternationalShipping"
+                    [value]="isInternationalShipping"
+                    id="international"
+                    (change)="
+                      setShippingFilter($event, 'isInternationalShipping')
+                    "
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="international"
+                    >International</label
+                  >
+                </div>
+                <div
+                  class="custom-control custom-checkbox collection-filter-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    [checked]="isLocalShipping"
+                    [value]="isLocalShipping"
+                    id="local"
+                    (change)="setShippingFilter($event, 'isLocalShipping')"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="local">Local</label>
+                </div>
+                <div
+                  class="custom-control custom-checkbox collection-filter-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    [checked]="isFreeShipping"
+                    [value]="isFreeShipping"
+                    id="free"
+                    (change)="setShippingFilter($event, 'isFreeShipping')"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="free">Free</label>
+                </div>
+              </div>
               <!-- price filter start here -->
               <app-price
                 [min]="startPrice"

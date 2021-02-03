@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from "../../../../shared/services/product.service";
 import { Product } from "../../../../shared/classes/product";
+import { AddBase64InImg } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-my-wishlist',
@@ -30,6 +31,10 @@ export class MyWishlistComponent implements OnInit {
 
   removeItem(product: any) {
     this.productService.removeWishlistItem(product);
+  }
+
+  formatImage(img) {
+    return AddBase64InImg(img);
   }
 
 }
