@@ -8,7 +8,9 @@ import { BarRatingModule } from "ngx-bar-rating";
 import { LazyLoadImageModule, scrollPreset } from "ng-lazyload-image";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { TranslateModule } from "@ngx-translate/core";
-import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
+import { ImageCropperModule } from 'ngx-image-cropper';
+
+
 // Header and Footer Components
 import { HeaderOneComponent } from "./header/header-one/header-one.component";
 import { FooterOneComponent } from "./footer/footer-one/footer-one.component";
@@ -33,6 +35,8 @@ import { ProductBoxFiveComponent } from "./components/product/product-box-five/p
 import { ProductBoxVerticalComponent } from "./components/product/product-box-vertical/product-box-vertical.component";
 import { ProductBoxVerticalSliderComponent } from "./components/product/product-box-vertical-slider/product-box-vertical-slider.component";
 import { RatingComponent } from "./components/rating/rating.component";
+import { CropperComponent } from "./components/cropper/cropper.component";
+import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
 
 // Modals Components
 import { NewsletterComponent } from "./components/modal/newsletter/newsletter.component";
@@ -42,6 +46,7 @@ import { CartVariationComponent } from "./components/modal/cart-variation/cart-v
 import { VideoModalComponent } from "./components/modal/video-modal/video-modal.component";
 import { SizeModalComponent } from "./components/modal/size-modal/size-modal.component";
 import { AgeVerificationComponent } from "./components/modal/age-verification/age-verification.component";
+import { ProfileModalComponent } from "./components/modal/profile/profile.component";
 
 // Skeleton Loader Components
 import { SkeletonProductBoxComponent } from "./components/skeleton/skeleton-product-box/skeleton-product-box.component";
@@ -79,6 +84,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     ProductBoxVerticalSliderComponent,
     NewsletterComponent,
     QuickViewComponent,
+    ProfileModalComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,
@@ -90,6 +96,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     DiscountPipe,
     RatingComponent,
     FeatherIconsComponent,
+    CropperComponent
   ],
   imports: [
     CommonModule,
@@ -99,6 +106,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     NgbModule,
     CarouselModule,
     BarRatingModule,
+    ImageCropperModule,
     LazyLoadImageModule.forRoot({
       // preset: scrollPreset // <-- tell LazyLoadImage that you want to use scrollPreset
     }),
@@ -134,6 +142,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     ProductBoxVerticalSliderComponent,
     NewsletterComponent,
     QuickViewComponent,
+    ProfileModalComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,
@@ -145,6 +154,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     DiscountPipe,
     RatingComponent,
     FeatherIconsComponent,
+    CropperComponent
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

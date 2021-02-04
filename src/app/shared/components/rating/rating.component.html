@@ -1,12 +1,20 @@
-<ng-template #t let-fill="fill">
+<!-- For Star Rating -->
+<ng-template #star let-fill="fill">
   <span class="star" [class.full]="fill === 100">
     <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
   </span>
 </ng-template>
+<!-- For Heart Rating -->
+<ng-template #heart let-fill="fill">
+  <span class="star" [class.heartFull]="fill === 100">
+    <span class="heart-half" [style.width.%]="fill">&hearts;</span>&hearts;
+  </span>
+</ng-template>
+
 <ngb-rating
   [max]="5"
   [(rate)]="rating"
-  [readonly]="false"
-  [starTemplate]="t"
+  [readonly]="readonly"
+  [starTemplate]="type == 'heart' ? heart : star"
   (rateChange)="changeRate($event)"
 ></ngb-rating>

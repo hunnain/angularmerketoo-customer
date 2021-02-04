@@ -34,7 +34,7 @@ export class NavService {
 
 	MENUITEMS: Menu[] = [
 		{
-			title: 'accessories', megaMenu: true, type: 'sub', active: false, children: [
+			title: 'Accessories', megaMenu: true, type: 'sub', active: false, children: [
 				{
 					title: 'womens-accessories', type: 'sub', active: false, children: [
 						{ path: '/shop/collection/left/sidebar', title: 'jewellery', type: 'link' },
@@ -77,7 +77,7 @@ export class NavService {
 		},
 		{
 
-			title: 'clothing', megaMenu: true, type: 'sub', active: false, children: [
+			title: 'Clothing', megaMenu: true, type: 'sub', active: false, children: [
 				// { path: '/shop/collection/left/sidebar', title: 'left-sidebar', type: 'link' },
 				// { path: '/shop/collection/right/sidebar', title: 'right-sidebar', type: 'link' },
 				// { path: '/shop/collection/no/sidebar', title: 'no-sidebar', type: 'link' }
@@ -119,7 +119,7 @@ export class NavService {
 			]
 		},
 		{
-			title: 'stationery', megaMenu: true, type: 'sub', active: false, children: [
+			title: 'Stationery', megaMenu: true, type: 'sub', active: false, children: [
 				// {
 				// 	title: 'sidebar', type: 'sub', active: false, children: [
 				// 		{ path: '/shop/product/left/sidebar/trim-dress', title: 'left-sidebar', type: 'link' },
@@ -209,7 +209,7 @@ export class NavService {
 			]
 		},
 		{
-			title: 'handbag', megaMenu: true, type: 'sub', active: false, children: [
+			title: 'Handbag/ Rucksack', megaMenu: true, type: 'sub', active: false, children: [
 				{
 					title: 'ladies', type: 'sub', active: false, children: [
 						{ path: '/shop/collection/left/sidebar', title: 'clutches', type: 'link' },
@@ -244,7 +244,7 @@ export class NavService {
 			]
 		},
 		{
-			title: 'skin-care', type: 'sub', megaMenu: true, active: false, children: [
+			title: 'Skin Care', type: 'sub', megaMenu: true, active: false, children: [
 				{
 					title: 'womens', type: 'sub', active: false, children: [
 						{ path: '/shop/collection/left/sidebar', title: 'cosmetic-products', type: 'link' },

@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { CommonService } from "../shared/services/common.service";
+import { map } from 'rxjs/operators';
+
 
 @Injectable()
 export class UserService {
@@ -40,10 +42,24 @@ export class UserService {
     })
   }
 
+  updateProfile(data) {
+    return this.commonService.post(`customer/EditProfile`, data).pipe(map((res) => {
+      if (res) {
+        let info = JSON.parse(localStorage.getItem('userInfo'));
+        info = { ...info, ...res };
+        localStorage.setItem('userInfo', JSON.stringify(info));
+      }
+
+      return res;
+    }));
+  }
+
   subscribeUser(email) {
     return this.commonService.post(`marketoo-info/subscribe/${email}`, {});
   }
   unsubscribeUser(email) {
     return this.commonService.post(`marketoo-info/unsubscribe/${email}`, {});
   }
+
+
 }

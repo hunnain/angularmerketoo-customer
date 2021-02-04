@@ -1,25 +1,30 @@
-
 .searchButton {
-    width: 140px;
-    height: 33px;
-    border: 1px solid #435034;
-    background: #435034;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 0 0 0;
-    cursor: pointer;
-    font-size: 13px;
-  }
-.reddy {
-    color: #f2917e;
-    padding-left : 4%;
+  width: 140px;
+  height: 33px;
+  border: 1px solid #435034;
+  background: #435034;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0 0 0;
+  cursor: pointer;
+  font-size: 13px;
 }
-  p {
-    color: grey;
-    padding-left: 14px;
-  }
+.reddy {
+  color: #f2917e;
+  padding-left: 4%;
+}
+p {
+  color: grey;
+  padding-left: 14px;
+}
 
-  i {
-    font-size: 19px;
-    color: black;
+i {
+  font-size: 19px;
+  color: black;
+}
+
+::ng-deep .designer-rating {
+  .star {
+    font-size: 1.7rem !important;
   }
+}

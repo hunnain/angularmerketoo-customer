@@ -1,7 +1,8 @@
 // Products
 export interface Product {
     id?: number;
-    productId?: number,
+    productId?: string,
+    sellerId?: string;
     colour?: string;
     size?: string;
     title?: string;

@@ -23,11 +23,11 @@
             <div class="collection-filter-block">
               <app-services></app-services>
             </div>
-            <!-- <app-product-box-vertical-slider
+            <app-product-box-vertical-slider
               [title]="'New product'"
               [type]="product?.type"
             >
-            </app-product-box-vertical-slider> -->
+            </app-product-box-vertical-slider>
           </div>
         </div>
         <div class="col-lg-9 col-sm-12 col-xs-12">
@@ -248,7 +248,7 @@
                       >buy now</a
                     >
                   </div>
-                  <div class="product-buttons" *ngIf="product?.labels">
+                  <div class="border-product" *ngIf="product?.labels">
                     <span
                       class="badge badge-pill badge-secondary ml-1"
                       *ngFor="let label of product.labels"
@@ -264,36 +264,38 @@
                     <br />
                     <ul>
                       <li>
-                        <!-- <div class="form-group"> -->
                         <p class="productadminpormotion">
                           3 days only, new members get 5% off their first
                           purchase.
                         </p>
-                        <!-- </div> -->
                       </li>
-                      <!-- <br/> -->
                       <li>
-                        <!-- <div class="form-group"> -->
                         <p class="productadminpormotion">
                           3 days only, new members get 5% off their first
                           purchase.
                         </p>
-                        <!-- </div> -->
                       </li>
-                      <!-- <br /> -->
                       <li>
-                        <!-- <div class="form-group"> -->
                         <p class="productadminpormotion">
                           3 days only, new members get 5% off their first
                           purchase.
                         </p>
-                        <!-- </div> -->
                       </li>
                     </ul>
                   </div>
                   <div class="border-product">
                     <h6 class="product-title">product details</h6>
-                    <p>{{ product.description.substring(0, 200) + "..." }}</p>
+                    <p>Stock: {{ product?.quantity }}</p>
+                    <p>{{ product?.description?.substring(0, 200) + "..." }}</p>
+                  </div>
+                  <div class="border-product">
+                    <h6 class="product-title">About Seller</h6>
+                    <a
+                      style="color: #777777"
+                      href="javascript:void(0)"
+                      [routerLink]="['/shop/designer', product.sellerId]"
+                      >{{ product.sellerId }}</a
+                    >
                   </div>
                   <div class="border-product">
                     <h6 class="product-title">share it</h6>
@@ -408,7 +410,7 @@
       </div>
     </div>
   </div>
-  <!-- <app-related-product [type]="product?.type"></app-related-product> -->
+  <app-related-product [type]="product?.type"></app-related-product>
 </section>
 <app-size-modal #sizeChart [product]="product"></app-size-modal>
 <!-- Section ends -->

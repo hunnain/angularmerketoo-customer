@@ -27,25 +27,42 @@
       <div class="col-lg-12" style="margin-bottom: 2%">
         <div class="row">
           <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-            <img src="assets/images/vs.jpg" alt="" />
+            <img
+              style="width: 100%"
+              [src]="
+                sellerInfo?.image
+                  ? formatImage(sellerInfo.image)
+                  : 'assets/images/vs.jpg'
+              "
+              alt="seller logo"
+            />
           </div>
           <div class="col-6 col-sm-6 col-md-5 col-lg-4">
-            <h3 style="font-weight: 600; color: black">Vitamin Sea</h3>
+            <h3 style="font-weight: 600; color: black">
+              {{ sellerInfo?.shopName }}
+            </h3>
             <ul>
               <li>
-                <p><i class="fa fa-map-marker"></i> Japan</p>
+                <p>
+                  <i class="fa fa-map-marker"></i>
+                  {{ sellerInfo?.shopLocation }}
+                </p>
               </li>
               <li>
                 <p><i class="fa fa-calendar"></i> Opening date 2015-01-20</p>
               </li>
             </ul>
             <ul>
-              <li style="width: 122px; margin-bottom: 10px; margin-left: 6px">
-                <i class="fa fa-heart reddy"></i
-                ><i class="fa fa-heart reddy"></i
-                ><i class="fa fa-heart reddy"></i
-                ><i class="fa fa-heart reddy"></i
-                ><i class="fa fa-heart reddy"></i>
+              <li
+                class="designer-rating"
+                style="width: 122px; margin-bottom: 10px; margin-left: 6px"
+              >
+                <app-rating
+                  [rating]="sellerInfo?.totalProductsLikes"
+                  [readonly]="true"
+                  [type]="'heart'"
+                >
+                </app-rating>
               </li>
             </ul>
             <ul>
@@ -64,7 +81,9 @@
                 <p style="color: black; margin-left: 16px">56</p>
               </li>
               <li>
-                <p style="color: black; margin-left: 38px">217</p>
+                <p style="color: black; margin-left: 38px">
+                  {{ sellerInfo?.totalSoldProducts }}
+                </p>
               </li>
               <li>
                 <p style="color: black; margin-left: 53px">1560</p>
@@ -127,7 +146,9 @@
                 <p style="color: black; margin-left: 16px">80%</p>
               </li>
               <li>
-                <p style="color: black; margin-left: 53px">7 days or more</p>
+                <p style="color: black; margin-left: 53px">
+                  {{ sellerInfo?.averageShippingDays }}
+                </p>
               </li>
             </ul>
           </div>
@@ -153,12 +174,12 @@
             <!-- side-bar colleps block stat -->
             <div class="collection-filter-block">
               <!-- brand filter start -->
-              <app-brands
+              <!-- <app-brands
                 [products]="products"
                 [brands]="brands"
                 (brandsFilter)="updateFilter($event)"
               >
-              </app-brands>
+              </app-brands> -->
               <!-- color filter start here -->
               <app-colors
                 [products]="products"

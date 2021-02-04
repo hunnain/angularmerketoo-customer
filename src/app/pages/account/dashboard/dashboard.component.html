@@ -56,13 +56,13 @@
                   >{{ "Newsletter" | translate }}</a
                 >
               </li>
-              <li [ngClass]="{ active: selectedMenu === 'my_account' }">
+              <!-- <li [ngClass]="{ active: selectedMenu === 'my_account' }">
                 <a
                   href="javascript:void(0)"
                   (click)="selectMenu('my_account')"
                   >{{ "My Account" | translate }}</a
                 >
-              </li>
+              </li> -->
               <li [ngClass]="{ active: selectedMenu === 'return_exchange' }">
                 <a
                   href="javascript:void(0)"
@@ -187,7 +187,7 @@
                 <h2>{{ "My Dashboard" | translate }}</h2>
               </div>
               <div class="welcome-msg">
-                <p>{{ "Hello" | translate }}, MARK JECNO !</p>
+                <p>{{ "Hello" | translate }}, {{ userInfo?.username }} !</p>
                 <p>
                   {{ "dashboard_description" | translate }}
                 </p>
@@ -201,17 +201,34 @@
                     <div class="box">
                       <div class="box-title">
                         <h3>{{ "Contact Information" | translate }}</h3>
-                        <a href="javascript:void(0)">{{
-                          "Edit" | translate
-                        }}</a>
+                        <a
+                          href="javascript:void(0)"
+                          title="Profile Modal"
+                          (click)="profileModal.openModal()"
+                          >{{ "Edit" | translate }}</a
+                        >
                       </div>
                       <div class="box-content">
-                        <h6>MARK JECNO</h6>
-                        <h6>MARk-JECNO@gmail.com</h6>
+                        <div class="row align-items-center">
+                          <div class="col-12 col-md-3">
+                            <img
+                              src="assets/images/user-placeholder.png"
+                              alt="profile"
+                              style="width: 50px"
+                            />
+                          </div>
+                          <div class="col-12 col-md-9">
+                            <h6>{{ userInfo?.username }}</h6>
+                            <h6>{{ userInfo?.email }}</h6>
+                            <h6>{{ userInfo?.phoneNumber }}</h6>
+                          </div>
+                        </div>
                         <h6>
-                          <a href="javascript:void(0)">{{
-                            "Change Password" | translate
-                          }}</a>
+                          <a
+                            href="javascript:void(0)"
+                            (click)="selectMenu('change_pass')"
+                            >{{ "Change Password" | translate }}</a
+                          >
                         </h6>
                       </div>
                     </div>
@@ -551,10 +568,53 @@
                 </div>
               </div>
             </div>
+            <div *ngIf="selectedMenu === 'change_pass'">
+              <div class="page-title">
+                <h2>{{ "Change Password" | translate }}</h2>
+              </div>
+              <div class="page-main-content">
+                <div class="row">
+                  <div
+                    style="border-bottom: 1px solid #eeeeef"
+                    class="col-sm-12"
+                  >
+                    <div class="form-group">
+                      <label for="new">{{ "New Password" | translate }}</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="new"
+                        placeholder="{{ 'Enter new password' | translate }}"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm">{{
+                        "Confirm Password" | translate
+                      }}</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirm"
+                        placeholder="{{ 'Enter confirm password' | translate }}"
+                      />
+                    </div>
+                    <button class="btn btn-solid">
+                      {{ "Change" | translate }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <app-profile-modal
+    #profileModal
+    [profileData]="userInfo"
+    (reloadData)="fetchDataFromLS()"
+  ></app-profile-modal>
 </section>
+
 <!-- section end -->

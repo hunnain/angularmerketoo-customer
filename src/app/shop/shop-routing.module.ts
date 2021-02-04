@@ -80,7 +80,7 @@ const routes: Routes = [
     component: CollectionLeftSidebarComponent
   },
   {
-    path: 'designer',
+    path: 'designer/:id',
     component: DesignerPageComponent
   },
   {

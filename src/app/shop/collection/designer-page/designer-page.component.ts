@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
+import { SellerService } from 'src/app/shared/services/seller.service';
+import { Seller } from 'src/app/shared/classes/seller';
+import { AddBase64InImg } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-designer-page',
@@ -27,8 +30,16 @@ export class DesignerPageComponent implements OnInit {
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    private viewScroller: ViewportScroller, public productService: ProductService) {
+  public sellerId: string = '';
+  public loading: boolean = false;
+  public sellerInfo: Seller;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private viewScroller: ViewportScroller,
+    public productService: ProductService,
+    public sellerService: SellerService
+  ) {
     // Get Query params..
     // this.route.queryParams.subscribe(params => {
 
@@ -57,9 +68,28 @@ export class DesignerPageComponent implements OnInit {
     //     this.products = this.products.slice(this.paginate.startIndex, this.paginate.endIndex + 1); // get current page of items
     //   })
     // })
+
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      if (params.id) {
+        this.sellerId = params.id;
+        this.loading = true;
+        this.fetchSellerInfo(this.sellerId);
+      }
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  fetchSellerInfo(id) {
+    this.sellerService.getSellerById(id).subscribe(res => {
+      if (res && res['body']) {
+        // console.log("seller profile---", res);
+        this.sellerInfo = res['body'];
+        this.loading = false;
+      }
+    })
   }
 
 
@@ -156,6 +186,10 @@ export class DesignerPageComponent implements OnInit {
   // Mobile sidebar
   toggleMobileSidebar() {
     this.mobileSidebar = !this.mobileSidebar;
+  }
+
+  formatImage(img) {
+    return AddBase64InImg(img)
   }
 
 }

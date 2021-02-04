@@ -1,0 +1,64 @@
+<!--modal popup start-->
+<ng-template #profile let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Profile Details</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12">
+            <div>
+              <form>
+                <div>
+                  <div>
+                    <app-cropper
+                      [roundCropper]="true"
+                      (getImage)="getCroppedImage($event)"
+                    ></app-cropper>
+                  </div>
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    [formControl]="profileInfo.controls['username']"
+                    class="form-control mb-2"
+                    placeholder="Enter username"
+                  />
+                  <label for="phoneNumber">Phone number</label>
+                  <input
+                    type="number"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    [formControl]="profileInfo.controls['phoneNumber']"
+                    class="form-control mb-2"
+                    placeholder="Phone number"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  (click)="save()"
+                  class="btn btn-solid"
+                  [disabled]="profileInfo.invalid || loading"
+                >
+                  submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--modal popup end-->

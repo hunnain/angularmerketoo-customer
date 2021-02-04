@@ -44,13 +44,13 @@
   "new": "new",
   "free": "free transportation",
   "call-us": "Call Us",
-  "accessories": "accessories",
+  "Accessories": "Accessories",
   "shop": "Shop",
   "products": "Products",
   "features": "Features",
   "pages": "Pages",
   "blogs": "Blogs",
-  "clothing": "Clothing",
+  "Clothing": "Clothing",
   "fashion-01": "Fashion 01",
   "fashion-02": "Fashion 02",
   "fashion-03": "Fashion 03",
@@ -413,7 +413,7 @@
   "underwear":"Underwear",
   "couple-clothing":"Couple Clothing",
   
-  "stationery":"Stationery",
+  "Stationery":"Stationery",
   "paper-products":"Paper Products",
   "post-cards":"Post Cards",
   "stickers":"Stickers",
@@ -459,7 +459,7 @@
   "technology":"Technology",
   "DIY-materials":"DIY Materials",
 
-  "handbag":"Handbag/ Rucksack",
+  "Handbag/ Rucksack":"Handbag/ Rucksack",
   "ladies":"Ladies",
   "clutches":"Clutches",
   "crossbody-bags":"Crossbody Bags",
@@ -474,7 +474,7 @@
   "travel-bags":"Travel Bags/ Suitcases",
   "gadget-bags":"Gadget Bags",
 
-  "skin-care":"Skin Care",
+  "Skin Care":"Skin Care",
   "womens":"Womens",
   "cosmetic-products":"Cosmetic Products",
   "skincare-products":"Skincare Products",
@@ -537,10 +537,14 @@
   "Solution":"Solution",
   "Return & Exchange":"Return & Exchange",
   "dashboard_description":"From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.",
-  "refund_note":"Please select a preferred solution and wait for seller to approve. Seller might propose another to you. Please discuss with the seller to reach an agreement."
+  "refund_note":"Please select a preferred solution and wait for seller to approve. Seller might propose another to you. Please discuss with the seller to reach an agreement.",
 
 
-
+  "New Password":"New Password",
+  "Enter new password":"Enter new password",
+  "Confirm Password":"Confirm Password",
+  "Enter confirm password":"Enter confirm password",
+  "Change":"Change"
 
 
 

@@ -90,6 +90,30 @@ export class FashionOneComponent implements OnInit {
     image: 'assets/images/logos/8.png',
   }];
 
+  // Main Categories Name and links
+  public mainCategories = [{
+    title: "Accessories",
+    image: 'assets/images/product/fashion/10.jpg',
+  }, {
+    title: "Clothing",
+    image: 'assets/images/product/fashion/11.jpg',
+  }, {
+    title: "Stationery",
+    image: 'assets/images/product/fashion/14.jpg',
+  }, {
+    title: "Daily Necessities",
+    image: 'assets/images/product/fashion/16.jpg',
+  }, {
+    title: "Handbag/ Rucksack",
+    image: 'assets/images/product/fashion/17.jpg',
+  }, {
+    title: "Skin Care",
+    image: 'assets/images/product/fashion/18.jpg',
+  }, {
+    title: "Leisure Experience",
+    image: 'assets/images/product/fashion/25.jpg',
+  }];
+
   ngOnInit(): void {
   }
 

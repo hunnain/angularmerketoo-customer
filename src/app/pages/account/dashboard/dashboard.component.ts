@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/core/auth.service";
 import { UserService } from "src/app/core/user.service";
+import { ProfileModalComponent } from "src/app/shared/components/modal/profile/profile.component";
 
 @Component({
   selector: "app-dashboard",
@@ -9,6 +10,8 @@ import { UserService } from "src/app/core/user.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild("profileModal") profileModal: ProfileModalComponent;
+
   public openDashboard: boolean = false;
 
   public selectedMenu: string = 'account_info';
@@ -20,6 +23,10 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
+    this.fetchDataFromLS();
+  }
+
+  fetchDataFromLS() {
     let info = JSON.parse(localStorage.getItem('userInfo'));
     if (info) {
       this.userInfo = info;

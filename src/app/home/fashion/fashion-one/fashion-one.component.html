@@ -11,97 +11,20 @@
 </section>
 <!-- Home slider End -->
 <div class="button-images">
-  <div class="one_sixth">
+  <div class="one_sixth" *ngFor="let cate of mainCategories">
     <div class="button-container">
-      <a href="#"></a>
-      <img src="assets\images\product\fashion\10.jpg" />
+      <a
+        [routerLink]="['/shop/collection/left/sidebar']"
+        [queryParams]="{ category: cate.title }"
+      ></a>
+      <img [src]="cate.image" [alt]="cate.title" />
     </div>
     <!-- <a href="#">Accessories</a> -->
     <span
       style="display: block; text-align: center"
       href="#"
       class="categoriesBubbles"
-      >Accessories</span
-    >
-  </div>
-  <div class="one_sixth">
-    <div class="button-container">
-      <a href="#"></a>
-      <img src="assets\images\product\fashion\11.jpg" />
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Clothing</a
-    >
-  </div>
-  <div class="one_sixth">
-    <div class="button-container">
-      <a href="#"></a>
-      <div class="button-image">
-        <img src="assets\images\product\fashion\14.jpg" />
-      </div>
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Stationery</a
-    >
-  </div>
-  <div class="one_sixth">
-    <div class="button-container">
-      <a href="#"></a>
-      <div class="button-image">
-        <img src="assets\images\product\fashion\16.jpg" />
-      </div>
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Daily Necessities</a
-    >
-  </div>
-  <div class="one_sixth">
-    <div class="button-container">
-      <a href="#"></a>
-      <div class="button-image">
-        <img src="assets\images\product\fashion\17.jpg" />
-      </div>
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Handbag/RuckSack</a
-    >
-  </div>
-  <div class="one_sixth">
-    <div class="button-container">
-      <a href="#"></a>
-      <div class="button-image">
-        <img src="assets\images\product\fashion\18.jpg" />
-      </div>
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Skin Care</a
-    >
-  </div>
-  <div class="one_sixth last">
-    <div class="button-container">
-      <a href="#"></a>
-      <img src="assets\images\product\fashion\25.jpg" />
-    </div>
-    <a
-      style="display: block; text-align: center"
-      href="#"
-      class="categoriesBubbles"
-      >Leisure Experience</a
+      >{{ cate.title | translate }}</span
     >
   </div>
 

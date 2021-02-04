@@ -40,18 +40,18 @@
   "callus": "Call Us: 123-456-7898",
   "emailus": "Email Us: Customerservice@Marketoo.Hk",
   "call-us": "Call Us",
-  "accessories": "配件飾物",
+  "Accessories": "配件飾物",
   "language": "選擇語言",
-  "stationery": "文具用品",
+  "Stationery": "文具用品",
   "Daily Necessities": "生活用品",
-  "handbag": "手袋背包",
+  "Handbag/ Rucksack": "手袋背包",
   "brand": "牌",
   "colors": "颜色",
   "size": "尺寸",
   "price": "价钱",
-  "skin-care": "美容護理",
+  "Skin Care": "美容護理",
   "Leisure Experience": "休閒體驗",
-  "clothing": "衣著服飾",
+  "Clothing": "衣著服飾",
   "products": "Products",
   "features": "Features",
   "pages": "Pages",
@@ -500,7 +500,13 @@
   "State / Province / Region":"州/省/地區",
   "Zip code / Postal code":"郵政編碼/郵政編碼",
   "Update":"更新資料",
-  "There are 2 Coupons left":"剩下2張優惠券"
+  "There are 2 Coupons left":"剩下2張優惠券",
+
+  "New Password":"新密碼",
+  "Enter new password":"輸入新密碼",
+  "Confirm Password":"確認密碼",
+  "Enter confirm password":"輸入確認密碼",
+  "Change":"更改"
   
 
 }
