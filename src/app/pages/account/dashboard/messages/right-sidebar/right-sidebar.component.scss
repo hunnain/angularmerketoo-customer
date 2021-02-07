@@ -1,0 +1,94 @@
+::ng-deep .right-sidebar {
+  .friend-list-search {
+    position: relative;
+    background-color: #f8f8f9;
+    padding: 20px;
+    input {
+      color: #898989;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #f8f8f9;
+      padding: 10px 15px;
+      border-radius: 25px;
+      letter-spacing: 1px;
+    }
+    .fa {
+      position: absolute;
+      right: 35px;
+      top: 34px;
+      font-size: 14px;
+      color: #e8ebf2;
+    }
+  }
+
+  .chat-box {
+    .people-list ul {
+      padding: 0;
+      padding-top: 20px;
+      li {
+        position: relative;
+        padding-bottom: 20px;
+        .status-circle {
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 40px;
+          left: 40px;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+        }
+        .online {
+          background-color: #81ba00;
+        }
+        .offline {
+          background-color: red;
+        }
+        .about {
+          float: left;
+          margin-top: 5px;
+          padding-left: 10px;
+          .name {
+            color: #2a3142;
+            letter-spacing: 1px;
+            font-weight: 600;
+          }
+          .status {
+            color: #aaaaaa;
+            letter-spacing: 1px;
+            font-size: 12px;
+            margin-top: 5px;
+          }
+        }
+        &:after {
+          display: block;
+          clear: both;
+          content: "";
+        }
+      }
+    }
+    .user-image {
+      float: left;
+      width: 52px;
+      height: 52px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.p-r-30 {
+  padding-right: 30px;
+}
+.p-l-30 {
+  padding-left: 30px;
+}
+
+@media only screen and (max-height: 800px) {
+  ::ng-deep .right-sidebar {
+    .chat-box {
+      .friend-list {
+        max-height: calc(100vh - 150px);
+        overflow: scroll;
+      }
+    }
+  }
+}

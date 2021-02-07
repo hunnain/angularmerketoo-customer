@@ -78,7 +78,9 @@ export class ProductBoxOneComponent implements OnInit {
   }
 
   addToWishlist(product: any) {
-    this.productService.addToWishlist(product);
+    if (this.authService.checkUserLoggedIn()) {
+      this.productService.addToWishlist(product).subscribe();
+    }
   }
 
   addToCompare(product: any) {
@@ -86,7 +88,7 @@ export class ProductBoxOneComponent implements OnInit {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img);
+    return img ? img : '';
   }
 
 }

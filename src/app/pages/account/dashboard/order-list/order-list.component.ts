@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from "../../../../shared/services/product.service";
-import { Product } from "../../../../shared/classes/product";
+import { OrderService } from 'src/app/shared/services/order.service';
+import { Order } from 'src/app/shared/classes/order';
+import * as moment from 'moment';
+import { ReturnModalComponent } from 'src/app/shared/components/modal/return/return.component';
 
 @Component({
   selector: 'app-order-list',
@@ -9,27 +12,53 @@ import { Product } from "../../../../shared/classes/product";
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderlistComponent implements OnInit {
+  @ViewChild("returnModal") returnModal: ReturnModalComponent;
 
-  public products: Product[] = [];
+  public orders: Order[] = [];
+  public selectedOrder: Order = {};
 
-  constructor(private router: Router,
-    public productService: ProductService) {
-    this.productService.wishlistItems.subscribe(response => this.products = response);
+  public loading: boolean = false;
+  constructor(
+    private router: Router,
+    public productService: ProductService,
+    public orderService: OrderService
+  ) {
+    this.getOrders();
+  }
+
+  getOrders() {
+    this.loading = true;
+    this.orderService.fetchMyOrders().subscribe(res => {
+      this.loading = false;
+      if (res && res['body']) {
+        this.orders = res['body'];
+      }
+    })
   }
 
   ngOnInit(): void {
   }
 
-  async addToCart(product: any) {
-    const status = await this.productService.addToCart(product);
-    if (status) {
-      this.router.navigate(['/shop/cart']);
-      this.removeItem(product);
-    }
+  returnOrder(order: any) {
+    console.log(order)
+    this.selectedOrder = order;
+    this.returnModal.openModal();
   }
 
   removeItem(product: any) {
     this.productService.removeWishlistItem(product);
+  }
+
+  getProdNames(prods) {
+    return prods.map(item => item.name).join(',');
+  }
+
+  getFormatDate(date) {
+    return moment(date).format('MMM DD,YY');
+  }
+
+  onModalSave(data) {
+    console.log("data", data)
   }
 
 }

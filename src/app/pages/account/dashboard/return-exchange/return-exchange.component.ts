@@ -10,6 +10,7 @@ export class ReturnExchangeComponent implements OnInit {
   refund_reason = ''
   description = ''
   solution = "";
+  refund_amount = 0;
   constructor() { }
   ngOnInit(): void { }
 

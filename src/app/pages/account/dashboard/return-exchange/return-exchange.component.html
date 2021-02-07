@@ -33,9 +33,7 @@
       <div style="width: 100%">
         <textarea
           class="form-control"
-          placeholder="{{
-            'Refund and Return/Refun Reason (optional)' | translate
-          }}"
+          placeholder="{{ 'RefundReturnReason' | translate }}"
           id="exampleFormControlTextarea1"
           rows="6"
           [(ngModel)]="description"
@@ -76,23 +74,30 @@
           [(ngModel)]="solution"
           name="solution"
         >
-          <option value="faulty" disabled selected>
-            {{ "solution_note" | translate }}
-          </option>
-          <option value="faulty">
+          <option value="Return & Refund" title="Tooltip">
             {{ "Return & Refund" | translate }}
           </option>
-          <option value="faulty">
+          <option value="Refund Only">
             {{ "Refund Only" | translate }}
           </option>
         </select>
         <span
           class="ml-2"
-          placement="top"
-          ngbTooltip="{{ 'refund_note' | translate }}"
+          tooltipClass="custom-tooltip"
+          placement="left"
+          [ngbTooltip]="tipContent"
         >
           <app-feather-icons [icon]="'alert-circle'"></app-feather-icons>
         </span>
+        <!-- tooltip content -->
+        <ng-template #tipContent>
+          {{ "refund_note" | translate }} <br />
+          <u>{{ "Return & Refund" | translate }}</u>
+          {{ "returnAndrefund_note" | translate }} <br />
+          <u>{{ "Refund Only" | translate }}</u>
+          {{ "refundOnly_note" | translate }}
+        </ng-template>
+        <!-- tooltip content end -->
       </div>
     </div>
   </div>
@@ -100,9 +105,21 @@
   <!-- Return & Exchange -->
   <div class="row-data-style">
     <div>
-      <h4>{{ "Return & Exchange" | translate }}</h4>
-      <div>refunf Amount $ 250</div>
+      <h4>{{ "Refund Amount" | translate }}</h4>
+      <div>Max RM 3.4</div>
+      <div *ngIf="solution === 'Refund Only'">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter refundable amount"
+          name="refund_amount"
+          [(ngModel)]="refund_amount"
+        />
+      </div>
     </div>
     <a href="javascript:void(0)" style="text-align: end">Enter Refund Amount</a>
+  </div>
+  <div>
+    <button class="btn btn-solid">{{ "Submit" | translate }}</button>
   </div>
 </div>

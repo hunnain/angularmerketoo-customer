@@ -15,3 +15,51 @@
 .custom-color-container .active {
   border-radius: unset !important;
 }
+
+.feedback-list-container {
+  margin-bottom: 25px;
+  .media {
+    display: flex;
+    align-items: flex-start;
+    img {
+      height: 65px;
+      width: 65px;
+      margin-right: 20px;
+      border-radius: 100%;
+    }
+    h6 {
+      color: #444444;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+      span {
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: #777777;
+        margin-left: 20px;
+      }
+    }
+    p {
+      line-height: 1.8;
+      margin-bottom: -4px;
+      letter-spacing: 0.09em;
+      padding: 0;
+    }
+    .p-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    ul {
+      margin-top: 10px;
+      li {
+        margin-right: 15px;
+        a {
+          color: #777777;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

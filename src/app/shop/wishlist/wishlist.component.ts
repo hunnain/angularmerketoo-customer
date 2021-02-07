@@ -34,7 +34,7 @@ export class WishlistComponent implements OnInit {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img);
+    return img ? img : '';
   }
 
 }

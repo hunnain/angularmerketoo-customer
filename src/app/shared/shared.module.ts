@@ -47,6 +47,7 @@ import { VideoModalComponent } from "./components/modal/video-modal/video-modal.
 import { SizeModalComponent } from "./components/modal/size-modal/size-modal.component";
 import { AgeVerificationComponent } from "./components/modal/age-verification/age-verification.component";
 import { ProfileModalComponent } from "./components/modal/profile/profile.component";
+import { ReturnModalComponent } from "./components/modal/return/return.component";
 
 // Skeleton Loader Components
 import { SkeletonProductBoxComponent } from "./components/skeleton/skeleton-product-box/skeleton-product-box.component";
@@ -59,6 +60,7 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
+
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     NewsletterComponent,
     QuickViewComponent,
     ProfileModalComponent,
+    ReturnModalComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,
@@ -143,6 +146,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     NewsletterComponent,
     QuickViewComponent,
     ProfileModalComponent,
+    ReturnModalComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,

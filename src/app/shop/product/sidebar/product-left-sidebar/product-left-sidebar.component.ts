@@ -7,6 +7,7 @@ import { SizeModalComponent } from "../../../../shared/components/modal/size-mod
 import { AddBase64InImg } from 'src/app/shared/utilities';
 import { AuthService } from 'src/app/core/auth.service';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -120,7 +121,9 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   // Add to Wishlist
   addToWishlist(product: any) {
-    this.productService.addToWishlist(product);
+    if (this.authService.checkUserLoggedIn()) {
+      this.productService.addToWishlist(product).subscribe();
+    }
   }
 
   // Toggle Mobile Sidebar
@@ -129,12 +132,16 @@ export class ProductLeftSidebarComponent implements OnInit {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img)
+    return img ? img : ""
   }
 
 
   onRateChange(rate) {
     this.rating = rate;
+  }
+
+  formatDate(date) {
+    return moment(date).format('DD MMMM YYYY HH:mm A')
   }
 
   submitReview() {

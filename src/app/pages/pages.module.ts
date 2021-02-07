@@ -45,9 +45,14 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { SellerSignUpComponent } from './seller-signup/seller-signup.component';
 import { SurveyComponent } from '../components/survey.component';
 import { SurveyCreatorComponent } from '../components/survey.creator.component';
+
+// Dashboard Nested Components
 import { ReturnExchangeComponent } from './account/dashboard/return-exchange/return-exchange.component';
 import { OrderlistComponent } from './account/dashboard/order-list/order-list.component';
 import { MyWishlistComponent } from './account/dashboard/my-wishlist/my-wishlist.component';
+import { ListMessageComponent } from './account/dashboard/messages/list-message/list-message.component';
+import { ChatBoxComponent } from './account/dashboard/messages/chat-box/chat-box.component';
+import { RightSidebarComponent } from './account/dashboard/messages/right-sidebar/right-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +96,10 @@ import { MyWishlistComponent } from './account/dashboard/my-wishlist/my-wishlist
     SurveyCreatorComponent,
     ReturnExchangeComponent,
     OrderlistComponent,
-    MyWishlistComponent
+    MyWishlistComponent,
+    ListMessageComponent,
+    ChatBoxComponent,
+    RightSidebarComponent
   ],
   imports: [
     CommonModule,

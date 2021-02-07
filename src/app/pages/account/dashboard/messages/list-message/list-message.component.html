@@ -1,0 +1,20 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-5" style="margin-bottom: 20px">
+      <div class="right-sidebar chat-side-bar">
+        <app-right-sidebar (selectUser)="openChat($event)"></app-right-sidebar>
+      </div>
+    </div>
+    <div class="col-12 col-md-7" style="margin-bottom: 20px">
+      <div class="no-chat-msg" *ngIf="!openChatScreen">
+        Click on user to start chat
+      </div>
+      <app-chat-box
+        *ngIf="openChatScreen"
+        [user]="selectedUser"
+        [messages]="dummyMessages"
+      ></app-chat-box>
+    </div>
+  </div>
+</div>

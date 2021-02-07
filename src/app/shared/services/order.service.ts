@@ -43,8 +43,13 @@ export class OrderService {
   }
 
   fetchOrderBySessionId(session_id) {
+    return this.cs.get(`order/create-order/${session_id}`);
     // return this.cs.post(`order/create-order/${session_id}`, {});
-    return this.cs.get(`order/GetOrdersBySessionId/${session_id}`);
+    // return this.cs.get(`order/GetOrdersBySessionId/${session_id}`);
+  }
+
+  fetchMyOrders() {
+    return this.cs.get(`order/GetOrdersByCustomer`);
   }
 
 }

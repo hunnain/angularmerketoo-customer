@@ -61,5 +61,9 @@ export class UserService {
     return this.commonService.post(`marketoo-info/unsubscribe/${email}`, {});
   }
 
+  changePassword(data) {
+    return this.commonService.post(`customer/change-password`, data)
+  }
+
 
 }

@@ -73,7 +73,7 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img);
+    return img ? img : '';
   }
 
 }

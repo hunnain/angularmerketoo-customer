@@ -1,0 +1,114 @@
+.chat-container {
+  position: relative;
+  height: 100%;
+  .card-header {
+    padding: 10px 30px;
+    border-bottom: 1px solid #c1c1c1;
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+  }
+  .content li {
+    margin-bottom: 25px;
+  }
+  .content li.right {
+    text-align: right;
+    .msg {
+      background-color: #e1ffc7;
+      color: #000;
+    }
+  }
+  .content .msg {
+    color: #898989;
+    width: 100%;
+    background-color: #dddddd;
+    border: 1px solid #f8f8f9;
+    padding: 10px 15px;
+    border-radius: 25px;
+    letter-spacing: 1px;
+    // :after {
+    //     border-width: 0px 0 10px 10px;
+    //     border-color: transparent transparent transparent #e1ffc7;
+    //     top: 0;
+    //     right: -10px;
+
+    //     position: absolute;
+    //     content: "";
+    //     width: 0;
+    //     height: 0;
+    //     border-style: solid;
+    // }
+  }
+}
+.action-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: #c1c1c1;
+  height: 45px;
+  input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: transparent;
+    padding-left: 10px;
+  }
+  .icon-btn {
+    height: 40px;
+    background-color: #c1c1c1;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
+::ng-deep .card-header {
+  .status-circle {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  }
+  .online {
+    background-color: #81ba00;
+  }
+  .offline {
+    background-color: red;
+  }
+  .about {
+    float: left;
+    margin-top: 5px;
+    padding-left: 10px;
+    .name {
+      color: #2a3142;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    .status {
+      color: #aaaaaa;
+      letter-spacing: 1px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+  .user-image {
+    float: left;
+    width: 52px;
+    height: 52px;
+    margin-right: 5px;
+  }
+}

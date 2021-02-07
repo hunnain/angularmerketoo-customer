@@ -443,7 +443,7 @@
                 <h2>{{ "My Messages" | translate }}</h2>
               </div>
               <div class="page-main-content">
-                <div class="row">
+                <!-- <div class="row">
                   <div
                     style="border-bottom: 1px solid #eeeeef; cursor: pointer"
                     class="col-sm-12"
@@ -498,7 +498,8 @@
                       Keep calm and wait for your order to deliver
                     </p>
                   </div>
-                </div>
+                </div> -->
+                <app-list-message></app-list-message>
               </div>
             </div>
             <div *ngIf="selectedMenu === 'notification'">
@@ -579,12 +580,28 @@
                     class="col-sm-12"
                   >
                     <div class="form-group">
+                      <label for="new">{{
+                        "Current Password" | translate
+                      }}</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="new"
+                        placeholder="{{ 'Enter current password' | translate }}"
+                        [(ngModel)]="currentPassword"
+                        name="currentPassword"
+                      />
+                    </div>
+                    <div class="form-group">
                       <label for="new">{{ "New Password" | translate }}</label>
                       <input
                         type="password"
                         class="form-control"
                         id="new"
                         placeholder="{{ 'Enter new password' | translate }}"
+                        [(ngModel)]="newPassword"
+                        name="newPassword"
+                        #newPass="ngModel"
                       />
                     </div>
                     <div class="form-group">
@@ -596,9 +613,32 @@
                         class="form-control"
                         id="confirm"
                         placeholder="{{ 'Enter confirm password' | translate }}"
+                        [(ngModel)]="confirmPassword"
+                        name="confirmPassword"
+                        #confirmPass="ngModel"
                       />
+                      <span
+                        *ngIf="
+                          confirmPass.touched &&
+                          newPassword &&
+                          newPassword !== confirmPassword
+                        "
+                        style="color: red"
+                      >
+                        new and confirm password must be same
+                      </span>
                     </div>
-                    <button class="btn btn-solid">
+                    <button
+                      class="btn btn-solid"
+                      [disabled]="
+                        !currentPassword ||
+                        !newPassword ||
+                        !confirmPassword ||
+                        newPassword !== confirmPassword ||
+                        loading
+                      "
+                      (click)="updatePassword()"
+                    >
                       {{ "Change" | translate }}
                     </button>
                   </div>

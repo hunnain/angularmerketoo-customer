@@ -77,7 +77,7 @@ import { NotificationComponent } from './collection/notification/notification.co
     WishlistComponent,
     CompareComponent,
     CheckoutComponent,
-    SuccessComponent
+    SuccessComponent,
   ],
   imports: [
     CommonModule,

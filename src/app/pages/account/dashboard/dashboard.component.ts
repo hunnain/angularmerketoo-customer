@@ -18,6 +18,10 @@ export class DashboardComponent implements OnInit {
 
   public loading: boolean = false;
   public userInfo;
+
+  public currentPassword: string = ""
+  public newPassword: string = ""
+  public confirmPassword: string = ""
   constructor(
     private authService: AuthService,
     private userService: UserService,
@@ -54,6 +58,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  /****************  Subscribe and Unsubscribe function  *****************/
   unsubscribe() {
     this.loading = true;
     this.userService.unsubscribeUser(this.userInfo.email).subscribe(res => {
@@ -74,6 +79,23 @@ export class DashboardComponent implements OnInit {
         this.userInfo['isSubscribed'] = true;
         localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         this.loading = false;
+      }
+    })
+  }
+  /****************  Subscribe and Unsubscribe function end *************/
+
+  // Update Password function
+  updatePassword() {
+    let data = {
+      currentPassword: this.currentPassword,
+      newPassword: this.newPassword,
+      confirmPassword: this.confirmPassword
+    }
+    this.loading = true;
+    this.userService.changePassword(data).subscribe(res => {
+      this.loading = false;
+      if (res) {
+        this.selectedMenu = 'account_info'
       }
     })
   }

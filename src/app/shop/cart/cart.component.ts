@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img);
+    return img ? img : '';
   }
 
   addToCart() {

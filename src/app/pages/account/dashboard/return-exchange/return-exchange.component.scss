@@ -29,3 +29,8 @@ img {
     opacity: 0;
   }
 }
+
+::ng-deep .custom-tooltip .tooltip-inner {
+  width: 400px !important;
+  max-width: max-content !important;
+}

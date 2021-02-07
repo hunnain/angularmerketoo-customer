@@ -20,30 +20,43 @@ export interface Product {
     new?: boolean;
     quantity?: number;
     tags?: any[];
-    labels?: any[];
-    availableSizes?: any[];
-    availableColors?: any[];
+    isInternationalShipping?: boolean;
+    markdownPrice?: number;
+    customImageUrl?: string;
+    isApproved?: boolean;
+    creationDate?: string;
+    modificationDate?: null;
+    discountBuy?: number;
+    discountGet?: number;
+    subCategory?: string;
+    extendedSubCategory?: string;
+    rating?: null;
+    paymentOptions?: (string)[] | null;
+    customMaterial?: string;
+    promotions?: string;
+    customDesign?: null;
+    labels?: (string)[] | null;
+    availableSizes?: (string)[] | null;
+    availableColors?: (string)[] | null;
+    feedbacks?: (FeedbacksEntity)[] | null;
     customColours?: string;
-    customSize?: string;
+    customSize?: null;
     isValidForFeedback?: boolean;
-    variants?: Variants[];
-    images?: Images[];
+    images?: (string)[] | null;
     image?: string;
+    imageUrl?: string;
+    imageUrls?: (string)[] | null;
 }
 
-export interface Variants {
-    variant_id?: number;
-    id?: number;
-    sku?: string;
-    size?: string;
-    color?: string;
-    image_id?: number;
+export interface FeedbacksEntity {
+    reviewTitle: string;
+    review: string;
+    rating: number;
+    customer: Customer;
+    creationTime: string;
+    productId: string;
 }
-
-export interface Images {
-    image_id?: number;
-    id?: number;
-    alt?: string;
-    src?: string;
-    variant_id?: any[];
+export interface Customer {
+    username: string;
+    image?: null;
 }

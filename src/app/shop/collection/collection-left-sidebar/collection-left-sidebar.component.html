@@ -83,13 +83,12 @@
                   class="custom-control custom-checkbox collection-filter-checkbox"
                 >
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="shipping"
                     [checked]="isInternationalShipping"
-                    [value]="isInternationalShipping"
+                    [value]="true"
                     id="international"
-                    (change)="
-                      setShippingFilter($event, 'isInternationalShipping')
-                    "
+                    (change)="setShippingFilter($event)"
                     class="custom-control-input"
                   />
                   <label class="custom-control-label" for="international"
@@ -100,27 +99,15 @@
                   class="custom-control custom-checkbox collection-filter-checkbox"
                 >
                   <input
-                    type="checkbox"
-                    [checked]="isLocalShipping"
-                    [value]="isLocalShipping"
+                    type="radio"
+                    name="shipping"
+                    [checked]="!isInternationalShipping"
+                    [value]="false"
                     id="local"
-                    (change)="setShippingFilter($event, 'isLocalShipping')"
+                    (change)="setShippingFilter($event)"
                     class="custom-control-input"
                   />
                   <label class="custom-control-label" for="local">Local</label>
-                </div>
-                <div
-                  class="custom-control custom-checkbox collection-filter-checkbox"
-                >
-                  <input
-                    type="checkbox"
-                    [checked]="isFreeShipping"
-                    [value]="isFreeShipping"
-                    id="free"
-                    (change)="setShippingFilter($event, 'isFreeShipping')"
-                    class="custom-control-input"
-                  />
-                  <label class="custom-control-label" for="free">Free</label>
                 </div>
               </div>
               <!-- price filter start here -->

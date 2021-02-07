@@ -70,6 +70,17 @@ export class ProductService {
   */
 
   // Get Wishlist Items
+  public getAllWishlist(query) {
+    return this.cs.get(`customer/wishlist?${query}`).pipe(map(res => {
+      if (res && res['body']) {
+        console.log("res--", res.body);
+        localStorage.setItem('wishlistItems', JSON.stringify(res['body']));
+      }
+
+      return res;
+    }));
+  }
+
   public get wishlistItems(): Observable<Product[]> {
     const itemsStream = new Observable(observer => {
       observer.next(state.wishlist);
@@ -81,22 +92,39 @@ export class ProductService {
   // Add to Wishlist
   public addToWishlist(product): any {
     const wishlistItem = state.wishlist.find(item => item.productId === product.productId)
-    if (!wishlistItem) {
-      state.wishlist.push({
-        ...product
-      })
-    }
-    this.toastrService.success('Product has been added in wishlist.');
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
-    return true
+    // if (!wishlistItem) {
+    //   state.wishlist.push({
+    //     ...product
+    //   })
+    // }
+    // this.toastrService.success('Product has been added in wishlist.');
+    // localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+    return this.cs.post(`customer/add-to-wishlist/${product.productId}`, {}).pipe(map(res => {
+      if (res) {
+        if (!wishlistItem) {
+          state.wishlist.push({
+            ...product
+          })
+        }
+        this.toastrService.success('Product has been added in wishlist.');
+        localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+        return true;
+      }
+    }))
+    // return true
   }
 
   // Remove Wishlist items
   public removeWishlistItem(product: Product): any {
-    const index = state.wishlist.indexOf(product);
-    state.wishlist.splice(index, 1);
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
-    return true
+    return this.cs.delete(`customer/remove-from-wishlist/${product.productId}`).pipe(map(res => {
+      if (res) {
+        const index = state.wishlist.indexOf(product);
+        state.wishlist.splice(index, 1);
+        localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+        return true;
+      }
+    }));
+    // return true
   }
 
   /*
@@ -227,6 +255,11 @@ export class ProductService {
 
   addCartToServer(cart) {
     return this.cs.post(`CartItem/add-item`, cart);
+  }
+
+  emptyCart() {
+    localStorage.removeItem('cartItems');
+    state.cart = [];
   }
 
   /*

@@ -1,0 +1,78 @@
+<div style="height: 100%; min-height: 300px">
+  <div class="row" style="height: 100%">
+    <div class="col-sm-12">
+      <div class="card chat-container">
+        <div class="card-header">
+          <!-- <h5>{{user.name}}</h5> -->
+          <ul class="list">
+            <li class="clearfix">
+              <img
+                class="rounded-circle user-image blur-up lazyloaded"
+                [src]="user.img"
+                alt=""
+              />
+              <div
+                class="status-circle"
+                [ngClass]="{
+                  online: user.status === 'Online',
+                  offline: user.status !== 'Online'
+                }"
+              ></div>
+              <div class="about">
+                <div class="name">{{ user.name }}</div>
+                <div class="status">{{ user.status }}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body content">
+          <ul>
+            <li
+              [ngClass]="{ right: msg.user_id == user.id }"
+              style="width: 100%"
+              *ngFor="let msg of messages"
+            >
+              <span class="msg">{{ msg.message }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="action-footer">
+          <form class="needs-validation">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 9fr 1fr;
+                margin-top: 5px;
+              "
+            >
+              <div class="icon-btn">
+                <span>
+                  <app-feather-icons
+                    [icon]="'paperclip'"
+                    class="font-primary"
+                    style="color: #fff !important"
+                  ></app-feather-icons>
+                </span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="{{ 'messeges_Typehere' | translate }}"
+                />
+              </div>
+              <div class="icon-btn">
+                <span>
+                  <app-feather-icons
+                    [icon]="'send'"
+                    class="font-primary"
+                    style="color: #fff !important"
+                  ></app-feather-icons>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

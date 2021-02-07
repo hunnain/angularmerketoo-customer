@@ -26,8 +26,6 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public extendedsubcategory: string;
   public name: string;
   public isInternationalShipping: boolean = null;
-  public isLocalShipping: boolean = null;
-  public isFreeShipping: boolean = null;
   public pageNo: number = 1;
   public paginate: any = {}; // Pagination use only
   public sortBy: string; // Sorting Order
@@ -52,7 +50,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.category = params.category ? params.category : null;
       this.extendedsubcategory = params.extendedsubcategory ? ExtendedCategories[params.extendedsubcategory] : null;
       this.name = params.name ? params.name : null;
-      this.isInternationalShipping = params.isInternationalShipping ? params.isInternationalShipping : null;
+      this.isInternationalShipping = params.isInternationalShipping !== null ? params.isInternationalShipping : null;
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
       this.pageNo = params.page ? params.page : this.pageNo;
 
@@ -187,10 +185,10 @@ export class CollectionLeftSidebarComponent implements OnInit {
     });
   }
 
-  setShippingFilter(ev, type) {
+  setShippingFilter(ev) {
     let val = ev.target.checked;
-    this[type] = val;
-    console.log('💻', type, this[type], val);
+    this.isInternationalShipping = val;
+    console.log('💻', val);
     // this.router.navigate([], {
     //   relativeTo: this.route,
     //   queryParams: { isInternationalShipping: this.isInternationalShipping },

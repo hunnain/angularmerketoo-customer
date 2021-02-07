@@ -12,13 +12,29 @@ import { AddBase64InImg } from 'src/app/shared/utilities';
 export class MyWishlistComponent implements OnInit {
 
   public products: Product[] = [];
+  public loading: boolean = false;
 
-  constructor(private router: Router,
-    public productService: ProductService) {
-    this.productService.wishlistItems.subscribe(response => this.products = response);
+  constructor(
+    private router: Router,
+    public productService: ProductService
+  ) {
+    // this.productService.wishlistItems.subscribe(response => this.products = response);
+    this.getWishlistFromDB();
   }
 
   ngOnInit(): void {
+  }
+
+  getWishlistFromDB() {
+    this.loading = true;
+    let query = ''
+    this.productService.getAllWishlist(query).subscribe(res => {
+      console.log("res--in componet", res);
+      if (res && res['body']) {
+        this.loading = false;
+        this.productService.wishlistItems.subscribe(response => this.products = response);
+      }
+    })
   }
 
   async addToCart(product: any) {
@@ -30,11 +46,11 @@ export class MyWishlistComponent implements OnInit {
   }
 
   removeItem(product: any) {
-    this.productService.removeWishlistItem(product);
+    this.productService.removeWishlistItem(product).subscribe();
   }
 
   formatImage(img) {
-    return AddBase64InImg(img);
+    return img ? img : '';
   }
 
 }
