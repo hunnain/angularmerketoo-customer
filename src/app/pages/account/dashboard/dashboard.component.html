@@ -211,11 +211,32 @@
                       <div class="box-content">
                         <div class="row align-items-center">
                           <div class="col-12 col-md-3">
-                            <img
+                            <!-- <img
                               src="assets/images/user-placeholder.png"
                               alt="profile"
                               style="width: 50px"
-                            />
+                            /> -->
+                            <div class="img-container">
+                              <img
+                                [src]="
+                                  profileImage
+                                    ? profileImage
+                                    : 'assets/images/user-placeholder.png'
+                                "
+                                alt="Avatar"
+                                class="image img-fluid img-90 rounded-circle blur-up lazyloaded"
+                              />
+                              <div
+                                class="middle"
+                                (click)="openCropper(cropperModal)"
+                              >
+                                <div class="text">
+                                  {{
+                                    profileImage ? "Change Image" : "Add Image"
+                                  }}
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="col-12 col-md-9">
                             <h6>{{ userInfo?.username }}</h6>
@@ -443,62 +464,6 @@
                 <h2>{{ "My Messages" | translate }}</h2>
               </div>
               <div class="page-main-content">
-                <!-- <div class="row">
-                  <div
-                    style="border-bottom: 1px solid #eeeeef; cursor: pointer"
-                    class="col-sm-12"
-                  >
-                    <p class="mb-2 mt-2">22/12/2020</p>
-                    <span>
-                      <img
-                        style="width: 30px"
-                        src="assets/images/empty-wishlist.png"
-                        alt="avatar"
-                        class="img-fluid center"
-                      />
-                      <span class="mb-1 ml-2">User Name</span>
-                    </span>
-                    <p class="mb-2 mt-2">
-                      Keep calm and wait for your order to deliver
-                    </p>
-                  </div>
-                  <div
-                    style="border-bottom: 1px solid #eeeeef; cursor: pointer"
-                    class="col-sm-12"
-                  >
-                    <p class="mb-2 mt-2">22/12/2020</p>
-                    <span>
-                      <img
-                        style="width: 30px"
-                        src="assets/images/empty-wishlist.png"
-                        alt="avatar"
-                        class="img-fluid center"
-                      />
-                      <span class="mb-1 ml-2">User Name</span>
-                    </span>
-                    <p class="mb-2 mt-2">
-                      Keep calm and wait for your order to deliver
-                    </p>
-                  </div>
-                  <div
-                    style="border-bottom: 1px solid #eeeeef; cursor: pointer"
-                    class="col-sm-12"
-                  >
-                    <p class="mb-2 mt-2">22/12/2020</p>
-                    <span>
-                      <img
-                        style="width: 30px"
-                        src="assets/images/empty-wishlist.png"
-                        alt="avatar"
-                        class="img-fluid center"
-                      />
-                      <span class="mb-1 ml-2">User Name</span>
-                    </span>
-                    <p class="mb-2 mt-2">
-                      Keep calm and wait for your order to deliver
-                    </p>
-                  </div>
-                </div> -->
                 <app-list-message></app-list-message>
               </div>
             </div>
@@ -658,3 +623,45 @@
 </section>
 
 <!-- section end -->
+
+<!-- Cropper Modal -->
+<ng-template #cropperModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cropper</h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="main-container" ngbAutofocus>
+      <div>
+        <app-cropper
+          [roundCropper]="true"
+          (getImage)="getCroppedImage($event)"
+        ></app-cropper>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <app-button
+      [loading]="submittingPic"
+      [disabled]="!tempProfileImage"
+      [btnText]="'Save'"
+      (onSubmit)="saveProfilePic()"
+    ></app-button>
+    <button
+      class="btn btn-light"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+<!-- Cropper Modal End -->

@@ -23,6 +23,7 @@
     "@angular/fire": "^5.1.2",
     "@angular/forms": "~9.0.0",
     "@angular/localize": "^9.0.4",
+    "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/platform-server": "~9.0.0",

@@ -10,6 +10,8 @@ import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { TranslateModule } from "@ngx-translate/core";
 import { ImageCropperModule } from 'ngx-image-cropper';
 
+import { MaterialModule } from "../material.module";
+
 
 // Header and Footer Components
 import { HeaderOneComponent } from "./header/header-one/header-one.component";
@@ -37,6 +39,8 @@ import { ProductBoxVerticalSliderComponent } from "./components/product/product-
 import { RatingComponent } from "./components/rating/rating.component";
 import { CropperComponent } from "./components/cropper/cropper.component";
 import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
+import { ButtonComponent } from "./components/button/button.component";
+
 
 // Modals Components
 import { NewsletterComponent } from "./components/modal/newsletter/newsletter.component";
@@ -99,7 +103,8 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     DiscountPipe,
     RatingComponent,
     FeatherIconsComponent,
-    CropperComponent
+    CropperComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -126,6 +131,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     LazyLoadImageModule,
     NgxSkeletonLoaderModule,
     TranslateModule,
+    MaterialModule,
     HeaderOneComponent,
     FooterOneComponent,
     HeaderTwoComponent,
@@ -158,7 +164,8 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     DiscountPipe,
     RatingComponent,
     FeatherIconsComponent,
-    CropperComponent
+    CropperComponent,
+    ButtonComponent
   ],
 })
 export class SharedModule { }

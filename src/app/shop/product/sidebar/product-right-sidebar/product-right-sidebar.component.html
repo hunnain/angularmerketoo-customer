@@ -1,17 +1,28 @@
 <!-- <app-breadcrumb [title]="product?.title" [breadcrumb]="'Product'"></app-breadcrumb> -->
 <!-- section start -->
-<section class="section-b-space" style="border-top: 1px solid #ab9898;
-margin-top: 6px;padding-top: 0px;">
+<section
+  class="section-b-space"
+  style="border-top: 1px solid #ab9898; margin-top: 6px; padding-top: 0px"
+>
   <div class="collection-wrapper">
     <div class="container">
-      <div style="width: 70%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding-bottom: 1.5%;
-      padding-top: 1.5%;" class="top-banner-wrapper ">
+      <div
+        style="
+          width: 70%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          padding-bottom: 1.5%;
+          padding-top: 1.5%;
+        "
+        class="top-banner-wrapper"
+      >
         <a [routerLink]="['/shop/collection/left/sidebar']">
-          <img src="assets/images/collection-banner.jpg" class="img-fluid center" alt="">
+          <img
+            src="assets/images/collection-banner.jpg"
+            class="img-fluid center"
+            alt=""
+          />
         </a>
       </div>
       <div class="row">
@@ -28,25 +39,53 @@ margin-top: 6px;padding-top: 0px;">
             </div>
             <div class="row">
               <div class="col-lg-6">
-                <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar class="product-slick">
-                  <ng-container *ngFor="let image of product.images; index as i">
+                <owl-carousel-o
+                  [options]="ProductDetailsMainSliderConfig"
+                  #owlCar
+                  class="product-slick"
+                >
+                  <ng-container
+                    *ngFor="let image of product.imageUrls; index as i"
+                  >
                     <ng-template carouselSlide [id]="i">
                       <div>
-                        <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src"
-                          [alt]="image.alt" class="img-fluid" [src]="image.src">
+                        <img
+                          [defaultImage]="
+                            'assets/images/product/placeholder.jpg'
+                          "
+                          [lazyLoad]="image"
+                          [alt]="image.alt"
+                          class="img-fluid"
+                          [src]="image"
+                        />
                       </div>
                     </ng-template>
                   </ng-container>
                 </owl-carousel-o>
-                <div style="margin-top: -34%!important;" class="col-12 p-0">
+                <div style="margin-top: -34% !important" class="col-12 p-0">
                   <div class="slider-nav">
-                    <owl-carousel-o [options]="ProductDetailsThumbConfig" class="product-slick">
-                      <ng-container *ngFor="let image of product.images; index as i">
+                    <owl-carousel-o
+                      [options]="ProductDetailsThumbConfig"
+                      class="product-slick"
+                    >
+                      <ng-container
+                        *ngFor="let image of product.imageUrls; index as i"
+                      >
                         <ng-template carouselSlide [id]="i">
-                          <div class="owl-thumb" [class.active]="i == activeSlide">
-                            <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src"
-                              [alt]="image.alt" class="img-fluid" [src]="image.src"
-                              (click)="owlCar.to(activeSlide = i.toString())">
+                          <div
+                            class="owl-thumb"
+                            [class.active]="i == activeSlide"
+                          >
+                            <img
+                              [defaultImage]="
+                                'assets/images/product/placeholder.jpg'
+                              "
+                              [lazyLoad]="image"
+                              [alt]="image.alt"
+                              class="img-fluid"
+                              [src]="image"
+                              (click)="owlCar.to((activeSlide = i.toString()))"
+                            />
                           </div>
                         </ng-template>
                       </ng-container>
@@ -58,48 +97,87 @@ margin-top: 6px;padding-top: 0px;">
                 <div class="product-right">
                   <h2>{{ product?.title }}</h2>
                   <h4>
-                    <del
-                      *ngIf="product?.discount">{{ product?.price * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}</del>
+                    <del *ngIf="product?.discount">{{
+                      product?.price * productService.Currency?.price
+                        | currency: productService.Currency?.currency:"symbol"
+                    }}</del>
                     <span>{{ product?.discount }}% off</span>
                   </h4>
                   <h3>
-                    {{ (product?.price | discount:product) * productService.Currency?.price | currency: productService.Currency?.currency:'symbol' }}
+                    {{
+                      (product?.price | discount: product) *
+                        productService.Currency?.price
+                        | currency: productService.Currency?.currency:"symbol"
+                    }}
                   </h3>
-                  <!-- <ul class="color-variant" *ngIf="Color(product?.variants).length">
-                    <li [class]="color" [class.active]="activeSlide == i.toString()" *ngFor="let color of Color(product?.variants); index as i" 
+                  <!-- <ul class="color-variant" *ngIf="product?.availableColors.length">
+                    <li [class]="color" [class.active]="activeSlide == i.toString()" *ngFor="let color of product?.availableColors; index as i" 
                         [ngStyle]="{'background-color': color}"
                         (click)="owlCar.to(activeSlide = i.toString())">
                     </li>
                   </ul> -->
                   <!-- <app-stock-inventory [stock]="product.stock"></app-stock-inventory> -->
                   <div class="product-description border-product">
-                    <h6 class="product-title size-text" *ngIf="Size(product.variants).length">
+                    <h6
+                      class="product-title size-text"
+                      *ngIf="product.availableSizes.length"
+                    >
                       select size
                       <span>
-                        <a href="javascrip:void(0)" (click)="SizeChart.openModal()">size chart</a>
+                        <a
+                          href="javascrip:void(0)"
+                          (click)="SizeChart.openModal()"
+                          >size chart</a
+                        >
                       </span>
                     </h6>
-                    <div class="size-box" *ngIf="Size(product.variants).length">
+                    <div class="size-box" *ngIf="product.availableSizes.length">
                       <ul>
-                        <li [class.active]="selectedSize == size" *ngFor="let size of Size(product.variants)">
-                          <a href="javascript:void(0)" (click)="selectSize(size)">{{ size | titlecase }}</a>
+                        <li
+                          [class.active]="selectedSize == size"
+                          *ngFor="let size of product.availableSizes"
+                        >
+                          <a
+                            href="javascript:void(0)"
+                            (click)="selectSize(size)"
+                            >{{ size | titlecase }}</a
+                          >
                         </li>
                       </ul>
                     </div>
-                    <h5 class="avalibility" *ngIf="counter <= product.stock"><span>In Stock</span></h5>
-                    <h5 class="avalibility" *ngIf="counter > product.stock"><span>Out of Stock</span></h5>
+                    <h5 class="avalibility" *ngIf="counter <= product.stock">
+                      <span>In Stock</span>
+                    </h5>
+                    <h5 class="avalibility" *ngIf="counter > product.stock">
+                      <span>Out of Stock</span>
+                    </h5>
                     <h6 class="product-title">quantity</h6>
                     <div class="qty-box">
                       <div class="input-group">
                         <span class="input-group-prepend">
-                          <button type="button" class="btn quantity-left-minus" data-type="minus" (click)="decrement()">
+                          <button
+                            type="button"
+                            class="btn quantity-left-minus"
+                            data-type="minus"
+                            (click)="decrement()"
+                          >
                             <i class="ti-angle-left"></i>
                           </button>
                         </span>
-                        <input type="text" name="quantity" class="form-control input-number" [value]="counter"
-                          disabled />
+                        <input
+                          type="text"
+                          name="quantity"
+                          class="form-control input-number"
+                          [value]="counter"
+                          disabled
+                        />
                         <span class="input-group-prepend">
-                          <button type="button" class="btn quantity-right-plus" data-type="plus" (click)="increment()">
+                          <button
+                            type="button"
+                            class="btn quantity-right-plus"
+                            data-type="plus"
+                            (click)="increment()"
+                          >
                             <i class="ti-angle-right"></i>
                           </button>
                         </span>
@@ -107,14 +185,24 @@ margin-top: 6px;padding-top: 0px;">
                     </div>
                   </div>
                   <div class="product-buttons">
-                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock"
-                      (click)="addToCart(product)">add to cart</a>
-                    <a href="javascrip:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock"
-                      (click)="buyNow(product)">buy now</a>
+                    <a
+                      href="javascrip:void(0)"
+                      class="btn btn-solid"
+                      [class.disabled]="counter > product.stock"
+                      (click)="addToCart(product)"
+                      >add to cart</a
+                    >
+                    <a
+                      href="javascrip:void(0)"
+                      class="btn btn-solid"
+                      [class.disabled]="counter > product.stock"
+                      (click)="buyNow(product)"
+                      >buy now</a
+                    >
                   </div>
                   <div class="border-product">
                     <h5 class="product-title">product Information</h5>
-                    <div style="margin-top: 10px;" class="list-side-by-side">
+                    <div style="margin-top: 10px" class="list-side-by-side">
                       <dl>
                         <dt>Material</dt>
                         <dd>Cotton</dd>
@@ -127,33 +215,42 @@ margin-top: 6px;padding-top: 0px;">
                   </div>
                   <div class="border-product">
                     <h5 class="product-title">About Design Shop</h5>
-                    <div style="margin-top: 15px;" class="row">
+                    <div style="margin-top: 15px" class="row">
                       <div class="column">
-                        <img style="    width: 60%;
-                          padding-left: 17px;" src="assets/images/vs.jpg" alt="">
-
+                        <img
+                          style="width: 60%; padding-left: 17px"
+                          src="assets/images/vs.jpg"
+                          alt=""
+                        />
                       </div>
-                      <div style="margin-left: 0%;" class="column">
-                        <h3 style="font-weight: 600;
-                          color: black;">Vitamin Sea</h3>
+                      <div style="margin-left: 0%" class="column">
+                        <h3 style="font-weight: 600; color: black">
+                          Vitamin Sea
+                        </h3>
                         <ul>
                           <li>
-                            <p> <i class="fa fa-map-marker"></i> Japan</p>
+                            <p><i class="fa fa-map-marker"></i> Japan</p>
                           </li>
-
                         </ul>
                         <ul>
-                          <li style="width: 122px;margin-bottom: 10px;    margin-left: 6px;
-                          ">
-                            <i class="fa fa-heart reddy"></i><i class="fa fa-heart reddy"></i><i
-                              class="fa fa-heart reddy"></i><i class="fa fa-heart reddy"></i><i
-                              class="fa fa-heart reddy"></i>
+                          <li
+                            style="
+                              width: 122px;
+                              margin-bottom: 10px;
+                              margin-left: 6px;
+                            "
+                          >
+                            <i class="fa fa-heart reddy"></i
+                            ><i class="fa fa-heart reddy"></i
+                            ><i class="fa fa-heart reddy"></i
+                            ><i class="fa fa-heart reddy"></i
+                            ><i class="fa fa-heart reddy"></i>
                           </li>
-
                         </ul>
                       </div>
-                      <div style="margin-left: 23%; " class="column">
-                        <button type="submit" class="searchButton"><i style="color: white;" class="fa fa-plus"></i>
+                      <div style="margin-left: 23%" class="column">
+                        <button type="submit" class="searchButton">
+                          <i style="color: white" class="fa fa-plus"></i>
                           Follow Designer
                         </button>
                       </div>
@@ -164,9 +261,9 @@ margin-top: 6px;padding-top: 0px;">
                           class="btn btn-outline-primary"><i class="fa fa-address-card"></i> Contact Designer</button>
                       </div> -->
                     </div>
-                    <div style="margin-top: 10px;" class="list-side-by-side">
+                    <div style="margin-top: 10px" class="list-side-by-side">
                       <dl>
-                        <dt>Response rate: </dt>
+                        <dt>Response rate:</dt>
                         <dd>95%</dd>
                         <dt>Response speed:</dt>
                         <dd>Within 1 day</dd>
@@ -180,7 +277,10 @@ margin-top: 6px;padding-top: 0px;">
                     <div class="product-icon">
                       <app-social></app-social>
                       <form class="d-inline-block">
-                        <button class="wishlist-btn" (click)="addToWishlist(product)">
+                        <button
+                          class="wishlist-btn"
+                          (click)="addToWishlist(product)"
+                        >
                           <i class="fa fa-heart"></i>
                           <span class="title-font">Add To WishList</span>
                         </button>
@@ -201,24 +301,39 @@ margin-top: 6px;padding-top: 0px;">
                   <ngb-tab>
                     <ng-template ngbTabTitle>Product Description</ng-template>
                     <ng-template ngbTabContent>
-                      <p>[Notes on Real-Name Certification for Imports from Taiwan]
-                        Hello, I am glad to see you visiting the store. Buyers from Taiwan need to pay attention!
-                        Because Taiwan Customs strictly implements real-name certification for import customs clearance
-                        to prevent imposing declarations of express goods imports and protect people’s personal assets,
-                        SF Express now requires real-name certification for parcels sent to Taiwan. If you place an
-                        order to purchase packages, you also need to download the real-name certification APP of the
-                        customs. "EZway Yili Committee", after completing the mobile phone registration and
-                        authentication, you will receive a SMS or email notification after the authentication is
-                        successful, let us know if you succeed! As long as the certification is successful and we inform
-                        us, the package can be shipped immediately (because Taiwan customs now requires such
-                        certification for all imported products to be released, I hope you understand) ~ For
-                        real-name certification questions, you can consult us or pinkoi customer service.
-                        For APP registration and certification operations, please check here
-                        pinkoi.zendesk.com/hc/zh-tw/article...</p>
-                      <p>* Buyers must read the purchase instructions before taking the goods. Once
-                        all goods are sold, except for quality problems ( Dropped hardware, off-line, damaged leather),
-                        any return or exchange due to subjective reasons, you need to pay the round-trip postage
-                        yourself, please consciously deduct the postage sent when refunding.</p>
+                      <p>
+                        [Notes on Real-Name Certification for Imports from
+                        Taiwan] Hello, I am glad to see you visiting the store.
+                        Buyers from Taiwan need to pay attention! Because Taiwan
+                        Customs strictly implements real-name certification for
+                        import customs clearance to prevent imposing
+                        declarations of express goods imports and protect
+                        people’s personal assets, SF Express now requires
+                        real-name certification for parcels sent to Taiwan. If
+                        you place an order to purchase packages, you also need
+                        to download the real-name certification APP of the
+                        customs. "EZway Yili Committee", after completing the
+                        mobile phone registration and authentication, you will
+                        receive a SMS or email notification after the
+                        authentication is successful, let us know if you
+                        succeed! As long as the certification is successful and
+                        we inform us, the package can be shipped immediately
+                        (because Taiwan customs now requires such certification
+                        for all imported products to be released, I hope you
+                        understand) ~ For real-name certification questions, you
+                        can consult us or pinkoi customer service. For APP
+                        registration and certification operations, please check
+                        here pinkoi.zendesk.com/hc/zh-tw/article...
+                      </p>
+                      <p>
+                        * Buyers must read the purchase instructions before
+                        taking the goods. Once all goods are sold, except for
+                        quality problems ( Dropped hardware, off-line, damaged
+                        leather), any return or exchange due to subjective
+                        reasons, you need to pay the round-trip postage
+                        yourself, please consciously deduct the postage sent
+                        when refunding.
+                      </p>
                     </ng-template>
                   </ngb-tab>
                   <ngb-tab>
@@ -228,22 +343,23 @@ margin-top: 6px;padding-top: 0px;">
                         <li>
                           <div class="row">
                             <div class="column">
-                              <img style="    width: 10%;
-                              padding-left: 17px;" src="assets/images/vs.jpg" alt="">
-                              <div class="policytext">Chen Abby week ago to this product
-                                shopping evaluation of left
-                                Scared me, just received it! So fast to arrive 👍The
-                                actual product is better than I thought~~ Just like the photo, I must repurchase again
-                                if
-                                I
-                                have
-                                the opportunity. I
-                                also like the small gifts I sent~~</div>
+                              <img
+                                style="width: 10%; padding-left: 17px"
+                                src="assets/images/vs.jpg"
+                                alt=""
+                              />
+                              <div class="policytext">
+                                Chen Abby week ago to this product shopping
+                                evaluation of left Scared me, just received it!
+                                So fast to arrive 👍The actual product is better
+                                than I thought~~ Just like the photo, I must
+                                repurchase again if I have the opportunity. I
+                                also like the small gifts I sent~~
+                              </div>
                             </div>
                           </div>
                         </li>
                       </ul>
-
                     </ng-template>
                   </ngb-tab>
                 </ngb-tabset>

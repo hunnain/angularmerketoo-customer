@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "src/app/core/auth.service";
 import { UserService } from "src/app/core/user.service";
 import { ProfileModalComponent } from "src/app/shared/components/modal/profile/profile.component";
+import { CommonService } from "src/app/shared/services/common.service";
 
 @Component({
   selector: "app-dashboard",
@@ -25,7 +27,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private cs: CommonService,
+    private router: Router,
+    private modalService: NgbModal,
   ) {
     this.fetchDataFromLS();
   }
@@ -34,6 +38,7 @@ export class DashboardComponent implements OnInit {
     let info = JSON.parse(localStorage.getItem('userInfo'));
     if (info) {
       this.userInfo = info;
+      this.profileImage = info.imageUrl || "";
     }
   }
 
@@ -99,4 +104,55 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+
+  // profile pic section
+  public tempProfileImage: string;
+  public profileImage: string;
+  public submittingPic: boolean = false;
+  // cropper 
+  openCropper(content) {
+    this.open(content);
+  }
+
+  getCroppedImage(croppedImg) {
+    // console.log("crop image", croppedImg)
+    this.tempProfileImage = croppedImg
+  }
+
+  // modal event
+  open(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          console.log(`Closed with: ${result}`);
+        },
+        (reason) => {
+          this.tempProfileImage = "";
+          console.log(`Dismissed`);
+        }
+      );
+  }
+
+  saveProfilePic() {
+    this.submittingPic = true;
+    let splited = this.tempProfileImage.split('base64,');
+    let byteImg = splited[1];
+    let data = {
+      image: byteImg
+    }
+    this.userService.updateProfilePic(data).subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.cs.isLoading.next(false);
+        this.submittingPic = false;
+        this.profileImage = this.tempProfileImage;
+        this.tempProfileImage = "";
+        this.userInfo = { ...this.userInfo, imageUrl: res['profilePicUrl'] }
+        this.cs.writeToLS('userInfo', JSON.stringify(this.userInfo))
+        this.modalService.dismissAll('close')
+      }
+    })
+  }
+  // profile pic end
 }

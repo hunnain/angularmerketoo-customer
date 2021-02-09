@@ -30,7 +30,7 @@ export class WishlistComponent implements OnInit {
   }
 
   removeItem(product: any) {
-    this.productService.removeWishlistItem(product);
+    this.productService.removeWishlistItem(product).subscribe();
   }
 
   formatImage(img) {

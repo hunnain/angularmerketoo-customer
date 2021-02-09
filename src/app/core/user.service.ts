@@ -54,6 +54,10 @@ export class UserService {
     }));
   }
 
+  updateProfilePic(data) {
+    return this.commonService.post('customer/updateProfilePic', data);
+  }
+
   subscribeUser(email) {
     return this.commonService.post(`marketoo-info/subscribe/${email}`, {});
   }

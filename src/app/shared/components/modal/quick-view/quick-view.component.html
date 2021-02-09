@@ -13,7 +13,9 @@
           <div class="quick-view-img">
             <img
               [src]="
-                formatImage(product.images ? product.images[0] : product.image)
+                formatImage(
+                  product.imageUrls ? product.imageUrls[0] : product.image
+                )
               "
               [alt]="product.name"
               class="img-fluid"

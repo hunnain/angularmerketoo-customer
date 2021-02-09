@@ -51,8 +51,8 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/shop/checkout'])
     // let prods = JSON.parse(JSON.stringify(this.products));
     // let data = prods.map(item => {
-    //   if (item.images) {
-    //     delete item.images;
+    //   if (item.imageUrls) {
+    //     delete item.imageUrls;
     //   } else if (item.image) {
     //     delete item.image;
     //   }

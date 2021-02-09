@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,23 +8,33 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from '../environments/environment';
+import 'hammerjs';
+import 'mousetrap';
+// Modules
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+
+//components
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
 import { PagesComponent } from './pages/pages.component';
 import { ElementsComponent } from './elements/elements.component';
-import { AuthGuard } from './core/auth.guard';
+
+// services
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
+
+// interceptors
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
-import 'hammerjs';
-import 'mousetrap';
+// others
+import { environment } from '../environments/environment';
+import { AuthGuard } from './core/auth.guard';
+import { GlobalErrorHandler } from './shared/error-handler/error-handler';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -71,6 +81,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
+    },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
     },
   ],
   bootstrap: [AppComponent]

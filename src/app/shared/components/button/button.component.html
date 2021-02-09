@@ -1,0 +1,10 @@
+<button
+  [type]="btnType"
+  class="btn btn-solid"
+  [disabled]="loading || disabled"
+  (click)="handleSubmit()"
+  [ngClass]="{ 'disabled-btn': loading }"
+>
+  {{ btnText | translate }}
+  <i class="fa fa-circle-o-notch fa-spin" *ngIf="loading"></i>
+</button>

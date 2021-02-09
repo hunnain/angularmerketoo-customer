@@ -84,7 +84,7 @@ export class QuickViewComponent implements OnInit, OnDestroy {
   ChangeVariants(color, product) {
     product.variants.map((item) => {
       if (item.color === color) {
-        product.images.map((img) => {
+        product.imageUrls.map((img) => {
           if (img.image_id === item.image_id) {
             this.ImageSrc = img.src
           }

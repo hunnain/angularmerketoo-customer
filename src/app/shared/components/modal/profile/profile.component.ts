@@ -100,12 +100,10 @@ export class ProfileModalComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  getCroppedImage(croppedImg) {
-    // console.log("crop image", croppedImg)
-    this.image = croppedImg
-    let splited = this.image.split('base64,');
-    this.byteImg = splited[1];
-
-  }
+  // getCroppedImage(croppedImg) {
+  //   this.image = croppedImg
+  //   let splited = this.image.split('base64,');
+  //   this.byteImg = splited[1];
+  // }
 
 }

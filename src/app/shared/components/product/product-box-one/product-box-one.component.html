@@ -31,7 +31,7 @@
       <li
         class="grid_thumb_img"
         [class.active]="ImageSrc == image"
-        *ngFor="let image of product.images"
+        *ngFor="let image of product.imageUrls"
       >
         <a href="javascript:void(0)" (mouseover)="ChangeVariantsImage(image)">
           <img [lazyLoad]="formatImage(image)" />
@@ -104,8 +104,8 @@
           ></del
         >
       </h4>
-      <!-- <ul class="color-variant" *ngIf="Color(product?.variants).length">
-        <li [class]="color" *ngFor="let color of Color(product?.variants)" [ngStyle]="{'background-color': color}"
+      <!-- <ul class="color-variant" *ngIf="product?.availableColors.length">
+        <li [class]="color" *ngFor="let color of product?.availableColors" [ngStyle]="{'background-color': color}"
           (click)="ChangeVariants(color, product)">
         </li>
       </ul> -->

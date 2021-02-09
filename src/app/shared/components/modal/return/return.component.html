@@ -52,17 +52,182 @@
                     !returnData.orderedProductDetails
                   "
                 >
+                  <h4>Select Product</h4>
                   <ul>
-                    <li *ngFor="let prod of returnData.orderedProductDetails">
-                      {{ prod.name }}
+                    <li
+                      *ngFor="
+                        let prod of returnData.orderedProductDetails;
+                        let i = index
+                      "
+                    >
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          [id]="prod.productId"
+                          type="checkbox"
+                          class="custom-control-input"
+                          [value]="prod.productId"
+                          name="products"
+                          (change)="selectProduct($event, prod, i)"
+                        />
+                        <label
+                          class="custom-control-label"
+                          [for]="prod.productId"
+                        >
+                          {{ prod.name }}
+                        </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
+                <div class="return-content">
+                  <!-- reason -->
+                  <div class="mb-2">
+                    <div>
+                      <h4>{{ "Reason" | translate }}</h4>
+                      <select
+                        class="form-control"
+                        id="refund_reason"
+                        [(ngModel)]="refund_reason"
+                        name="refund_reason"
+                      >
+                        <option value="faulty">
+                          {{ "Mismatched items" | translate }}
+                        </option>
+                        <option value="faulty">
+                          {{ "Faulty items" | translate }}
+                        </option>
+                        <option value="faulty">
+                          {{ "Wrong size" | translate }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- description -->
+                  <div>
+                    <div>
+                      <h4>{{ "Description" | translate }}</h4>
+                      <div style="width: 100%">
+                        <textarea
+                          class="form-control"
+                          placeholder="{{ 'RefundReturnReason' | translate }}"
+                          id="exampleFormControlTextarea1"
+                          rows="6"
+                          [(ngModel)]="description"
+                          name="description"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <!-- Attachment -->
+                  <div class="row-data-style">
+                    <div
+                      style="
+                        display: grid;
+                        width: -webkit-fill-available;
+                        grid-template-columns: repeat(
+                          auto-fill,
+                          minmax(50px, 1fr)
+                        );
+                        grid-gap: 10px;
+                      "
+                    >
+                      <div *ngFor="let img of imgs">
+                        <img
+                          style="width: 50px; border-radius: 5px"
+                          [src]="img"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="box-input-file">
+                        <input
+                          class="upload"
+                          type="file"
+                          (change)="readUrl($event)"
+                        />
+                        <img
+                          class="imgUpload"
+                          alt=""
+                          src="assets/images/add-image-icon.png"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <!-- Solution -->
+                  <div>
+                    <div>
+                      <h4>{{ "Solution" | translate }}</h4>
+                      <div style="display: flex; align-items: center">
+                        <select
+                          class="form-control"
+                          id="solution"
+                          [(ngModel)]="solution"
+                          name="solution"
+                        >
+                          <option value="Return & Refund" title="Tooltip">
+                            {{ "Return & Refund" | translate }}
+                          </option>
+                          <option value="Refund Only">
+                            {{ "Refund Only" | translate }}
+                          </option>
+                        </select>
+                        <span
+                          class="ml-2"
+                          tooltipClass="custom-tooltip"
+                          placement="left"
+                          [ngbTooltip]="tipContent"
+                        >
+                          <app-feather-icons
+                            [icon]="'alert-circle'"
+                          ></app-feather-icons>
+                        </span>
+                        <!-- tooltip content -->
+                        <ng-template #tipContent>
+                          {{ "refund_note" | translate }} <br />
+                          <u>{{ "Return & Refund" | translate }}</u>
+                          {{ "returnAndrefund_note" | translate }} <br />
+                          <u>{{ "Refund Only" | translate }}</u>
+                          {{ "refundOnly_note" | translate }}
+                        </ng-template>
+                        <!-- tooltip content end -->
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <!-- Return & Exchange -->
+                  <div class="row-data-style">
+                    <div>
+                      <h4>{{ "Refund Amount" | translate }}</h4>
+                      <div>Max RM 3.4</div>
+                      <div *ngIf="solution === 'Refund Only'">
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter refundable amount"
+                          name="refund_amount"
+                          [(ngModel)]="refund_amount"
+                        />
+                      </div>
+                    </div>
+                    <a href="javascript:void(0)" style="text-align: end"
+                      >Enter Refund Amount</a
+                    >
+                  </div>
+                </div>
               </div>
               <div class="text-right">
-                <button type="submit" (click)="save()" class="btn btn-solid">
-                  Create Return
-                </button>
+                <app-button
+                  [loading]="loading"
+                  [disabled]="
+                    !refund_reason ||
+                    !description ||
+                    !solution ||
+                    (returnType === false && !products.length)
+                  "
+                  [btnText]="'Create Return'"
+                  (onSubmit)="save()"
+                ></app-button>
               </div>
             </div>
           </div>

@@ -197,7 +197,7 @@ export class ProductService {
         productId,
         quantity: qty,
         name, size, color, price,
-        image: product.images ? product.images[0] : product.image
+        image: product.imageUrls ? product.imageUrls[0] : product.image
       })
     }
 
