@@ -113,6 +113,7 @@ export class AuthService {
       .pipe(
         map(res => {
           console.log("auth service--", res)
+          this.commonService.isLoading.next(false);
           this.commonService.writeToLS('accessToken', res['accessToken']);
           this.commonService.writeToLS('refreshToken', res['refreshToken']);
         })

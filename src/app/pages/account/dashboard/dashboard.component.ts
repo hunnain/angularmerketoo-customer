@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "src/app/core/auth.service";
@@ -30,8 +31,12 @@ export class DashboardComponent implements OnInit {
     private cs: CommonService,
     private router: Router,
     private modalService: NgbModal,
+    public formbuilder: FormBuilder
   ) {
     this.fetchDataFromLS();
+    this.cs.isLoading.subscribe((loading) => {
+      this.loading = loading;
+    });
   }
 
   fetchDataFromLS() {
@@ -105,7 +110,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  // profile pic section
+  /**********************  profile pic section  *********************/
   public tempProfileImage: string;
   public profileImage: string;
   public submittingPic: boolean = false;
@@ -115,7 +120,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getCroppedImage(croppedImg) {
-    // console.log("crop image", croppedImg)
     this.tempProfileImage = croppedImg
   }
 
@@ -154,5 +158,30 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
-  // profile pic end
+  /**********************  profile pic section end  *********************/
+
+
+  /******************** Address book   ***********************/
+  addressForm: FormGroup = new FormGroup({
+    address: new FormControl(''),
+    country: new FormControl(''),
+    city: new FormControl(''),
+    regionState: new FormControl(''),
+    zipCode: new FormControl(''),
+  });
+
+  submitAddress() {
+    console.log('address', this.addressForm.value);
+    let data = {
+      ...this.addressForm.value
+    }
+    this.loading = true;
+    this.userService.updateProfile(data).subscribe(res => {
+      if (res) {
+        this.loading = false
+        this.cs.isLoading.next(false)
+      }
+    })
+  }
+  /******************** Address book end   ***********************/
 }

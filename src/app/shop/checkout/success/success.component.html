@@ -58,8 +58,8 @@
             <div class="col-3">
               <img
                 [src]="
-                  product.imageUrls
-                    ? product.imageUrls[0]
+                  product.image
+                    ? product.image
                     : 'assets/images/product/placeholder.jpg'
                 "
                 alt=""
@@ -75,7 +75,7 @@
             <div class="col-3 order_detail">
               <div>
                 <h4>quantity</h4>
-                <h5>{{ product?.quantity }}</h5>
+                <h5>{{ product?.qty }}</h5>
               </div>
             </div>
             <div class="col-3 order_detail">
@@ -83,7 +83,7 @@
                 <h4>price</h4>
                 <h5>
                   {{
-                    product?.price * productService?.Currency?.price
+                    product?.totalAmount * productService?.Currency?.price
                       | discount: product
                       | currency: productService?.Currency.currency:"symbol"
                   }}

@@ -32,7 +32,7 @@
                     {{ "Whole order to be return" | translate }}
                   </label>
                 </div>
-                <div class="form-check">
+                <div class="form-check mb-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -52,9 +52,10 @@
                     !returnData.orderedProductDetails
                   "
                 >
-                  <h4>Select Product</h4>
-                  <ul>
+                  <h5>Select Product</h5>
+                  <ul class="mb-2">
                     <li
+                      style="display: block"
                       *ngFor="
                         let prod of returnData.orderedProductDetails;
                         let i = index
@@ -120,6 +121,12 @@
                   </div>
                   <br />
                   <!-- Attachment -->
+                  <h6>
+                    {{
+                      "Please upload atleast 5 images (Top, Bottom, Left, Right,Front)"
+                        | translate
+                    }}
+                  </h6>
                   <div class="row-data-style">
                     <div
                       style="
@@ -143,6 +150,7 @@
                         <input
                           class="upload"
                           type="file"
+                          multiple
                           (change)="readUrl($event)"
                         />
                         <img
@@ -223,7 +231,8 @@
                     !refund_reason ||
                     !description ||
                     !solution ||
-                    (returnType === false && !products.length)
+                    (returnType === false && !products.length) ||
+                    imgs.length < 5
                   "
                   [btnText]="'Create Return'"
                   (onSubmit)="save()"

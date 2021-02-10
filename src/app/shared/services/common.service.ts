@@ -88,7 +88,7 @@ export class CommonService {
     }
 
     get(url: string): Observable<any> {
-        this.isLoading.next(true)
+        // this.isLoading.next(true)
         // this.error.clearError();
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',

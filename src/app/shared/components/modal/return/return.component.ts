@@ -5,6 +5,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ReturnExchangeService } from 'src/app/shared/services/return-exchange.service';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-return-modal',
@@ -31,9 +32,12 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private modalService: NgbModal,
-    private returnService: ReturnExchangeService
+    private returnService: ReturnExchangeService,
+    private cs: CommonService
   ) {
-    console.log('💻', this.returnData);
+    this.cs.isLoading.subscribe((loading) => {
+      this.loading = loading;
+    });
   }
 
   ngOnInit(): void {
@@ -77,7 +81,7 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   save() {
-    // this.loading = true;
+    this.loading = true;
     console.log('💻', 'return data', this.products);
     this.reloadData.emit('some data to be pass')
     let data = {
@@ -85,7 +89,7 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
       description: this.description,
       solution: this.solution,
       type: "Refund",
-      orderId: this.returnData.orderId
+      ordrId: this.returnData.orderId
     }
 
     console.log(this.returnType);
@@ -98,13 +102,14 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     console.log('💻', 'return data', data);
-    // this.returnService.returnOrder(data).subscribe(res => {
-    //     this.loading = false; 
-    //    if(res){
-    //      this.reloadData.emit('some data to be pass');
-    //      this.modalService.dismissAll('Close');
-    //    }
-    //  })
+    this.returnService.returnOrder(data).subscribe(res => {
+      this.loading = false;
+      console.log('💻', 'return res', res);
+      if (res) {
+        this.reloadData.emit('some data to be pass');
+        this.modalService.dismissAll('Close');
+      }
+    })
   }
 
   removeBase64(data) {
@@ -128,11 +133,10 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   selectProduct(ev, prod, ind) {
-    console.log('ev', ev.target.checked, prod);
+    // console.log('ev', ev.target.checked, prod);
     let checked = ev.target.checked;
-    console.log('💻', this.returnData);
     if (checked) {
-      this.products.push(prod);
+      this.products.push({ ...prod, quantity: 1 });
     } else {
       this.products.splice(ind, 1)
     }

@@ -320,7 +320,7 @@
                 <h2>{{ "Address Book" | translate }}</h2>
               </div>
               <div style="margin-bottom: 24px" class="row">
-                <form class="theme-form col-12">
+                <form class="theme-form col-12" [formGroup]="addressForm">
                   <div class="form-row">
                     <h5 style="font-weight: bold">
                       {{
@@ -330,7 +330,7 @@
                       }}
                     </h5>
 
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                       <label for="name">{{ "Name" | translate }}</label>
                       <input
                         style="width: 40%; height: 40px"
@@ -351,74 +351,75 @@
                         placeholder=""
                         required=""
                       />
-                    </div>
+                    </div> -->
                     <div class="col-md-12">
-                      <label for="name">{{
-                        "Address line 1" | translate
-                      }}</label>
+                      <label for="address">{{ "Address" | translate }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
-                        id="name"
+                        id="address"
                         placeholder=""
                         required=""
+                        formControlName="address"
                       />
                     </div>
                     <div class="col-md-12">
-                      <label for="name">{{
-                        "Address line 2" | translate
-                      }}</label>
+                      <label for="country">{{ "Country" | translate }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
-                        id="name"
+                        id="country"
                         placeholder=""
-                        required=""
+                        formControlName="country"
                       />
                     </div>
                     <div class="col-md-12">
-                      <label for="name">{{ "City" | translate }}</label>
+                      <label for="city">{{ "City" | translate }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
-                        id="name"
+                        id="city"
                         placeholder=""
-                        required=""
+                        formControlName="city"
                       />
                     </div>
                     <div class="col-md-12">
-                      <label for="name">{{
+                      <label for="state">{{
                         "State / Province / Region" | translate
                       }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
-                        id="name"
+                        id="state"
                         placeholder=""
-                        required=""
+                        formControlName="regionState"
                       />
                     </div>
                     <div class="col-md-12">
-                      <label for="name">{{
+                      <label for="zipCode">{{
                         "Zip code / Postal code" | translate
                       }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
-                        id="name"
+                        id="zipCode"
                         placeholder=""
                         required=""
+                        formControlName="zipCode"
                       />
                     </div>
                     <div class="col-12 mt-2">
-                      <button type="button" class="btn btn-solid">
-                        {{ "Update" | translate }}
-                      </button>
+                      <app-button
+                        [loading]="loading"
+                        [disabled]="false"
+                        [btnText]="'Update'"
+                        (onSubmit)="submitAddress()"
+                      ></app-button>
                     </div>
                   </div>
                 </form>
