@@ -12,6 +12,7 @@ export const environment = {
     measurementId: "G-MDYQZ4N9D6"
   },
   instagram_token: 'INSTAGRAM_TOKEN',
-  stripe_token: 'STRIPE_PUBLISHABLE_KEY',
+  // stripe_token: 'STRIPE_PUBLISHABLE_KEY',
+  stripe_token: 'pk_test_51HDmTuFbF7KqjBXsyYrOWgz1DZfeynJPaFwTeUpC6aPsRCOgrZMLM55YlrR0hwNnIKQT4lYsK0lTgRZHfrx4KjtG00UfpijMRg',
   paypal_token: 'PAYPAL_CLIENT_ID'
 };

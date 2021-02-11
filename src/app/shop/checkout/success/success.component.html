@@ -75,7 +75,7 @@
             <div class="col-3 order_detail">
               <div>
                 <h4>quantity</h4>
-                <h5>{{ product?.qty }}</h5>
+                <h5>{{ product?.quantity }}</h5>
               </div>
             </div>
             <div class="col-3 order_detail">
@@ -84,7 +84,6 @@
                 <h5>
                   {{
                     product?.totalAmount * productService?.Currency?.price
-                      | discount: product
                       | currency: productService?.Currency.currency:"symbol"
                   }}
                 </h5>
@@ -144,18 +143,22 @@
           </div>
 
           <div class="col-sm-12 payment-mode">
-            <h4>payment method</h4>
-            <p>
+            <h4>payment detail</h4>
+            <ul class="order-detail">
+              <li>Payment Method:{{ orderDetails?.paymentService }}</li>
+              <li>Payment Status: {{ orderDetails?.paymentStatus }}</li>
+            </ul>
+            <!-- <p>
               Pay on Delivery (Cash/Card). Cash on delivery (COD) available.
               Card/Net banking acceptance subject to device availability.
-            </p>
+            </p> -->
           </div>
-          <div class="col-md-12">
+          <!-- <div class="col-md-12">
             <div class="delivery-sec">
               <h3>expected date of delivery</h3>
               <h2>March 21, 2021</h2>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

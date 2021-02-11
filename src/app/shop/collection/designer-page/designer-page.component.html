@@ -63,6 +63,7 @@
                   [type]="'heart'"
                 >
                 </app-rating>
+                {{ sellerInfo?.totalProductsLikes }}
               </li>
             </ul>
             <ul>
@@ -78,7 +79,9 @@
             </ul>
             <ul>
               <li>
-                <p style="color: black; margin-left: 16px">56</p>
+                <p style="color: black; margin-left: 16px">
+                  {{ sellerInfo?.totalProducts }}
+                </p>
               </li>
               <li>
                 <p style="color: black; margin-left: 38px">
@@ -86,7 +89,9 @@
                 </p>
               </li>
               <li>
-                <p style="color: black; margin-left: 53px">1560</p>
+                <p style="color: black; margin-left: 53px">
+                  {{ sellerInfo?.totalFollowers }}
+                </p>
               </li>
             </ul>
           </div>
