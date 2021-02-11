@@ -46,6 +46,9 @@ export interface Product {
     image?: string;
     imageUrl?: string;
     imageUrls?: (string)[] | null;
+    sellerImage?: string;
+    sellerEnglishFName?: string;
+    sellerChineseFName?: string;
 }
 
 export interface FeedbacksEntity {

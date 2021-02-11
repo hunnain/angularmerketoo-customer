@@ -10,4 +10,6 @@ export interface Seller {
     totalSoldProducts: number;
     totalProductsLikes?: null;
     averageShippingDays: number;
+    totalProducts: number;
+    totalFollowers: number;
 }

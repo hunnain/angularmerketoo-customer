@@ -92,6 +92,16 @@ export class DesignerPageComponent implements OnInit {
     })
   }
 
+  followSeller() {
+    console.log("follow seller!")
+    this.sellerService.followSeller(this.sellerId).subscribe(res => {
+      if (res) {
+        this.loading = false;
+        this.fetchSellerInfo(this.sellerId);
+      }
+    })
+  }
+
 
   // Append filter value to Url
   updateFilter(tags: any) {
@@ -191,5 +201,6 @@ export class DesignerPageComponent implements OnInit {
   formatImage(img) {
     return AddBase64InImg(img)
   }
+
 
 }

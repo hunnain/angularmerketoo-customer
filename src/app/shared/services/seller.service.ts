@@ -14,4 +14,13 @@ export class SellerService {
     getSellerById(id) {
         return this.cs.get(`customer/get-seller-profile/${id}`)
     }
+
+
+    followSeller(id) {
+        return this.cs.post(`customer/follow/${id}`, {})
+    }
+
+    unfollowSeller(id) {
+        return this.cs.put(`customer/unfollow/${id}`, {})
+    }
 }
