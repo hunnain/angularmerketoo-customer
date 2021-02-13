@@ -41,3 +41,10 @@
   padding: 16px 32px;
 }
 // profile image css end
+
+//coupon css
+.coupon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 10px;
+}

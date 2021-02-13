@@ -204,18 +204,13 @@
                         <a
                           href="javascript:void(0)"
                           title="Profile Modal"
-                          (click)="profileModal.openModal()"
+                          (click)="selectMenu('address_book')"
                           >{{ "Edit" | translate }}</a
                         >
                       </div>
                       <div class="box-content">
                         <div class="row align-items-center">
                           <div class="col-12 col-md-3">
-                            <!-- <img
-                              src="assets/images/user-placeholder.png"
-                              alt="profile"
-                              style="width: 50px"
-                            /> -->
                             <div class="img-container">
                               <img
                                 [src]="
@@ -244,13 +239,6 @@
                             <h6>{{ userInfo?.phoneNumber }}</h6>
                           </div>
                         </div>
-                        <h6>
-                          <a
-                            href="javascript:void(0)"
-                            (click)="selectMenu('change_pass')"
-                            >{{ "Change Password" | translate }}</a
-                          >
-                        </h6>
                       </div>
                     </div>
                   </div>
@@ -276,7 +264,7 @@
                   </div>
                 </div>
                 <div>
-                  <div class="box">
+                  <div class="box mt-4">
                     <div class="box-title">
                       <h3>{{ "Address Book" | translate }}</h3>
                       <a
@@ -286,28 +274,38 @@
                       >
                     </div>
                     <div class="row">
-                      <div class="col-sm-6">
-                        <h6>{{ "Default Billing Address" | translate }}</h6>
+                      <div class="col-sm-12">
                         <address>
-                          {{
-                            "You have not set a default billing address."
-                              | translate
-                          }}<br />
-                          <a href="javascript:void(0)">{{
-                            "Edit Address" | translate
-                          }}</a>
-                        </address>
-                      </div>
-                      <div class="col-sm-6">
-                        <h6>{{ "Default Shipping Address" | translate }}</h6>
-                        <address>
-                          {{
-                            "You have not set a default shipping address."
-                              | translate
-                          }}<br />
-                          <a href="javascript:void(0)">{{
-                            "Edit Address" | translate
-                          }}</a>
+                          <p *ngIf="!checkAddress">
+                            {{
+                              "You have not set a default billing address."
+                                | translate
+                            }}
+                          </p>
+                          <br />
+                          <div class="row">
+                            <div class="col-12">
+                              <p><b>Address</b>: {{ userInfo?.address }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <p><b>Country</b>: {{ userInfo?.country }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <p><b>City</b>: {{ userInfo?.city }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <p><b>State</b>: {{ userInfo?.regionState }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <p><b>ZipCode</b>: {{ userInfo?.zipCode }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <p><b>Flat/Plot</b>: {{ userInfo?.flatPlot }}</p>
+                            </div>
+                            <div class="col-12">
+                              <p><b>Message</b>: {{ userInfo?.message }}</p>
+                            </div>
+                          </div>
                         </address>
                       </div>
                     </div>
@@ -330,8 +328,8 @@
                       }}
                     </h5>
 
-                    <!-- <div class="col-md-12">
-                      <label for="name">{{ "Name" | translate }}</label>
+                    <div class="col-md-12">
+                      <label for="name">{{ "username" | translate }}</label>
                       <input
                         style="width: 40%; height: 40px"
                         type="text"
@@ -339,6 +337,19 @@
                         id="name"
                         placeholder=""
                         required=""
+                        formControlName="username"
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <label for="email">{{ "email" | translate }}</label>
+                      <input
+                        style="width: 40%; height: 40px"
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder=""
+                        readonly
+                        formControlName="email"
                       />
                     </div>
                     <div class="col-md-12">
@@ -349,9 +360,9 @@
                         class="form-control"
                         id="name"
                         placeholder=""
-                        required=""
+                        formControlName="phoneNumber"
                       />
-                    </div> -->
+                    </div>
                     <div class="col-md-12">
                       <label for="address">{{ "Address" | translate }}</label>
                       <input
@@ -366,13 +377,45 @@
                     </div>
                     <div class="col-md-12">
                       <label for="country">{{ "Country" | translate }}</label>
-                      <input
+                      <!-- <input
                         style="width: 40%; height: 40px"
                         type="text"
                         class="form-control"
                         id="country"
                         placeholder=""
                         formControlName="country"
+                      /> -->
+                      <select
+                        class="form-control"
+                        style="width: 40%; height: 40px"
+                        name="country"
+                        formControlName="country"
+                        id="country"
+                      >
+                        <option value="Hong Kong" selected>Hong Kong</option>
+                        <option value="Macau">Macau</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Japan">Japan</option>
+                        <option value="China">China</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div class="col-md-12" *ngIf="isOtherCountry">
+                      <label for="otherCountry">{{
+                        "Other Country" | translate
+                      }}</label>
+                      <input
+                        style="width: 40%; height: 40px"
+                        class="form-control"
+                        id="otherCountry"
+                        type="text"
+                        name="otherCountry"
+                        formControlName="otherCountry"
+                        placeholder=""
                       />
                     </div>
                     <div class="col-md-12">
@@ -413,6 +456,30 @@
                         formControlName="zipCode"
                       />
                     </div>
+                    <div class="col-md-12">
+                      <label for="flatPlot">{{
+                        "Flat/Plot" | translate
+                      }}</label>
+                      <input
+                        style="width: 40%; height: 40px"
+                        type="text"
+                        class="form-control"
+                        id="flatPlot"
+                        placeholder=""
+                        formControlName="flatPlot"
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <label for="message">{{ "Message" | translate }}</label>
+                      <input
+                        style="width: 40%; height: 40px"
+                        type="text"
+                        class="form-control"
+                        id="message"
+                        placeholder=""
+                        formControlName="message"
+                      />
+                    </div>
                     <div class="col-12 mt-2">
                       <app-button
                         [loading]="loading"
@@ -430,17 +497,52 @@
                 <h2>{{ "Coupons" | translate }}</h2>
               </div>
               <div class="page-main-content">
-                <div class="row">
-                  <div
-                    style="border-bottom: 4px solid #eeeeef"
-                    class="col-sm-12"
-                  >
-                    <h5>{{ "There are 2 Coupons left" | translate }}</h5>
+                <!-- <div class="row">
+                  <div class="col-sm-12" *ngIf="coupons.length > 0">
+                    <h5>
+                      {{ "There are 2 Coupons left" | translate
+                      }}
+                    </h5>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
-                  <div class="col-sm-6">
-                    <a href="javascript:void(0)">
+                  <div *ngIf="!coupons.length">No coupons available</div>
+                  <div class="col-12" *ngIf="coupons.length > 0">
+                    <ul>
+                      <li
+                        style="display: block"
+                        *ngFor="let coupon of coupons; let i = index"
+                      >
+                        <div class="coupon-container">
+                          <p><b>Name:</b> {{ coupon?.couponTitle }}</p>
+                          <p><b>Code:</b> {{ coupon?.couponCode }}</p>
+                          <p><b>Key:</b> {{ coupon?.couponKey }}</p>
+                          <p>
+                            <b>Discount:</b
+                            >{{ coupon?.discountType == "Fixed" ? "$" : ""
+                            }}{{ coupon?.percentageOrFixedAmt
+                            }}{{ coupon?.discountType == "Percent" ? "%" : "" }}
+                          </p>
+                        </div>
+                        <div class="coupon-container">
+                          <p><b>Usage Limit:</b> {{ coupon?.usageLimit }}</p>
+                          <p>
+                            <b>Used Count:</b> {{ coupon?.numberOfTimesUsed }}
+                          </p>
+                          <p><b>Min Spend:</b> {{ coupon?.minSpend }}</p>
+                        </div>
+                        <div>
+                          <p>
+                            <b>Validity:</b>
+                            {{ getFormatDate(coupon?.startDate) }}
+                            <b>-</b>
+                            {{ getFormatDate(coupon?.endDate) }}
+                          </p>
+                        </div>
+                        <hr *ngIf="i < coupons.length - 1" />
+                      </li>
+                    </ul>
+                    <!-- <a href="javascript:void(0)">
                       <img
                         style="width: 70%; margin-top: 30px"
                         src="assets/images/coupon2.jpg"
@@ -455,7 +557,7 @@
                         class="img-fluid center"
                         alt=""
                       />
-                    </a>
+                    </a> -->
                   </div>
                 </div>
               </div>

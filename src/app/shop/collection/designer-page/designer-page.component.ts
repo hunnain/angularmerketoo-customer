@@ -6,6 +6,7 @@ import { Product } from '../../../shared/classes/product';
 import { SellerService } from 'src/app/shared/services/seller.service';
 import { Seller } from 'src/app/shared/classes/seller';
 import { AddBase64InImg } from 'src/app/shared/utilities';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-designer-page',
@@ -33,12 +34,15 @@ export class DesignerPageComponent implements OnInit {
   public sellerId: string = '';
   public loading: boolean = false;
   public sellerInfo: Seller;
+
+  public message: string = "";
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewScroller: ViewportScroller,
     public productService: ProductService,
-    public sellerService: SellerService
+    public sellerService: SellerService,
+    private modalService: NgbModal
   ) {
     // Get Query params..
     // this.route.queryParams.subscribe(params => {
@@ -199,7 +203,42 @@ export class DesignerPageComponent implements OnInit {
   }
 
   formatImage(img) {
-    return AddBase64InImg(img)
+    return img ? img : '';
+  }
+
+  // modal event
+  open(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          console.log(`Closed with: ${result}`);
+          this.message = "";
+        },
+        (reason) => {
+          this.message = "";
+          console.log(`Dismissed`);
+        }
+      );
+  }
+
+  openContactModal(content) {
+    this.open(content);
+  }
+
+  sendMessage() {
+    console.log("send message", this.message)
+    let data = {
+      text: this.message,
+      receiverId: this.sellerId
+    }
+    this.loading = true
+    this.sellerService.sendMessageToSeller(data).subscribe(res => {
+      if (res) {
+        this.loading = false;
+        this.modalService.dismissAll()
+      }
+    })
   }
 
 

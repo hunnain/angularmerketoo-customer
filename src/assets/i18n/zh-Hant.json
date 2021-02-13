@@ -523,7 +523,12 @@
   "Enter new password":"輸入新密碼",
   "Confirm Password":"確認密碼",
   "Enter confirm password":"輸入確認密碼",
-  "Change":"更改"
+  "Change":"更改",
+
+  "Message":"信息",
+  "Flat/Plot":"單位/地塊",
+  "Send":"發送",
+  "Type Here":"在此輸入"
   
 
 }

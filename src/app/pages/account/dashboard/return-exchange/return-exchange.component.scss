@@ -1,36 +1,36 @@
-.row-data-style {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// .row-data-style {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-img {
-  width: 500px;
-}
-.imgUpload {
-  width: 50px;
-}
-.box-input-file {
-  width: 50px;
-  height: 50px;
-  background-color: #f1f4fb;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  cursor: pointer;
+// img {
+//   width: 500px;
+// }
+// .imgUpload {
+//   width: 50px;
+// }
+// .box-input-file {
+//   width: 50px;
+//   height: 50px;
+//   background-color: #f1f4fb;
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   vertical-align: middle;
+//   cursor: pointer;
 
-  .upload {
-    position: absolute;
-    width: 70px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-  }
-}
+//   .upload {
+//     position: absolute;
+//     width: 70px;
+//     left: 0;
+//     right: 0;
+//     opacity: 0;
+//   }
+// }
 
-::ng-deep .custom-tooltip .tooltip-inner {
-  width: 400px !important;
-  max-width: max-content !important;
-}
+// ::ng-deep .custom-tooltip .tooltip-inner {
+//   width: 400px !important;
+//   max-width: max-content !important;
+// }

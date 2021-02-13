@@ -6,8 +6,9 @@ export interface Seller {
     shopName: string;
     shopLocation: string;
     shopIntro: string;
-    image: string;
+    imageUrl: string;
     totalSoldProducts: number;
+    rating: number;
     totalProductsLikes?: null;
     averageShippingDays: number;
     totalProducts: number;

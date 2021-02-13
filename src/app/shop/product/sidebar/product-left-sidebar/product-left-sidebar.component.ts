@@ -153,28 +153,32 @@ export class ProductLeftSidebarComponent implements OnInit {
     }
     console.log('💻', data);
 
-    // this.feedbackService.addFeedback(data).subscribe(res => {
-    //   console.log('💻 res--', res);
-    //   if(res){
-    //     this.review = "";
-    //     this.reviewTitle = "";
-    //     this.rating = 0;
-    //   }
-    // })
-    this.refreshPage()
+    this.feedbackService.addFeedback(data).subscribe(res => {
+      console.log('💻 res--', res);
+      if (res) {
+        this.review = "";
+        this.reviewTitle = "";
+        this.rating = 0;
+        // this.refreshPage()
+      }
+    })
   }
 
   refreshPage() {
     window.location.reload()
     // this.router.navigate(['/shop/product/left/sidebar/', this.product.productId], {
-    // relativeTo: this.route,
-    // queryParams: {},
-    // queryParamsHandling: 'merge', // preserve the existing query params in the route
-    // skipLocationChange: true  // do trigger navigation
+    //   relativeTo: this.route,
+    //   // queryParams: {},
+    //   queryParamsHandling: 'merge', // preserve the existing query params in the route
+    //   skipLocationChange: false  // do trigger navigation
     // })
-    // .finally(() => {
-    // console.log('💻', 'refresh url-- ');
-    // });
+    //   .finally(() => {
+    //     console.log('💻', 'refresh url-- ');
+    //   });
+    // this.router.navigated = false;
+    // setTimeout(() => {
+    //   this.router.navigate(['/shop/product/left/sidebar/', this.product.productId]);
+    // }, 2000);
   }
 
 }

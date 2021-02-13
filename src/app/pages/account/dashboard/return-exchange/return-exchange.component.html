@@ -1,4 +1,4 @@
-<div class="page-title">
+<!-- <div class="page-title">
   <h2>{{ "Return and Exchange" | translate }}</h2>
 </div>
 <div class="box">
@@ -6,9 +6,7 @@
     <h3>{{ "Parcel" | translate }}</h3>
     <a href="javascript:void(0)">Shipping</a>
   </div>
-  <!-- <br /> -->
 
-  <!-- reason -->
   <div class="mb-2">
     <div>
       <h4>{{ "Reason" | translate }}</h4>
@@ -26,7 +24,6 @@
       </select>
     </div>
   </div>
-  <!-- description -->
   <div>
     <div>
       <h4>{{ "Description" | translate }}</h4>
@@ -44,7 +41,6 @@
   </div>
   <br />
 
-  <!-- Attachment -->
   <div class="row-data-style">
     <div
       style="
@@ -64,7 +60,6 @@
     </div>
   </div>
   <br />
-  <!-- Solution -->
   <div>
     <div>
       <h4>{{ "Solution" | translate }}</h4>
@@ -90,7 +85,6 @@
         >
           <app-feather-icons [icon]="'alert-circle'"></app-feather-icons>
         </span>
-        <!-- tooltip content -->
         <ng-template #tipContent>
           {{ "refund_note" | translate }} <br />
           <u>{{ "Return & Refund" | translate }}</u>
@@ -98,12 +92,10 @@
           <u>{{ "Refund Only" | translate }}</u>
           {{ "refundOnly_note" | translate }}
         </ng-template>
-        <!-- tooltip content end -->
       </div>
     </div>
   </div>
   <br />
-  <!-- Return & Exchange -->
   <div class="row-data-style">
     <div>
       <h4>{{ "Refund Amount" | translate }}</h4>
@@ -123,4 +115,88 @@
   <div>
     <button class="btn btn-solid">{{ "Submit" | translate }}</button>
   </div>
+</div> -->
+
+<!--section start-->
+<div class="page-title">
+  <h2>{{ "Return and Exchange" | translate }}</h2>
 </div>
+<div
+  class="col-md-12 empty-cart-cls text-center"
+  *ngIf="!loading && !orders.length"
+>
+  <img
+    src="assets/images/empty-wishlist.png"
+    alt="Empty cart"
+    title="Emprt cart"
+  />
+  <h3 class="mt-4">
+    <b>{{ "Return Order List is Empty" | translate }}</b>
+  </h3>
+  <h4>
+    {{ "You have not return any order." | translate }}
+  </h4>
+</div>
+<div class="row" *ngIf="orders.length">
+  <div class="col-sm-12">
+    <table class="table cart-table table-responsive-xs">
+      <thead>
+        <tr class="table-head">
+          <th scope="col">{{ "Order Id" | translate }}</th>
+          <th scope="col">{{ "Return Type" | translate }}</th>
+          <!-- <th scope="col">{{ "Product" | translate }}</th> -->
+          <th scope="col">{{ "Payment Status" | translate }}</th>
+          <th scope="col">{{ "Payment Method" | translate }}</th>
+          <th scope="col">{{ "Order Status" | translate }}</th>
+          <th scope="col">{{ "Date" | translate }}</th>
+          <th scope="col">{{ "Total" | translate }}</th>
+          <th scope="col">{{ "Action" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let order of orders">
+        <tr>
+          <td>
+            <p>{{ order?.orderId }}</p>
+          </td>
+          <td>
+            <p>{{ order?.type }}</p>
+          </td>
+          <!-- <td>
+            {{ getProdNames(order?.orderedProductDetails) }}
+          </td> -->
+          <td>
+            <p>{{ order?.requestReason }}</p>
+          </td>
+          <td>
+            <p>{{ order?.solution }}</p>
+          </td>
+          <td>
+            <p>{{ order?.status }}</p>
+          </td>
+          <td>
+            <p>{{ getFormatDate(order?.requestedOn) }}</p>
+          </td>
+          <td>
+            <p>{{ order?.total }}</p>
+          </td>
+          <td>
+            <!-- <a
+              href="javascript:void(0)"
+              (click)="returnOrder(order)"
+              class="cart"
+            >
+              <i class="ti-back-left"></i>
+            </a> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- <div class="row wishlist-buttons" *ngIf='orders.length'>
+      <div class="col-12">
+        <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a>
+        <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>
+      </div>
+    </div> -->
+<!--section end-->

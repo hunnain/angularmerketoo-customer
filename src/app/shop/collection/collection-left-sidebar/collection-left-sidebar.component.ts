@@ -185,19 +185,19 @@ export class CollectionLeftSidebarComponent implements OnInit {
     });
   }
 
-  setShippingFilter(ev) {
-    let val = ev.target.checked;
+  setShippingFilter(ev, bool) {
+    let val = bool;
     this.isInternationalShipping = val;
     console.log('💻', val);
-    // this.router.navigate([], {
-    //   relativeTo: this.route,
-    //   queryParams: { isInternationalShipping: this.isInternationalShipping },
-    //   queryParamsHandling: 'merge', // preserve the existing query params in the route
-    //   skipLocationChange: false  // do trigger navigation
-    // }).finally(() => {
-    //   this.viewScroller.setOffset([120, 120]);
-    //   this.viewScroller.scrollToAnchor('products'); // Anchore Link
-    // });
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { isInternationalShipping: this.isInternationalShipping },
+      queryParamsHandling: 'merge', // preserve the existing query params in the route
+      skipLocationChange: false  // do trigger navigation
+    }).finally(() => {
+      this.viewScroller.setOffset([120, 120]);
+      this.viewScroller.scrollToAnchor('products'); // Anchore Link
+    });
   }
 
   // Change Grid Layout

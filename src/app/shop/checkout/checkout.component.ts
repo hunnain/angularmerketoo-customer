@@ -19,15 +19,24 @@ export class CheckoutComponent implements OnInit {
   public checkoutForm: FormGroup;
   public products: Product[] = [];
   public payPalConfig?: IPayPalConfig;
-  public payment: string = 'Stripe';
+  public payment: string = 'card';
   public amount: any;
   public isOtherCountry: boolean = false;
   public IsInternationalShipping: boolean = false;
 
   public stripe = Stripe(environment.stripe_token)
+
+  public useraddress = undefined;
   constructor(private fb: FormBuilder,
     public productService: ProductService,
     private orderService: OrderService) {
+    let info = JSON.parse(localStorage.getItem('userInfo'));
+    if (info) {
+      const { address, country, city, regionState, zipCode } = info;
+      if (address || country || city || regionState || zipCode) {
+        this.useraddress = { address, country, city, state: regionState, postalcode: zipCode }
+      }
+    }
     this.checkoutForm = this.fb.group({
       // firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       // lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -58,6 +67,17 @@ export class CheckoutComponent implements OnInit {
         this.isOtherCountry = false;
       }
     })
+  }
+
+  isSame = false;
+  changeisSameAddress(ev) {
+    console.log('issame', ev)
+    console.log('💻', this.useraddress);
+    if (ev) {
+      this.checkoutForm.setValue({ ...this.useraddress, otherCountry: '', note: '' });
+    } else {
+      this.checkoutForm.reset();
+    }
   }
 
   public get getTotal(): Observable<number> {
@@ -144,7 +164,7 @@ export class CheckoutComponent implements OnInit {
     let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
     let data = {
       ...this.checkoutForm.value,
-      paymentMethodType: "card",
+      paymentMethodType: this.payment,
       mode: "payment",
       cartItems: prods,
       IsInternationalShipping: this.IsInternationalShipping

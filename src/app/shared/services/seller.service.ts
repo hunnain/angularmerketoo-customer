@@ -15,6 +15,10 @@ export class SellerService {
         return this.cs.get(`customer/get-seller-profile/${id}`)
     }
 
+    sendMessageToSeller(data: object) {
+        return this.cs.post(`chat/send-msg`, data);
+    }
+
 
     followSeller(id) {
         return this.cs.post(`customer/follow/${id}`, {})

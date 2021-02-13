@@ -6,7 +6,7 @@
 >
   <div class="collection-wrapper">
     <div class="container">
-      <div
+      <!-- <div
         style="
           width: 100%;
           display: block;
@@ -23,15 +23,15 @@
             alt=""
           />
         </a>
-      </div>
-      <div class="col-lg-12" style="margin-bottom: 2%">
+      </div> -->
+      <div class="col-lg-12 mt-4" style="margin-bottom: 2%">
         <div class="row">
           <div class="col-6 col-sm-6 col-md-3 col-lg-2">
             <img
               style="width: 100%"
               [src]="
-                sellerInfo?.image
-                  ? formatImage(sellerInfo.image)
+                sellerInfo?.imageUrl
+                  ? formatImage(sellerInfo.imageUrl)
                   : 'assets/images/vs.jpg'
               "
               alt="seller logo"
@@ -48,36 +48,53 @@
                   {{ sellerInfo?.shopLocation }}
                 </p>
               </li>
-              <li>
+              <!-- <li>
                 <p><i class="fa fa-calendar"></i> Opening date 2015-01-20</p>
-              </li>
+              </li> -->
             </ul>
             <ul>
               <li
                 class="designer-rating"
-                style="width: 122px; margin-bottom: 10px; margin-left: 6px"
+                style="
+                  width: 122px;
+                  margin-bottom: 10px;
+                  margin-left: 6px;
+                  display: flex;
+                  align-items: center;
+                "
               >
                 <app-rating
-                  [rating]="sellerInfo?.totalProductsLikes"
+                  [rating]="sellerInfo?.rating"
                   [readonly]="true"
                   [type]="'heart'"
                 >
                 </app-rating>
-                {{ sellerInfo?.totalProductsLikes }}
+                <span class="ml-1">
+                  {{ sellerInfo?.rating }}
+                </span>
               </li>
             </ul>
             <ul>
-              <li>
+              <li class="text-center">
                 <p>Goods</p>
+                <p style="color: black">
+                  {{ sellerInfo?.totalProducts }}
+                </p>
               </li>
-              <li>
+              <li class="text-center">
                 <p>Number of sold</p>
+                <p style="color: black">
+                  {{ sellerInfo?.totalSoldProducts }}
+                </p>
               </li>
-              <li>
+              <li class="text-center">
                 <p>Followers</p>
+                <p style="color: black">
+                  {{ sellerInfo?.totalFollowers }}
+                </p>
               </li>
             </ul>
-            <ul>
+            <!-- <ul>
               <li>
                 <p style="color: black; margin-left: 16px">
                   {{ sellerInfo?.totalProducts }}
@@ -93,7 +110,7 @@
                   {{ sellerInfo?.totalFollowers }}
                 </p>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="col-6 col-sm-6 col-md-4 col-lg-2">
             <button type="submit" class="searchButton" (click)="followSeller()">
@@ -131,10 +148,9 @@
                 margin-left: 58%;
                 margin-bottom: 8%;
               "
-              data-toggle="modal"
-              data-target="#AddNewBattery"
               type="button"
               class="btn btn-outline-primary"
+              (click)="openContactModal(contactModal)"
             >
               <i class="fa fa-address-card"></i> Contact Designer
             </button>
@@ -323,3 +339,51 @@
   </div>
 </section>
 <!-- section End -->
+
+<!-- Contact Designer Modal -->
+<ng-template #contactModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Contact Seller</h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="main-container">
+      <div>
+        {{ "Message" | translate }}
+        <textarea
+          ngbAutofocus
+          class="form-control"
+          placeholder="{{ 'Type Here' | translate }}"
+          id="exampleFormControlTextarea1"
+          rows="6"
+          [(ngModel)]="message"
+          name="message"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <app-button
+      [loading]="loading"
+      [disabled]="!message"
+      [btnText]="'Send'"
+      (onSubmit)="sendMessage()"
+    ></app-button>
+    <button
+      class="btn btn-light"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+<!-- Contact Designer Modal End -->

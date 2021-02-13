@@ -75,39 +75,43 @@
                     color: #444444;
                     font-weight: 600;
                     margin: 30px 0 0 0;
+                    padding-bottom: 24px;
                   "
                 >
                   Shipping
                 </div>
-                <div
-                  class="custom-control custom-checkbox collection-filter-checkbox"
-                >
+                <div>
                   <input
                     type="radio"
                     name="shipping"
-                    [checked]="isInternationalShipping"
                     [value]="true"
                     id="international"
-                    (change)="setShippingFilter($event)"
-                    class="custom-control-input"
+                    (change)="setShippingFilter($event, true)"
+                    class=""
                   />
-                  <label class="custom-control-label" for="international"
-                    >International</label
-                  >
+                  <label class="ml-2" for="international">International</label>
                 </div>
-                <div
-                  class="custom-control custom-checkbox collection-filter-checkbox"
-                >
+                <div>
                   <input
                     type="radio"
                     name="shipping"
-                    [checked]="!isInternationalShipping"
                     [value]="false"
                     id="local"
-                    (change)="setShippingFilter($event)"
-                    class="custom-control-input"
+                    (change)="setShippingFilter($event, false)"
+                    class=""
                   />
-                  <label class="custom-control-label" for="local">Local</label>
+                  <label class="ml-2" for="local">Local</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="shipping"
+                    [value]="null"
+                    id="both"
+                    (change)="setShippingFilter($event, null)"
+                    class=""
+                  />
+                  <label class="ml-2" for="both">Both</label>
                 </div>
               </div>
               <!-- price filter start here -->

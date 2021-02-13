@@ -12,7 +12,7 @@ export class ReturnExchangeService {
   constructor(private router: Router, private cs: CommonService) { }
 
   getAllReturnOrder() {
-    return this.cs.get(`return-exchange/get-all-return-exchange`)
+    return this.cs.get(`return-exchange/get-return-exchange-by-customer-id`)
   }
 
   returnOrder(data) {
