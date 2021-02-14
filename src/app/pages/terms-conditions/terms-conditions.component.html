@@ -1,106 +1,112 @@
 <!-- <app-breadcrumb [title]="'sellercontent'" [breadcrumb]="'sellercontent'"></app-breadcrumb> -->
 <!-- about section start -->
-<section class="about-page  section-b-space" style="border-top: 1px solid #ab9898;
-margin-top: 6px;">
-    <div class="container" style="width:80%;">
-        <div class="row">
-            <!-- <div class="col-lg-12">
-                <div class="banner-section">
-                    <img  src="assets/images/about-main.jpg" class="img-fluid" alt="about-us"/>
-                </div>
-            </div> -->
-            <b style="font-size:34px">{{'pp-title' | translate}}</b>
-                <!-- <h2>Our Team</h2> -->
-            <div class="col-lg-12" style="border-top: 3px solid #ab9898;
-            margin-top: 12px;">
-            <br>
-            <br>
-            <p>{{'pp-p1-l1' | translate}}</p>
-            <br>
-            <p>{{'pp-p1-l2' | translate}}</p>
-            <br>
-            <br>
-            <div style="border-top: 1px solid #ab9898;
-            margin-top: 6px;">
-            <br>
-            <b style="font-size:24px;margin-top:6px;">{{'pp-p2-h' | translate}}</b>
-            <br>
-            <br>
-            <p>{{'pp-p2-l1' | translate}}</p>
-            <br>
-            <p>{{'pp-p2-l2' | translate}}</p>
-            <br>
-            <p>{{'pp-p2-l3' | translate}}</p>
-            <br>
-            <b>{{'pp-p3-h' | translate}}</b>
-            <br>
-            <p>{{'pp-p3-l1' | translate}}</p>
-            <p>{{'pp-p3-l2' | translate}}</p>
-            <p>{{'pp-p3-l3' | translate}}</p>
-            <p>{{'pp-p3-l4' | translate}}</p>
-            <br>
-        </div>
-        <div style="border-top: 1px solid #ab9898;
-        margin-top: 6px;">
-        <br>
-        <b style="font-size:24px;margin-top:6px;">{{'pp-p4-h' | translate}}</b>
-        <br>
-        <br>
-        <p>{{'pp-p4-l1' | translate}}</p>
-        <br>
-        <p>{{'pp-p4-l2' | translate}}</p>
-        <p>{{'pp-p4-l2-a' | translate}}</p>
-        <p>{{'pp-p4-l2-b' | translate}}</p>
-        <p>{{'pp-p4-l2-c' | translate}}</p>
-        <p>{{'pp-p4-l2-d' | translate}}</p>
-        <p class = "bullet">{{'pp-p4-l2-d1' | translate}}</p>
-        <p class = "bullet">{{'pp-p4-l2-d2' | translate}}</p>
-        <p class = "bullet">{{'pp-p4-l2-d3' | translate}}</p>
-        <p class = "bullet">{{'pp-p4-l2-d4' | translate}}</p>
-        <p class = "bullet"> {{'pp-p4-l2-d5' | translate}}</p>
-        <p>{{'pp-p4-l2-e' | translate}}</p>
-        <br>
-        <p>{{'pp-p4-l3' | translate}}</p>
-        <br>
+<section
+  class="about-page section-b-space"
+  style="border-top: 1px solid #ab9898; margin-top: 6px"
+>
+  <div class="container" style="width: 80%" id="termsAndConditions">
+    <div class="row">
+      <div class="col-12" [innerHTML]="termsAndConditions"></div>
     </div>
-    <div style="border-top: 1px solid #ab9898;
-    margin-top: 6px;">
-    <br>
-    <b style="font-size:24px;margin-top:6px;">{{'pp-p5-h' | translate}}</b>
-    <br>
-    <br>
-    <p>{{'pp-p5-l1' | translate}}</p>
-    <p>{{'pp-p5-l1-a' | translate}}</p>
-    <p>{{'pp-p5-l1-b' | translate}}</p>
-    <p>{{'pp-p5-l1-c' | translate}}</p>
-    <br>
-    <p>{{'pp-p5-l2' | translate}}</p>
-    <br>
-</div>
-<div style="border-top: 1px solid #ab9898;
-margin-top: 6px;">
-<br>
-<b style="font-size:24px;margin-top:6px;">{{'pp-p6-h' | translate}}</b>
-<br>
-<br>
-<p>{{'pp-p6-l1' | translate}}</p>
-<br>
-<p>{{'pp-p6-l2' | translate}}</p>
-<br>
-</div>
-<div style="border-top: 1px solid #ab9898;
-margin-top: 6px;">
-<br>
-<b style="font-size:24px;margin-top:6px;">{{'pp-p7-h' | translate}}</b>
-<br>
-<br>
-<p>{{'pp-p7-l1' | translate}}</p>
-<br>
-<p>{{'pp-p7-l2' | translate}}</p>
-<p>{{'pp-p7-l3' | translate}}</p>
-<br>
-</div>
-            </div>
+    <!-- <div class="row" >
+      <b style="font-size: 34px">{{ "pp-title" | translate }}</b>
+      <div
+        class="col-lg-12"
+        style="border-top: 3px solid #ab9898; margin-top: 12px"
+      >
+        <br />
+        <br />
+        <p>{{ "pp-p1-l1" | translate }}</p>
+        <br />
+        <p>{{ "pp-p1-l2" | translate }}</p>
+        <br />
+        <br />
+        <div style="border-top: 1px solid #ab9898; margin-top: 6px">
+          <br />
+          <b style="font-size: 24px; margin-top: 6px">{{
+            "pp-p2-h" | translate
+          }}</b>
+          <br />
+          <br />
+          <p>{{ "pp-p2-l1" | translate }}</p>
+          <br />
+          <p>{{ "pp-p2-l2" | translate }}</p>
+          <br />
+          <p>{{ "pp-p2-l3" | translate }}</p>
+          <br />
+          <b>{{ "pp-p3-h" | translate }}</b>
+          <br />
+          <p>{{ "pp-p3-l1" | translate }}</p>
+          <p>{{ "pp-p3-l2" | translate }}</p>
+          <p>{{ "pp-p3-l3" | translate }}</p>
+          <p>{{ "pp-p3-l4" | translate }}</p>
+          <br />
         </div>
-    </div>
+        <div style="border-top: 1px solid #ab9898; margin-top: 6px">
+          <br />
+          <b style="font-size: 24px; margin-top: 6px">{{
+            "pp-p4-h" | translate
+          }}</b>
+          <br />
+          <br />
+          <p>{{ "pp-p4-l1" | translate }}</p>
+          <br />
+          <p>{{ "pp-p4-l2" | translate }}</p>
+          <p>{{ "pp-p4-l2-a" | translate }}</p>
+          <p>{{ "pp-p4-l2-b" | translate }}</p>
+          <p>{{ "pp-p4-l2-c" | translate }}</p>
+          <p>{{ "pp-p4-l2-d" | translate }}</p>
+          <p class="bullet">{{ "pp-p4-l2-d1" | translate }}</p>
+          <p class="bullet">{{ "pp-p4-l2-d2" | translate }}</p>
+          <p class="bullet">{{ "pp-p4-l2-d3" | translate }}</p>
+          <p class="bullet">{{ "pp-p4-l2-d4" | translate }}</p>
+          <p class="bullet">{{ "pp-p4-l2-d5" | translate }}</p>
+          <p>{{ "pp-p4-l2-e" | translate }}</p>
+          <br />
+          <p>{{ "pp-p4-l3" | translate }}</p>
+          <br />
+        </div>
+        <div style="border-top: 1px solid #ab9898; margin-top: 6px">
+          <br />
+          <b style="font-size: 24px; margin-top: 6px">{{
+            "pp-p5-h" | translate
+          }}</b>
+          <br />
+          <br />
+          <p>{{ "pp-p5-l1" | translate }}</p>
+          <p>{{ "pp-p5-l1-a" | translate }}</p>
+          <p>{{ "pp-p5-l1-b" | translate }}</p>
+          <p>{{ "pp-p5-l1-c" | translate }}</p>
+          <br />
+          <p>{{ "pp-p5-l2" | translate }}</p>
+          <br />
+        </div>
+        <div style="border-top: 1px solid #ab9898; margin-top: 6px">
+          <br />
+          <b style="font-size: 24px; margin-top: 6px">{{
+            "pp-p6-h" | translate
+          }}</b>
+          <br />
+          <br />
+          <p>{{ "pp-p6-l1" | translate }}</p>
+          <br />
+          <p>{{ "pp-p6-l2" | translate }}</p>
+          <br />
+        </div>
+        <div style="border-top: 1px solid #ab9898; margin-top: 6px">
+          <br />
+          <b style="font-size: 24px; margin-top: 6px">{{
+            "pp-p7-h" | translate
+          }}</b>
+          <br />
+          <br />
+          <p>{{ "pp-p7-l1" | translate }}</p>
+          <br />
+          <p>{{ "pp-p7-l2" | translate }}</p>
+          <p>{{ "pp-p7-l3" | translate }}</p>
+          <br />
+        </div>
+      </div>
+    </div> -->
+  </div>
 </section>

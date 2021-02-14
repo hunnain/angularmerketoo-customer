@@ -18,6 +18,9 @@ export class SellerService {
     sendMessageToSeller(data: object) {
         return this.cs.post(`chat/send-msg`, data);
     }
+    getChatList() {
+        return this.cs.get(`chat/get-chat-list`);
+    }
 
 
     followSeller(id) {

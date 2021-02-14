@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.fetchDataFromLS();
     this.fetchAllCoupons();
+    this.fetchStoreCredits();
     this.cs.isLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -239,4 +240,18 @@ export class DashboardComponent implements OnInit {
   }
 
   /************************ Coupons End  *****************************/
+
+
+  /************************ Store Credit  *****************************/
+  credits = [];
+  fetchStoreCredits() {
+    this.couponService.getStoreCredit().subscribe(res => {
+      if (res && res['body']) {
+        console.log("credits", res)
+        this.credits = res['body'];
+      }
+    })
+  }
+
+  /************************ Store Credit End  *****************************/
 }

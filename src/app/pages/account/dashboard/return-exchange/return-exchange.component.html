@@ -145,18 +145,18 @@
           <th scope="col">{{ "Order Id" | translate }}</th>
           <th scope="col">{{ "Return Type" | translate }}</th>
           <!-- <th scope="col">{{ "Product" | translate }}</th> -->
-          <th scope="col">{{ "Payment Status" | translate }}</th>
-          <th scope="col">{{ "Payment Method" | translate }}</th>
-          <th scope="col">{{ "Order Status" | translate }}</th>
-          <th scope="col">{{ "Date" | translate }}</th>
+          <th scope="col">{{ "Request Reason" | translate }}</th>
+          <th scope="col">{{ "Solution" | translate }}</th>
+          <th scope="col">{{ "Status" | translate }}</th>
+          <th scope="col">{{ "Requested Date" | translate }}</th>
           <th scope="col">{{ "Total" | translate }}</th>
-          <th scope="col">{{ "Action" | translate }}</th>
+          <!-- <th scope="col">{{ "Action" | translate }}</th> -->
         </tr>
       </thead>
       <tbody *ngFor="let order of orders">
         <tr>
           <td>
-            <p>{{ order?.orderId }}</p>
+            <p>{{ order?.ordrId }}</p>
           </td>
           <td>
             <p>{{ order?.type }}</p>
@@ -179,15 +179,15 @@
           <td>
             <p>{{ order?.total }}</p>
           </td>
-          <td>
-            <!-- <a
+          <!-- <td>
+            <a
               href="javascript:void(0)"
               (click)="returnOrder(order)"
               class="cart"
             >
               <i class="ti-back-left"></i>
-            </a> -->
-          </td>
+            </a>
+          </td> -->
         </tr>
       </tbody>
     </table>

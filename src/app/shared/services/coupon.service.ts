@@ -12,4 +12,9 @@ export class CouponService {
     getAllCoupons() {
         return this.cs.get(`customer/get-coupons`)
     }
+
+
+    getStoreCredit() {
+        return this.cs.get(`customer/get-storecredits`)
+    }
 }

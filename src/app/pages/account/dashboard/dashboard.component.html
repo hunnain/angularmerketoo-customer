@@ -562,6 +562,25 @@
                 </div>
               </div>
             </div>
+            <div *ngIf="selectedMenu === 'credit_store'">
+              <div class="page-title">
+                <h2>{{ "Store Credits" | translate }}</h2>
+              </div>
+              <div class="page-main-content">
+                <div class="row">
+                  <div *ngIf="!credits">No credits available</div>
+                  <div class="col-12" *ngIf="credits">
+                    <ul>
+                      <li style="display: block">
+                        <div class="coupon-container">
+                          <p><b>Store Credit Amount :</b> {{ credits }}</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div *ngIf="selectedMenu === 'my-messages'">
               <div class="page-title">
                 <h2>{{ "My Messages" | translate }}</h2>
