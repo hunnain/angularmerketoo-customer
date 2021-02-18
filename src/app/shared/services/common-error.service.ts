@@ -48,7 +48,7 @@ export class CommonErrorService {
       let keys = Object.keys(errors);
       return errors[keys[0]][0];
     } else {
-      return error.Message;
+      return (error && error.Message) ? error.Message : 'Something went wrong please try again later';
     }
   }
 }

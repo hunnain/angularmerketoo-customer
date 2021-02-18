@@ -36,7 +36,6 @@ export class TermsConditionsComponent implements OnInit {
     this.aboutService.getAboutUs().subscribe(res => {
       this.loading = false;
       if (res && res['body']) {
-        // console.log("res--", res);
         if (res['body'].termsAndConditions) {
           this.termsAndConditions = res['body'].termsAndConditions;
           // this.viewScroller.setOffset([0, 0]);

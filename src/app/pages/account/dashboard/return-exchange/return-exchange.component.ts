@@ -26,7 +26,6 @@ export class ReturnExchangeComponent implements OnInit {
   getReturnOrders() {
     this.loading = true;
     this.returnService.getAllReturnOrder().subscribe(res => {
-      console.log('💻', 'res', res);
       this.loading = false;
       if (res && res['body']) {
         this.orders = res['body'];

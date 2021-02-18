@@ -528,7 +528,10 @@
   "Message":"信息",
   "Flat/Plot":"單位/地塊",
   "Send":"發送",
-  "Type Here":"在此輸入"
+  "Type Here":"在此輸入",
+
+  "messeges_Typehere": "請輸入文字",
+  "message_search": "搜尋"
   
 
 }

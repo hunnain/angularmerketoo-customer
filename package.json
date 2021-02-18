@@ -29,6 +29,8 @@
     "@angular/platform-server": "~9.0.0",
     "@angular/router": "~9.0.0",
     "@ks89/angular-modal-gallery": "^7.2.5",
+    "@microsoft/signalr": "^5.0.3",
+    "@microsoft/signalr-protocol-msgpack": "^5.0.3",
     "@ng-bootstrap/ng-bootstrap": "^6.0.0",
     "@ngneat/content-loader": "^4.1.0",
     "@nguniversal/express-engine": "^9.0.1",

@@ -40,7 +40,6 @@ export class OrderlistComponent implements OnInit {
   }
 
   returnOrder(order: any) {
-    console.log(order)
     this.selectedOrder = order;
     this.returnModal.openModal();
   }

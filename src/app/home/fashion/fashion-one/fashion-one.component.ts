@@ -12,13 +12,14 @@ import { ProductService } from '../../../shared/services/product.service';
 export class FashionOneComponent implements OnInit {
 
   public products: Product[] = [];
+  public editorPicks: Product[] = [];
   public productCollections: any[] = [];
 
   constructor(public productService: ProductService) {
+    this.getEditorPicks();
     this.productService.getProducts.subscribe(response => {
       if (response['body']) {
         this.products = response['body']
-
       }
       // Get Product Collection
       // this.products.filter((item) => {
@@ -124,6 +125,14 @@ export class FashionOneComponent implements OnInit {
         return item
       }
     })
+  }
+
+  getEditorPicks() {
+    this.productService.getEditorProducts().subscribe(response => {
+      if (response['body']) {
+        this.editorPicks = response['body']
+      }
+    });
   }
 
 }

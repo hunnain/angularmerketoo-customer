@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
   }
 
   selectMenu(key) {
-    console.log(key);
     this.selectedMenu = key;
   }
 
@@ -92,7 +91,6 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     this.userService.unsubscribeUser(this.userInfo.email).subscribe(res => {
       if (res) {
-        console.log("unsubscribe success", res);
         this.userInfo['isSubscribed'] = false;
         localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         this.loading = false;
@@ -104,7 +102,6 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     this.userService.subscribeUser(this.userInfo.email).subscribe(res => {
       if (res) {
-        console.log("subscribe success", res);
         this.userInfo['isSubscribed'] = true;
         localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         this.loading = false;
@@ -166,7 +163,6 @@ export class DashboardComponent implements OnInit {
     }
     this.userService.updateProfilePic(data).subscribe(res => {
       if (res) {
-        console.log(res);
         this.cs.isLoading.next(false);
         this.submittingPic = false;
         this.profileImage = this.tempProfileImage;
@@ -197,7 +193,6 @@ export class DashboardComponent implements OnInit {
   });
 
   submitAddress() {
-    console.log('address', this.addressForm.value);
     let data = {
       ...this.addressForm.value
     }

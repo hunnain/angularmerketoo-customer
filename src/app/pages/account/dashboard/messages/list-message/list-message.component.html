@@ -3,7 +3,11 @@
   <div class="row">
     <div class="col-12 col-md-5" style="margin-bottom: 20px">
       <div class="right-sidebar chat-side-bar">
-        <app-right-sidebar (selectUser)="openChat($event)"></app-right-sidebar>
+        <app-right-sidebar
+          [onlineUsers]="signalRService.onlineUsers"
+          [allUsers]="allUsers"
+          (selectUser)="openChat($event)"
+        ></app-right-sidebar>
       </div>
     </div>
     <div class="col-12 col-md-7" style="margin-bottom: 20px">
@@ -13,7 +17,9 @@
       <app-chat-box
         *ngIf="openChatScreen"
         [user]="selectedUser"
-        [messages]="dummyMessages"
+        [onlineUsers]="signalRService.onlineUsers"
+        [messages]="signalRService.messages"
+        (sendMsg)="sendMessage($event)"
       ></app-chat-box>
     </div>
   </div>

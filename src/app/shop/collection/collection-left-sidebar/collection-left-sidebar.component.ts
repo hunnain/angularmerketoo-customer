@@ -54,7 +54,6 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
       this.pageNo = params.page ? params.page : this.pageNo;
 
-      // console.log('💻', 'params', params, this.pageNo);
       let filters = {
         colors: this.colors,
         size: this.size,
@@ -79,12 +78,10 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.products = [];
       this.loader = true;
       this.productService.filterProducts(query).subscribe(response => {
-        console.log('💻', 'response', response);
         if (response && response['body']) {
           let paginate = JSON.parse(response['headers'].get('X-Pagination'));
           this.products = response['body'];
           this.loader = false;
-          console.log('💻', 'pagination', paginate);
           this.paginate = paginate;
         } else {
           this.loader = false
@@ -188,7 +185,6 @@ export class CollectionLeftSidebarComponent implements OnInit {
   setShippingFilter(ev, bool) {
     let val = bool;
     this.isInternationalShipping = val;
-    console.log('💻', val);
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { isInternationalShipping: this.isInternationalShipping },

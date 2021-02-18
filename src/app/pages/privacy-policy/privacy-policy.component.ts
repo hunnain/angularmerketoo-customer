@@ -22,7 +22,6 @@ export class PrivacyPolicyComponent implements OnInit {
     this.aboutService.getAboutUs().subscribe(res => {
       this.loading = false;
       if (res && res['body']) {
-        // console.log("res--", res);
         if (res['body'].privacyPolicies) {
           this.privacyPolicy = res['body'].privacyPolicies;
         }

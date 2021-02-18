@@ -151,10 +151,8 @@ export class ProductLeftSidebarComponent implements OnInit {
       rating: this.rating,
       productId: this.product.productId
     }
-    console.log('💻', data);
 
     this.feedbackService.addFeedback(data).subscribe(res => {
-      console.log('💻 res--', res);
       if (res) {
         this.review = "";
         this.reviewTitle = "";
@@ -173,7 +171,6 @@ export class ProductLeftSidebarComponent implements OnInit {
     //   skipLocationChange: false  // do trigger navigation
     // })
     //   .finally(() => {
-    //     console.log('💻', 'refresh url-- ');
     //   });
     // this.router.navigated = false;
     // setTimeout(() => {

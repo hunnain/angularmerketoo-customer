@@ -62,6 +62,16 @@ export class ProductService {
     // }));
   }
 
+  // Get Editor Products
+  public getEditorProducts(): Observable<Product> {
+    return this.cs.get(`product/get-editors-pick`);
+    // return this.products.pipe(map(items => {
+    //   return items.find((item: any) => {
+    //     return item.name.replace(' ', '-') === slug;
+    //   });
+    // }));
+  }
+
 
   /*
     ---------------------------------------------
@@ -73,7 +83,6 @@ export class ProductService {
   public getAllWishlist(query) {
     return this.cs.get(`customer/wishlist?${query}`).pipe(map(res => {
       if (res && res['body']) {
-        console.log("res--", res.body);
         localStorage.setItem('wishlistItems', JSON.stringify(res['body']));
       }
 
@@ -180,7 +189,6 @@ export class ProductService {
 
   // Add to Cart
   public addToCart(product): any {
-    console.log("product--", product)
     const { productId, name, size, color, price } = product;
     const cartItem = state.cart.find(item => item.productId === productId);
     const qty = product.quantity ? product.quantity : 1;

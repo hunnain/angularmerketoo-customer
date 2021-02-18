@@ -33,7 +33,6 @@ export class HeaderOneComponent implements OnInit {
   }
 
   onSearch() {
-    console.log("search", this.search)
     if (this.search && this.search.trim()) {
       this.router.navigate(['/shop/collection/left/sidebar'], {
         // relativeTo: this.route,
