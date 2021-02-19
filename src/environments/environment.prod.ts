@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   base_url: 'https://marketoo-api-service.azurewebsites.net/api/',
+  signlr_base_url: 'https://marketoo-api-service.azurewebsites.net/',
   firebase: {
     apiKey: "AIzaSyBkGEkMCEwJNfFyMHJB4D8l6499cruxtH0",
     authDomain: "marketoo-76413.firebaseapp.com",
