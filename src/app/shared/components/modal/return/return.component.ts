@@ -59,7 +59,6 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
     reader.onload = (_event) => {
       let img = reader.result.toString();
       // let base = reader.result.toString();
-      // console.log(img);
       this.imgs.push(img);
     };
   }
@@ -82,7 +81,6 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   save() {
     this.loading = true;
-    console.log('💻', 'return data', this.products);
     this.reloadData.emit('some data to be pass')
     let data = {
       requestReason: this.refund_reason,
@@ -92,7 +90,6 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
       ordrId: this.returnData.orderId
     }
 
-    console.log(this.returnType);
 
     if (this.imgs.length) {
       data['images'] = this.imgs.map(item => this.removeBase64(item))
@@ -101,10 +98,8 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
       data['ReturnExchangeDetails'] = this.products;
     }
 
-    console.log('💻', 'return data', data);
     this.returnService.returnOrder(data).subscribe(res => {
       this.loading = false;
-      console.log('💻', 'return res', res);
       if (res) {
         this.reloadData.emit('some data to be pass');
         this.modalService.dismissAll('Close');
@@ -133,7 +128,6 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   selectProduct(ev, prod, ind) {
-    // console.log('ev', ev.target.checked, prod);
     let checked = ev.target.checked;
     if (checked) {
       this.products.push({ ...prod, quantity: 1 });

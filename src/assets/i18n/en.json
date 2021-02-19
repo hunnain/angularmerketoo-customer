@@ -550,7 +550,9 @@
   "Enter new password":"Enter new password",
   "Confirm Password":"Confirm Password",
   "Enter confirm password":"Enter confirm password",
-  "Change":"Change"
+  "Change":"Change",
+  "messeges_Typehere": "Type here",
+  "message_search": "Search"
 
 
 

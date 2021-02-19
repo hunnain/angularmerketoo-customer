@@ -3,36 +3,35 @@
     <div class="col-sm-12">
       <div class="card chat-container">
         <div class="card-header">
-          <!-- <h5>{{user.name}}</h5> -->
           <ul class="list">
             <li class="clearfix">
               <img
                 class="rounded-circle user-image blur-up lazyloaded"
-                [src]="user.img"
+                [src]="
+                  user.imageUrl ? user.imageUrl : 'assets/images/review/1.jpg'
+                "
                 alt=""
               />
               <div
-                class="status-circle"
-                [ngClass]="{
-                  online: user.status === 'Online',
-                  offline: user.status !== 'Online'
-                }"
+                class="status-circle offline"
+                [ngClass]="{ online: userStatus(user.senderId) }"
               ></div>
               <div class="about">
-                <div class="name">{{ user.name }}</div>
-                <div class="status">{{ user.status }}</div>
+                <div class="name">{{ user?.name }}</div>
+                <div class="status">{{ user?.status }}</div>
               </div>
             </li>
           </ul>
         </div>
-        <div class="card-body content">
+        <div class="card-body content" #scrollMe [scrollTop]="onScroll">
           <ul>
             <li
-              [ngClass]="{ right: msg.user_id == user.id }"
+              [ngClass]="{ right: msg.receiverId === user.senderId }"
               style="width: 100%"
               *ngFor="let msg of messages"
             >
-              <span class="msg">{{ msg.message }}</span>
+              <span class="msg" *ngIf="msg.text">{{ msg.text }}</span>
+              <span class="msg" *ngIf="msg.Text">{{ msg.Text }}</span>
             </li>
           </ul>
         </div>
@@ -50,13 +49,15 @@
                   <app-feather-icons
                     [icon]="'paperclip'"
                     class="font-primary"
-                    style="color: #fff !important"
+                    style="color: #f2917e !important"
                   ></app-feather-icons>
                 </span>
               </div>
               <div>
                 <input
                   type="text"
+                  name="msg"
+                  [(ngModel)]="msg"
                   placeholder="{{ 'messeges_Typehere' | translate }}"
                 />
               </div>
@@ -65,7 +66,9 @@
                   <app-feather-icons
                     [icon]="'send'"
                     class="font-primary"
-                    style="color: #fff !important"
+                    style="color: #f2917e !important"
+                    [ngStyle]="{ 'pointer-events': !msg ? 'none' : 'auto' }"
+                    (click)="sendMesssage()"
                   ></app-feather-icons>
                 </span>
               </div>

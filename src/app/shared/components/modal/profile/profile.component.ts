@@ -76,7 +76,6 @@ export class ProfileModalComponent implements OnInit, AfterViewInit, OnDestroy {
     // if(this.byteImg){
     //   data['image'] = this.byteImg;
     // }
-    console.log('💻', data);
     this.loading = true;
     this.userService.updateProfile(data).subscribe(res => {
       if (res) {

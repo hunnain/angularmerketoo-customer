@@ -71,8 +71,7 @@ export class CheckoutComponent implements OnInit {
 
   isSame = false;
   changeisSameAddress(ev) {
-    console.log('issame', ev)
-    console.log('💻', this.useraddress);
+
     if (ev) {
       this.checkoutForm.setValue({ ...this.useraddress, otherCountry: '', note: '' });
     } else {

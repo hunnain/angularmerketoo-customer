@@ -162,13 +162,11 @@ export class SettingsComponent implements OnInit {
       })
   }
   tryLogin() {
-    console.log(this.loginForm.value);
     // this.loading = true;
     this.authService.login(this.loginForm.value).subscribe(
       (res) => {
         // this.cs.isLoading.next(false)
         // this.loading = false;
-        console.log(res, 'success');
         // this.router.navigate(['/user']);
         this.modalRef.close();
         this.menu = false
@@ -183,9 +181,6 @@ export class SettingsComponent implements OnInit {
 
 
   createCustomer() {
-    // console.log('seller info',this.sellerForm.value)
-    // console.log('brand info',this.brandForm.value)
-    // console.log('byteImages',this.imgs)
 
     let data = {
       ...this.signupForm.value,
@@ -193,11 +188,9 @@ export class SettingsComponent implements OnInit {
     // this.loading = true;
     this.default = false;
     this.register = true
-    console.log("signup form--", this.signupForm.value);
     this.authService.signUp(data).subscribe(
       (res) => {
         if (res) {
-          console.log(res, 'response');
           // this.cs.isLoading.next(false)
           // this.loading = false;
           // this.router.navigate(['/login'])

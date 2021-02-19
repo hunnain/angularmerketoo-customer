@@ -26,7 +26,6 @@ export class RatingComponent implements OnInit {
   }
 
   changeRate(val) {
-    console.log(this.rating, val)
     this.rateChange.next(val);
   }
 

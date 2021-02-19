@@ -6,9 +6,12 @@
     border-bottom: 1px solid #c1c1c1;
   }
   .content {
-    position: absolute;
+    // position: absolute;
     width: 100%;
-    bottom: 20px;
+    // bottom: 20px;
+    max-height: 100vh;
+    overflow: auto;
+    padding-bottom: 45px;
   }
   .content li {
     margin-bottom: 25px;
@@ -78,11 +81,11 @@
     border-radius: 50%;
     border: 2px solid #ffffff;
   }
-  .online {
-    background-color: #81ba00;
-  }
   .offline {
     background-color: red;
+  }
+  .online {
+    background-color: #81ba00;
   }
   .about {
     float: left;

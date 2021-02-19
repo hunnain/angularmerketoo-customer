@@ -93,7 +93,7 @@
           class="product-m owl-dots"
           [options]="ProductSliderConfig"
         >
-          <ng-container *ngFor="let product of products | slice: 0:16">
+          <ng-container *ngFor="let product of editorPicks | slice: 0:16">
             <ng-template carouselSlide>
               <div class="product-box">
                 <app-product-box-one

@@ -37,11 +37,11 @@
           border-radius: 50%;
           border: 2px solid #ffffff;
         }
-        .online {
-          background-color: #81ba00;
-        }
         .offline {
           background-color: red;
+        }
+        .online {
+          background-color: #81ba00;
         }
         .about {
           float: left;
@@ -87,7 +87,7 @@
     .chat-box {
       .friend-list {
         max-height: calc(100vh - 150px);
-        overflow: scroll;
+        overflow: auto;
       }
     }
   }

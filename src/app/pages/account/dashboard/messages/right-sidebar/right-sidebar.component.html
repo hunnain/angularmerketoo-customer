@@ -22,25 +22,29 @@
         <ul class="list">
           <li
             class="clearfix"
-            *ngFor="let user of users"
+            *ngFor="let user of allUsers"
             (click)="onUserClick(user)"
             style="cursor: pointer"
           >
             <img
               class="rounded-circle user-image blur-up lazyloaded"
-              [src]="user.img"
+              [src]="
+                user.imageUrl ? user.imageUrl : 'assets/images/review/1.jpg'
+              "
               alt=""
             />
             <div
-              class="status-circle"
-              [ngClass]="{
-                online: user.status === 'Online',
-                offline: user.status !== 'Online'
-              }"
+              class="status-circle offline"
+              [ngClass]="{ online: userStatus(user.senderId) }"
             ></div>
             <div class="about">
-              <div class="name">{{ user.name }}</div>
-              <div class="status">{{ user.status }}</div>
+              <div class="name">{{ user?.name }}</div>
+              <div class="status">{{ user?.status }}</div>
+            </div>
+          </li>
+          <li class="clearfix" *ngIf="allUsers.length == 0">
+            <div class="about">
+              <div class="name">No user available</div>
             </div>
           </li>
         </ul>

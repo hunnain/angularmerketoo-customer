@@ -7,6 +7,7 @@ export interface Seller {
     shopLocation: string;
     shopIntro: string;
     imageUrl: string;
+    isFollower: boolean;
     totalSoldProducts: number;
     rating: number;
     totalProductsLikes?: null;

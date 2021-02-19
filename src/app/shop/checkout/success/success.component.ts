@@ -39,9 +39,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
   getOrder(id) {
     this.loading = true;
     this.orderService.fetchOrderBySessionId(id).subscribe(res => {
-      console.log('💻 outer if res--', res);
       if (res && res.body) {
-        console.log('💻 if res--', res);
         this.orderDetails = res.body[0];
         this.loading = false;
       }

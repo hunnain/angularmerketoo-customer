@@ -74,7 +74,6 @@ export class DesignerPageComponent implements OnInit {
     // })
 
     this.route.params.subscribe((params) => {
-      console.log(params);
       if (params.id) {
         this.sellerId = params.id;
         this.loading = true;
@@ -89,7 +88,6 @@ export class DesignerPageComponent implements OnInit {
   fetchSellerInfo(id) {
     this.sellerService.getSellerById(id).subscribe(res => {
       if (res && res['body']) {
-        // console.log("seller profile---", res);
         this.sellerInfo = res['body'];
         this.loading = false;
       }
@@ -97,8 +95,16 @@ export class DesignerPageComponent implements OnInit {
   }
 
   followSeller() {
-    console.log("follow seller!")
     this.sellerService.followSeller(this.sellerId).subscribe(res => {
+      if (res) {
+        this.loading = false;
+        this.fetchSellerInfo(this.sellerId);
+      }
+    })
+  }
+
+  unfollowSeller() {
+    this.sellerService.unfollowSeller(this.sellerId).subscribe(res => {
       if (res) {
         this.loading = false;
         this.fetchSellerInfo(this.sellerId);
@@ -227,7 +233,6 @@ export class DesignerPageComponent implements OnInit {
   }
 
   sendMessage() {
-    console.log("send message", this.message)
     let data = {
       text: this.message,
       receiverId: this.sellerId
