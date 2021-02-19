@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
   public amount: any;
   public isOtherCountry: boolean = false;
   public IsInternationalShipping: boolean = false;
+  public loading: boolean = false;
 
   public stripe = Stripe(environment.stripe_token)
 
@@ -170,8 +171,10 @@ export class CheckoutComponent implements OnInit {
     }
     console.log("createding order data", data)
     // console.log("stripe", this.stripe)
+    this.loading = true;
     this.orderService.stripeCheckout(data).subscribe(res => {
       console.log(res)
+      this.loading = false;
       if (res['id']) {
         this.stripe.redirectToCheckout({ sessionId: res['id'] })
           .then(res => console.log("successfull payment", res))

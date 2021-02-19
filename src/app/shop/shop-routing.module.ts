@@ -24,6 +24,7 @@ import { DesignerPageComponent } from './collection/designer-page/designer-page.
 import { MailboxComponent } from './collection/mailbox/mailbox.component';
 import { NotificationComponent } from './collection/notification/notification.component';
 import { MyProfileComponent } from './collection/myprofile/myprofile.component';
+import { AuthGuard } from '../core/auth.guard';
 
 const routes: Routes = [
   {
@@ -81,7 +82,8 @@ const routes: Routes = [
   },
   {
     path: 'designer/:id',
-    component: DesignerPageComponent
+    component: DesignerPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'collection/right/sidebar',
@@ -93,7 +95,8 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'mail',
@@ -109,7 +112,8 @@ const routes: Routes = [
   },
   {
     path: 'wishlist',
-    component: WishlistComponent
+    component: WishlistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'compare',
@@ -117,11 +121,13 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'checkout/success',
-    component: SuccessComponent
+    component: SuccessComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

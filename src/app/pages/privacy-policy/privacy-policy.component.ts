@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutUsService } from 'src/app/shared/services/about-us.service';
+import { GeneralService } from 'src/app/shared/services/general.service';
 // import { TeamSlider, TestimonialSlider } from '../../shared/data/slider';
 
 @Component({
@@ -11,7 +11,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   public privacyPolicy: string = null;
   public loading: boolean = false;
-  constructor(private aboutService: AboutUsService) { }
+  constructor(private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.getAboutUs();
@@ -19,7 +19,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   getAboutUs() {
     this.loading = true;
-    this.aboutService.getAboutUs().subscribe(res => {
+    this.generalService.getAboutUs().subscribe(res => {
       this.loading = false;
       if (res && res['body']) {
         if (res['body'].privacyPolicies) {
