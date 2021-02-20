@@ -8,6 +8,7 @@ import { Router, Params } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/auth.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../../services/common.service';
 
 declare var $: any;
 @Component({
@@ -64,6 +65,7 @@ export class SettingsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     public authService: AuthService,
+    public cs: CommonService,
     private router: Router,
     public productService: ProductService
   ) {
@@ -78,6 +80,10 @@ export class SettingsComponent implements OnInit {
     this.checkLoggedIn();
     this.productService.cartItems.subscribe(response => this.products = response);
     this.productService.wishlistItems.subscribe(response => this.wishlists = response);
+
+    this.cs.isLoading.subscribe(res => {
+      this.loginLoading = res;
+    })
   }
 
   ngOnInit(): void {
@@ -161,12 +167,13 @@ export class SettingsComponent implements OnInit {
         this.router.navigate(['/user']);
       })
   }
+  loginLoading = false
   tryLogin() {
-    // this.loading = true;
+    this.loginLoading = true;
     this.authService.login(this.loginForm.value).subscribe(
       (res) => {
-        // this.cs.isLoading.next(false)
-        // this.loading = false;
+        this.cs.isLoading.next(false)
+        this.loginLoading = false;
         // this.router.navigate(['/user']);
         this.modalRef.close();
         this.menu = false
@@ -179,20 +186,20 @@ export class SettingsComponent implements OnInit {
     )
   }
 
-
+  signupLoading = false;
   createCustomer() {
 
     let data = {
       ...this.signupForm.value,
     }
-    // this.loading = true;
+    this.signupLoading = true;
     this.default = false;
     this.register = true
     this.authService.signUp(data).subscribe(
       (res) => {
+        this.signupLoading = false;
         if (res) {
-          // this.cs.isLoading.next(false)
-          // this.loading = false;
+          this.cs.isLoading.next(false)
           // this.router.navigate(['/login'])
           this.default = true;
           this.logi = false;

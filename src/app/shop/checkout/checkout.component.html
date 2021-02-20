@@ -534,14 +534,20 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button
+                    <!-- <button
                       id="checkout-button"
                       class="btn-solid btn"
                       (click)="createOrderWithStripe()"
                       [disabled]="checkoutForm.invalid || products.length === 0"
                     >
                       Place Order
-                    </button>
+                    </button> -->
+                    <app-button
+                      [loading]="loading"
+                      [disabled]="checkoutForm.invalid || products.length === 0"
+                      [btnText]="'Place Order'"
+                      (onSubmit)="createOrderWithStripe()"
+                    ></app-button>
                     <!-- <button type="submit" class="btn-solid btn"
                                             (click)="couponGenerator()" >
                                             Place Order

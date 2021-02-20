@@ -117,7 +117,7 @@
               type="submit"
               class="searchButton"
               (click)="followSeller()"
-              *ngIf="!sellerInfo.isFollower"
+              *ngIf="!sellerInfo?.isFollower"
             >
               <i style="color: white" class="fa fa-plus"></i>
               Follow Designer
@@ -126,7 +126,7 @@
               type="submit"
               class="searchButton"
               (click)="unfollowSeller()"
-              *ngIf="sellerInfo.isFollower"
+              *ngIf="sellerInfo?.isFollower"
             >
               UnFollow Designer
             </button>
