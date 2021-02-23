@@ -12,21 +12,43 @@ import { ProductService } from '../../../shared/services/product.service';
 })
 export class SuccessComponent implements OnInit, AfterViewInit {
 
-  public orderDetails: Order;
+  public orders: Order[] = [];
 
   public loading: boolean = true;
   queryParam: string = '';
+  key: string = "";
+  public methods = {
+    session_id: 'fetchOrderBySessionId',
+    sourceId: 'fetchOrderBySourceId',
+    orderId: 'fetchFPSOrderOnSuccess'
+  }
   constructor(
     public productService: ProductService,
     private orderService: OrderService,
     private route: ActivatedRoute
   ) {
     this.route.queryParams.subscribe(params => {
-      this.queryParam = params['session_id'];
-      if (this.queryParam) {
+      if (params['session_id'] || params['orderId'] || params['sourceId']) {
+        if (params['orderId']) {
+          this.queryParam = params['orderId'];
+          this.key = 'orderId';
+        }
+
+        if (params['sourceId']) {
+          this.queryParam = params['sourceId'];
+          this.key = 'sourceId';
+        }
+
+        if (params['session_id']) {
+          this.queryParam = params['session_id'];
+          this.key = 'session_id';
+        }
+
         this.productService.emptyCart();
         this.getOrder(this.queryParam);
       }
+
+
     });
   }
 
@@ -38,12 +60,14 @@ export class SuccessComponent implements OnInit, AfterViewInit {
 
   getOrder(id) {
     this.loading = true;
-    this.orderService.fetchOrderBySessionId(id).subscribe(res => {
-      if (res && res.body) {
-        this.orderDetails = res.body[0];
-        this.loading = false;
-      }
-    })
+    // this.orderService.fetchOrderBySessionId(id)
+    this.orderService[this.methods[this.key]](id)
+      .subscribe(res => {
+        if (res && res.body) {
+          this.orders = res.body;
+          this.loading = false;
+        }
+      })
   }
 
 

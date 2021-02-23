@@ -10,8 +10,7 @@
           font-weight: 200;
         "
         class="btn btn-link"
-        href="http://seller.marketoo.hk/sign-up"
-        target="_blank"
+        routerLink="/pages/store-intro"
       >
         {{ "openshop" | translate }}
       </a>
@@ -98,8 +97,18 @@
 </div>
 <div>
   <ng-template #content let-modal style="width: 560px">
+    <div style="position: absolute; right: 10px; z-index: 1000">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div [hidden]="default">
-      <div class="modal-header">
+      <div class="modal-header" style="padding: 1.5rem 1.5rem">
         <a id="loginLogo">
           <img [src]="loginLogo" class="img-fluid" alt="logo" />
         </a>
@@ -230,11 +239,24 @@
                   {{ "password_req" | translate }}
                 </div>
               </div>
-              <a
-                style="cursor: pointer; padding-left: 31%; color: blue"
-                (click)="default = false; logi = true"
-                >Back to previous page</a
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
               >
+                <a
+                  style="cursor: pointer; color: blue"
+                  (click)="default = false; logi = true"
+                  >Back to previous page</a
+                >
+                <a
+                  style="cursor: pointer; color: blue"
+                  href="javascript:void(0)"
+                  >Forgot password</a
+                >
+              </div>
               <!-- <button
                 style="
                   width: 46%;

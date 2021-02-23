@@ -27,7 +27,7 @@
               <th scope="col">{{ "Image" | translate }}</th>
               <th scope="col">{{ "Product Name" | translate }}</th>
               <th scope="col">{{ "Price" | translate }}</th>
-              <th scope="col">{{ "Availability" | translate }}</th>
+              <!-- <th scope="col">{{ "Availability" | translate }}</th> -->
               <th scope="col">{{ "Action" | translate }}</th>
             </tr>
           </thead>
@@ -59,11 +59,11 @@
                   >{{ product.name | titlecase }}</a
                 >
                 <div class="mobile-cart-content row">
-                  <div class="col-xs-3">
+                  <!-- <div class="col-xs-3">
                     <p>
                       {{ product.quantity > 0 ? "in stock" : "out of stock" }}
                     </p>
-                  </div>
+                  </div> -->
                   <div class="col-xs-3">
                     <h2 class="td-color">
                       {{
@@ -102,9 +102,9 @@
                   }}
                 </h2>
               </td>
-              <td>
+              <!-- <td>
                 <p>{{ product.quantity > 0 ? "in stock" : "out of stock" }}</p>
-              </td>
+              </td> -->
               <td>
                 <a
                   href="javascript:void(0)"

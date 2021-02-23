@@ -204,11 +204,14 @@
                   </div>
                   <br />
                   <!-- Return & Exchange -->
-                  <div class="row-data-style">
+                  <div
+                    class="row-data-style"
+                    *ngIf="solution === 'Refund Only'"
+                  >
                     <div>
                       <h4>{{ "Refund Amount" | translate }}</h4>
-                      <div>Max RM 3.4</div>
-                      <div *ngIf="solution === 'Refund Only'">
+                      <!-- <div>Max RM 3.4</div> -->
+                      <div>
                         <input
                           type="number"
                           class="form-control"

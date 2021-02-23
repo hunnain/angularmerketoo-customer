@@ -7,6 +7,7 @@ import { chatMesage } from '../classes/chatMesage';
 import { MessagePackHubProtocol } from '@microsoft/signalr-protocol-msgpack'
 import { CommonService } from './common.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +22,23 @@ export class SignalrService {
   public onlineUsers: any[] = [];
 
   isConnected: EventEmitter<boolean> = new EventEmitter(false);
+  weChatResponse: EventEmitter<any> = new EventEmitter(null);
   constructor(
-    private cs: CommonService
+    private cs: CommonService,
+    private toastrService: ToastrService
   ) {
   }
 
   public connect = () => {
-    this.startConnection(this.cs.getAccessToken());
+    let token = this.cs.getAccessToken()
+    this.startConnection(token, 'ChatHub');
     this.addListeners();
+  }
+
+  public connectNotificationHub = () => {
+    let token = this.cs.getAccessToken()
+    this.startConnection(token, 'NotificationsHub');
+    this.addNotificationListeners();
   }
 
   public sendMessageToApi(data: object) {
@@ -61,10 +71,10 @@ export class SignalrService {
       }));
   }
 
-  private getConnection(token): HubConnection {
+  private getConnection(token, hubName): HubConnection {
     return new HubConnectionBuilder()
       .withAutomaticReconnect()
-      .withUrl(`${this.signalr_base_url}ChatHub`, {
+      .withUrl(`${this.signalr_base_url}${hubName}`, {
         //skipNegotiation: true,
         //transport: signalR.HttpTransportType.WebSockets,
         accessTokenFactory: () => token
@@ -81,8 +91,8 @@ export class SignalrService {
     };
   }
 
-  private startConnection(token) {
-    this.hubConnection = this.getConnection(token);
+  private startConnection(token, hubName) {
+    this.hubConnection = this.getConnection(token, hubName);
 
     this.hubConnection.start()
       .then(() => {
@@ -117,9 +127,9 @@ export class SignalrService {
         }
       }
     })
-    this.hubConnection.on("ReceiveNotifications", (userId: string, message: string) => {
-      console.log("ReceiveNotifications", userId, message);
-    })
+    // this.hubConnection.on("ReceiveNotifications", (userId: string, message: string) => {
+    //   console.log("ReceiveNotifications", userId, message);
+    // })
     this.hubConnection.on("ReceiveMessage", (obj) => {
       console.log("ReceiveMessage from hub", obj);
       this.messages.push(obj);
@@ -132,6 +142,21 @@ export class SignalrService {
           this.onlineUsers.splice(index, 1);
           // console.log('💻', 'offline users', this.onlineUsers);
         }
+      }
+    })
+  }
+
+  private addNotificationListeners() {
+    this.hubConnection.on("ReceiveNotifications", (res) => {
+      console.log("ReceiveNotifications", res);
+      if (res) {
+        this.toastrService.success(res.Text, res.Type);
+      }
+    })
+    this.hubConnection.on("WeChatPaymentStatus", (text, sourceId, status) => {
+      console.log("WeChatPaymentStatus", text, sourceId, status);
+      if (text && sourceId && status) {
+        this.weChatResponse.emit({ text, sourceId, status });
       }
     })
   }

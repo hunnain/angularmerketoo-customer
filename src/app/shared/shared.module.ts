@@ -11,6 +11,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { MaterialModule } from "../material.module";
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 
 
 // Header and Footer Components
@@ -120,6 +122,7 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     }),
     NgxSkeletonLoaderModule,
     TranslateModule,
+    NgxQRCodeModule
   ],
   exports: [
     CommonModule,
@@ -165,7 +168,8 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     RatingComponent,
     FeatherIconsComponent,
     CropperComponent,
-    ButtonComponent
+    ButtonComponent,
+    NgxQRCodeModule
   ],
 })
 export class SharedModule { }

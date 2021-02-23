@@ -42,10 +42,32 @@ export class OrderService {
     return this.cs.post('CheckoutApi/create-checkout-session', order)
   }
 
+  FPSCheckout(order) {
+    return this.cs.post('CheckoutApi/create-checkout-fps', order)
+  }
+
+  weChatCheckout(order) {
+    return this.cs.post('CheckoutApi/create-checkout-wechat', order)
+  }
+
   fetchOrderBySessionId(session_id) {
     return this.cs.get(`order/create-order/${session_id}`);
     // return this.cs.post(`order/create-order/${session_id}`, {});
     // return this.cs.get(`order/GetOrdersBySessionId/${session_id}`);
+  }
+
+  fetchOrderBySourceId(source_id) {
+    return this.cs.get(`order/create-order/${source_id}`);
+    // return this.cs.post(`order/create-order/${session_id}`, {});
+    // return this.cs.get(`order/GetOrdersBySessionId/${session_id}`);
+  }
+
+  fetchOrderById(order_id) {
+    return this.cs.get(`order/getorderbyid/${order_id}`);
+  }
+
+  fetchFPSOrderOnSuccess(id) {
+    return this.cs.get(`order/get-orders-by-payment-key/${id}`);
   }
 
   fetchMyOrders() {

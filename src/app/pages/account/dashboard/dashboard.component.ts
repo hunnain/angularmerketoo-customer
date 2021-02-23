@@ -224,7 +224,7 @@ export class DashboardComponent implements OnInit {
   fetchAllCoupons() {
     this.couponService.getAllCoupons().subscribe(res => {
       if (res && res['body']) {
-        console.log("coupons", res)
+        // console.log("coupons", res)
         this.coupons = res['body'];
       }
     })
@@ -242,7 +242,7 @@ export class DashboardComponent implements OnInit {
   fetchStoreCredits() {
     this.couponService.getStoreCredit().subscribe(res => {
       if (res && res['body']) {
-        console.log("credits", res)
+        // console.log("credits", res)
         this.credits = res['body'];
       }
     })
