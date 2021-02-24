@@ -439,7 +439,25 @@
                             <input
                               type="radio"
                               [(ngModel)]="payment"
-                              [value]="'Paypal'"
+                              [value]="'weChat'"
+                              name="payment-group"
+                              id="weChat"
+                            />
+                            <label for="weChat">WeChat Pay</label>
+                            <span class="image"
+                              ><img
+                                style="padding-left: 11px; width: 90px"
+                                src="assets/images/WeChat-Logo.png"
+                                alt=""
+                            /></span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="radio-option">
+                            <input
+                              type="radio"
+                              [(ngModel)]="payment"
+                              [value]="'FPS'"
                               name="payment-group"
                               id="payment-3"
                             />
@@ -462,7 +480,7 @@
                         </li>
                         <li
                           style="margin-bottom: 0px"
-                          *ngIf="payment === 'Paypal'"
+                          *ngIf="payment === 'FPS'"
                         >
                           <div class="form-group">
                             <p class="field-label">
@@ -471,7 +489,8 @@
                             <input
                               type="text"
                               name="field-name"
-                              value=""
+                              [(ngModel)]="referenceNumber"
+                              name="referenceNumber"
                               placeholder="Reference Number"
                             />
                           </div>
@@ -544,9 +563,13 @@
                     </button> -->
                     <app-button
                       [loading]="loading"
-                      [disabled]="checkoutForm.invalid || products.length === 0"
+                      [disabled]="
+                        checkoutForm.invalid ||
+                        products.length === 0 ||
+                        (payment === 'FPS' && !referenceNumber)
+                      "
                       [btnText]="'Place Order'"
-                      (onSubmit)="createOrderWithStripe()"
+                      (onSubmit)="submitCheckout()"
                     ></app-button>
                     <!-- <button type="submit" class="btn-solid btn"
                                             (click)="couponGenerator()" >
@@ -563,3 +586,51 @@
     </div>
   </div>
 </section>
+
+<!-- QRCode Modal -->
+<ng-template #qrcodeModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">WeChat QRCode</h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="main-container" ngbAutofocus>
+      <div>
+        <p>Please scan this qrcode with wechat app for payment process</p>
+        <div class="text-center">
+          <ngx-qrcode
+            [elementType]="elementType"
+            [errorCorrectionLevel]="correctionLevel"
+            [value]="qrCodeValue"
+            alt="QR Code"
+            cssClass="bshadow"
+          ></ngx-qrcode>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+    <app-button
+      [loading]="submittingPic"
+      [disabled]="!tempProfileImage"
+      [btnText]="'Save'"
+      (onSubmit)="saveProfilePic()"
+    ></app-button>
+    <button
+      class="btn btn-light"
+      type="button"
+      data-dismiss="modal"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Close
+    </button>
+  </div> -->
+</ng-template>
+<!-- QRCode Modal End -->

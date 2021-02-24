@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
@@ -6,6 +6,11 @@ import { environment } from '../../../environments/environment';
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { SignalrService } from 'src/app/shared/services/signalr.service';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 declare var Stripe;
 
@@ -15,6 +20,10 @@ declare var Stripe;
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  @ViewChild('qrcodeModal') qrcodeModal: ElementRef
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  qrCodeValue = 'https://www.techiediaries.com/';
 
   public checkoutForm: FormGroup;
   public products: Product[] = [];
@@ -28,9 +37,27 @@ export class CheckoutComponent implements OnInit {
   public stripe = Stripe(environment.stripe_token)
 
   public useraddress = undefined;
+
+  //FPS vars 
+  public referenceNumber: string;
   constructor(private fb: FormBuilder,
+    private router: Router,
     public productService: ProductService,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private signalrService: SignalrService,
+    private cs: CommonService,
+    private modalService: NgbModal
+  ) {
+    this.signalrService.weChatResponse.subscribe(res => {
+      if (res && this.payment === 'weChat') {
+        this.onWeChatSunccess(res);
+      }
+    })
+
+    this.cs.isLoading.subscribe(res => {
+      this.loading = res;
+    })
+
     let info = JSON.parse(localStorage.getItem('userInfo'));
     if (info) {
       const { address, country, city, regionState, zipCode } = info;
@@ -68,6 +95,11 @@ export class CheckoutComponent implements OnInit {
         this.isOtherCountry = false;
       }
     })
+  }
+
+  ngOnDestory() {
+    this.signalrService.weChatResponse.emit(null);
+    this.signalrService.weChatResponse.unsubscribe();
   }
 
   isSame = false;
@@ -159,6 +191,40 @@ export class CheckoutComponent implements OnInit {
     };
   }
 
+  submitCheckout() {
+    console.log(this.payment, this.referenceNumber);
+    if (this.payment === 'card' || this.payment === 'alipay') {
+      this.createOrderWithStripe();
+    } else if (this.payment === 'FPS') {
+      this.createOrderWithFPS();
+    } else if (this.payment === 'weChat') {
+      this.createOrderWithWeChatPay();
+    } else {
+      console.log('no payment method selected');
+    }
+  }
+
+  get formatData() {
+    let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
+    let data = {
+      ...this.checkoutForm.value,
+      // paymentMethodType: this.payment,
+      mode: "payment",
+      cartItems: prods,
+      IsInternationalShipping: this.IsInternationalShipping
+    }
+
+    if (this.payment === 'card' || this.payment === 'alipay') {
+      data['paymentMethodType'] = this.payment;
+    }
+
+    if (this.payment === 'FPS') {
+      data['referenceNumber'] = this.referenceNumber;
+    }
+
+    return data;
+  }
+
 
   createOrderWithStripe() {
     let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
@@ -181,6 +247,55 @@ export class CheckoutComponent implements OnInit {
           .catch(err => console.log('Payment Error', err))
       }
     })
+  }
+
+  createOrderWithFPS() {
+    this.loading = true;
+    this.orderService.FPSCheckout(this.formatData).subscribe(res => {
+      console.log(res)
+      this.loading = false;
+      if (res) {
+        this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: this.referenceNumber } })
+      }
+    })
+  }
+  createOrderWithWeChatPay() {
+    this.loading = true;
+    this.orderService.weChatCheckout(this.formatData).subscribe(res => {
+      console.log(res)
+      this.loading = false;
+      if (res && res['wechat'] && res['wechat']['qr_code_url']) {
+        // open  qrcode modal
+        this.qrCodeValue = res['wechat']['qr_code_url'];
+        this.open();
+      }
+    })
+  }
+
+  onWeChatSunccess(res) {
+    console.log("res--- in wechat", res);
+    let result = res;
+    this.signalrService.weChatResponse.emit(null);
+    if (result.status !== 'failed') {
+      this.modalService.dismissAll();
+      this.router.navigate(['shop/checkout/success'], { queryParams: { sourceId: result.sourceId } })
+    } else {
+      console.log('status failed', result)
+    }
+  }
+
+  // modal event
+  open() {
+    this.modalService
+      .open(this.qrcodeModal, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          console.log(`Closed with: ${result}`);
+        },
+        (reason) => {
+          console.log(`Dismissed`);
+        }
+      );
   }
 
 }

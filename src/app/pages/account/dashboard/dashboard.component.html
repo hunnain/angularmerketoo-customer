@@ -253,9 +253,15 @@
                         >
                       </div>
                       <div class="box-content">
-                        <p>
+                        <p *ngIf="!userInfo?.isSubscribed">
                           {{
                             "You are currently not subscribed to any newsletter"
+                              | translate
+                          }}.
+                        </p>
+                        <p *ngIf="userInfo?.isSubscribed">
+                          {{
+                            "You have subscribed for the newsletter"
                               | translate
                           }}.
                         </p>

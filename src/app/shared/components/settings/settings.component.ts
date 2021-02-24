@@ -9,6 +9,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/auth.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
+import { ToastrService } from 'ngx-toastr';
+import { CommonErrorService } from '../../services/common-error.service';
 
 declare var $: any;
 @Component({
@@ -66,6 +68,8 @@ export class SettingsComponent implements OnInit {
     private modalService: NgbModal,
     public authService: AuthService,
     public cs: CommonService,
+    private toastService: ToastrService,
+    private commonErrorService: CommonErrorService,
     private router: Router,
     public productService: ProductService
   ) {
@@ -83,6 +87,7 @@ export class SettingsComponent implements OnInit {
 
     this.cs.isLoading.subscribe(res => {
       this.loginLoading = res;
+      this.signupLoading = res;
     })
   }
 
@@ -180,8 +185,13 @@ export class SettingsComponent implements OnInit {
         localStorage.setItem('userInfo', JSON.stringify(res));
         localStorage.setItem('accessToken', res['accessToken']);
         localStorage.setItem('refreshToken', res['refreshToken']);
-      }, err => {
+      }
+      , (err) => {
         console.log('error---', err)
+        this.cs.isLoading.next(false)
+        this.loginLoading = false;
+        let msg = this.commonErrorService.parseServerError(err.error)
+        this.toastService.error(msg, 'Error')
       }
     )
   }
@@ -206,11 +216,11 @@ export class SettingsComponent implements OnInit {
           this.register = true;
         }
       }
-      ,
-      (error) => {
-        console.log(error, 'error');
-        // this.loading = false;
-      }
+      // ,
+      // (error) => {
+      //   console.log(error, 'error');
+      //   // this.loading = false;
+      // }
     );
   }
 }

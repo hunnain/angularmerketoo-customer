@@ -2,12 +2,12 @@
 <app-breadcrumb
   [title]="'404 page'"
   [breadcrumb]="'404 page'"
-  *ngIf="!orderDetails && !loading"
+  *ngIf="orders.length == 0 && !loading"
 ></app-breadcrumb>
 <!-- breadcrumb End -->
 
 <!-- section start -->
-<section class="p-0" *ngIf="!orderDetails && !loading">
+<section class="p-0" *ngIf="orders.length == 0 && !loading">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -25,7 +25,7 @@
 <!-- Section ends -->
 
 <!-- thank-you section start -->
-<section class="section-b-space light-layout" *ngIf="orderDetails">
+<section class="section-b-space light-layout" *ngIf="orders.length > 0">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -33,7 +33,7 @@
           <i class="fa fa-check-circle" aria-hidden="true"></i>
           <h2>thank you</h2>
           <p>Order Placed Successfully</p>
-          <p>Transaction ID:{{ orderDetails.orderId }}</p>
+          <!-- <p>Transaction ID:{{ orderDetails.orderId }}</p> -->
           <a [routerLink]="'/home/fashion'" class="btn btn-solid"
             >Continue Shopping</a
           >
@@ -45,9 +45,13 @@
 <!-- Section ends -->
 
 <!-- order-detail section start -->
-<section class="section-b-space" *ngIf="orderDetails">
+<section class="section-b-space" *ngIf="orders.length > 0">
   <div class="container">
-    <div class="row">
+    <div
+      class="row"
+      [ngClass]="{ 'border-bottom': orders.length - 1 > i }"
+      *ngFor="let orderDetails of orders; let i = index"
+    >
       <div class="col-lg-6">
         <div class="product-order">
           <h3>your order details</h3>
