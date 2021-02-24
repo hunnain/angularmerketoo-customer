@@ -369,6 +369,21 @@
                       </div>
                     </li>
                   </ul>
+                  <ul class="total" *ngIf="coupons.length">
+                    <li>
+                      <div class="field-label">Select Coupon</div>
+                      <select
+                        name="selectedCoupon"
+                        [(ngModel)]="selectedCoupon"
+                        id="selectedCoupon"
+                      >
+                        <option value="none" selected>None</option>
+                        <option [ngValue]="cop" *ngFor="let cop of coupons">
+                          {{ cop.couponTitle }}-{{ cop.couponCode }}
+                        </option>
+                      </select>
+                    </li>
+                  </ul>
                   <ul class="total">
                     <li>
                       Total

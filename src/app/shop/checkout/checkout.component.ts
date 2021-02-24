@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { SignalrService } from 'src/app/shared/services/signalr.service';
 import { CommonService } from 'src/app/shared/services/common.service';
+import { CouponService } from 'src/app/shared/services/coupon.service';
 
 declare var Stripe;
 
@@ -45,9 +46,12 @@ export class CheckoutComponent implements OnInit {
     public productService: ProductService,
     private orderService: OrderService,
     private signalrService: SignalrService,
+    private couponService: CouponService,
     private cs: CommonService,
     private modalService: NgbModal
   ) {
+    this.fetchCoupons();
+
     this.signalrService.weChatResponse.subscribe(res => {
       if (res && this.payment === 'weChat') {
         this.onWeChatSunccess(res);
@@ -102,9 +106,18 @@ export class CheckoutComponent implements OnInit {
     this.signalrService.weChatResponse.unsubscribe();
   }
 
+  coupons: Array<any> = [];
+  selectedCoupon;
+  fetchCoupons() {
+    this.couponService.getAllCoupons().subscribe(res => {
+      if (res && res['body']) {
+        this.coupons = res['body'];
+      }
+    })
+  }
+
   isSame = false;
   changeisSameAddress(ev) {
-
     if (ev) {
       this.checkoutForm.setValue({ ...this.useraddress, otherCountry: '', note: '' });
     } else {
@@ -192,7 +205,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   submitCheckout() {
-    console.log(this.payment, this.referenceNumber);
     if (this.payment === 'card' || this.payment === 'alipay') {
       this.createOrderWithStripe();
     } else if (this.payment === 'FPS') {
@@ -222,23 +234,18 @@ export class CheckoutComponent implements OnInit {
       data['referenceNumber'] = this.referenceNumber;
     }
 
+    if (this.selectedCoupon && Object.keys(this.selectedCoupon).length) {
+      const { couponKey, couponCode } = this.selectedCoupon;
+      data['couponInfo'] = { couponKey, couponCode };
+    }
+
     return data;
   }
 
 
   createOrderWithStripe() {
-    let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
-    let data = {
-      ...this.checkoutForm.value,
-      paymentMethodType: this.payment,
-      mode: "payment",
-      cartItems: prods,
-      IsInternationalShipping: this.IsInternationalShipping
-    }
-    console.log("createding order data", data)
-    // console.log("stripe", this.stripe)
     this.loading = true;
-    this.orderService.stripeCheckout(data).subscribe(res => {
+    this.orderService.stripeCheckout(this.formatData).subscribe(res => {
       console.log(res)
       this.loading = false;
       if (res['id']) {
