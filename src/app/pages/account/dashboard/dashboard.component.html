@@ -574,7 +574,9 @@
               </div>
               <div class="page-main-content">
                 <div class="row">
-                  <div *ngIf="!credits">No credits available</div>
+                  <div *ngIf="!credits" class="col-12">
+                    No credits available
+                  </div>
                   <div class="col-12" *ngIf="credits">
                     <ul>
                       <li style="display: block">
@@ -600,64 +602,42 @@
                 <h2>{{ "Notifications" | translate }}</h2>
               </div>
               <div class="page-main-content">
-                <div class="row">
+                <div class="row" *ngIf="notifications.length">
                   <div
-                    style="border-bottom: 1px solid #eeeeef"
-                    class="col-sm-12"
+                    class="col-sm-12 notify-container"
+                    *ngFor="let notify of notifications; let i = index"
                   >
-                    <a href="javascript:void(0)">
-                      <img
-                        style="width: 82%"
-                        src="assets/images/notification.jpg"
-                        class="img-fluid center"
-                        alt=""
-                      />
-                    </a>
+                    <div class="notify-section">
+                      <div>
+                        <img
+                          src="assets/images/user-placeholder.png"
+                          alt="img here"
+                          style="width: 50px"
+                          class="image img-fluid rounded-circle blur-up lazyloaded"
+                        />
+                      </div>
+                      <div class="notify-content">
+                        <div class="notify-type">
+                          <b>{{ formatType(notify?.type) }}</b>
+                        </div>
+                        <div
+                          class="notify-text"
+                          [innerHTML]="notify.text"
+                        ></div>
+                        <div>
+                          <!-- <div>{{notify?.sender?.name}}</div> -->
+                          <div class="notify-time">
+                            {{ formatTime(notify?.creationTime) }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr *ngIf="i < notifications.length - 1" />
                   </div>
                 </div>
-                <div class="row">
-                  <div
-                    style="border-bottom: 1px solid #eeeeef"
-                    class="col-sm-12"
-                  >
-                    <a href="javascript:void(0)">
-                      <img
-                        style="width: 82%"
-                        src="assets/images/notification.jpg"
-                        class="img-fluid center"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    style="border-bottom: 1px solid #eeeeef"
-                    class="col-sm-12"
-                  >
-                    <a href="javascript:void(0)">
-                      <img
-                        style="width: 82%"
-                        src="assets/images/notification.jpg"
-                        class="img-fluid center"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    style="border-bottom: 1px solid #eeeeef"
-                    class="col-sm-12"
-                  >
-                    <a href="javascript:void(0)">
-                      <img
-                        style="width: 82%"
-                        src="assets/images/notification.jpg"
-                        class="img-fluid center"
-                        alt=""
-                      />
-                    </a>
+                <div class="row" *ngIf="!notifications.length">
+                  <div class="col-sm-12">
+                    <p>No notification here</p>
                   </div>
                 </div>
               </div>
