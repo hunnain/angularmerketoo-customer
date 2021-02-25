@@ -272,6 +272,7 @@
               </button> -->
               <div class="text-center mt-2">
                 <app-button
+                  [btnType]="'submit'"
                   [loading]="loginLoading"
                   [disabled]="loginForm.invalid"
                   [btnText]="'Login'"
@@ -387,6 +388,7 @@
               </button> -->
               <div class="text-center mt-2">
                 <app-button
+                  [btnType]="'submit'"
                   [loading]="signupLoading"
                   [disabled]="signupForm.invalid"
                   [btnText]="'register'"
