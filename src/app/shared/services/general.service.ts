@@ -16,4 +16,8 @@ export class GeneralService {
         return this.cs.get(`common/get-random-campaign`);
     }
 
+    getNotifications(query = "") {
+        return this.cs.get(`notifications/get-notifications?${query}`);
+    }
+
 }

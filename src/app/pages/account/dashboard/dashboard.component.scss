@@ -48,3 +48,22 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 10px;
 }
+
+// notification styling
+.notify-container {
+  .notify-section {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    .notify-content {
+      padding: 10px;
+      .notify-text {
+        padding: 5px 0px;
+      }
+      .notify-time {
+        font-weight: 500;
+        color: darkgray;
+      }
+    }
+  }
+}

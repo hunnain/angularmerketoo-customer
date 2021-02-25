@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import * as moment from "moment";
 import { AuthService } from "src/app/core/auth.service";
@@ -8,6 +8,7 @@ import { UserService } from "src/app/core/user.service";
 import { ProfileModalComponent } from "src/app/shared/components/modal/profile/profile.component";
 import { CommonService } from "src/app/shared/services/common.service";
 import { CouponService } from "src/app/shared/services/coupon.service";
+import { GeneralService } from "src/app/shared/services/general.service";
 
 @Component({
   selector: "app-dashboard",
@@ -32,16 +33,28 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private cs: CommonService,
     private couponService: CouponService,
+    private generalService: GeneralService,
     private router: Router,
     private modalService: NgbModal,
-    public formbuilder: FormBuilder
+    public formbuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.fetchDataFromLS();
     this.fetchAllCoupons();
     this.fetchStoreCredits();
+    this.fetchNotifications();
     this.cs.isLoading.subscribe((loading) => {
       this.loading = loading;
     });
+
+    this.route.queryParams.subscribe(params => {
+      console.log("params", params)
+      if (params && params.page) {
+        this.selectedMenu = params.page;
+      } else {
+        this.selectedMenu = 'account_info';
+      }
+    })
   }
 
   fetchDataFromLS() {
@@ -238,7 +251,7 @@ export class DashboardComponent implements OnInit {
 
 
   /************************ Store Credit  *****************************/
-  credits = [];
+  credits;
   fetchStoreCredits() {
     this.couponService.getStoreCredit().subscribe(res => {
       if (res && res['body']) {
@@ -249,4 +262,27 @@ export class DashboardComponent implements OnInit {
   }
 
   /************************ Store Credit End  *****************************/
+
+  /************************ Notifications  *****************************/
+  notifications = [];
+  fetchNotifications() {
+    let query = ""
+    this.generalService.getNotifications(query).subscribe(res => {
+      console.log("notifications", res)
+      if (res && res['body']) {
+        this.notifications = res['body'];
+      }
+    })
+  }
+
+  formatType(type) {
+    let formattedType = type.match(/[A-Z][a-z]+|[0-9]+/g).join(" ")
+    return formattedType;
+  }
+
+  formatTime(date) {
+    return moment(date).fromNow();
+  }
+
+  /************************ Notifications End  *****************************/
 }
