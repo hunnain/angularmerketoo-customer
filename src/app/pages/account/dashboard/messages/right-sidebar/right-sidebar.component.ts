@@ -11,8 +11,13 @@ export class RightSidebarComponent implements OnInit {
 
   @Input() allUsers: Array<any> = [];
   @Input() onlineUsers: Array<any> = [];
+  @Input() loading: boolean = false;
 
 
+  public isSeller: boolean = true;
+
+  public admins: Array<any> = []
+  public sellers: Array<any> = []
   constructor() { }
 
   // public users = [
@@ -66,8 +71,14 @@ export class RightSidebarComponent implements OnInit {
       let user_prev = userChange.previousValue;
       let user_curr = userChange.currentValue;
 
-      if (!user_prev || user_curr !== user_prev) {
+      if (!user_prev || JSON.stringify(user_curr) !== JSON.stringify(user_prev)) {
+        console.log("onchange all users")
         this.allUsers = user_curr;
+        if (this.allUsers.length) {
+          const groupz = this.groupBy(this.allUsers);
+          this.admins = groupz['admin'] || []
+          this.sellers = groupz['seller'] || []
+        }
       }
     }
   }
@@ -78,11 +89,25 @@ export class RightSidebarComponent implements OnInit {
     this.selectUser.emit(val)
   }
 
+  changeSellerAdmin() {
+    this.isSeller = !this.isSeller;
+  }
+
   userStatus(userId) {
     if (this.onlineUsers.length && this.onlineUsers.includes(userId)) {
       return true;
     }
     return false;
+  }
+
+  groupBy(users) {
+    console.log('💻', 'group by', users);
+    let group = users.reduce((r, a) => {
+      r[a.role.toLowerCase()] = [...r[a.role.toLowerCase()] || [], a];
+      return r;
+    }, {});
+
+    return group;
   }
 
 }

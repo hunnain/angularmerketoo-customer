@@ -17,7 +17,9 @@ export class SignalrService {
   private base_url = environment.base_url;
   private signalr_base_url = environment.signlr_base_url;
 
-  private hubConnection: HubConnection
+  private ChatHub: HubConnection
+  private NotificationsHub: HubConnection
+
   public messages: any[] = [];
   public onlineUsers: any[] = [];
 
@@ -53,7 +55,7 @@ export class SignalrService {
   }
 
   public sendMessageToHub(message: string) {
-    var promise = this.hubConnection.invoke("BroadcastAsync", this.buildChatMessage(message))
+    var promise = this.ChatHub.invoke("BroadcastAsync", this.buildChatMessage(message))
       .then(() => { console.log('message sent successfully to hub'); })
       .catch((err) => console.log('error while sending a message to hub: ' + err));
 
@@ -61,6 +63,7 @@ export class SignalrService {
   }
 
   public getChatMessage(id) {
+    this.messages = [];
     return this.cs.get(`chat/get-chat/${id}`)
       .pipe(map(res => {
         console.log("sucessfully get messages", res)
@@ -87,19 +90,23 @@ export class SignalrService {
   private buildChatMessage(message: string): chatMesage {
     return {
       text: message,
-      receiverId: this.hubConnection.connectionId
+      receiverId: this.ChatHub.connectionId
     };
   }
 
   private startConnection(token, hubName) {
-    this.hubConnection = this.getConnection(token, hubName);
+    this[hubName] = this.getConnection(token, hubName);
 
-    this.hubConnection.start()
+    this[hubName].start()
       .then(() => {
         console.log('connection started')
         this.isConnected.next(true)
       })
       .catch((err) => console.log('error while establishing signalr connection: ' + err))
+  }
+
+  public disconnection(hubType) {
+    this[hubType].stop();
   }
 
   private addListeners() {
@@ -111,14 +118,14 @@ export class SignalrService {
     //   console.log("message received from Hub")
     //   this.messages.push(data);
     // })
-    this.hubConnection.on("ConnectedUserList", res => {
+    this.ChatHub.on("ConnectedUserList", res => {
       console.log("new user connected list", res);
       if (res) {
         this.onlineUsers = res;
         // console.log('💻', 'online users', this.onlineUsers);
       }
     })
-    this.hubConnection.on("UserConnected", res => {
+    this.ChatHub.on("UserConnected", res => {
       console.log("new user connected", res);
       if (res) {
         if (!this.onlineUsers.includes(res)) {
@@ -130,11 +137,11 @@ export class SignalrService {
     // this.hubConnection.on("ReceiveNotifications", (userId: string, message: string) => {
     //   console.log("ReceiveNotifications", userId, message);
     // })
-    this.hubConnection.on("ReceiveMessage", (obj) => {
+    this.ChatHub.on("ReceiveMessage", (obj) => {
       console.log("ReceiveMessage from hub", obj);
       this.messages.push(obj);
     })
-    this.hubConnection.on("UserDisconnected", (userId: string, message: string) => {
+    this.ChatHub.on("UserDisconnected", (userId: string, message: string) => {
       console.log("UserDisconnected", userId, message);
       if (userId) {
         if (this.onlineUsers.includes(userId)) {
@@ -147,13 +154,13 @@ export class SignalrService {
   }
 
   private addNotificationListeners() {
-    this.hubConnection.on("ReceiveNotifications", (res) => {
+    this.NotificationsHub.on("ReceiveNotifications", (res) => {
       console.log("ReceiveNotifications", res);
       if (res) {
         this.toastrService.success(res.Text, res.Type);
       }
     })
-    this.hubConnection.on("WeChatPaymentStatus", (text, sourceId, status) => {
+    this.NotificationsHub.on("WeChatPaymentStatus", (text, sourceId, status) => {
       console.log("WeChatPaymentStatus", text, sourceId, status);
       if (text && sourceId && status) {
         this.weChatResponse.emit({ text, sourceId, status });

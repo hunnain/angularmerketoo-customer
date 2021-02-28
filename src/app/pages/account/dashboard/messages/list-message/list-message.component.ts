@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SellerService } from 'src/app/shared/services/seller.service';
 import { SignalrService } from 'src/app/shared/services/signalr.service';
+import { ChatBoxComponent } from '../chat-box/chat-box.component';
 
 @Component({
   selector: 'app-list-message',
@@ -8,10 +9,13 @@ import { SignalrService } from 'src/app/shared/services/signalr.service';
   styleUrls: ['./list-message.component.scss']
 })
 export class ListMessageComponent implements OnInit {
+  @ViewChild('chatBox') chatBox: ChatBoxComponent;
 
   public selectedUser: any = {};
   public allUsers: any[] = [];
   public messages: any[] = [];
+  public loadingMessages: boolean = false;
+  public loadingUsers: boolean = false;
   public openChatScreen: boolean = false;
 
   public dummyMessages = [
@@ -43,12 +47,18 @@ export class ListMessageComponent implements OnInit {
     this.createConnection()
   }
 
+  ngOnDestroy() {
+    this.signalRService.disconnection('ChatHub')
+  }
+
   createConnection() {
     this.signalRService.connect();
   }
 
   getSellersList() {
+    this.loadingUsers = true;
     return this.sellerService.getChatList().subscribe(res => {
+      this.loadingUsers = false;
       if (res && res['body'] && res['body'].senderList) {
         this.allUsers = res['body'].senderList;
       }
@@ -61,16 +71,18 @@ export class ListMessageComponent implements OnInit {
     this.getMessages(user['senderId'])
   }
 
-  sendMessage(msg): void {
+  sendMessage({ msg, images }): void {
     let data = {
       text: msg,
-      receiverId: this.selectedUser.senderId
+      receiverId: this.selectedUser.senderId,
+      images
     }
     // you can send the messge direclty to the hub or use the api controller.
     // choose wisely
-    this.signalRService.sendMessageToApi(data).subscribe({
-      next: _ => this.text = '',
-      error: (err) => console.error(err)
+    this.signalRService.sendMessageToApi(data).subscribe(res => {
+      if (res) {
+        this.chatBox.resetState();
+      }
     });
 
     // this.signalRService.sendMessageToHub(data).subscribe({
@@ -81,7 +93,14 @@ export class ListMessageComponent implements OnInit {
 
 
   getMessages(id) {
-    this.signalRService.getChatMessage(id).subscribe();
+    this.loadingMessages = true
+    this.signalRService.getChatMessage(id).subscribe(res => {
+      console.log("get component res get messages", res)
+      this.loadingMessages = false
+      // if (res) {
+      // this.messages = res['body'].messages;
+      // }
+    });
   }
 
 }
