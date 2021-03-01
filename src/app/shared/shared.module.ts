@@ -9,9 +9,10 @@ import { LazyLoadImageModule, scrollPreset } from "ng-lazyload-image";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { TranslateModule } from "@ngx-translate/core";
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { DropzoneModule, DROPZONE_CONFIG, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { MaterialModule } from "../material.module";
-import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 
@@ -54,6 +55,7 @@ import { SizeModalComponent } from "./components/modal/size-modal/size-modal.com
 import { AgeVerificationComponent } from "./components/modal/age-verification/age-verification.component";
 import { ProfileModalComponent } from "./components/modal/profile/profile.component";
 import { ReturnModalComponent } from "./components/modal/return/return.component";
+import { LoaderComponent } from "./components/loader/loader.component";
 
 // Skeleton Loader Components
 import { SkeletonProductBoxComponent } from "./components/skeleton/skeleton-product-box/skeleton-product-box.component";
@@ -67,6 +69,11 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
 
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  maxFilesize: 50,
+  url: 'https://httpbin.org/post',
+};
 
 @NgModule({
   declarations: [
@@ -106,7 +113,8 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     RatingComponent,
     FeatherIconsComponent,
     CropperComponent,
-    ButtonComponent
+    ButtonComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -122,7 +130,8 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     }),
     NgxSkeletonLoaderModule,
     TranslateModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    DropzoneModule
   ],
   exports: [
     CommonModule,
@@ -169,7 +178,15 @@ import { DiscountPipe } from "./pipes/discount.pipe";
     FeatherIconsComponent,
     CropperComponent,
     ButtonComponent,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    LoaderComponent,
+    DropzoneModule
   ],
+  providers: [
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    }
+  ]
 })
 export class SharedModule { }

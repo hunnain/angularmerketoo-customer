@@ -24,19 +24,97 @@
           </ul>
         </div>
         <div class="card-body content" #scrollMe [scrollTop]="onScroll">
+          <div
+            style="display: flex; align-items: center; justify-content: center"
+            *ngIf="loading"
+          >
+            <app-loader [loading]="loading"></app-loader>
+          </div>
           <ul>
             <li
-              [ngClass]="{ right: msg.receiverId === user.senderId }"
               style="width: 100%"
+              class="msg-list"
+              [ngClass]="{
+                right: msg.receiverId === user.senderId,
+                left: msg.receiverId !== user.senderId
+              }"
               *ngFor="let msg of messages"
             >
-              <span class="msg" *ngIf="msg.text">{{ msg.text }}</span>
-              <span class="msg" *ngIf="msg.Text">{{ msg.Text }}</span>
+              <div
+                class="msg-container"
+                [style.text-align]="
+                  msg.receiverId === user.senderId
+                    ? '-webkit-right'
+                    : '-webkit-left'
+                "
+              >
+                <span
+                  class="msg"
+                  [style.display]="msgContainerStyle(msg)"
+                  *ngIf="msg.text || msg.images.length"
+                >
+                  <span>{{ msg.text }}</span>
+                  <span
+                    class="img-list"
+                    *ngIf="msg.images && msg.images.length"
+                  >
+                    <span class="img-container" *ngFor="let img of msg.images">
+                      <a
+                        style="position: absolute; right: 0"
+                        class="download-icon"
+                        [href]="img"
+                        download=""
+                        target="_blank"
+                      >
+                        <app-feather-icons
+                          [icon]="'download'"
+                          style="color: #f2917e !important"
+                          class="font-primary"
+                        ></app-feather-icons>
+                        <!-- (click)="downloadImage(img)" -->
+                      </a>
+                      <img
+                        class="img-fluid img-90 rounded blur-up lazyloaded"
+                        [src]="img ? img : 'assets/images/product-list/001.jpg'"
+                        alt="chat-image"
+                      />
+                      <br />
+                    </span>
+                  </span>
+                </span>
+              </div>
+              <!-- <span class="msg" *ngIf="msg.text">{{ msg.text }}</span> -->
+              <!-- <span class="msg" *ngIf="msg.Text">{{ msg.Text }}</span> -->
             </li>
           </ul>
         </div>
-        <div class="action-footer">
-          <form class="needs-validation">
+        <div
+          class="action-footer"
+          [style.height]="enableAttachment ? 'auto' : '45px'"
+          [style.position]="enableAttachment ? 'initial' : 'absolute'"
+        >
+          <div class="attachment-container" *ngIf="enableAttachment">
+            <span class="close-btn">
+              <app-feather-icons
+                [icon]="'x-circle'"
+                class="font-primary"
+                style="color: #f2917e !important"
+                (click)="showDropzone(false)"
+              ></app-feather-icons>
+            </span>
+            <div class="row">
+              <div class="col-12">
+                <dropzone
+                  [config]="config"
+                  [message]="'Click or drag images here to upload'"
+                  (error)="onUploadError($event)"
+                  (addedFile)="fileAdded($event)"
+                  (removedFile)="removeFile($event)"
+                ></dropzone>
+              </div>
+            </div>
+          </div>
+          <form class="needs-validation" (submit)="sendMessage()">
             <div
               style="
                 display: grid;
@@ -50,6 +128,7 @@
                     [icon]="'paperclip'"
                     class="font-primary"
                     style="color: #f2917e !important"
+                    (click)="showDropzone(true)"
                   ></app-feather-icons>
                 </span>
               </div>
@@ -68,7 +147,7 @@
                     class="font-primary"
                     style="color: #f2917e !important"
                     [ngStyle]="{ 'pointer-events': !msg ? 'none' : 'auto' }"
-                    (click)="sendMesssage()"
+                    (click)="sendMessage()"
                   ></app-feather-icons>
                 </span>
               </div>

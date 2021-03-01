@@ -6,6 +6,7 @@
         <app-right-sidebar
           [onlineUsers]="signalRService.onlineUsers"
           [allUsers]="allUsers"
+          [loading]="loadingUsers"
           (selectUser)="openChat($event)"
         ></app-right-sidebar>
       </div>
@@ -15,9 +16,11 @@
         Click on user to start chat
       </div>
       <app-chat-box
+        #chatBox
         *ngIf="openChatScreen"
         [user]="selectedUser"
         [onlineUsers]="signalRService.onlineUsers"
+        [loading]="loadingMessages"
         [messages]="signalRService.messages"
         (sendMsg)="sendMessage($event)"
       ></app-chat-box>
