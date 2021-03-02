@@ -36,6 +36,7 @@ export class DesignerPageComponent implements OnInit {
   public sellerInfo: Seller;
 
   public message: string = "";
+  public activeTab: number = 1;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

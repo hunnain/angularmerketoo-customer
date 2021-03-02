@@ -94,6 +94,21 @@
                     </owl-carousel-o>
                   </div>
                 </div>
+                <div class="col-12 p-0">
+                  <div class="slider-nav">
+                    <div class="border-product">
+                      <h6
+                        class="product-title"
+                        style="font-weight: 700; color: #222222"
+                      >
+                        Product Details
+                      </h6>
+                      <p>
+                        {{ product?.description }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
@@ -150,7 +165,7 @@
                       "
                     >
                       select size
-                      <span>
+                      <span *ngIf="product?.customImageUrl">
                         <a
                           href="javascrip:void(0)"
                           (click)="SizeChart.openModal()"
@@ -194,7 +209,7 @@
                       class="avalibility"
                       *ngIf="counter <= product?.quantity"
                     >
-                      <span>In Stock</span>
+                      <span>In Stock: {{ product?.quantity }}</span>
                     </h5>
                     <h5 class="avalibility" *ngIf="counter > product?.quantity">
                       <span>Out of Stock</span>
@@ -264,11 +279,10 @@
                     <br />
                     <div [innerHTML]="product?.promotions"></div>
                   </div>
-                  <div class="border-product">
+                  <!-- <div class="border-product">
                     <h6 class="product-title">product details</h6>
-                    <p>Stock: {{ product?.quantity }}</p>
                     <p>{{ product?.description?.substring(0, 200) + "..." }}</p>
-                  </div>
+                  </div> -->
                   <div class="border-product">
                     <h6 class="product-title mb-2">About Seller</h6>
                     <div style="display: flex; align-items: center">
@@ -321,12 +335,12 @@
             <div class="row">
               <div class="col-sm-12 col-lg-12">
                 <ngb-tabset [type]="'tabs'" class="nav-material">
-                  <ngb-tab>
+                  <!-- <ngb-tab>
                     <ng-template ngbTabTitle>Description</ng-template>
                     <ng-template ngbTabContent>
                       <p>{{ product.description }}</p>
                     </ng-template>
-                  </ngb-tab>
+                  </ngb-tab> -->
                   <!-- <ngb-tab>
                     <ng-template ngbTabTitle>Video</ng-template>
                     <ng-template ngbTabContent>
