@@ -10,6 +10,7 @@ import { CommonService } from "../shared/services/common.service";
 export class AuthService {
 
   public openLoginModal: EventEmitter<any> = new EventEmitter(false);
+  public isLoggedOut: EventEmitter<any> = new EventEmitter(false);
   constructor(
     public afAuth: AngularFireAuth,
     private commonService: CommonService
