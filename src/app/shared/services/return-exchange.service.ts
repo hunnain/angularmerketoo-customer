@@ -11,8 +11,8 @@ export class ReturnExchangeService {
 
   constructor(private router: Router, private cs: CommonService) { }
 
-  getAllReturnOrder() {
-    return this.cs.get(`return-exchange/get-return-exchange-by-customer-id`)
+  getAllReturnOrder(query = "") {
+    return this.cs.get(`return-exchange/get-return-exchange-by-customer-id?${query}`)
   }
 
   returnOrder(data) {

@@ -138,7 +138,7 @@
   </h4>
 </div>
 <div class="row" *ngIf="orders.length">
-  <div class="col-sm-12">
+  <div class="col-sm-12" id="returnID">
     <table class="table cart-table table-responsive-xs">
       <thead>
         <tr class="table-head">
@@ -191,6 +191,12 @@
         </tr>
       </tbody>
     </table>
+    <div
+      *ngIf="!loading && orders.length && paginate && paginate.TotalCount > 8"
+    >
+      <app-pagination [paginate]="paginate" (setPage)="setPage($event)">
+      </app-pagination>
+    </div>
   </div>
 </div>
 <!-- <div class="row wishlist-buttons" *ngIf='orders.length'>

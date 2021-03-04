@@ -70,8 +70,8 @@ export class OrderService {
     return this.cs.get(`order/get-orders-by-payment-key/${id}`);
   }
 
-  fetchMyOrders() {
-    return this.cs.get(`order/GetOrdersByCustomer`);
+  fetchMyOrders(query = "") {
+    return this.cs.get(`order/GetOrdersByCustomer?${query}`);
   }
 
 }

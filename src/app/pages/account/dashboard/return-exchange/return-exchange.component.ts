@@ -1,3 +1,4 @@
+import { ViewportScroller } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import * as moment from "moment";
 import { ReturnExchangeService } from "src/app/shared/services/return-exchange.service";
@@ -17,7 +18,10 @@ export class ReturnExchangeComponent implements OnInit {
   public orders = [];
   public loading: boolean = false;
 
-  constructor(private returnService: ReturnExchangeService) {
+  constructor(
+    private returnService: ReturnExchangeService,
+    private viewScroller: ViewportScroller
+  ) {
     this.getReturnOrders()
   }
 
@@ -56,4 +60,15 @@ export class ReturnExchangeComponent implements OnInit {
   //     this.imgs.push(img);
   //   };
   // }
+
+  // order Pagination
+  public paginate: any = {}; // Pagination use only
+  public pageNo: number = 1;
+  setPage(page: number) {
+    console.log(page);
+    this.pageNo = page;
+    this.getReturnOrders();
+    this.viewScroller.setOffset([120, 120]);
+    this.viewScroller.scrollToAnchor('returnID'); // Anchore Link
+  }
 }

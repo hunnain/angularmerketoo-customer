@@ -5,6 +5,7 @@ import { OrderService } from 'src/app/shared/services/order.service';
 import { Order } from 'src/app/shared/classes/order';
 import * as moment from 'moment';
 import { ReturnModalComponent } from 'src/app/shared/components/modal/return/return.component';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-order-list',
@@ -21,17 +22,22 @@ export class OrderlistComponent implements OnInit {
   constructor(
     private router: Router,
     public productService: ProductService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private viewScroller: ViewportScroller
   ) {
     this.getOrders();
   }
 
   getOrders() {
     this.loading = true;
-    this.orderService.fetchMyOrders().subscribe(res => {
+    this.orders = [];
+    let query = `pageNumber=${this.pageNo}`
+    this.orderService.fetchMyOrders(query).subscribe(res => {
       this.loading = false;
       if (res && res['body']) {
         this.orders = res['body'];
+        let paginate = JSON.parse(res['headers'].get('X-Pagination'));
+        this.paginate = paginate;
       }
     })
   }
@@ -58,6 +64,19 @@ export class OrderlistComponent implements OnInit {
 
   onModalSave(data) {
     console.log("data", data)
+  }
+
+
+  // order Pagination
+  public paginate: any = {}; // Pagination use only
+  public pageNo: number = 1;
+  setPage(page: number) {
+    console.log(page);
+    this.pageNo = page;
+    this.getOrders();
+    // this.viewScroller.setOffset([0, 0]);
+    this.viewScroller.setOffset([120, 120]);
+    this.viewScroller.scrollToAnchor('orderID'); // Anchore Link
   }
 
 }
