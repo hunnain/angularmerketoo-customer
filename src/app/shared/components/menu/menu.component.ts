@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
   public menuItems: Menu[];
 
   constructor(private router: Router, public navServices: NavService) {
-    this.navServices.items.subscribe(menuItems => this.menuItems = menuItems );
+    this.navServices.items.subscribe(menuItems => this.menuItems = menuItems);
     this.router.events.subscribe((event) => {
       this.navServices.mainMenuToggle = false;
     });
@@ -23,11 +23,21 @@ export class MenuComponent implements OnInit {
 
   mainMenuToggle(): void {
     this.navServices.mainMenuToggle = !this.navServices.mainMenuToggle;
+    this.menuItems.map(item => { item.active = false })
   }
 
   // Click Toggle menu (Mobile)
   toggletNavActive(item) {
-    item.active = !item.active;
+    // item.active = !item.active;
+    this.menuItems.map(menu => {
+      if (menu.title === item.title) {
+        menu.active = !menu.active;
+      } else {
+        menu.active = false;
+      }
+    })
+    // console.log('💻', 'toggle', item);
+    // console.log('💻', 'items', this.menuItems);
   }
 
 }

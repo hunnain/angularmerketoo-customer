@@ -72,6 +72,7 @@
 
         <div
           class="mega-menu-container"
+          [ngClass]="{ openSubMenu: menuItem.active }"
           *ngIf="menuItem.megaMenu && menuItem.children"
         >
           <div class="container">
@@ -84,10 +85,10 @@
                   <div class="menu-title">
                     <h5>
                       {{ childrenItem.title | translate }}
-                      <span
+                      <!-- <span
                         class="sub-arrow"
                         *ngIf="childrenItem.children"
-                      ></span>
+                      ></span> -->
                     </h5>
                   </div>
                   <div class="menu-content opensubmegamenu">
