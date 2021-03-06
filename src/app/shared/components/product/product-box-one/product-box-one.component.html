@@ -89,6 +89,11 @@
       <div style="margin-bottom: 4%; font-weight: bold">
         <span class="ads-style">AD . Chris John</span>
       </div>
+      <div style="margin-bottom: 4%; font-weight: bold">
+        <span class="ads-style">
+          <app-rating [rating]="product?.rating" [readonly]="true"></app-rating>
+        </span>
+      </div>
       <h4>
         {{
           product?.price * currency?.price

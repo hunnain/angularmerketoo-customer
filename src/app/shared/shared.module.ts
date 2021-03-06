@@ -68,6 +68,7 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
+import { PaginationComponent } from "../shop/collection/widgets/pagination/pagination.component";
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -114,7 +115,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FeatherIconsComponent,
     CropperComponent,
     ButtonComponent,
-    LoaderComponent
+    LoaderComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -178,9 +180,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FeatherIconsComponent,
     CropperComponent,
     ButtonComponent,
+    PaginationComponent,
     NgxQRCodeModule,
     LoaderComponent,
-    DropzoneModule
+    DropzoneModule,
   ],
   providers: [
     {

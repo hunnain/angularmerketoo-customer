@@ -18,6 +18,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './checkout/success/success.component';
+import { FailedPageComponent } from './checkout/failed-page/failed-page.component';
 
 import { Resolver } from '../shared/services/resolver.service';
 import { DesignerPageComponent } from './collection/designer-page/designer-page.component';
@@ -128,6 +129,11 @@ const routes: Routes = [
     path: 'checkout/success',
     component: SuccessComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout/failed',
+    component: FailedPageComponent,
+    // canActivate: [AuthGuard]
   }
 ];
 

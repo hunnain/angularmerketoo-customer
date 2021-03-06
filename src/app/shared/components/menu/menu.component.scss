@@ -1,3 +1,24 @@
 ::ng-deep header .main-navbar .nav-menu > li > a {
   padding-right: 55px !important;
 }
+
+::ng-deep .mega-menu-container {
+  opacity: 0.9;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px #f8f9fa !important;
+}
+
+@media (max-width: 1199px) {
+  ::ng-deep .mega-menu-container {
+    opacity: 1;
+    // border-radius: 8px;
+    // box-shadow: 1px 1px 5px #f8f9fa !important;
+  }
+}
+
+.openSubMenu {
+  display: block !important;
+}
+.closeSubMenu {
+  display: block !important;
+}

@@ -18,13 +18,18 @@
     {{ "You have not create any order yet, create some order." | translate }}
   </h4>
 </div>
+<div
+  style="display: flex; align-items: center; justify-content: center"
+  *ngIf="loading"
+>
+  <app-loader [loading]="loading"></app-loader>
+</div>
 <div class="row" *ngIf="orders.length">
-  <div class="col-sm-12">
+  <div class="col-sm-12" id="orderID">
     <table class="table cart-table table-responsive-xs">
       <thead>
         <tr class="table-head">
           <th scope="col">{{ "Order Id" | translate }}</th>
-          <!-- <th scope="col">{{ "Image" | translate }}</th> -->
           <th scope="col">{{ "Product" | translate }}</th>
           <th scope="col">{{ "Payment Status" | translate }}</th>
           <th scope="col">{{ "Payment Method" | translate }}</th>
@@ -63,13 +68,18 @@
               (click)="returnOrder(order)"
               class="cart"
             >
-              <!-- <i class="ti-back-left"></i> -->
               {{ "Return & Refund" | translate }}
             </a>
           </td>
         </tr>
       </tbody>
     </table>
+    <div
+      *ngIf="!loading && orders.length && paginate && paginate.TotalCount > 8"
+    >
+      <app-pagination [paginate]="paginate" (setPage)="setPage($event)">
+      </app-pagination>
+    </div>
   </div>
 </div>
 <app-return-modal

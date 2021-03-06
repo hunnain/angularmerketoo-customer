@@ -89,10 +89,22 @@ export class SettingsComponent implements OnInit {
       this.loginLoading = res;
       this.signupLoading = res;
     })
+
+    this.authService.isLoggedOut.subscribe(res => {
+      if (res) {
+        this.menu = true;
+        this.authService.isLoggedOut.emit(false);
+      }
+    })
   }
 
   ngOnInit(): void {
     this.lan = true;
+  }
+
+  ngOnDestroy() {
+    // this.authService.isLoggedOut.unsubscribe();
+    // this.cs.isLoading.unsubscribe();
   }
 
   checkLoggedIn() {

@@ -188,164 +188,238 @@
           </div>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-lg-3">
-          <div class="collection-filter" [class.openFilterbar]="mobileSidebar">
-            <!-- side-bar colleps block stat -->
-            <div class="collection-filter-block">
-              <div
-                class="collection-mobile-back"
-                (click)="toggleMobileSidebar()"
-              >
-                <span class="filter-back">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i> back
-                </span>
-              </div>
-              <!-- Category filter start -->
-              <app-categories></app-categories>
-            </div>
-            <!-- silde-bar colleps block end here -->
-            <!-- side-bar colleps block stat -->
-            <div class="collection-filter-block">
-              <!-- brand filter start -->
-              <!-- <app-brands
-                [products]="products"
-                [brands]="brands"
-                (brandsFilter)="updateFilter($event)"
-              >
-              </app-brands> -->
-              <!-- color filter start here -->
-              <app-colors
-                [products]="products"
-                [colors]="colors"
-                (colorsFilter)="updateFilter($event)"
-              >
-              </app-colors>
-              <!-- size filter start here -->
-              <app-size
-                [products]="products"
-                [size]="size"
-                (sizeFilter)="updateFilter($event)"
-              >
-              </app-size>
-              <!-- price filter start here -->
-              <app-price
-                [min]="minPrice"
-                [max]="maxPrice"
-                (priceFilter)="updateFilter($event)"
-              >
-              </app-price>
-            </div>
-            <!-- silde-bar colleps block end here -->
-            <!-- side-bar single product slider start -->
-            <!-- <app-product-box-vertical-slider [title]="'New Products'">
-                        </app-product-box-vertical-slider> -->
-            <!-- side-bar single product slider end -->
-            <!-- side-bar banner start here -->
-            <!-- <div class="collection-sidebar-banner">
-                            <a [routerLink]="['/shop/collection/left/sidebar']">
-                                <img src="assets/images/collection-sidebar-banner.png" class="img-fluid" alt="banner">
-                            </a>
-                        </div> -->
-            <!-- side-bar banner end here -->
+        <div class="col-12">
+          <div class="announcement-container">
+            <h4>Shop Announcment</h4>
+            <p style="padding-left: 0">
+              Raw denim you probably haven't heard of them jean shorts Austin.
+              Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+              Mustache cliche tempor, williamsburg carles vegan helvetica.
+              Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+              sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+              placeat salvia cillum iphone. Seitan aliquip quis cardigan
+              american apparel, butcher voluptate nisi qui.
+            </p>
           </div>
         </div>
-        <div class="collection-content col">
-          <div class="page-main-content">
-            <div class="row">
-              <div class="col-sm-12">
+        <div class="col-12">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+            <li [ngbNavItem]="1">
+              <a style="color: #f2917e !important" ngbNavLink>Items</a>
+              <ng-template ngbNavContent>
                 <div class="row">
-                  <div class="col-xl-12">
+                  <div class="col-lg-3">
                     <div
-                      class="filter-main-btn"
-                      (click)="toggleMobileSidebar()"
+                      class="collection-filter"
+                      [class.openFilterbar]="mobileSidebar"
                     >
-                      <span class="filter-btn btn btn-theme">
-                        <i class="fa fa-filter" aria-hidden="true"></i> Filter
-                      </span>
+                      <!-- side-bar colleps block stat -->
+                      <div class="collection-filter-block">
+                        <div
+                          class="collection-mobile-back"
+                          (click)="toggleMobileSidebar()"
+                        >
+                          <span class="filter-back">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            back
+                          </span>
+                        </div>
+                        <!-- Category filter start -->
+                        <app-categories></app-categories>
+                      </div>
+                      <!-- silde-bar colleps block end here -->
+                      <!-- side-bar colleps block stat -->
+                      <div class="collection-filter-block">
+                        <!-- brand filter start -->
+                        <!-- <app-brands
+                          [products]="products"
+                          [brands]="brands"
+                          (brandsFilter)="updateFilter($event)"
+                        >
+                        </app-brands> -->
+                        <!-- color filter start here -->
+                        <app-colors
+                          [products]="products"
+                          [colors]="colors"
+                          (colorsFilter)="updateFilter($event)"
+                        >
+                        </app-colors>
+                        <!-- size filter start here -->
+                        <app-size
+                          [products]="products"
+                          [size]="size"
+                          (sizeFilter)="updateFilter($event)"
+                        >
+                        </app-size>
+                        <!-- price filter start here -->
+                        <app-price
+                          [min]="minPrice"
+                          [max]="maxPrice"
+                          (priceFilter)="updateFilter($event)"
+                        >
+                        </app-price>
+                      </div>
+                      <!-- silde-bar colleps block end here -->
+                      <!-- side-bar single product slider start -->
+                      <!-- <app-product-box-vertical-slider [title]="'New Products'">
+                                  </app-product-box-vertical-slider> -->
+                      <!-- side-bar single product slider end -->
+                      <!-- side-bar banner start here -->
+                      <!-- <div class="collection-sidebar-banner">
+                                      <a [routerLink]="['/shop/collection/left/sidebar']">
+                                          <img src="assets/images/collection-sidebar-banner.png" class="img-fluid" alt="banner">
+                                      </a>
+                                  </div> -->
+                      <!-- side-bar banner end here -->
                     </div>
                   </div>
-                </div>
-                <ul class="product-filter-tags">
-                  <li class="mr-1" *ngFor="let tag of tags">
-                    <a href="javascript:void(0)" class="filter_tag">
-                      {{ tag }}
-                      <i class="ti-close" (click)="removeTag(tag)"></i>
-                    </a>
-                  </li>
-                  <li class="clear_filter" *ngIf="tags.length > 0">
-                    <a
-                      href="javascript:void(0)"
-                      class="clear_filter"
-                      (click)="removeAllTags()"
-                    >
-                      Clear all
-                    </a>
-                  </li>
-                </ul>
-                <div class="collection-product-wrapper" id="products">
-                  <app-grid
-                    [products]="products"
-                    [paginate]="paginate"
-                    [layoutView]="layoutView"
-                    [sortBy]="sortBy"
-                    (setGrid)="updateGridLayout($event)"
-                    (setLayout)="updateLayoutView($event)"
-                    (sortedBy)="sortByFilter($event)"
-                  >
-                  </app-grid>
-                  <div class="product-wrapper-grid" [ngClass]="layoutView">
-                    <div class="row">
-                      <div
-                        class="col-grid-box"
-                        [ngClass]="grid"
-                        *ngFor="let product of products"
-                      >
-                        <div class="product-box">
-                          <app-product-box-one
-                            [product]="product"
-                            [currency]="productService?.Currency"
-                            [thumbnail]="false"
-                            [cartModal]="true"
-                            [loader]="true"
-                          >
-                          </app-product-box-one>
+                  <div class="collection-content col">
+                    <div class="page-main-content">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <div
+                                class="filter-main-btn"
+                                (click)="toggleMobileSidebar()"
+                              >
+                                <span class="filter-btn btn btn-theme">
+                                  <i
+                                    class="fa fa-filter"
+                                    aria-hidden="true"
+                                  ></i>
+                                  Filter
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <ul class="product-filter-tags">
+                            <li class="mr-1" *ngFor="let tag of tags">
+                              <a href="javascript:void(0)" class="filter_tag">
+                                {{ tag }}
+                                <i
+                                  class="ti-close"
+                                  (click)="removeTag(tag)"
+                                ></i>
+                              </a>
+                            </li>
+                            <li class="clear_filter" *ngIf="tags.length > 0">
+                              <a
+                                href="javascript:void(0)"
+                                class="clear_filter"
+                                (click)="removeAllTags()"
+                              >
+                                Clear all
+                              </a>
+                            </li>
+                          </ul>
+                          <div class="collection-product-wrapper" id="products">
+                            <app-grid
+                              [products]="products"
+                              [paginate]="paginate"
+                              [layoutView]="layoutView"
+                              [sortBy]="sortBy"
+                              (setGrid)="updateGridLayout($event)"
+                              (setLayout)="updateLayoutView($event)"
+                              (sortedBy)="sortByFilter($event)"
+                            >
+                            </app-grid>
+                            <div
+                              class="product-wrapper-grid"
+                              [ngClass]="layoutView"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-grid-box"
+                                  [ngClass]="grid"
+                                  *ngFor="let product of products"
+                                >
+                                  <div class="product-box">
+                                    <app-product-box-one
+                                      [product]="product"
+                                      [currency]="productService?.Currency"
+                                      [thumbnail]="false"
+                                      [cartModal]="true"
+                                      [loader]="true"
+                                    >
+                                    </app-product-box-one>
+                                  </div>
+                                </div>
+                                <div
+                                  class="col-sm-12 text-center section-b-space mt-5 no-found"
+                                  *ngIf="!products.length"
+                                >
+                                  <img
+                                    src="assets/images/empty-search.jpg"
+                                    class="img-fluid mb-4"
+                                  />
+                                  <h3>
+                                    Sorry! Couldn't find the product you were
+                                    looking For!!!
+                                  </h3>
+                                  <p>
+                                    Please check if you have misspelt something
+                                    or try searching with other words.
+                                  </p>
+                                  <a
+                                    [routerLink]="[
+                                      '/shop/collection/left/sidebar'
+                                    ]"
+                                    class="btn btn-solid"
+                                    >continue shopping</a
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                            <app-pagination
+                              [products]="products"
+                              [paginate]="paginate"
+                              (setPage)="setPage($event)"
+                            >
+                            </app-pagination>
+                          </div>
                         </div>
                       </div>
-                      <div
-                        class="col-sm-12 text-center section-b-space mt-5 no-found"
-                        *ngIf="!products.length"
-                      >
-                        <img
-                          src="assets/images/empty-search.jpg"
-                          class="img-fluid mb-4"
-                        />
-                        <h3>
-                          Sorry! Couldn't find the product you were looking
-                          For!!!
-                        </h3>
-                        <p>
-                          Please check if you have misspelt something or try
-                          searching with other words.
-                        </p>
-                        <a
-                          [routerLink]="['/shop/collection/left/sidebar']"
-                          class="btn btn-solid"
-                          >continue shopping</a
-                        >
-                      </div>
                     </div>
                   </div>
-                  <app-pagination
-                    [products]="products"
-                    [paginate]="paginate"
-                    (setPage)="setPage($event)"
-                  >
-                  </app-pagination>
                 </div>
-              </div>
-            </div>
-          </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <a style="color: #f2917e !important" ngbNavLink>Shop Story</a>
+              <ng-template ngbNavContent>
+                <p>
+                  {{ sellerInfo?.shopIntro }}
+                </p>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3">
+              <a style="color: #f2917e !important" ngbNavLink
+                >Return & Exchange Policy</a
+              >
+              <ng-template ngbNavContent>
+                <p>
+                  Sed commodo, leo at suscipit dictum, quam est porttitor
+                  sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec
+                  egestas ligula vitae odio interdum aliquet. Duis lectus
+                  turpis, luctus eget tincidunt eu, congue et odio. Duis
+                  pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et
+                  molestie lectus ultrices et. Sed diam urna, egestas ut ipsum
+                  vel, volutpat volutpat neque. Praesent fringilla tortor arcu.
+                  Vivamus faucibus nisl enim, nec tristique ipsum euismod
+                  facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci
+                  varius natoque penatibus et magnis dis parturient montes,
+                  nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet
+                  ultricies in eget neque. Phasellus nec tortor vel tellus
+                  pulvinar feugiat.
+                </p>
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
         </div>
       </div>
     </div>

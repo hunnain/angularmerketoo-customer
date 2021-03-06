@@ -28,7 +28,7 @@ import { CollectionNoSidebarComponent } from './collection/collection-no-sidebar
 
 // Collection Widgets
 import { GridComponent } from './collection/widgets/grid/grid.component';
-import { PaginationComponent } from './collection/widgets/pagination/pagination.component';
+// import { PaginationComponent } from './collection/widgets/pagination/pagination.component';
 import { BrandsComponent } from './collection/widgets/brands/brands.component';
 import { ColorsComponent } from './collection/widgets/colors/colors.component';
 import { SizeComponent } from './collection/widgets/size/size.component';
@@ -44,6 +44,7 @@ import { DesignerPageComponent } from './collection/designer-page/designer-page.
 import { MailboxComponent } from './collection/mailbox/mailbox.component';
 import { MyProfileComponent } from './collection/myprofile/myprofile.component';
 import { NotificationComponent } from './collection/notification/notification.component';
+import { FailedPageComponent } from './checkout/failed-page/failed-page.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { NotificationComponent } from './collection/notification/notification.co
     MyProfileComponent,
     NotificationComponent,
     GridComponent,
-    PaginationComponent,
+    // PaginationComponent,
     BrandsComponent,
     ColorsComponent,
     SizeComponent,
@@ -78,6 +79,7 @@ import { NotificationComponent } from './collection/notification/notification.co
     CompareComponent,
     CheckoutComponent,
     SuccessComponent,
+    FailedPageComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,160 @@
+<!-- breadcrumb start -->
+<app-breadcrumb
+  [title]="'Checkout Failed'"
+  [breadcrumb]="'Checkout Failed'"
+  *ngIf="!loading"
+></app-breadcrumb>
+<!-- breadcrumb End -->
+
+<!-- section start -->
+<section class="p-0" *ngIf="!loading">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="error-section">
+          <!-- <h1>404</h1> -->
+          <h2>Checkout Failed</h2>
+          <a [routerLink]="'/home/fashion'" class="btn btn-solid"
+            >back to home</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section ends -->
+
+<!-- thank-you section start -->
+<!-- <section class="section-b-space light-layout" *ngIf="orders.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="success-text">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <h2>thank you</h2>
+          <p>Order Placed Successfully</p>
+          <a [routerLink]="'/home/fashion'" class="btn btn-solid"
+            >Continue Shopping</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- Section ends -->
+
+<!-- order-detail section start -->
+<!-- <section class="section-b-space" *ngIf="orders.length > 0">
+  <div class="container">
+    <div
+      class="row"
+      [ngClass]="{ 'border-bottom': orders.length - 1 > i }"
+      *ngFor="let orderDetails of orders; let i = index"
+    >
+      <div class="col-lg-6">
+        <div class="product-order">
+          <h3>your order details</h3>
+          <div
+            class="row product-order-detail"
+            *ngFor="let product of orderDetails.orderedProductDetails"
+          >
+            <div class="col-3">
+              <img
+                [src]="
+                  product.image
+                    ? product.image
+                    : 'assets/images/product/placeholder.jpg'
+                "
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-3 order_detail">
+              <div>
+                <h4>product name</h4>
+                <h5>{{ product.name }}</h5>
+              </div>
+            </div>
+            <div class="col-3 order_detail">
+              <div>
+                <h4>quantity</h4>
+                <h5>{{ product?.quantity }}</h5>
+              </div>
+            </div>
+            <div class="col-3 order_detail">
+              <div>
+                <h4>price</h4>
+                <h5>
+                  {{
+                    product?.totalAmount * productService?.Currency?.price
+                      | currency: productService?.Currency.currency:"symbol"
+                  }}
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="total-sec">
+            <ul>
+              <li>
+                Subtotal
+                <span>{{
+                  orderDetails?.total
+                    | currency: productService?.Currency.currency:"symbol"
+                }}</span>
+              </li>
+              <li>Shipping <span>$00.00</span></li>
+              <li>Tax <span>$00.00</span></li>
+            </ul>
+          </div>
+          <div class="final-total">
+            <h3>
+              total
+              <span>{{
+                orderDetails?.total
+                  | currency: productService?.Currency.currency:"symbol"
+              }}</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row order-success-sec">
+          <div class="col-sm-6">
+            <h4>summery</h4>
+            <ul class="order-detail">
+              <li>order ID: {{ orderDetails.orderId }}</li>
+              <li>Order Date: {{ getDate(orderDetails.creationDate) }}</li>
+              <li>
+                Order Total:
+                {{
+                  orderDetails?.total
+                    | currency: productService?.Currency.currency:"symbol"
+                }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <h4>shipping address</h4>
+            <ul class="order-detail">
+              <li>{{ orderDetails?.address }}</li>
+              <li>{{ orderDetails?.state }}</li>
+              <li>
+                {{ orderDetails?.country }}, {{ orderDetails?.postalcode }}
+              </li>
+              <li>Contact No. {{ orderDetails?.phone }}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-12 payment-mode">
+            <h4>payment detail</h4>
+            <ul class="order-detail">
+              <li>Payment Method:{{ orderDetails?.paymentService }}</li>
+              <li>Payment Status: {{ orderDetails?.paymentStatus }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- Section ends -->
