@@ -124,6 +124,9 @@
             <app-return-exchange
               *ngIf="selectedMenu === 'return_exchange'"
             ></app-return-exchange>
+            <app-my-notification
+              *ngIf="selectedMenu === 'notification'"
+            ></app-my-notification>
             <div *ngIf="selectedMenu === 'news_letter'">
               <div class="page-title">
                 <h2>{{ "Newsletter Subscription" | translate }}</h2>
@@ -595,51 +598,6 @@
               </div>
               <div class="page-main-content">
                 <app-list-message></app-list-message>
-              </div>
-            </div>
-            <div *ngIf="selectedMenu === 'notification'">
-              <div class="page-title">
-                <h2>{{ "Notifications" | translate }}</h2>
-              </div>
-              <div class="page-main-content">
-                <div class="row" *ngIf="notifications.length">
-                  <div
-                    class="col-sm-12 notify-container"
-                    *ngFor="let notify of notifications; let i = index"
-                  >
-                    <div class="notify-section">
-                      <div>
-                        <img
-                          src="assets/images/user-placeholder.png"
-                          alt="img here"
-                          style="width: 50px"
-                          class="image img-fluid rounded-circle blur-up lazyloaded"
-                        />
-                      </div>
-                      <div class="notify-content">
-                        <div class="notify-type">
-                          <b>{{ formatType(notify?.type) }}</b>
-                        </div>
-                        <div
-                          class="notify-text"
-                          [innerHTML]="notify.text"
-                        ></div>
-                        <div>
-                          <!-- <div>{{notify?.sender?.name}}</div> -->
-                          <div class="notify-time">
-                            {{ formatTime(notify?.creationTime) }}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr *ngIf="i < notifications.length - 1" />
-                  </div>
-                </div>
-                <div class="row" *ngIf="!notifications.length">
-                  <div class="col-sm-12">
-                    <p>No notification here</p>
-                  </div>
-                </div>
               </div>
             </div>
             <div *ngIf="selectedMenu === 'change_pass'">

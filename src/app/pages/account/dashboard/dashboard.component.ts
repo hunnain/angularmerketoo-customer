@@ -42,7 +42,6 @@ export class DashboardComponent implements OnInit {
     this.fetchDataFromLS();
     this.fetchAllCoupons();
     this.fetchStoreCredits();
-    this.fetchNotifications();
     this.cs.isLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -263,26 +262,5 @@ export class DashboardComponent implements OnInit {
 
   /************************ Store Credit End  *****************************/
 
-  /************************ Notifications  *****************************/
-  notifications = [];
-  fetchNotifications() {
-    let query = ""
-    this.generalService.getNotifications(query).subscribe(res => {
-      console.log("notifications", res)
-      if (res && res['body']) {
-        this.notifications = res['body'];
-      }
-    })
-  }
 
-  formatType(type) {
-    let formattedType = type.match(/[A-Z][a-z]+|[0-9]+/g).join(" ")
-    return formattedType;
-  }
-
-  formatTime(date) {
-    return moment(date).fromNow();
-  }
-
-  /************************ Notifications End  *****************************/
 }

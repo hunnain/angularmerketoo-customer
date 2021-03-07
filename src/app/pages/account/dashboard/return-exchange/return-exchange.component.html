@@ -137,6 +137,12 @@
     {{ "You have not return any order." | translate }}
   </h4>
 </div>
+<div
+  style="display: flex; align-items: center; justify-content: center"
+  *ngIf="loading"
+>
+  <app-loader [loading]="loading"></app-loader>
+</div>
 <div class="row" *ngIf="orders.length">
   <div class="col-sm-12" id="returnID">
     <table class="table cart-table table-responsive-xs">

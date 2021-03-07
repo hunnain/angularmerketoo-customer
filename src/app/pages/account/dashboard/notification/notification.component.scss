@@ -1,0 +1,19 @@
+// notification styling
+.notify-container {
+  .notify-section {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: self-start;
+    .notify-content {
+      padding: 10px;
+      padding-top: 0;
+      .notify-text {
+        padding: 5px 0px;
+      }
+      .notify-time {
+        font-weight: 500;
+        color: darkgray;
+      }
+    }
+  }
+}
