@@ -62,7 +62,11 @@
     </li>
     <li [hidden]="menu" class="onhover-div mobile-cart">
       <div>
-        <a href="javascript:void(0" routerLink="/shop/wishlist">
+        <a
+          href="javascript:void(0"
+          routerLink="/pages/dashboard"
+          [queryParams]="{ page: 'my_wishList' }"
+        >
           <img
             src="assets/images/icon/heart.png"
             class="img-fluid"

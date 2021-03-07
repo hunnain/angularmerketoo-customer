@@ -53,6 +53,7 @@ import { MyWishlistComponent } from './account/dashboard/my-wishlist/my-wishlist
 import { ListMessageComponent } from './account/dashboard/messages/list-message/list-message.component';
 import { ChatBoxComponent } from './account/dashboard/messages/chat-box/chat-box.component';
 import { RightSidebarComponent } from './account/dashboard/messages/right-sidebar/right-sidebar.component';
+import { MyNotificationComponent } from './account/dashboard/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { RightSidebarComponent } from './account/dashboard/messages/right-sideba
     SurveyCreatorComponent,
     ReturnExchangeComponent,
     OrderlistComponent,
+    MyNotificationComponent,
     MyWishlistComponent,
     ListMessageComponent,
     ChatBoxComponent,

@@ -1,0 +1,73 @@
+<!--section start-->
+<div class="page-title">
+  <h2>{{ "Notifications" | translate }}</h2>
+</div>
+<div
+  class="col-md-12 empty-cart-cls text-center"
+  *ngIf="!loading && !notifications.length"
+>
+  <img
+    src="assets/images/empty-wishlist.png"
+    alt="Empty cart"
+    title="Emprt cart"
+  />
+  <h3 class="mt-4">
+    <b>{{ "Notification List is Empty" | translate }}</b>
+  </h3>
+  <h4>
+    {{ "You don't have any notification." | translate }}
+  </h4>
+</div>
+<div
+  style="display: flex; align-items: center; justify-content: center"
+  *ngIf="loading"
+>
+  <app-loader [loading]="loading"></app-loader>
+</div>
+<div class="row" *ngIf="notifications.length">
+  <div class="col-sm-12" id="notifyID">
+    <div
+      class="col-sm-12 notify-container"
+      *ngFor="let notify of notifications; let i = index"
+    >
+      <div class="notify-section">
+        <div>
+          <img
+            src="assets/images/user-placeholder.png"
+            alt="img here"
+            style="width: 50px"
+            class="image img-fluid rounded-circle blur-up lazyloaded"
+          />
+        </div>
+        <div class="notify-content">
+          <div class="notify-type">
+            <b>{{ formatType(notify?.type) }}</b>
+          </div>
+          <div class="notify-text" [innerHTML]="notify.text"></div>
+          <div>
+            <!-- <div>{{notify?.sender?.name}}</div> -->
+            <div class="notify-time">
+              {{ formatTime(notify?.creationTime) }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr *ngIf="i < notifications.length - 1" />
+    </div>
+    <div
+      *ngIf="
+        !loading && notifications.length && paginate && paginate.TotalCount > 8
+      "
+    >
+      <app-pagination [paginate]="paginate" (setPage)="setPage($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>
+<!-- <div class="row wishlist-buttons" *ngIf='orders.length'>
+      <div class="col-12">
+        <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a>
+        <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>
+      </div>
+    </div> -->
+<!--section end-->

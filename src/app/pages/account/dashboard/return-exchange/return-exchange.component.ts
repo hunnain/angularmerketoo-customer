@@ -29,10 +29,14 @@ export class ReturnExchangeComponent implements OnInit {
 
   getReturnOrders() {
     this.loading = true;
+    this.orders = [];
+    let query = `pageNumber=${this.pageNo}`
     this.returnService.getAllReturnOrder().subscribe(res => {
       this.loading = false;
       if (res && res['body']) {
         this.orders = res['body'];
+        let paginate = JSON.parse(res['headers'].get('X-Pagination'));
+        this.paginate = paginate;
       }
     })
   }
