@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import * as moment from "moment";
@@ -95,6 +95,7 @@ export class DashboardComponent implements OnInit {
 
   selectMenu(key) {
     this.selectedMenu = key;
+    this.openDashboard = false;
   }
 
 
@@ -191,17 +192,17 @@ export class DashboardComponent implements OnInit {
   /******************** Address book   ***********************/
   public isOtherCountry: boolean = false;
   addressForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    username: new FormControl('', Validators.required),
     email: new FormControl(''),
-    phoneNumber: new FormControl(''),
-    address: new FormControl(''),
-    country: new FormControl(''),
+    phoneNumber: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    country: new FormControl('', Validators.required),
     otherCountry: new FormControl(''),
-    city: new FormControl(''),
-    regionState: new FormControl(''),
-    zipCode: new FormControl(''),
-    flatPlot: new FormControl(''),
-    message: new FormControl(''),
+    city: new FormControl('', Validators.required),
+    regionState: new FormControl('', Validators.required),
+    zipCode: new FormControl('', Validators.required),
+    flatPlot: new FormControl('', Validators.required),
+    message: new FormControl('', Validators.required),
   });
 
   submitAddress() {

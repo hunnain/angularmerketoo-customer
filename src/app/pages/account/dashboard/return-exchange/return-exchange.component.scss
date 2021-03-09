@@ -1,36 +1,35 @@
-// .row-data-style {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// img {
-//   width: 500px;
-// }
-// .imgUpload {
-//   width: 50px;
-// }
-// .box-input-file {
-//   width: 50px;
-//   height: 50px;
-//   background-color: #f1f4fb;
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   vertical-align: middle;
-//   cursor: pointer;
-
-//   .upload {
-//     position: absolute;
-//     width: 70px;
-//     left: 0;
-//     right: 0;
-//     opacity: 0;
-//   }
-// }
-
-// ::ng-deep .custom-tooltip .tooltip-inner {
-//   width: 400px !important;
-//   max-width: max-content !important;
-// }
+// Responsive table CSS
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .responsive-table {
+    /*
+            Label the data
+        You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+            */
+    td:nth-of-type(1):before {
+      content: "Order Id";
+    }
+    td:nth-of-type(2):before {
+      content: "Return Type";
+    }
+    td:nth-of-type(3):before {
+      content: "Request Reason";
+    }
+    td:nth-of-type(4):before {
+      content: "Solution";
+    }
+    td:nth-of-type(5):before {
+      content: "Status";
+    }
+    td:nth-of-type(6):before {
+      content: "Requested Date";
+    }
+    td:nth-of-type(7):before {
+      content: "Total";
+    }
+  }
+}
+// Responsive table CSS End

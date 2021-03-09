@@ -45,7 +45,11 @@
         <div class="main-menu">
           <div class="menu-left">
             <div class="brand-logo">
-              <a routerLink="/home/fashion" id="headerlogo">
+              <a
+                routerLink="/home/fashion"
+                id="headerlogo"
+                style="display: block"
+              >
                 <img [src]="themeLogo" class="img-fluid" alt="logo" />
               </a>
             </div>
@@ -74,7 +78,7 @@
     </div>
     <div style="margin-top: -2.5%; margin-bottom: -1.7%" class="row">
       <div class="col-sm-12">
-        <div class="main-menu" style="height: 62px">
+        <div class="main-menu" style="height: 50px; width: fit-content">
           <div class="menu-right pull-right">
             <div>
               <app-menu></app-menu>
