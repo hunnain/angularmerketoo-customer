@@ -48,3 +48,14 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 10px;
 }
+
+.input-field {
+  width: 40%;
+  height: 40px;
+}
+
+@media only screen and (max-width: 760px) {
+  .input-field {
+    width: 100%;
+  }
+}

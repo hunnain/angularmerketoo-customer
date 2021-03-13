@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductSlider } from '../../../shared/data/slider';
 import { Product } from '../../../shared/classes/product';
 import { ProductService } from '../../../shared/services/product.service';
+import { GeneralService } from 'src/app/shared/services/general.service';
 
 
 @Component({
@@ -15,8 +16,12 @@ export class FashionOneComponent implements OnInit {
   public editorPicks: Product[] = [];
   public productCollections: any[] = [];
 
-  constructor(public productService: ProductService) {
+  constructor(
+    public productService: ProductService,
+    public generalService: GeneralService
+  ) {
     this.getEditorPicks();
+    this.getCampaigns();
     this.productService.getProducts.subscribe(response => {
       if (response['body']) {
         this.products = response['body']
@@ -133,6 +138,16 @@ export class FashionOneComponent implements OnInit {
         this.editorPicks = response['body']
       }
     });
+  }
+
+
+  getCampaigns() {
+    this.generalService.getRandomCampaign().subscribe(res => {
+      if (res && res['body']) {
+        console.log(res);
+        // this.blog = res
+      }
+    })
   }
 
 }

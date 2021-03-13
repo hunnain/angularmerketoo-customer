@@ -1,146 +1,175 @@
-@media (min-width:629px) {
-    li#search {
-      display: none;
-    }
+@media (min-width: 629px) {
+  li#search {
+    display: none;
+  }
+}
+
+@media (max-width: 629px) {
+  #open {
+    display: none;
+  }
+  .loreg {
+    position: relative;
+    bottom: -30px;
   }
 
-  @media (max-width:629px) {
-    #open {
-      display: none;
+  ::ng-deep .main-menu {
+    .menu-right {
+      .icon-nav {
+        .mobile-search {
+          right: 87% !important;
+          z-index: 1;
+        }
+        .mobile-heart {
+          right: 70%;
+          z-index: 1;
+        }
+        .mobile-notify {
+          right: 50%;
+          z-index: 1;
+        }
+        .mobile-user {
+          right: 30%;
+          z-index: 1;
+        }
+        .mobile-my-cart {
+          right: 10%;
+          z-index: 1;
+        }
+      }
     }
-    .loreg{
-          position: relative;
-          bottom: -20px;
-    }
-  } 
+  }
+}
 
-  //@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+//@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
 #social {
   margin: 20px 10px;
   text-align: center;
 }
 
-.smGlobalBtn{ /* global button class */
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    width: 57px;
-    height: 57px;
-    box-shadow: 0 2px 2px #999;
-    padding: 0px;
-    text-decoration: none;
-    text-align: center;
-    color: #fff;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 2em;
-    border-radius: 25px;
-    -moz-border-radius:25px;
-    -webkit-border-radius:7px;
+.smGlobalBtn {
+  /* global button class */
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 57px;
+  height: 57px;
+  box-shadow: 0 2px 2px #999;
+  padding: 0px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  font-weight: normal;
+  line-height: 2em;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 7px;
 }
 
 /* facebook button class*/
-.facebookBtn{
-    background: #4060A5;
+.facebookBtn {
+  background: #4060a5;
 }
 
-.facebookBtn:before{ /* use :before to add the relevant icons */
-    font-family: "FontAwesome";
-    content: "\f09a"; /* add facebook icon */
+.facebookBtn:before {
+  /* use :before to add the relevant icons */
+  font-family: "FontAwesome";
+  content: "\f09a"; /* add facebook icon */
 }
 
-.facebookBtn:hover{
-    color: #4060A5;
-    background: #fff;
+.facebookBtn:hover {
+  color: #4060a5;
+  background: #fff;
 }
 
 /* twitter button class*/
-.twitterBtn{
-    background: #00ABE3;
+.twitterBtn {
+  background: #00abe3;
 }
 
-.twitterBtn:before{
-      font-family: "FontAwesome";
-      content: "\f099"; /* add twitter icon */
+.twitterBtn:before {
+  font-family: "FontAwesome";
+  content: "\f099"; /* add twitter icon */
 }
 
-.twitterBtn:hover{
-      color: #00ABE3;
-      background: #fff;
+.twitterBtn:hover {
+  color: #00abe3;
+  background: #fff;
 }
 
 /* google plus button class*/
-.googleBtn{
-    background: #e64522;
+.googleBtn {
+  background: #e64522;
 }
 
-.googleBtn:before{
-      font-family: "FontAwesome";
-      content: "\f1a0"; /* add googleplus icon */
+.googleBtn:before {
+  font-family: "FontAwesome";
+  content: "\f1a0"; /* add googleplus icon */
 }
 
-.googleBtn:hover{
-      color: #e64522;
-      background: #fff;
+.googleBtn:hover {
+  color: #e64522;
+  background: #fff;
 }
 
 /* linkedin button class*/
-.linkedinBtn{
-    background: #0094BC;
+.linkedinBtn {
+  background: #0094bc;
 }
 
-.linkedinBtn:before{
-      font-family: "FontAwesome";
-      content: "\f0e1"; /* add linkedin icon */
+.linkedinBtn:before {
+  font-family: "FontAwesome";
+  content: "\f0e1"; /* add linkedin icon */
 }
 
-.linkedinBtn:hover{
-      color: #0094BC;
-      background: #fff;
+.linkedinBtn:hover {
+  color: #0094bc;
+  background: #fff;
 }
 
 /* pinterest button class*/
-.pinterestBtn{
-    background: #cb2027;
+.pinterestBtn {
+  background: #cb2027;
 }
 
-.pinterestBtn:before{
-      font-family: "FontAwesome";
-      content: "\f0d2"; /* add pinterest icon */
+.pinterestBtn:before {
+  font-family: "FontAwesome";
+  content: "\f0d2"; /* add pinterest icon */
 }
 
-.pinterestBtn:hover{
-      color: #cb2027;
-      background: #fff;
+.pinterestBtn:hover {
+  color: #cb2027;
+  background: #fff;
 }
 
 /* tumblr button class*/
-.tumblrBtn{
-    background: #3a5876;
+.tumblrBtn {
+  background: #3a5876;
 }
 
-.tumblrBtn:before{
-      font-family: "FontAwesome";
-      content: "\f173"; /* add tumblr icon */
+.tumblrBtn:before {
+  font-family: "FontAwesome";
+  content: "\f173"; /* add tumblr icon */
 }
 
-.tumblrBtn:hover{
-      color: #3a5876;
-      background: #fff;
+.tumblrBtn:hover {
+  color: #3a5876;
+  background: #fff;
 }
 
 /* rss button class*/
-.rssBtn{
-    background: #e88845;
+.rssBtn {
+  background: #e88845;
 }
 
-.rssBtn:before{
-      font-family: "FontAwesome";
-      content: "\f09e"; /* add rss icon */
+.rssBtn:before {
+  font-family: "FontAwesome";
+  content: "\f09e"; /* add rss icon */
 }
 
-.rssBtn:hover{
-      color: #e88845;
-      background: #fff;
+.rssBtn:hover {
+  color: #e88845;
+  background: #fff;
 }
