@@ -12,6 +12,7 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
 import { SignalrService } from 'src/app/shared/services/signalr.service';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { CouponService } from 'src/app/shared/services/coupon.service';
+import * as moment from 'moment';
 
 declare var Stripe;
 
@@ -240,6 +241,38 @@ export class CheckoutComponent implements OnInit {
     }
 
     return data;
+  }
+
+  public discountedPrice: number = 0;
+  public isCouponValid: boolean = false;
+  onCouponChange(coupon) {
+    console.log("selected---coupon", coupon)
+    if (coupon && coupon !== 'none') {
+      const { startDate, endDate, numberOfTimesUsed, percentageOrFixedAmt, usageLimit } = coupon;
+      let currentDate = moment().format()
+      let start_date = moment.utc(startDate).local().format()
+      let end_date = moment.utc(endDate).local().format()
+      if (moment(start_date).isSameOrBefore(currentDate) &&
+        moment(end_date).isSameOrAfter(currentDate) &&
+        numberOfTimesUsed <= usageLimit) {
+        this.isCouponValid = true;
+        this.createDiscount(percentageOrFixedAmt);
+      } else {
+        this.isCouponValid = false;
+        console.log('coupon is invalid')
+      }
+    } else {
+      this.discountedPrice = 0;
+      console.log('none selected');
+    }
+  }
+
+  createDiscount(percent) {
+    console.log('create discount', this.amount, percent)
+    if (percent && percent > 0) {
+      this.discountedPrice = this.amount * percent / 100;
+      console.log('💻', 'discounted price will be', this.discountedPrice);
+    }
   }
 
 

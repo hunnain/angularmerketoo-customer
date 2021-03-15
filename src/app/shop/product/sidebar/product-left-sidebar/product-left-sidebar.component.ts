@@ -45,6 +45,9 @@ export class ProductLeftSidebarComponent implements OnInit {
       if (this.product && Object.keys(this.product).length) {
         this.selectColor(this.product.availableColors[0])
         this.selectSize(this.product.availableSizes[0])
+        if (this.product.customSize) {
+          this.product.availableSizes.push(this.product.customSize);
+        }
       }
     });
   }

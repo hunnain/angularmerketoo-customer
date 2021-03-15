@@ -12,6 +12,10 @@ export class GeneralService {
         return this.cs.get(`common/get-about-us`);
     }
 
+    getBanners() {
+        return this.cs.get(`common/get-all-banners`);
+    }
+
     getRandomCampaign() {
         return this.cs.get(`common/get-random-campaign`);
     }
