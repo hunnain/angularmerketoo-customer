@@ -113,6 +113,10 @@
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
                   <h2>{{ product?.name }}</h2>
+                  <app-rating
+                    [rating]="product?.rating"
+                    [readonly]="true"
+                  ></app-rating>
                   <h4>
                     <del *ngIf="product?.discount">{{
                       product?.price * productService.Currency?.price
@@ -131,15 +135,29 @@
                     class="color-variant"
                     *ngIf="product?.availableColors.length"
                   >
-                    <li
+                    <!-- <li
                       [class]="color"
                       [class.active]="selectedColor == color"
                       *ngFor="let color of product?.availableColors; index as i"
                       [ngStyle]="{ 'background-color': color }"
                       (click)="selectColor(color)"
-                    ></li>
+                    ></li> -->
+                    <h6 class="product-title size-text">select Color</h6>
+                    <select
+                      [(ngModel)]="selectedColor"
+                      class="form-control"
+                      style="height: 38px"
+                    >
+                      <option default>None</option>
+                      <option
+                        [value]="color"
+                        *ngFor="let color of product?.availableColors"
+                      >
+                        {{ color | titlecase }}
+                      </option>
+                    </select>
                   </ul>
-                  <ul
+                  <!-- <ul
                     class="color-variant custom-color-container"
                     *ngIf="product?.customColours?.length"
                   >
@@ -153,10 +171,7 @@
                     >
                       {{ color | titlecase }}
                     </li>
-                  </ul>
-                  <app-stock-inventory
-                    [stock]="product?.stock"
-                  ></app-stock-inventory>
+                  </ul> -->
                   <div class="product-description border-product">
                     <h6
                       class="product-title size-text"
@@ -179,7 +194,20 @@
                         product.availableSizes.length || product.customSize
                       "
                     >
-                      <ul>
+                      <select
+                        [(ngModel)]="selectedSize"
+                        class="form-control"
+                        style="height: 38px"
+                      >
+                        <option default>None</option>
+                        <option
+                          [value]="size"
+                          *ngFor="let size of product.availableSizes"
+                        >
+                          {{ size | titlecase }}
+                        </option>
+                      </select>
+                      <!-- <ul>
                         <li
                           [class.active]="selectedSize == size"
                           *ngFor="let size of product.availableSizes"
@@ -191,8 +219,8 @@
                             {{ size | titlecase }}
                           </a>
                         </li>
-                      </ul>
-                      <ul *ngIf="product.customSize">
+                      </ul> -->
+                      <!-- <ul *ngIf="product.customSize">
                         Custom Size
                         <br />
                         <li [class.active]="selectedSize == product.customSize">
@@ -203,7 +231,7 @@
                             {{ product.customSize | titlecase }}
                           </a>
                         </li>
-                      </ul>
+                      </ul> -->
                     </div>
                     <h5
                       class="avalibility"
@@ -211,6 +239,9 @@
                     >
                       <span>In Stock: {{ product?.quantity }}</span>
                     </h5>
+                    <app-stock-inventory
+                      [stock]="product?.quantity"
+                    ></app-stock-inventory>
                     <h5 class="avalibility" *ngIf="counter > product?.quantity">
                       <span>Out of Stock</span>
                     </h5>
@@ -274,7 +305,7 @@
                     After payment, it will take approximately 3 business days to
                     prepare an ship this item (excluding holidays).
                   </p>
-                  <div class="border-product">
+                  <div class="border-product" *ngIf="product?.promotions">
                     <h6 class="product-title">Promotions</h6>
                     <br />
                     <div [innerHTML]="product?.promotions"></div>

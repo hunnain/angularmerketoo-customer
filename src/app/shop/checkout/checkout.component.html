@@ -375,6 +375,7 @@
                       <select
                         name="selectedCoupon"
                         [(ngModel)]="selectedCoupon"
+                        (ngModelChange)="onCouponChange($event)"
                         id="selectedCoupon"
                       >
                         <option value="none" selected>None</option>
@@ -384,7 +385,24 @@
                       </select>
                     </li>
                   </ul>
-                  <ul class="total">
+                  <ul class="total" *ngIf="isCouponValid && discountedPrice">
+                    <li>
+                      Discount
+                      <span class="count" style="color: red"
+                        >-({{ discountedPrice }})</span
+                      >
+                    </li>
+                  </ul>
+                  <ul class="total" *ngIf="isCouponValid && discountedPrice">
+                    <li>
+                      Total
+                      <span class="count">{{
+                        amount - discountedPrice
+                          | currency: productService?.Currency.currency:"symbol"
+                      }}</span>
+                    </li>
+                  </ul>
+                  <ul class="total" *ngIf="!isCouponValid || !discountedPrice">
                     <li>
                       Total
                       <span class="count">{{
