@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
-import { ExtendedCategories } from 'src/app/shared/utilities';
+import { ExtendedCategories, LabelOptions } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-collection-left-sidebar',
@@ -20,7 +20,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public size: any[] = [];
   public label: any[] = [];
   public startPrice: number = 0;
-  public endPrice: number = 1200;
+  public endPrice: number = 0;
   public tags: any[] = [];
   public category: string;
   public extendedsubcategory: string;
@@ -57,12 +57,12 @@ export class CollectionLeftSidebarComponent implements OnInit {
       let filters = {
         colors: this.colors,
         size: this.size,
-        label: this.label,
+        label: this.getLabelValues(this.label),
         name: this.name,
         isInternationalShipping: this.isInternationalShipping,
         startPrice: this.startPrice,
         endprice: this.endPrice,
-        sortBy: this.sortBy,
+        // sortBy: this.sortBy,
         category: this.category,
         extendedsubcategory: this.extendedsubcategory,
         pageNumber: this.pageNo
@@ -70,7 +70,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
       let query = '';
       for (let item in filters) {
         if (filters[item] instanceof Array && filters[item].length > 0 || typeof filters[item] !== 'object' && filters[item]) {
-          query = `${query}&${[item]}=${filters[item]}`
+          query = query ? `${query}&${[item]}=${filters[item]}` : `${[item]}=${filters[item]}`
         }
       }
 
@@ -103,6 +103,21 @@ export class CollectionLeftSidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getLabelValues(labels) {
+    if (labels && labels.length) {
+      let options = LabelOptions('en');
+      let customLabel = options.reduce((elem, i, a) => {
+        //console.log(elem,i,a)
+        if (labels.includes(i.text)) {
+          elem.push(i.id);
+        }
+        return elem
+      }, []);
+      console.log(customLabel)
+      return customLabel;
+    }
+    return null;
+  }
 
   // Append filter value to Url
   updateFilter(tags: any) {

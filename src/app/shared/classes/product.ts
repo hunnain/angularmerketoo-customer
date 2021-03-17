@@ -49,6 +49,7 @@ export interface Product {
     sellerImage?: string;
     sellerEnglishFName?: string;
     sellerChineseFName?: string;
+    brandName?: string;
 }
 
 export interface FeedbacksEntity {

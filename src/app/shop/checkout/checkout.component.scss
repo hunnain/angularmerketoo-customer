@@ -5,3 +5,27 @@
   filter: drop-shadow(5px 5px 5px #222222);
   opacity: 0.5;
 }
+
+.box-input-file {
+  width: 50px;
+  height: 50px;
+  background-color: #f1f4fb;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+  .upload {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+  .imgUpload {
+    cursor: pointer;
+  }
+}
