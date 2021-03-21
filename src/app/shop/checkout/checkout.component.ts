@@ -41,7 +41,8 @@ export class CheckoutComponent implements OnInit {
   public useraddress = undefined;
 
   //FPS vars 
-  public referenceNumber: string;
+  // public referenceNumber: string;
+  public fpsReferenceImg: string;
   constructor(private fb: FormBuilder,
     private router: Router,
     public productService: ProductService,
@@ -232,10 +233,11 @@ export class CheckoutComponent implements OnInit {
     }
 
     if (this.payment === 'FPS') {
-      data['referenceNumber'] = this.referenceNumber;
+      // data['referenceNumber'] = this.referenceNumber;
+      data['fpsReferenceImg'] = this.removeBase64(this.fpsReferenceImg);
     }
 
-    if (this.selectedCoupon && Object.keys(this.selectedCoupon).length) {
+    if (this.selectedCoupon && this.selectedCoupon !== 'none' && Object.keys(this.selectedCoupon).length) {
       const { couponKey, couponCode } = this.selectedCoupon;
       data['couponInfo'] = { couponKey, couponCode };
     }
@@ -243,10 +245,31 @@ export class CheckoutComponent implements OnInit {
     return data;
   }
 
+  readReceiptImg(event: any) {
+    if (event.target.files.length === 0) return;
+    //Image upload validation
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    // Image upload
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      let base = reader.result.toString();
+      this.fpsReferenceImg = base;
+    };
+  }
+  removeBase64(data) {
+    let base = data;
+    let splited = base.split('base64,');
+    let byteImg = splited[1];
+    return byteImg;
+  }
+
   public discountedPrice: number = 0;
   public isCouponValid: boolean = false;
   onCouponChange(coupon) {
-    console.log("selected---coupon", coupon)
     if (coupon && coupon !== 'none') {
       const { startDate, endDate, numberOfTimesUsed, percentageOrFixedAmt, usageLimit } = coupon;
       let currentDate = moment().format()
@@ -268,7 +291,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   createDiscount(percent) {
-    console.log('create discount', this.amount, percent)
     if (percent && percent > 0) {
       this.discountedPrice = this.amount * percent / 100;
       console.log('💻', 'discounted price will be', this.discountedPrice);
@@ -295,7 +317,8 @@ export class CheckoutComponent implements OnInit {
       console.log(res)
       this.loading = false;
       if (res) {
-        this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: this.referenceNumber } })
+        // this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: this.referenceNumber } })
+        this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: 'orderId' } })
       }
     })
   }

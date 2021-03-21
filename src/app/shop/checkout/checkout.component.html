@@ -383,6 +383,16 @@
                           {{ cop.couponTitle }}-{{ cop.couponCode }}
                         </option>
                       </select>
+                      <p
+                        *ngIf="
+                          selectedCoupon &&
+                          selectedCoupon !== 'none' &&
+                          !isCouponValid
+                        "
+                        style="color: red"
+                      >
+                        Selected coupon is invalid
+                      </p>
                     </li>
                   </ul>
                   <ul class="total" *ngIf="isCouponValid && discountedPrice">
@@ -517,15 +527,33 @@
                         >
                           <div class="form-group">
                             <p class="field-label">
-                              Please Enter FPS Reference Number
+                              Click on below icon to upload FPS reference
+                              receipt
                             </p>
-                            <input
+                            <!-- <input
                               type="text"
                               name="field-name"
                               [(ngModel)]="referenceNumber"
                               name="referenceNumber"
                               placeholder="Reference Number"
-                            />
+                            /> -->
+                            <div class="box-input-file">
+                              <input
+                                class="upload"
+                                type="file"
+                                (change)="readReceiptImg($event)"
+                              />
+                              <img
+                                class="imgUpload"
+                                style="width: 50px"
+                                alt="Receipt Image"
+                                [src]="
+                                  fpsReferenceImg
+                                    ? fpsReferenceImg
+                                    : 'assets/images/add-image-icon.png'
+                                "
+                              />
+                            </div>
                           </div>
                         </li>
                         <!-- <li>
@@ -599,7 +627,7 @@
                       [disabled]="
                         checkoutForm.invalid ||
                         products.length === 0 ||
-                        (payment === 'FPS' && !referenceNumber)
+                        (payment === 'FPS' && !fpsReferenceImg)
                       "
                       [btnText]="'Place Order'"
                       (onSubmit)="submitCheckout()"

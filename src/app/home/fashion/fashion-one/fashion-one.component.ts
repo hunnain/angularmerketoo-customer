@@ -22,6 +22,7 @@ export class FashionOneComponent implements OnInit {
   ) {
     this.getEditorPicks();
     this.getCampaigns();
+    this.getAllBanners();
     this.productService.getProducts.subscribe(response => {
       if (response['body']) {
         this.products = response['body']
@@ -38,20 +39,21 @@ export class FashionOneComponent implements OnInit {
 
   public ProductSliderConfig: any = ProductSlider;
 
-  public sliders = [{
-    title: '',
-    subTitle: '',
-    image: 'assets/images/slider/1.jpg'
-  }, {
-    title: '',
-    subTitle: '',
-    image: 'assets/images/slider/2.jpg'
-  }
-    , {
-    title: '',
-    subTitle: '',
-    image: 'assets/images/slider/3.jpg'
-  }]
+  public sliders = [];
+  // public sliders =  [{
+  //   title: '',
+  //   subTitle: '',
+  //   image: 'assets/images/slider/1.jpg'
+  // }, {
+  //   title: '',
+  //   subTitle: '',
+  //   image: 'assets/images/slider/2.jpg'
+  // }
+  //   , {
+  //   title: '',
+  //   subTitle: '',
+  //   image: 'assets/images/slider/3.jpg'
+  // }]
 
   // Collection banner
   public collections = [{
@@ -145,6 +147,18 @@ export class FashionOneComponent implements OnInit {
     this.generalService.getRandomCampaign().subscribe(res => {
       if (res && res['body']) {
         console.log(res);
+        // this.blog = res
+      }
+    })
+  }
+
+  getAllBanners() {
+    this.generalService.getBanners().subscribe(res => {
+      if (res && res['body'] && res['body'].length) {
+        console.log("banners", res);
+        let banners = res['body'];
+        this.sliders = banners.map(item => ({ image: item.bannerUrl, ...item }));
+
         // this.blog = res
       }
     })
