@@ -61,7 +61,9 @@
           <i class="ti-bell"></i>
         </a>
       </div>
-      <span class="cart_qty_cls">{{ products.length }}</span>
+      <span class="cart_qty_cls">{{
+        signalRService.notifications.length
+      }}</span>
     </li>
     <li [hidden]="menu" class="onhover-div mobile-cart mobile-heart">
       <div>
