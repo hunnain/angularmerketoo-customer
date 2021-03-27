@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonErrorService } from '../../services/common-error.service';
+import { SignalrService } from '../../services/signalr.service';
 
 declare var $: any;
 @Component({
@@ -71,7 +72,8 @@ export class SettingsComponent implements OnInit {
     private toastService: ToastrService,
     private commonErrorService: CommonErrorService,
     private router: Router,
-    public productService: ProductService
+    public productService: ProductService,
+    public signalRService: SignalrService
   ) {
     this.authService.openLoginModal.subscribe(isopen => {
       if (isopen) {
