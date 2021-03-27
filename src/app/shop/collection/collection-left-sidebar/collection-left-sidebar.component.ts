@@ -57,7 +57,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
       let filters = {
         colors: this.colors,
         size: this.size,
-        label: this.getLabelValues(this.label),
+        labels: this.getLabelValues(this.label),
         name: this.name,
         isInternationalShipping: this.isInternationalShipping,
         startPrice: this.startPrice,
@@ -113,7 +113,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
         }
         return elem
       }, []);
-      console.log(customLabel)
+      // console.log(customLabel)
       return customLabel;
     }
     return null;

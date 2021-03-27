@@ -15,5 +15,7 @@ export const environment = {
   instagram_token: 'IGQVJYeF9tdlhaRFpNYlRHTi1ZATWRJNzdHVXJCaEx6MGdGSjdOTXBlbDlIUHROM1gwdlhCUUQzM1NYS3VsMTBYU1RQQVNkNjJqeEs1SE04ek9jVDJtRFlRSFlfMkJwX1o5X0ZATakdxR19qQUtxZAHBuTgZDZD',
   // stripe_token: 'STRIPE_PUBLISHABLE_KEY',
   stripe_token: 'pk_live_51HDmTuFbF7KqjBXse74NA9yJL9hPR67hp1arSgF6mTKwg5ByRQkuzMdgIfTpjDG14kKAhL8nPyWAxYfpqqkxJFIo00hP5znSqk',
-  paypal_token: 'PAYPAL_CLIENT_ID'
+  paypal_token: 'PAYPAL_CLIENT_ID',
+  push_notification_public_key: "BGcyc-_QabAQ0yYUnSiSzHKy5K2vZueQIU1JZzswP9XuXRimVv5OWGEP8KccL0wu70jNgHGbTiWGa08bXIabYAo",
+  push_notification_private_key: "2FzAHrZuhdRqcrz2YEw3OtlHtUYXkldS1jiTQNEIz5w"
 };
