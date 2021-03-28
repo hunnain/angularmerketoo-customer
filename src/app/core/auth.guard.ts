@@ -41,6 +41,9 @@ export class AuthGuard implements CanActivate {
           this.cs.isLoading.next(false);
           localStorage.clear();
           this.auth.isLoggedOut.emit(true);
+          // if(this.pnService.pushNotificationStatus.isSubscribed){
+          //   this.pnService.unsubscribeUser();
+          // }
           this.router.navigate(['home/fashion']);
           return Observable.of(false);
         });

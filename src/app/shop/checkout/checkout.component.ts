@@ -234,10 +234,10 @@ export class CheckoutComponent implements OnInit {
 
     if (this.payment === 'FPS') {
       // data['referenceNumber'] = this.referenceNumber;
-      data['fpsReferenceImg'] = this.removeBase64(this.fpsReferenceImg);
+      data['referenceImage'] = this.removeBase64(this.fpsReferenceImg);
     }
 
-    if (this.selectedCoupon && this.selectedCoupon !== 'none' && Object.keys(this.selectedCoupon).length) {
+    if (this.selectedCoupon && this.selectedCoupon !== 'none' && Object.keys(this.selectedCoupon).length && this.isCouponValid) {
       const { couponKey, couponCode } = this.selectedCoupon;
       data['couponInfo'] = { couponKey, couponCode };
     }

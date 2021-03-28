@@ -122,7 +122,7 @@
                       product?.price * productService.Currency?.price
                         | currency: productService.Currency?.currency:"symbol"
                     }}</del>
-                    <span>{{ product?.discount }}% off</span>
+                    <span>{{ product?.markdownPrice }}% off</span>
                   </h4>
                   <h3>
                     {{
@@ -292,6 +292,17 @@
                       [class.disabled]="counter > product.stock"
                       (click)="buyNow(product)"
                       >buy now</a
+                    >
+                  </div>
+                  <div class="product-buttons">
+                    <a
+                      style="
+                        cursor: pointer;
+                        color: blue;
+                        text-decoration: underline;
+                      "
+                      (click)="reportProduct(product)"
+                      >Report Product</a
                     >
                   </div>
                   <div class="border-product" *ngIf="product?.labels">
@@ -521,3 +532,10 @@
 </section>
 <app-size-modal #sizeChart [product]="product"></app-size-modal>
 <!-- Section ends -->
+
+<!-- Report Product Modal -->
+<app-report-product-modal
+  #reportModal
+  (reloadData)="onModalSave($event)"
+></app-report-product-modal>
+<!-- Report Product Modal Ends -->

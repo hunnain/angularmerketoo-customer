@@ -552,11 +552,22 @@
   "Enter confirm password":"Enter confirm password",
   "Change":"Change",
   "messeges_Typehere": "Type here",
-  "message_search": "Search"
+  "message_search": "Search",
 
 
-
-
+  "report_opt1":"This item uses my intellectual property without my consent",
+  "report_opt1_1":"Please report the infringement according to our",
+  "report_link":"Sales policy",
+  "report_opt2":"This item or its photos may infringe on intellectual property rights.",
+  "report_opt2_1":"Please consult the",
+  "report_opt3":"The source of this item appears questionable.",
+  "report_opt3_1":"(e.g.,batch goods or no authorization to sell)",
+  "report_opt4":"This item is already listed in another Marketoo shop",
+  "report_opt4_1":"(Please note, crossover products can be listed in more than one Marketoo shop.)",
+  "report_opt5":"This item is not allowed for sale on Marketoo.",
+  "report_opt6":"Other reason",
+  "report_textarea_label":"Please describe the issue and provide relevant links:",
+  "report_note":"Please note that Marketoo will directly forward the content you provide in this field to the shop."
 
 
 

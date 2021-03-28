@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { CommonService } from "../shared/services/common.service";
+import { PushNotificationService } from "../shared/services/pushNotification.service";
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,8 @@ export class AuthService {
   public isLoggedOut: EventEmitter<any> = new EventEmitter(false);
   constructor(
     public afAuth: AngularFireAuth,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private pnService: PushNotificationService,
   ) { }
 
   doFacebookLogin() {
@@ -103,7 +105,13 @@ export class AuthService {
 
 
   login(data) {
-    return this.commonService.post('customer/login', data);
+    return this.commonService.post('customer/login', data).pipe(map(res => {
+      if (res && !this.pnService.pushNotificationStatus.isSubscribed) {
+        this.pnService.subscribeUser();
+      }
+
+      return res;
+    }));
   }
   signUp(data) {
     return this.commonService.post('customer/signUp', data);
@@ -122,7 +130,21 @@ export class AuthService {
   }
 
   logout() {
-    return this.commonService.post('token/revoke', {});
+    return this.commonService.post('token/revoke', {}).pipe(map(res => {
+      if (res && this.pnService.pushNotificationStatus.isSubscribed) {
+        this.pnService.unsubscribeUser();
+      }
+
+      return res;
+    }));
+  }
+
+  forgotPassword(data) {
+    return this.commonService.post('customer/forgot-password', data);
+  }
+
+  createReferCode() {
+    return this.commonService.get(`customer/get-customer-reference-code`);
   }
 
 

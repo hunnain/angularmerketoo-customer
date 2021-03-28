@@ -69,6 +69,7 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
 import { PaginationComponent } from "../shop/collection/widgets/pagination/pagination.component";
+import { ReportProductComponent } from "./components/modal/report-product/report-product.component";
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -102,6 +103,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     QuickViewComponent,
     ProfileModalComponent,
     ReturnModalComponent,
+    ReportProductComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,
@@ -167,6 +169,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     QuickViewComponent,
     ProfileModalComponent,
     ReturnModalComponent,
+    ReportProductComponent,
     CartModalComponent,
     CartVariationComponent,
     VideoModalComponent,

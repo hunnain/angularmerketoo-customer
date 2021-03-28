@@ -36,8 +36,8 @@ export class AppComponent {
 
   ngOnInit() {
     this.createConnection();
-    // this.pnService.init();
-    this.checkLoggedIn();
+    this.pnService.init();
+    // this.checkLoggedIn();
   }
 
   checkLoggedIn() {

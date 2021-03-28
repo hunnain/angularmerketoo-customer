@@ -531,7 +531,21 @@
   "Type Here":"在此輸入",
 
   "messeges_Typehere": "請輸入文字",
-  "message_search": "搜尋"
+  "message_search": "搜尋",
+
+  "report_opt1":"本項目未經我同意即使用我的知識產權",
+  "report_opt1_1":"請根據我們的舉報侵權行為",
+  "report_link":"銷售方針",
+  "report_opt2":"此項目或其照片可能會侵犯知識產權。",
+  "report_opt2_1":"請諮詢",
+  "report_opt3":"該物品的來源似乎值得商.。",
+  "report_opt3_1":"（例如批次商品或無權出售）",
+  "report_opt4":"此商品已在其他Marketoo商店中列出",
+  "report_opt4_1":"（請注意，跨界產品可以在Marketoo的多家商店中列出。）",
+  "report_opt5":"此產品不允許在Marketoo上出售。",
+  "report_opt6":"其他原因",
+  "report_textarea_label":"請描述問題並提供相關鏈接：",
+  "report_note":"請注意，Marketoo將直接將您在此字段中提供的內容轉發給商店。"
   
 
 }
