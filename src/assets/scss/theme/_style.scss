@@ -2538,6 +2538,9 @@ header {
       }
       .lable4 {
         position: absolute;
+        background-color: #f2917e;
+        padding: 5px 4px;
+        color: $white;
         font-size: 14px;
         font-weight: 700;
         text-transform: uppercase;
@@ -2547,7 +2550,7 @@ header {
         right: 7px;
         letter-spacing: 0.1em;
         z-index: 1;
-        color: #212529;
+        // color: #212529;
       }
     }
   }

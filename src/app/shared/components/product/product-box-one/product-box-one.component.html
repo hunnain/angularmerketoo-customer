@@ -1,8 +1,14 @@
 <div *ngIf="!loader">
   <div class="img-wrapper">
     <div class="lable-block">
-      <span class="lable77" *ngIf="product.new">{{ "new" | translate }}</span>
-      <span class="lable77" *ngIf="!product.new">{{ "free" | translate }}</span>
+      <!-- <span class="lable77" *ngIf="product.new">{{ "new" | translate }}</span> -->
+      <!-- <span class="lable77" *ngIf="!product.new">{{ "free" | translate }}</span> -->
+      <span class="lable77" *ngIf="!product.isInternationalShipping">{{
+        "Local" | translate
+      }}</span>
+      <span class="lable4" *ngIf="product.markdownPrice">{{
+        product.markdownPrice + "% Off" | translate
+      }}</span>
       <!-- <span class="lable4" *ngIf="product.sale">on sale</span> -->
     </div>
     <div class="front">
@@ -100,7 +106,7 @@
             | discount: product
             | currency: currency?.currency:"symbol"
         }}
-        <del *ngIf="product?.discount"
+        <del *ngIf="product?.markdownPrice"
           ><span class="money">
             {{
               product?.price * currency?.price

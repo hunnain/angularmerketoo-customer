@@ -8,6 +8,7 @@ import { AddBase64InImg } from 'src/app/shared/utilities';
 import { AuthService } from 'src/app/core/auth.service';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import * as moment from 'moment';
+import { ReportProductComponent } from 'src/app/shared/components/modal/report-product/report-product.component';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -15,6 +16,7 @@ import * as moment from 'moment';
   styleUrls: ['./product-left-sidebar.component.scss']
 })
 export class ProductLeftSidebarComponent implements OnInit {
+  @ViewChild("reportModal") reportModal: ReportProductComponent;
   // @ViewChild('owlCar') owlCar;
 
   public product: Product = {};
@@ -179,6 +181,15 @@ export class ProductLeftSidebarComponent implements OnInit {
     // setTimeout(() => {
     //   this.router.navigate(['/shop/product/left/sidebar/', this.product.productId]);
     // }, 2000);
+  }
+
+  reportProduct(prod) {
+    console.log('💻', prod);
+    this.reportModal.openModal(prod);
+  }
+
+  onModalSave(res) {
+    console.log("report saved", res)
   }
 
 }
