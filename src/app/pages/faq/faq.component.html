@@ -1,9 +1,9 @@
 <app-breadcrumb [title]="'FAQ'" [breadcrumb]="'FAQ'"></app-breadcrumb>
 <!-- section start-->
 <section class="faq-section section-b-space">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-sm-12">
                 <ngb-accordion [closeOthers]="true" activeIds="static-1" class="accordion theme-accordion" id="accordionExample">
                     <ngb-panel id="static-1" title=" How can I downgrade to an earlier version of Dummy Content?">
                         <ng-template ngbPanelContent>
@@ -36,8 +36,9 @@
                         </ng-template>
                     </ngb-panel>
                 </ngb-accordion>
-            </div>
-        </div>
+            </div> -->
+      <div class="col-12" [innerHTML]="faqs"></div>
     </div>
+  </div>
 </section>
 <!--Section ends-->

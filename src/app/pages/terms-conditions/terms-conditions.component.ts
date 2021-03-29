@@ -28,7 +28,7 @@ export class TermsConditionsComponent implements OnInit {
     // this.viewScroller.scrollToPosition([0, 0])
     // this.viewScroller.setOffset([120, 120]);
     // console.log('ng after view init', this.viewScroller.scrollToAnchor("termsAndConditions"))
-    this.viewScroller.scrollToAnchor('termsAndConditions'); // Anchore Link
+    // this.viewScroller.scrollToAnchor('termsAndConditions'); // Anchore Link
   }
 
   getAboutUs() {
