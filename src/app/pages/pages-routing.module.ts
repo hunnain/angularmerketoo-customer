@@ -38,6 +38,7 @@ import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonr
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { AuthGuard } from '../core/auth.guard';
+import { WeekendComponent } from './weekend-marketoo/weekend-marketoo.component';
 
 const routes: Routes = [
   {
@@ -140,6 +141,10 @@ const routes: Routes = [
   {
     path: 'faq',
     component: FaqComponent
+  },
+  {
+    path: 'weekend-marketoo',
+    component: WeekendComponent
   },
   {
     path: 'blog/left/sidebar',
