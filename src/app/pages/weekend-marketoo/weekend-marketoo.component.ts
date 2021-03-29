@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/shared/services/general.service';
 
 @Component({
-  selector: 'app-faq',
-  templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.scss']
+  selector: 'app-weekend-marketoo',
+  templateUrl: './weekend-marketoo.component.html',
+  styleUrls: ['./weekend-marketoo.component.scss']
 })
-export class FaqComponent implements OnInit {
+export class WeekendComponent implements OnInit {
 
-  public faqs: string = null;
+  public weekend: string = null;
   public loading: boolean = false;
   constructor(private generalService: GeneralService) { }
 
@@ -22,7 +22,7 @@ export class FaqComponent implements OnInit {
       this.loading = false;
       if (res && res['body']) {
         if (res['body'].faqs) {
-          this.faqs = res['body'].faqs;
+          this.weekend = res['body'].faqs;
         }
       }
     })
