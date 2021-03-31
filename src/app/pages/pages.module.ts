@@ -27,6 +27,8 @@ import { LookbookComponent } from './lookbook/lookbook.component';
 import { ErrorComponent } from './error/error.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { FaqComponent } from './faq/faq.component';
+import { WeekendComponent } from './weekend-marketoo/weekend-marketoo.component';
+
 // Blog Components
 import { BlogLeftSidebarComponent } from './blog/blog-left-sidebar/blog-left-sidebar.component';
 import { BlogRightSidebarComponent } from './blog/blog-right-sidebar/blog-right-sidebar.component';
@@ -101,7 +103,8 @@ import { MyNotificationComponent } from './account/dashboard/notification/notifi
     MyWishlistComponent,
     ListMessageComponent,
     ChatBoxComponent,
-    RightSidebarComponent
+    RightSidebarComponent,
+    WeekendComponent
   ],
   imports: [
     CommonModule,
