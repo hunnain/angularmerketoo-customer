@@ -49,6 +49,7 @@ export class SignalrService {
       .pipe(tap(res => {
         if (res) {
           console.log("message sucessfully sent to api controller")
+          this.cs.isLoading.next(false)
           this.messages.push(res);
         }
       }

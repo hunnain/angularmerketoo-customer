@@ -2536,6 +2536,36 @@ header {
         //  left: 7px;
         z-index: 1;
       }
+      .lable78 {
+        position: absolute;
+        background-color: #f2917e;
+        padding: 5px 4px;
+        color: $white;
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        // writing-mode: vertical-rl;
+        // transform: rotate(-180deg);
+        top: 0px;
+        right: 0px;
+        letter-spacing: 0.1em;
+        z-index: 1;
+        // color: #212529;
+      }
+      .lable79 {
+        position: absolute;
+        background-color: #d3d3d3;
+        padding: 5px 4px;
+        color: $white;
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        top: 0px;
+        right: 0px;
+        letter-spacing: 0.1em;
+        z-index: 1;
+        // color: #212529;
+      }
       .lable4 {
         position: absolute;
         background-color: #f2917e;

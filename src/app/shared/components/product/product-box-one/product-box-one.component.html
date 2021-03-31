@@ -3,12 +3,15 @@
     <div class="lable-block">
       <!-- <span class="lable77" *ngIf="product.new">{{ "new" | translate }}</span> -->
       <!-- <span class="lable77" *ngIf="!product.new">{{ "free" | translate }}</span> -->
-      <span class="lable77" *ngIf="!product.isInternationalShipping">{{
-        "Local" | translate
-      }}</span>
-      <span class="lable4" *ngIf="product.markdownPrice">{{
-        product.markdownPrice + "% Off" | translate
-      }}</span>
+      <div class="label-section">
+        <!-- <span class="label79">{{ "New" | translate }}</span> -->
+        <span class="label77" *ngIf="product.isInternationalShipping">{{
+          "International" | translate
+        }}</span>
+        <span class="label78" *ngIf="product.markdownPrice">{{
+          product.markdownPrice + "% Off" | translate
+        }}</span>
+      </div>
       <!-- <span class="lable4" *ngIf="product.sale">on sale</span> -->
     </div>
     <div class="front">

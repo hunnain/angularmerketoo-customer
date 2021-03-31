@@ -43,6 +43,7 @@ import { RatingComponent } from "./components/rating/rating.component";
 import { CropperComponent } from "./components/cropper/cropper.component";
 import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
 import { ButtonComponent } from "./components/button/button.component";
+import { PaginationComponent } from "../shop/collection/widgets/pagination/pagination.component";
 
 
 // Modals Components
@@ -56,6 +57,8 @@ import { AgeVerificationComponent } from "./components/modal/age-verification/ag
 import { ProfileModalComponent } from "./components/modal/profile/profile.component";
 import { ReturnModalComponent } from "./components/modal/return/return.component";
 import { LoaderComponent } from "./components/loader/loader.component";
+import { ReportProductComponent } from "./components/modal/report-product/report-product.component";
+
 
 // Skeleton Loader Components
 import { SkeletonProductBoxComponent } from "./components/skeleton/skeleton-product-box/skeleton-product-box.component";
@@ -68,8 +71,6 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
-import { PaginationComponent } from "../shop/collection/widgets/pagination/pagination.component";
-import { ReportProductComponent } from "./components/modal/report-product/report-product.component";
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {

@@ -55,15 +55,18 @@
             </div>
             <div id="search" class="wrap">
               <div class="search">
-                <input
-                  type="text"
-                  class="searchTerm"
-                  [(ngModel)]="search"
-                  placeholder="{{ 'search' | translate }}"
-                />
-                <button type="button" class="searchButton" (click)="onSearch()">
-                  {{ "search" | translate }}
-                </button>
+                <form style="display: flex" (submit)="onSearch()">
+                  <input
+                    type="text"
+                    class="searchTerm"
+                    name="search"
+                    [(ngModel)]="search"
+                    placeholder="{{ 'search' | translate }}"
+                  />
+                  <button type="submit" class="searchButton">
+                    {{ "search" | translate }}
+                  </button>
+                </form>
                 <!-- <span>search</span> -->
               </div>
             </div>

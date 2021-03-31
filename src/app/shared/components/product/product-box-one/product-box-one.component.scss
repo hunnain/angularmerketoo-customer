@@ -1,4 +1,28 @@
-.ads-style{
-    color: #71737A;
-    
+.ads-style {
+  color: #71737a;
+}
+
+.label-section {
+  position: absolute;
+  z-index: 1;
+  span {
+    text-align: center;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 5px 4px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .label77 {
+    background-color: #2e90b7;
+    // letter-spacing: 0.1em;
+  }
+  .label78 {
+    background-color: #f2917e;
+    // letter-spacing: 0.1em;
+  }
+  .label79 {
+    background-color: #a79f9f;
+    // letter-spacing: 0.1em;
+  }
 }
