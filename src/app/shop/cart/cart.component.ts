@@ -4,6 +4,7 @@ import { ProductService } from "../../shared/services/product.service";
 import { Product } from "../../shared/classes/product";
 import { AddBase64InImg } from 'src/app/shared/utilities';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.productService.cartItems.subscribe(response => this.products = response);
   }
@@ -48,7 +50,9 @@ export class CartComponent implements OnInit {
 
   addToCart() {
     // console.log('💻 cart items--', this.products);
-    this.router.navigate(['/shop/checkout'])
+    if (this.authService.checkUserLoggedIn()) {
+      this.router.navigate(['/shop/checkout'])
+    }
     // let prods = JSON.parse(JSON.stringify(this.products));
     // let data = prods.map(item => {
     //   if (item.imageUrls) {

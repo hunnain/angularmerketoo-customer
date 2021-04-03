@@ -84,7 +84,7 @@ const routes: Routes = [
   {
     path: 'designer/:id',
     component: DesignerPageComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'collection/right/sidebar',
@@ -97,7 +97,7 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'mail',
