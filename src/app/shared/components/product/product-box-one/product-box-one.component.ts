@@ -5,6 +5,7 @@ import { Product } from "../../../classes/product";
 import { ProductService } from "../../../services/product.service";
 import { AddBase64InImg } from 'src/app/shared/utilities';
 import { AuthService } from 'src/app/core/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-product-box-one',
@@ -66,15 +67,15 @@ export class ProductBoxOneComponent implements OnInit {
   }
 
   openCartModal(product) {
-    if (this.authService.checkUserLoggedIn()) {
-      this.CartModal.openModal(product)
-    }
+    // if (this.authService.checkUserLoggedIn()) {
+    this.CartModal.openModal(product)
+    // }
   }
 
   addToCart(product: any) {
-    if (this.authService.checkUserLoggedIn()) {
-      this.productService.addToCart(product);
-    }
+    // if (this.authService.checkUserLoggedIn()) {
+    this.productService.addToCart(product);
+    // }
   }
 
   addToWishlist(product: any) {
@@ -89,6 +90,11 @@ export class ProductBoxOneComponent implements OnInit {
 
   formatImage(img) {
     return img ? img : '';
+  }
+
+  showIfAddedInAMonth(date) {
+    let currentDate = moment();
+    return moment(currentDate).diff(date, 'days') > 30 ? false : true;
   }
 
 }

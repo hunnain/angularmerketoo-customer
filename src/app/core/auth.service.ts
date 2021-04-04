@@ -130,13 +130,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.commonService.post('token/revoke', {}).pipe(map(res => {
-      if (res && this.pnService.pushNotificationStatus.isSubscribed) {
-        this.pnService.unsubscribeUser();
-      }
-
-      return res;
-    }));
+    return this.commonService.post('token/revoke', {});
   }
 
   forgotPassword(data) {

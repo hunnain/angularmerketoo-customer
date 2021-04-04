@@ -4,7 +4,11 @@
       <!-- <span class="lable77" *ngIf="product.new">{{ "new" | translate }}</span> -->
       <!-- <span class="lable77" *ngIf="!product.new">{{ "free" | translate }}</span> -->
       <div class="label-section">
-        <!-- <span class="label79">{{ "New" | translate }}</span> -->
+        <span
+          class="label79"
+          *ngIf="showIfAddedInAMonth(product.creationDate)"
+          >{{ "New" | translate }}</span
+        >
         <span class="label77" *ngIf="product.isInternationalShipping">{{
           "International" | translate
         }}</span>
@@ -95,9 +99,9 @@
       </a>
       <p>{{ product?.description }}</p>
 
-      <div style="margin-bottom: 4%; font-weight: bold">
+      <!-- <div style="margin-bottom: 4%; font-weight: bold">
         <span class="ads-style">AD . Chris John</span>
-      </div>
+      </div> -->
       <div style="margin-bottom: 4%; font-weight: bold">
         <span class="ads-style">
           <app-rating [rating]="product?.rating" [readonly]="true"></app-rating>

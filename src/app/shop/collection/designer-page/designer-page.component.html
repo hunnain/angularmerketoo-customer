@@ -113,23 +113,25 @@
             </ul> -->
           </div>
           <div class="col-6 col-sm-6 col-md-4 col-lg-2">
-            <button
-              type="submit"
-              class="searchButton"
-              (click)="followSeller()"
-              *ngIf="!sellerInfo?.isFollower"
-            >
-              <i style="color: white" class="fa fa-plus"></i>
-              Follow Designer
-            </button>
-            <button
-              type="submit"
-              class="searchButton"
-              (click)="unfollowSeller()"
-              *ngIf="sellerInfo?.isFollower"
-            >
-              UnFollow Designer
-            </button>
+            <div *ngIf="checkIfUserLoggedIn">
+              <button
+                type="submit"
+                class="searchButton"
+                (click)="followSeller()"
+                *ngIf="!sellerInfo?.isFollower"
+              >
+                <i style="color: white" class="fa fa-plus"></i>
+                Follow Designer
+              </button>
+              <button
+                type="submit"
+                class="searchButton"
+                (click)="unfollowSeller()"
+                *ngIf="sellerInfo?.isFollower"
+              >
+                UnFollow Designer
+              </button>
+            </div>
             <div class="footer-social">
               <ul>
                 <li style="padding-right: 19px">
@@ -163,6 +165,7 @@
               "
               type="button"
               class="btn btn-outline-primary"
+              *ngIf="checkIfUserLoggedIn"
               (click)="openContactModal(contactModal)"
             >
               <i class="fa fa-address-card"></i> Contact Designer

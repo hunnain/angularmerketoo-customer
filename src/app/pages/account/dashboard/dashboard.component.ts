@@ -9,6 +9,7 @@ import { ProfileModalComponent } from "src/app/shared/components/modal/profile/p
 import { CommonService } from "src/app/shared/services/common.service";
 import { CouponService } from "src/app/shared/services/coupon.service";
 import { GeneralService } from "src/app/shared/services/general.service";
+import { PushNotificationService } from "src/app/shared/services/pushNotification.service";
 
 @Component({
   selector: "app-dashboard",
@@ -37,7 +38,8 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     public formbuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private pnService: PushNotificationService
   ) {
     this.fetchDataFromLS();
     this.fetchAllCoupons();
@@ -86,10 +88,18 @@ export class DashboardComponent implements OnInit {
 
   signOut() {
     this.authService.logout().subscribe((res) => {
-      // if (res) {
-      localStorage.clear();
-      this.router.navigate(["/home/fashion"]);
-      // }
+      if (res) {
+        if (this.pnService.pushNotificationStatus.isSubscribed) {
+          this.pnService.unsubscribeUser();
+        }
+
+        this.authService.isLoggedOut.emit(true);
+        this.cs.isLoading.next(false);
+        setTimeout(() => {
+          localStorage.clear();
+          this.router.navigate(["/home/fashion"]);
+        }, 2000)
+      }
     });
   }
 

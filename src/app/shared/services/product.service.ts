@@ -189,7 +189,7 @@ export class ProductService {
 
   // Add to Cart
   public addToCart(product): any {
-    const { productId, name, size, color, price } = product;
+    const { productId, name, size, color, price, markdownPrice } = product;
     const cartItem = state.cart.find(item => item.productId === productId);
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
@@ -204,7 +204,7 @@ export class ProductService {
         // ...product,
         productId,
         quantity: qty,
-        name, size, color, price,
+        name, size, color, price, markdownPrice,
         image: product.imageUrls ? product.imageUrls[0] : product.image
       })
     }
@@ -253,8 +253,8 @@ export class ProductService {
     return this.cartItems.pipe(map((product: Product[]) => {
       return product.reduce((prev, curr: Product) => {
         let price = curr.price;
-        if (curr.discount) {
-          price = curr.price - (curr.price * curr.discount / 100)
+        if (curr.markdownPrice) {
+          price = curr.price - (curr.price * curr.markdownPrice / 100)
         }
         return (prev + price * curr.quantity) * this.Currency.price;
       }, 0);

@@ -102,14 +102,14 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   // Add to cart
   async addToCart(product: any) {
-    if (this.authService.checkUserLoggedIn()) {
-      product.quantity = this.counter || 1;
-      product.size = this.selectedSize;
-      product.color = this.selectedColor;
-      const status = await this.productService.addToCart(product);
-      if (status)
-        this.router.navigate(['/shop/cart']);
-    }
+    // if (this.authService.checkUserLoggedIn()) {
+    product.quantity = this.counter || 1;
+    product.size = this.selectedSize;
+    product.color = this.selectedColor;
+    const status = await this.productService.addToCart(product);
+    if (status)
+      this.router.navigate(['/shop/cart']);
+    // }
   }
 
   // Buy Now

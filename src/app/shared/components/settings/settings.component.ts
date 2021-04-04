@@ -77,8 +77,8 @@ export class SettingsComponent implements OnInit {
   ) {
     this.authService.openLoginModal.subscribe(isopen => {
       if (isopen) {
-        this.login(this.content);
         this.authService.openLoginModal.next(false);
+        this.login(this.content);
       }
     })
     this.createLoginForm();
@@ -94,8 +94,8 @@ export class SettingsComponent implements OnInit {
 
     this.authService.isLoggedOut.subscribe(res => {
       if (res) {
-        this.menu = true;
         this.authService.isLoggedOut.emit(false);
+        this.menu = true;
       }
     })
   }
