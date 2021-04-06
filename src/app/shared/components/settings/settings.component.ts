@@ -23,6 +23,7 @@ export class SettingsComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
 
   public loginForm: FormGroup;
+  public resetForm: FormGroup;
   public signupForm: FormGroup;
 
   public products: Product[] = []
@@ -34,6 +35,7 @@ export class SettingsComponent implements OnInit {
   private modalRef: NgbModalRef;
   public logi: boolean = true;
   public default: boolean = true;
+  public forgotPass: boolean = false;
   public loginDialog: string = "AddNewBattery";
   themeLogo: string = 'assets/Marketoo.png';
   loginLogo: string = 'assets/images/login.jpg';
@@ -82,6 +84,7 @@ export class SettingsComponent implements OnInit {
       }
     })
     this.createLoginForm();
+    this.createResetForm()
     this.createSignupForm();
     this.checkLoggedIn();
     this.productService.cartItems.subscribe(response => this.products = response);
@@ -90,6 +93,7 @@ export class SettingsComponent implements OnInit {
     this.cs.isLoading.subscribe(res => {
       this.loginLoading = res;
       this.signupLoading = res;
+      this.reseting = res;
     })
 
     this.authService.isLoggedOut.subscribe(res => {
@@ -122,6 +126,14 @@ export class SettingsComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}')]],
       password: ['', Validators.required],
+    });
+  }
+
+  createResetForm() {
+    this.resetForm = this.formBuilder.group({
+      otp: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     });
   }
 
@@ -218,12 +230,12 @@ export class SettingsComponent implements OnInit {
     }
     this.signupLoading = true;
     this.default = false;
-    this.register = true
+    // this.register = true
     this.authService.signUp(data).subscribe(
       (res) => {
         this.signupLoading = false;
+        this.cs.isLoading.next(false)
         if (res) {
-          this.cs.isLoading.next(false)
           // this.router.navigate(['/login'])
           this.default = true;
           this.logi = false;
@@ -236,5 +248,69 @@ export class SettingsComponent implements OnInit {
       //   // this.loading = false;
       // }
     );
+  }
+
+  reseting: boolean = false;
+  renewPass: boolean = false;
+  get pass() {
+    return this.resetForm.controls.password.value;
+  }
+  get confirmPass() {
+    return this.resetForm.controls.confirmPassword.value;
+  }
+  resetPassword() {
+    let email = this.loginForm.value.email;
+    this.reseting = true;
+    // setTimeout(() => {
+    //   this.reseting = false;
+    //   this.renewPass = true;
+    //   this.logi = true
+    // }, 2000)
+    this.authService.forgotPassword(email).subscribe(
+      (res) => {
+        if (res) {
+          this.reseting = false;
+          this.cs.isLoading.next(false)
+          // this.default = true;
+          this.forgotPass = false;
+          this.renewPass = true;
+          this.logi = true;
+          // this.register = true;
+
+        }
+      }, err => {
+        this.reseting = false;
+        this.cs.isLoading.next(false)
+        let msg = this.commonErrorService.parseServerError(err.error)
+        this.toastService.error(msg, 'Error')
+      });
+  }
+
+  RenewPassword() {
+    let data = { ...this.resetForm.value };
+    console.log('reset form data', data)
+    this.reseting = true;
+    // setTimeout(() => {
+    //   this.reseting = false;
+    //   this.renewPass = false;
+    //   this.logi = false;
+    //   this.forgotPass=false;
+    // })
+    this.authService.changePassword(data).subscribe(
+      (res) => {
+        if (res) {
+          this.cs.isLoading.next(false)
+          this.reseting = false;
+          this.renewPass = false;
+          this.logi = false;
+          this.forgotPass = false;
+
+        }
+      }, err => {
+        this.reseting = false;
+        this.cs.isLoading.next(false)
+        let msg = this.commonErrorService.parseServerError(err.error)
+        this.toastService.error(msg, 'Error')
+      });
   }
 }

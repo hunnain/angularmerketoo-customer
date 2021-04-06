@@ -4,6 +4,7 @@ import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
 import { ExtendedCategories, LabelOptions } from 'src/app/shared/utilities';
+import { GeneralService } from 'src/app/shared/services/general.service';
 
 @Component({
   selector: 'app-collection-left-sidebar',
@@ -32,8 +33,13 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    private viewScroller: ViewportScroller, public productService: ProductService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private viewScroller: ViewportScroller,
+    public productService: ProductService,
+    private generalService: GeneralService
+  ) {
     // Get Query params..
     this.route.queryParams.subscribe(params => {
 
@@ -101,6 +107,16 @@ export class CollectionLeftSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCampaigns();
+  }
+
+  public campaign = null;
+  getCampaigns() {
+    this.generalService.getRandomCampaign().subscribe(res => {
+      if (res && res['body']) {
+        this.campaign = res['body']
+      }
+    })
   }
 
   getLabelValues(labels) {

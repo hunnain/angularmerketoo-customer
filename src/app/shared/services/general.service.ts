@@ -20,6 +20,10 @@ export class GeneralService {
         return this.cs.get(`common/get-random-campaign`);
     }
 
+    getCampaignById(id) {
+        return this.cs.get(`common/get-campaign-by-id/${id}`);
+    }
+
     getNotifications(query = "") {
         return this.cs.get(`notifications/get-notifications?${query}`);
     }

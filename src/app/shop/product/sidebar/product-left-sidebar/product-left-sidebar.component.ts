@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/core/auth.service';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import * as moment from 'moment';
 import { ReportProductComponent } from 'src/app/shared/components/modal/report-product/report-product.component';
+import { GeneralService } from 'src/app/shared/services/general.service';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -40,7 +41,8 @@ export class ProductLeftSidebarComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public productService: ProductService,
-    private feedbackService: FeedbackService
+    private feedbackService: FeedbackService,
+    private generalService: GeneralService
   ) {
     this.route.data.subscribe(response => {
       this.product = response.data;
@@ -55,6 +57,17 @@ export class ProductLeftSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCampaigns();
+  }
+
+  public campaign = null;
+  getCampaigns() {
+    this.generalService.getRandomCampaign().subscribe(res => {
+      if (res && res['body']) {
+        this.campaign = res['body']
+        console.log(this.campaign);
+      }
+    })
   }
 
   // Get Product Color

@@ -8,6 +8,7 @@ import { Seller } from 'src/app/shared/classes/seller';
 import { AddBase64InImg } from 'src/app/shared/utilities';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/auth.service';
+import { GeneralService } from 'src/app/shared/services/general.service';
 
 @Component({
   selector: 'app-designer-page',
@@ -45,7 +46,8 @@ export class DesignerPageComponent implements OnInit {
     public productService: ProductService,
     public sellerService: SellerService,
     private modalService: NgbModal,
-    private authService: AuthService
+    private authService: AuthService,
+    private generalService: GeneralService
   ) {
     // Get Query params..
     // this.route.queryParams.subscribe(params => {
@@ -86,6 +88,7 @@ export class DesignerPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCampaigns()
   }
 
   fetchSellerInfo(id) {
@@ -93,6 +96,15 @@ export class DesignerPageComponent implements OnInit {
       if (res && res['body']) {
         this.sellerInfo = res['body'];
         this.loading = false;
+      }
+    })
+  }
+
+  public campaign = null;
+  getCampaigns() {
+    this.generalService.getRandomCampaign().subscribe(res => {
+      if (res && res['body']) {
+        this.campaign = res['body']
       }
     })
   }
