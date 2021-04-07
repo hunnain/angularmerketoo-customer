@@ -75,8 +75,21 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
         `Result ${result}`
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        console.log("on close modal")
+        this.resetOnClose();
       });
     }
+  }
+
+  resetOnClose() {
+    this.loading = false;
+    this.returnType = true;
+    this.products = [];
+    this.imgs = [];
+    this.refund_reason = ''
+    this.description = ''
+    this.solution = "";
+    this.refund_amount = 0;
   }
 
   save() {
@@ -96,6 +109,8 @@ export class ReturnModalComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (!this.returnType && this.products.length) {
       data['ReturnExchangeDetails'] = this.products;
+    } else {
+      data['ReturnExchangeDetails'] = this.returnData.orderedProductDetails;
     }
 
     this.returnService.returnOrder(data).subscribe(res => {
