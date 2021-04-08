@@ -6,24 +6,33 @@
 >
   <div class="collection-wrapper">
     <div class="container">
-      <!-- <div
+      <div
         style="
-          width: 100%;
+          width: 70%;
           display: block;
           margin-left: auto;
           margin-right: auto;
-          padding-bottom: 2%;
+          padding-bottom: 1.5%;
+          padding-top: 1.5%;
+          text-align: center;
         "
         class="top-banner-wrapper"
+        *ngIf="campaign"
       >
-        <a [routerLink]="['/shop/collection/left/sidebar']">
+        <a [routerLink]="['/pages/blog/details', campaign.id]">
           <img
-            src="assets/images/Designer.jpg"
+            [src]="
+              campaign.imageUrl
+                ? campaign.imageUrl
+                : 'assets/images/seller-sign.jpg'
+            "
             class="img-fluid center"
-            alt=""
+            style="max-width: 700px; max-height: 300px"
+            alt="campaign.name"
           />
+          <p>{{ campaign.name }}</p>
         </a>
-      </div> -->
+      </div>
       <div class="col-lg-12 mt-4" style="margin-bottom: 2%">
         <div class="row">
           <div class="col-6 col-sm-6 col-md-3 col-lg-2">

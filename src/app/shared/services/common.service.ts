@@ -66,6 +66,7 @@ export class CommonService {
         return this.http
             .post(this.base_url + url, JSON.stringify(body), { headers: headers })
             .map((response: Response) => {
+                this.isLoading.next(false)
                 return response;
             })
         // .catch((error: any) => this.httpErrorHandler(error));
@@ -82,6 +83,7 @@ export class CommonService {
         return this.http
             .put(this.base_url + url, JSON.stringify(body), { headers: headers })
             .map((response: Response) => {
+                this.isLoading.next(false)
                 return response;
             })
         // .catch((error: any) => this.httpErrorHandler(error));
@@ -142,6 +144,7 @@ export class CommonService {
         return this.http
             .delete(this.base_url + url, { headers: headers })
             .map((response: Response) => {
+                this.isLoading.next(false)
                 return response;
             })
         // .catch((error: any) => this.httpErrorHandler(error));

@@ -133,8 +133,12 @@ export class AuthService {
     return this.commonService.post('token/revoke', {});
   }
 
-  forgotPassword(data) {
-    return this.commonService.post('customer/forgot-password', data);
+  forgotPassword(email) {
+    return this.commonService.get(`otp/customer-forget-password/${email}`);
+  }
+
+  changePassword(data) {
+    return this.commonService.post(`otp/recover-password`, data);
   }
 
   createReferCode() {

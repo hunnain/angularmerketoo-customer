@@ -202,7 +202,12 @@
             alt="logo"
           />
         </a>
-        <h3 style="text-align: center">Log in with Marketoo account</h3>
+        <h3 style="text-align: center" *ngIf="!forgotPass">
+          Log in with Marketoo account
+        </h3>
+        <h3 style="text-align: center" *ngIf="forgotPass">
+          Forgot Marketoo account
+        </h3>
         <div class="modal-body">
           <div class="theme-card">
             <form class="theme-form" [formGroup]="loginForm">
@@ -236,7 +241,7 @@
                   {{ "email_invalid" | translate }}
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="!forgotPass">
                 <label for="review">{{ "password" | translate }}</label>
                 <input
                   type="password"
@@ -269,25 +274,19 @@
                   >Back to previous page</a
                 >
                 <a
+                  *ngIf="!forgotPass"
                   style="cursor: pointer; color: blue"
-                  href="javascript:void(0)"
+                  (click)="forgotPass = true"
                   >Forgot password</a
                 >
+                <a
+                  *ngIf="forgotPass"
+                  style="cursor: pointer; color: blue"
+                  (click)="forgotPass = false"
+                  >Login</a
+                >
               </div>
-              <!-- <button
-                style="
-                  width: 46%;
-                  margin-left: 25%;
-                  margin-bottom: 12%;
-                  margin-top: 10%;
-                "
-                class="btn btn-solid"
-                (click)="tryLogin()"
-                [disabled]="loginForm.invalid"
-              >
-                {{ "Login" | translate }}
-              </button> -->
-              <div class="text-center mt-2">
+              <div class="text-center mt-2" *ngIf="!forgotPass">
                 <app-button
                   [btnType]="'submit'"
                   [loading]="loginLoading"
@@ -296,11 +295,144 @@
                   (onSubmit)="tryLogin()"
                 ></app-button>
               </div>
+              <div class="text-center mt-2" *ngIf="forgotPass">
+                <app-button
+                  [btnType]="'submit'"
+                  [loading]="reseting"
+                  [disabled]="loginForm.controls.email.invalid"
+                  [btnText]="'Reset Password'"
+                  (onSubmit)="resetPassword()"
+                ></app-button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <!-- Reset password -->
+    <div [hidden]="!renewPass">
+      <div class="col-lg-12">
+        <a id="themeLogo">
+          <img
+            style="
+              margin-left: 26%;
+              margin-bottom: 7%;
+              margin-top: 15%;
+              width: 40%;
+            "
+            [src]="themeLogo"
+            class="img-fluid"
+            alt="logo"
+          />
+        </a>
+        <h3 style="text-align: center">Reset Password</h3>
+        <div class="modal-body">
+          <div class="theme-card">
+            <form class="theme-form" [formGroup]="resetForm">
+              <div class="form-group">
+                <label for="otp">{{ "otp" | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="otp"
+                  placeholder="{{ 'opt' | translate }}"
+                  formControlName="otp"
+                  required
+                />
+                <div
+                  *ngIf="
+                    resetForm.controls.otp.touched &&
+                    resetForm.controls.otp.errors?.required
+                  "
+                  class="text text-danger"
+                >
+                  {{ "otp_req" | translate }}
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="review">{{ "password" | translate }}</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="review"
+                  formControlName="password"
+                  placeholder="{{ 'password' | translate }}"
+                  required=""
+                />
+                <div
+                  *ngIf="
+                    resetForm.controls.password.touched &&
+                    resetForm.controls.password.errors?.required
+                  "
+                  class="text text-danger"
+                >
+                  {{ "password_req" | translate }}
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-pass">{{
+                  "confirm_password" | translate
+                }}</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm-pass"
+                  formControlName="confirmPassword"
+                  placeholder="{{ 'confirm_password' | translate }}"
+                  required=""
+                />
+                <div
+                  *ngIf="
+                    resetForm.controls.confirmPassword.touched &&
+                    resetForm.controls.confirmPassword.errors?.required
+                  "
+                  class="text text-danger"
+                >
+                  {{ "confirm_password_req" | translate }}
+                </div>
+                <div *ngIf="pass !== confirmPass" class="text text-danger">
+                  {{ "confirm_password_valid" | translate }}
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <a
+                  style="cursor: pointer; color: blue"
+                  (click)="
+                    default = false;
+                    forgotPass = false;
+                    logi = true;
+                    renewPass = false
+                  "
+                  >Back to previous page</a
+                >
+                <a
+                  *ngIf="forgotPass"
+                  style="cursor: pointer; color: blue"
+                  (click)="logi = false; forgotPass = false; renewPass = false"
+                  >Login</a
+                >
+              </div>
+              <div class="text-center mt-2">
+                <app-button
+                  [btnType]="'submit'"
+                  [loading]="reseting"
+                  [disabled]="resetForm.invalid"
+                  [btnText]="'Save'"
+                  (onSubmit)="RenewPassword()"
+                ></app-button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Reset password end -->
     <div [hidden]="register">
       <div class="col-lg-12">
         <a id="themeLogo">

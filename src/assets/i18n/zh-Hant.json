@@ -419,6 +419,9 @@
   "username": "帳戶名稱",
   "username_req":"用戶名為必填項",
   "password": "密碼",
+  "confirm_password": "確認 密碼",
+  "confirm_password_valid":"Password and Confirm Password must be same",
+  "confirm_password_req": "確認密码是必需的",
   "Login": "登入",
   "Marketoo account":"Marketoo帳戶",
 
