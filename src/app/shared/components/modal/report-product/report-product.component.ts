@@ -7,6 +7,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ReturnExchangeService } from 'src/app/shared/services/return-exchange.service';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { Product } from 'src/app/shared/classes/product';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-report-product-modal',
@@ -21,13 +22,13 @@ export class ReportProductComponent implements OnInit, AfterViewInit, OnDestroy 
   public product: Product;
   public closeResult: string;
   public loading: boolean = false;
-  public reason = 'opt_1';
+  public reason = 1;
   public description: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private modalService: NgbModal,
-    private returnService: ReturnExchangeService,
+    private prodService: ProductService,
     private cs: CommonService
   ) {
     this.cs.isLoading.subscribe((loading) => {
@@ -63,15 +64,20 @@ export class ReportProductComponent implements OnInit, AfterViewInit, OnDestroy 
 
   save() {
     this.loading = true;
-    let data = {}
+    let data = {
+      reason: this.reason,
+      description: this.description
+    }
 
-    // this.returnService.returnOrder(data).subscribe(res => {
-    //   this.loading = false;
-    //   if (res) {
-    //     this.reloadData.emit('some data to be pass');
-    //     this.modalService.dismissAll('Close');
-    //   }
-    // })
+    this.prodService.createReportProduct(this.product.productId, data).subscribe(res => {
+      this.loading = false;
+      if (res) {
+        this.reloadData.emit(true);
+        this.modalService.dismissAll('Close');
+        this.reason = 1;
+        this.description = '';
+      }
+    })
   }
 
   private getDismissReason(reason: any): string {

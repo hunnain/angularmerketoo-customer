@@ -72,6 +72,11 @@ export class ProductService {
     // }));
   }
 
+  // Create Report Product 
+  public createReportProduct(product_id, data): Observable<Product> {
+    return this.cs.post(`customer/report-product/${product_id}`, data);
+  }
+
 
   /*
     ---------------------------------------------

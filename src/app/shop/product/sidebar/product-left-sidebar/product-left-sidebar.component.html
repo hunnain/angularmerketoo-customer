@@ -28,7 +28,7 @@
                     : 'assets/images/seller-sign.jpg'
                 "
                 class="img-fluid center"
-                style="max-width: 700px; max-height: 300px"
+                style="max-width: 700px; max-height: 300px; width: 100%"
                 alt="campaign.name"
               />
               <p>{{ campaign.name }}</p>
@@ -322,7 +322,10 @@
                       >buy now</a
                     >
                   </div>
-                  <div class="product-buttons">
+                  <div
+                    class="product-buttons"
+                    *ngIf="!product.isProductReported"
+                  >
                     <a
                       style="
                         cursor: pointer;
@@ -494,7 +497,9 @@
                       </div>
                       <form
                         class="theme-form"
-                        *ngIf="product?.isValidForFeedback"
+                        *ngIf="
+                          product?.isValidForFeedback && !product.feedbackExist
+                        "
                       >
                         <div class="form-row">
                           <div>
