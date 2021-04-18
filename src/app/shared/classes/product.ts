@@ -50,6 +50,8 @@ export interface Product {
     sellerEnglishFName?: string;
     sellerChineseFName?: string;
     brandName?: string;
+    isProductReported?: boolean;
+    feedbackExist?: boolean;
 }
 
 export interface FeedbacksEntity {

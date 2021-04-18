@@ -201,8 +201,12 @@ export class ProductLeftSidebarComponent implements OnInit {
     this.reportModal.openModal(prod);
   }
 
+  isReported: boolean = false;
   onModalSave(res) {
     console.log("report saved", res)
+    if (res) {
+      this.product.isProductReported = true;
+    }
   }
 
 }

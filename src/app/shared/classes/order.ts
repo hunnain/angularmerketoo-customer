@@ -21,5 +21,6 @@ export interface Order {
     state?: string;
     address?: string;
     postalcode?: string;
+    ifReturnExchangeRequested?: boolean;
     orderedProductDetails?: OrderedProductDetail[];
 }
