@@ -146,7 +146,7 @@
                     [readonly]="true"
                   ></app-rating>
                   <h4>
-                    <del *ngIf="product?.discount">{{
+                    <del *ngIf="product?.markdownPrice">{{
                       product?.price * productService.Currency?.price
                         | currency: productService.Currency?.currency:"symbol"
                     }}</del>
@@ -158,6 +158,15 @@
                         productService.Currency?.price
                         | currency: productService.Currency?.currency:"symbol"
                     }}
+                    <h4
+                      style="display: inline-block"
+                      *ngIf="product?.discountBuy"
+                    >
+                      <span>
+                        (Buy {{ product?.discountBuy }} & Get
+                        {{ product?.discountGet }} free)
+                      </span>
+                    </h4>
                   </h3>
                   <ul
                     class="color-variant"
