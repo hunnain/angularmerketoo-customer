@@ -318,7 +318,7 @@ export class CheckoutComponent implements OnInit {
       this.loading = false;
       if (res) {
         // this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: this.referenceNumber } })
-        this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: 'orderId' } })
+        this.router.navigate(['shop/checkout/success'], { queryParams: { orderId: res['paymentMethodKey'] } })
       }
     })
   }
