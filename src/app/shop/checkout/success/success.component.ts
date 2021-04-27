@@ -21,6 +21,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     session_id: 'fetchOrderBySessionId',
     sourceId: 'fetchOrderBySourceId',
     orderId: 'fetchFPSOrderOnSuccess'
+    // orderId: 'fetchOrderById'
   }
   constructor(
     public productService: ProductService,
@@ -64,7 +65,8 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     this.orderService[this.methods[this.key]](id)
       .subscribe(res => {
         if (res && res.body) {
-          this.orders = res.body;
+          let data = res.body;
+          this.orders = !Array.isArray(data) ? [data] : data;
           this.loading = false;
         }
       })
