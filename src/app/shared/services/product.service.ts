@@ -194,7 +194,7 @@ export class ProductService {
 
   // Add to Cart
   public addToCart(product): any {
-    const { productId, name, size, color, price, markdownPrice, discountBuy, discountGet } = product;
+    const { productId, name, size, color, price, markdownPrice, discountBuy, discountGet, customImage } = product;
     const cartItem = state.cart.find(item => item.productId === productId);
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
@@ -209,7 +209,7 @@ export class ProductService {
         // ...product,
         productId,
         quantity: qty,
-        name, size, color, price, markdownPrice, discountBuy, discountGet,
+        name, size, color, price, markdownPrice, discountBuy, discountGet, customImage,
         image: product.imageUrls ? product.imageUrls[0] : product.image
       })
     }

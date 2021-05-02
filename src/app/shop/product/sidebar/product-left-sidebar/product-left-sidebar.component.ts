@@ -209,4 +209,10 @@ export class ProductLeftSidebarComponent implements OnInit {
     }
   }
 
+  customizeProduct(prod) {
+    localStorage.setItem('customProduct', JSON.stringify(prod));
+    this.router.navigate([`/shop/customize-product`, prod.productId])
+    // [routerLink]="['/shop/product/left/sidebar/', product.productId]"
+  }
+
 }

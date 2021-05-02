@@ -317,6 +317,16 @@
                   </div>
                   <div class="product-buttons">
                     <a
+                      *ngIf="product.customDesign"
+                      class="btn btn-solid"
+                      [class.disabled]="counter > product.stock"
+                      (click)="customizeProduct(product)"
+                      style="color: #fff; margin-left: 0"
+                      >Customize Product</a
+                    >
+                  </div>
+                  <div class="product-buttons">
+                    <a
                       href="javascrip:void(0)"
                       class="btn btn-solid"
                       [class.disabled]="counter > product.stock"

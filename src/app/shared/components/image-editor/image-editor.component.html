@@ -1,0 +1,8 @@
+<div style="text-align: right">
+  <div class="load-btn-container">
+    Load
+    <input type="file" class="load-btn" (change)="fileChangeEvent($event)" />
+  </div>
+  <button #saveBtn (click)="getImage()" class="save-btn">Save</button>
+</div>
+<div #tuiImageEditor id="tui-image-editor"></div>
