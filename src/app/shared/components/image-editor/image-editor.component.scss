@@ -1,0 +1,92 @@
+// @import "tui-image-editor/dist/tui-image-editor.css";
+// @import "tui-color-picker/dist/tui-color-picker.css";
+
+.load-btn-container {
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  color: #3c3c3c;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.load-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  cursor: pointer !important;
+  opacity: 0;
+}
+
+.load-btn input[type="file" i] {
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+  overflow: hidden !important;
+}
+
+.save-btn {
+  background-color: #f2917e;
+  border: 1px solid #f2917e;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+::ng-deep .tui-image-editor-container {
+  min-height: 600px !important;
+}
+
+::ng-deep .tui-image-editor-header {
+  display: none !important;
+}
+
+::ng-deep .color-picker-control {
+  .color-picker {
+    position: initial !important;
+    right: 0 !important;
+    top: 0 !important;
+  }
+}

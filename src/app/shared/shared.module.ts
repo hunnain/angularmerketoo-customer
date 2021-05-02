@@ -71,6 +71,7 @@ import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component"
 
 // Pipes
 import { DiscountPipe } from "./pipes/discount.pipe";
+import { ImageEditorComponent } from "./components/image-editor/image-editor.component";
 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -119,7 +120,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     CropperComponent,
     ButtonComponent,
     LoaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    ImageEditorComponent
   ],
   imports: [
     CommonModule,
@@ -188,6 +190,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgxQRCodeModule,
     LoaderComponent,
     DropzoneModule,
+    ImageEditorComponent
   ],
   providers: [
     {

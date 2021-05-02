@@ -13,6 +13,8 @@ import { FourImageComponent } from './product/four-image/four-image.component';
 import { ThreeColumnComponent } from './product/three-column/three-column.component';
 import { BundleProductComponent } from './product/bundle-product/bundle-product.component';
 import { ImageOutsideComponent } from './product/image-outside/image-outside.component';
+import { CustomProductComponent } from '../shared/components/product/custom-product/custom-product.component';
+
 
 // Product Details Widgest Components
 import { ServicesComponent } from './product/widgets/services/services.component';
@@ -51,6 +53,7 @@ import { FailedPageComponent } from './checkout/failed-page/failed-page.componen
     ProductLeftSidebarComponent,
     ProductRightSidebarComponent,
     ProductNoSidebarComponent,
+    CustomProductComponent,
     ThreeColumnComponent,
     FourImageComponent,
     BundleProductComponent,

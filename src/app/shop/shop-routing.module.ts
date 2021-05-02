@@ -26,6 +26,7 @@ import { MailboxComponent } from './collection/mailbox/mailbox.component';
 import { NotificationComponent } from './collection/notification/notification.component';
 import { MyProfileComponent } from './collection/myprofile/myprofile.component';
 import { AuthGuard } from '../core/auth.guard';
+import { CustomProductComponent } from '../shared/components/product/custom-product/custom-product.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,13 @@ const routes: Routes = [
     resolve: {
       data: Resolver
     }
+  },
+  {
+    path: 'customize-product/:id',
+    component: CustomProductComponent,
+    // resolve: {
+    //   data: Resolver
+    // }
   },
   {
     path: 'collection/left/sidebar',

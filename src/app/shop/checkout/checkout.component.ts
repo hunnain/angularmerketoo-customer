@@ -219,7 +219,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   get formatData() {
-    let prods = this.products.map(({ productId, quantity, colour, size }) => ({ productId, quantity, colour, size }))
+    let prods = this.products.map((prod) => {
+      let { productId, quantity, colour, size } = prod;
+      let data = { productId, quantity, colour, size }
+      if (prod['customImage']) {
+        data['customImage'] = prod['customImage']
+      }
+
+      return data;
+    })
     let data = {
       ...this.checkoutForm.value,
       // paymentMethodType: this.payment,
