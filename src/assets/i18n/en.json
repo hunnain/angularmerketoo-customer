@@ -570,7 +570,21 @@
   "report_opt5":"This item is not allowed for sale on Marketoo.",
   "report_opt6":"Other reason",
   "report_textarea_label":"Please describe the issue and provide relevant links:",
-  "report_note":"Please note that Marketoo will directly forward the content you provide in this field to the shop."
+  "report_note":"Please note that Marketoo will directly forward the content you provide in this field to the shop.",
+
+  "product_details": "Product Details",
+  "about_seller": "About Seller",
+  "promotions_seller": "Promotions",
+  "report_product": "Report Product",
+  "What_is_wrong_with_this_item" : "What is wrong with this item?",
+  "buy_now_btn": "Buy Now",
+  "add_to_cart_btn": "Add To Cart",
+  "customize_product_btn": "Customize Product",
+  "quantity_product_btn": "Quantity",
+  "out_of_stock_btn": "Out Of Stock",
+  "select_size_btn": "Select Size",
+  "select_color_btn": "Select Color",
+  "related_products": "Related Products"
 
 
 

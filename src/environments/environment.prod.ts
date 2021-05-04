@@ -12,8 +12,9 @@ export const environment = {
     appId: "1:344155998799:web:e028a6c13d165af5ff383a",
     measurementId: "G-MDYQZ4N9D6"
   },
-  instagram_token: 'INSTAGRAM_TOKEN',
+  instagram_token: 'IGQVJYeF9tdlhaRFpNYlRHTi1ZATWRJNzdHVXJCaEx6MGdGSjdOTXBlbDlIUHROM1gwdlhCUUQzM1NYS3VsMTBYU1RQQVNkNjJqeEs1SE04ek9jVDJtRFlRSFlfMkJwX1o5X0ZATakdxR19qQUtxZAHBuTgZDZD',
   // stripe_token: 'STRIPE_PUBLISHABLE_KEY',
+  // stripe_token: 'pk_live_51HDmTuFbF7KqjBXse74NA9yJL9hPR67hp1arSgF6mTKwg5ByRQkuzMdgIfTpjDG14kKAhL8nPyWAxYfpqqkxJFIo00hP5znSqk',
   stripe_token: 'pk_test_51HDmTuFbF7KqjBXsyYrOWgz1DZfeynJPaFwTeUpC6aPsRCOgrZMLM55YlrR0hwNnIKQT4lYsK0lTgRZHfrx4KjtG00UfpijMRg',
   paypal_token: 'PAYPAL_CLIENT_ID',
   push_notification_public_key: "BGcyc-_QabAQ0yYUnSiSzHKy5K2vZueQIU1JZzswP9XuXRimVv5OWGEP8KccL0wu70jNgHGbTiWGa08bXIabYAo",

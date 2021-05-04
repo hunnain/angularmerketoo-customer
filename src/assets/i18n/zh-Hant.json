@@ -548,7 +548,20 @@
   "report_opt5":"此產品不允許在Marketoo上出售。",
   "report_opt6":"其他原因",
   "report_textarea_label":"請描述問題並提供相關鏈接：",
-  "report_note":"請注意，Marketoo將直接將您在此字段中提供的內容轉發給商店。"
-  
+  "report_note":"請注意，Marketoo將直接將您在此字段中提供的內容轉發給商店。",
+
+  "product_details" : "產品詳情",
+  "about_seller": "關於賣方",
+  "promotions_seller" : "促銷活動",
+  "report_product": "報告產品",
+  "What_is_wrong_with_this_item": "這個物品怎麼了？",
+  "buy_now_btn": "立即購買",
+  "add_to_cart_btn": "添加到購物車",
+  "customize_product_btn": "定制產品",
+  "quantity_product_btn": "數量",
+  "out_of_stock_btn": "缺貨",
+  "select_size_btn": "選擇大小",
+  "select_color_btn": "選擇顏色",
+  "related_products": "相關產品"
 
 }
