@@ -39,6 +39,12 @@
                       )
                     "
                     [alt]="product.name"
+                    *ngIf="!product?.customImage"
+                  />
+                  <img
+                    [src]="addBase64InImg(product?.customImage)"
+                    [alt]="product.name"
+                    *ngIf="product?.customImage"
                   />
                 </a>
               </td>

@@ -52,6 +52,7 @@ export interface Product {
     brandName?: string;
     isProductReported?: boolean;
     feedbackExist?: boolean;
+    customImage?: string;
 }
 
 export interface FeedbacksEntity {

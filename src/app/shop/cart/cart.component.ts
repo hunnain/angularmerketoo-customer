@@ -48,6 +48,10 @@ export class CartComponent implements OnInit {
     return img ? img : '';
   }
 
+  addBase64InImg(img) {
+    return AddBase64InImg(img);
+  }
+
   addToCart() {
     // console.log('💻 cart items--', this.products);
     if (this.authService.checkUserLoggedIn()) {
