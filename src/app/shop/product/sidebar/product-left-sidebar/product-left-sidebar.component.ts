@@ -162,6 +162,7 @@ export class ProductLeftSidebarComponent implements OnInit {
     return moment(date).format('DD MMMM YYYY HH:mm A')
   }
 
+  submittingReview: boolean = false;
   submitReview() {
     let data = {
       reviewTitle: this.reviewTitle,
@@ -169,31 +170,25 @@ export class ProductLeftSidebarComponent implements OnInit {
       rating: this.rating,
       productId: this.product.productId
     }
-
+    this.submittingReview = true;
     this.feedbackService.addFeedback(data).subscribe(res => {
       if (res) {
         this.review = "";
         this.reviewTitle = "";
         this.rating = 0;
-        // this.refreshPage()
+        this.product.feedbackExist = true;
+        this.refreshPage()
       }
     })
   }
 
   refreshPage() {
     window.location.reload()
-    // this.router.navigate(['/shop/product/left/sidebar/', this.product.productId], {
-    //   relativeTo: this.route,
-    //   // queryParams: {},
-    //   queryParamsHandling: 'merge', // preserve the existing query params in the route
-    //   skipLocationChange: false  // do trigger navigation
-    // })
-    //   .finally(() => {
-    //   });
     // this.router.navigated = false;
     // setTimeout(() => {
     //   this.router.navigate(['/shop/product/left/sidebar/', this.product.productId]);
-    // }, 2000);
+    //   this.submittingReview = false;
+    // }, 200);
   }
 
   reportProduct(prod) {

@@ -52,7 +52,7 @@
       [ngClass]="{ 'border-bottom': orders.length - 1 > i }"
       *ngFor="let orderDetails of orders; let i = index"
     >
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div class="product-order">
           <h3>your order details</h3>
           <div
@@ -62,7 +62,9 @@
             <div class="col-3">
               <img
                 [src]="
-                  product.image
+                  product.customImageUrl
+                    ? product.customImageUrl
+                    : product.image
                     ? product.image
                     : 'assets/images/product/placeholder.jpg'
                 "
@@ -99,11 +101,15 @@
               <li>
                 Subtotal
                 <span>{{
-                  orderDetails?.total
+                  orderDetails?.subtotal
                     | currency: productService?.Currency.currency:"symbol"
                 }}</span>
               </li>
               <li>Shipping <span>$00.00</span></li>
+              <!-- <li>
+                Discount
+                <span>$({{ orderDetails?.discountAmount || "00.00" }})</span>
+              </li> -->
               <li>Tax <span>$00.00</span></li>
             </ul>
           </div>
@@ -118,7 +124,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-5">
         <div class="row order-success-sec">
           <div class="col-sm-6">
             <h4>summery</h4>
