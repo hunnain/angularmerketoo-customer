@@ -46,9 +46,11 @@ export class PushNotificationService {
             this.pushNotificationStatus.isSupported = false;
         }
 
-        navigator.serviceWorker.addEventListener('message', (event) => {
-            this.notifications.push(event.data);
-        });
+        if (navigator && navigator.serviceWorker) {
+            navigator.serviceWorker.addEventListener('message', (event) => {
+                this.notifications.push(event.data);
+            });
+        }
     }
 
     checkSubscription() {
@@ -71,54 +73,58 @@ export class PushNotificationService {
     subscribeUser() {
         this.pushNotificationStatus.isInProgress = true;
         const applicationServerKey = this.urlB64ToUint8Array(environment.push_notification_public_key);
-        this.swRegistration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: applicationServerKey
-        })
-            .then(subscription => {
-                console.log(subscription);
-                console.log(JSON.stringify(subscription));
-                var newSub = JSON.parse(JSON.stringify(subscription));
-                console.log(newSub);
-                this.subscribeToServer(<PushSubscription>{
-                    auth: newSub.keys.auth,
-                    p256Dh: newSub.keys.p256dh,
-                    endPoint: newSub.endpoint
-                }).subscribe(s => {
-                    this.pushNotificationStatus.isSubscribed = true;
+        if (this.swRegistration && this.swRegistration.pushManager) {
+            this.swRegistration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: applicationServerKey
+            })
+                .then(subscription => {
+                    console.log(subscription);
+                    console.log(JSON.stringify(subscription));
+                    var newSub = JSON.parse(JSON.stringify(subscription));
+                    console.log(newSub);
+                    this.subscribeToServer(<PushSubscription>{
+                        auth: newSub.keys.auth,
+                        p256Dh: newSub.keys.p256dh,
+                        endPoint: newSub.endpoint
+                    }).subscribe(s => {
+                        this.pushNotificationStatus.isSubscribed = true;
+                    })
                 })
-            })
-            .catch(err => {
-                console.log('Failed to subscribe the user: ', err);
-            })
-            .then(() => {
-                this.pushNotificationStatus.isInProgress = false;
-            });
+                .catch(err => {
+                    console.log('Failed to subscribe the user: ', err);
+                })
+                .then(() => {
+                    this.pushNotificationStatus.isInProgress = false;
+                });
+        }
     }
 
     unsubscribeUser() {
         this.pushNotificationStatus.isInProgress = true;
         var sub;
-        this.swRegistration.pushManager.getSubscription()
-            .then(function (subscription) {
-                if (subscription) {
-                    sub = JSON.parse(JSON.stringify(subscription));
-                    return subscription.unsubscribe();
-                }
-            })
-            .catch(function (error) {
-                console.log('Error unsubscribing', error);
-            })
-            .then(() => {
-                this.unsubscribeToServer(<PushSubscription>{
-                    auth: sub.keys.auth,
-                    p256Dh: sub.keys.p256dh,
-                    endPoint: sub.endpoint
-                }).subscribe(() => {
-                    this.pushNotificationStatus.isSubscribed = false;
-                    this.pushNotificationStatus.isInProgress = false;
+        if (this.swRegistration && this.swRegistration.pushManager) {
+            this.swRegistration.pushManager.getSubscription()
+                .then(function (subscription) {
+                    if (subscription) {
+                        sub = JSON.parse(JSON.stringify(subscription));
+                        return subscription.unsubscribe();
+                    }
+                })
+                .catch(function (error) {
+                    console.log('Error unsubscribing', error);
+                })
+                .then(() => {
+                    this.unsubscribeToServer(<PushSubscription>{
+                        auth: sub.keys.auth,
+                        p256Dh: sub.keys.p256dh,
+                        endPoint: sub.endpoint
+                    }).subscribe(() => {
+                        this.pushNotificationStatus.isSubscribed = false;
+                        this.pushNotificationStatus.isInProgress = false;
+                    });
                 });
-            });
+        }
     }
 
     urlB64ToUint8Array(base64String) {

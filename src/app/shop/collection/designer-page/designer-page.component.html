@@ -27,7 +27,7 @@
                 : 'assets/images/seller-sign.jpg'
             "
             class="img-fluid center"
-            style="max-width: 700px; max-height: 300px"
+            style="max-width: 700px; max-height: 300px; width: 100%"
             alt="campaign.name"
           />
           <p>{{ campaign.name }}</p>
@@ -360,7 +360,13 @@
                                   </div>
                                 </div>
                                 <div
-                                  class="col-sm-12 text-center section-b-space mt-5 no-found"
+                                  class="
+                                    col-sm-12
+                                    text-center
+                                    section-b-space
+                                    mt-5
+                                    no-found
+                                  "
                                   *ngIf="!products.length"
                                 >
                                   <img
