@@ -29,8 +29,9 @@ export class MyWishlistComponent implements OnInit {
     this.loading = true;
     let query = ''
     this.productService.getAllWishlist(query).subscribe(res => {
+      this.loading = false;
       if (res && res['body']) {
-        this.loading = false;
+        // this.loading = false;
         this.productService.wishlistItems.subscribe(response => this.products = response);
       }
     })
