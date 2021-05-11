@@ -7,12 +7,12 @@ import { ShopRoutingModule } from './shop-routing.module';
 
 // Product Details Components
 import { ProductLeftSidebarComponent } from './product/sidebar/product-left-sidebar/product-left-sidebar.component';
-import { ProductRightSidebarComponent } from './product/sidebar/product-right-sidebar/product-right-sidebar.component';
-import { ProductNoSidebarComponent } from './product/sidebar/product-no-sidebar/product-no-sidebar.component';
-import { FourImageComponent } from './product/four-image/four-image.component';
-import { ThreeColumnComponent } from './product/three-column/three-column.component';
-import { BundleProductComponent } from './product/bundle-product/bundle-product.component';
-import { ImageOutsideComponent } from './product/image-outside/image-outside.component';
+// import { ProductRightSidebarComponent } from './product/sidebar/product-right-sidebar/product-right-sidebar.component';
+// import { ProductNoSidebarComponent } from './product/sidebar/product-no-sidebar/product-no-sidebar.component';
+// import { FourImageComponent } from './product/four-image/four-image.component';
+// import { ThreeColumnComponent } from './product/three-column/three-column.component';
+// import { BundleProductComponent } from './product/bundle-product/bundle-product.component';
+// import { ImageOutsideComponent } from './product/image-outside/image-outside.component';
 import { CustomProductComponent } from '../shared/components/product/custom-product/custom-product.component';
 
 
@@ -25,8 +25,8 @@ import { RelatedProductComponent } from './product/widgets/related-product/relat
 
 // Collection Components
 import { CollectionLeftSidebarComponent } from './collection/collection-left-sidebar/collection-left-sidebar.component';
-import { CollectionRightSidebarComponent } from './collection/collection-right-sidebar/collection-right-sidebar.component';
-import { CollectionNoSidebarComponent } from './collection/collection-no-sidebar/collection-no-sidebar.component';
+// import { CollectionRightSidebarComponent } from './collection/collection-right-sidebar/collection-right-sidebar.component';
+// import { CollectionNoSidebarComponent } from './collection/collection-no-sidebar/collection-no-sidebar.component';
 
 // Collection Widgets
 import { GridComponent } from './collection/widgets/grid/grid.component';
@@ -39,11 +39,11 @@ import { LabelComponent } from './collection/widgets/label/label.component';
 
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import { CompareComponent } from './compare/compare.component';
+// import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './checkout/success/success.component';
 import { DesignerPageComponent } from './collection/designer-page/designer-page.component';
-import { MailboxComponent } from './collection/mailbox/mailbox.component';
+// import { MailboxComponent } from './collection/mailbox/mailbox.component';
 import { MyProfileComponent } from './collection/myprofile/myprofile.component';
 import { NotificationComponent } from './collection/notification/notification.component';
 import { FailedPageComponent } from './checkout/failed-page/failed-page.component';
@@ -51,13 +51,13 @@ import { FailedPageComponent } from './checkout/failed-page/failed-page.componen
 @NgModule({
   declarations: [
     ProductLeftSidebarComponent,
-    ProductRightSidebarComponent,
-    ProductNoSidebarComponent,
+    // ProductRightSidebarComponent,
+    // ProductNoSidebarComponent,
     CustomProductComponent,
-    ThreeColumnComponent,
-    FourImageComponent,
-    BundleProductComponent,
-    ImageOutsideComponent,
+    // ThreeColumnComponent,
+    // FourImageComponent,
+    // BundleProductComponent,
+    // ImageOutsideComponent,
     ServicesComponent,
     CountdownComponent,
     SocialComponent,
@@ -65,9 +65,9 @@ import { FailedPageComponent } from './checkout/failed-page/failed-page.componen
     RelatedProductComponent,
     CollectionLeftSidebarComponent,
     DesignerPageComponent,
-    CollectionRightSidebarComponent,
-    CollectionNoSidebarComponent,
-    MailboxComponent,
+    // CollectionRightSidebarComponent,
+    // CollectionNoSidebarComponent,
+    // MailboxComponent,
     MyProfileComponent,
     NotificationComponent,
     GridComponent,
@@ -79,7 +79,7 @@ import { FailedPageComponent } from './checkout/failed-page/failed-page.componen
     LabelComponent,
     CartComponent,
     WishlistComponent,
-    CompareComponent,
+    // CompareComponent,
     CheckoutComponent,
     SuccessComponent,
     FailedPageComponent

@@ -202,21 +202,21 @@ export let ProductSlider: any = {
     // navContainerClass: 'owl-nav',
     // navClass: ['owl-prev', 'owl-next'],
     // navText: ['<i style="font-size: 50px" class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
-    // responsive: {
-    //     991: {
-    //         items: 6,
-    //         autoWidth: false,
-    //     },
-    //     767: {
-    //         items: 3
-    //     },
-    //     586: {
-    //         items: 2
-    //     },
-    //     0: {
-    //         items: 2
-    //     }
-    // }
+    responsive: {
+        991: {
+            items: 6,
+            autoWidth: false,
+        },
+        767: {
+            items: 3
+        },
+        586: {
+            items: 2
+        },
+        0: {
+            items: 2
+        }
+    }
 }
 
 // Product Slider

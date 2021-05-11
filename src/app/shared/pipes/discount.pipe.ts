@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'discount'
+  name: 'discount',
+  pure: true
 })
 export class DiscountPipe implements PipeTransform {
 
