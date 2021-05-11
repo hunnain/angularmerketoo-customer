@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
         this.cs.isLoading.next(false);
         setTimeout(() => {
           localStorage.clear();
-          this.router.navigate(["/home/fashion"]);
+          this.router.navigate(["/home"]);
         }, 2000)
       }
     });

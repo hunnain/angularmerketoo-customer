@@ -44,11 +44,11 @@ export class AuthGuard implements CanActivate {
           // if(this.pnService.pushNotificationStatus.isSubscribed){
           //   this.pnService.unsubscribeUser();
           // }
-          this.router.navigate(['home/fashion']);
+          this.router.navigate(['home']);
           return Observable.of(false);
         });
     } else {
-      this.router.navigate(['home/fashion']);
+      this.router.navigate(['home']);
       return false;
     }
     // return true;

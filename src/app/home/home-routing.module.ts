@@ -19,7 +19,7 @@ import { MarijuanaComponent } from './marijuana/marijuana.component';
 
 const routes: Routes = [
   {
-    path: 'fashion',
+    path: '',
     component: FashionOneComponent
   },
   {
