@@ -11,20 +11,28 @@ export let HomeSlider: any = {
     navContainerClass: 'owl-nav',
     navClass: ['owl-prev', 'owl-next'],
     navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
-    responsive: {
-        0: {
-            items: 1
-        },
-        400: {
-            items: 1
-        },
-        740: {
-            items: 1
-        },
-        940: {
-            items: 1
-        }
-    },
+    autoWidth: false,
+    responsive: false,
+    items: 1,
+
+    // responsive: {
+    //     0: {
+    //         items: 1,
+    //         autoWidth: false
+    //     },
+    //     400: {
+    //         items: 1,
+    //         autoWidth: false
+    //     },
+    //     740: {
+    //         items: 1,
+    //         autoWidth: false
+    //     },
+    //     940: {
+    //         items: 1,
+    //         autoWidth: false
+    //     }
+    // },
 };
 
 // Blog Slider
